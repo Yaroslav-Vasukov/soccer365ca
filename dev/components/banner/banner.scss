@@ -1,0 +1,52 @@
+.banner {
+  background-color: $color-light;
+  padding: 24px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-left: 8px solid $color-primary;
+      @media (max-width: 768px) {
+      height: 320px;
+    }
+
+  &__player {
+    margin-bottom: -24px;
+    align-self: flex-end;
+    height: 320px;
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  &__content {
+    color: $color-dark;
+    position: relative;
+    z-index: 2;
+    background-color: rgba($color-light, 0.7);
+    padding: 16px;
+  }
+
+  &__title {
+    font-size: 40px;
+    line-height: 1.2;
+        @media (max-width: 768px) {
+    font-size: 32px;
+    }
+  }
+
+  &__text {
+    font-size: 18px;
+    margin-top: 8px;
+    font-weight: 600;
+  }
+  &__decor {
+    position: absolute;
+    opacity: 0.8;
+    bottom: 0;
+    right: 0;
+    width: 200px;
+    height: auto;
+    object-fit: contain;
+    z-index: 1;
+  }
+}

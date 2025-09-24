@@ -1,18 +1,19 @@
-/* Colors */
-$color-primary: #00C853;
-$color-primary-dark: #007E33;
-$color-primary-light: #69F0AE;
+$color-primary: #d32f2f; // 🇨🇦 Красный (главный акцент)
+$color-primary-dark: #b71c1c; // Тёмно-красный (hover, активные элементы)
+$color-primary-light: #ff5252; // Светло-красный (подсветка, акценты)
 
-$color-dark: #1C1C1C;
-$color-dark-gray: #2A2A2A;
-$color-light: #FFFFFF;
-$color-gray: #E0E0E0;
+$color-dark: #121212; // Главный фон (очень тёмный)
+$color-dark-gray: #1e1e1e; // Второй фон (карточки, блоки)
+$color-light: #ffffff; // Текст на тёмном фоне
+$color-gray: #9e9e9e; // Второстепенный текст, разделители
 
-$color-accent-orange: #FF6B00;
-$color-accent-blue: #1DA1F2;
-$font-title: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-$font-body:  "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+$color-accent-orange: #ffb74d; // Доп. акцент (теплый, для кнопок/ховеров)
+$color-accent-blue: #64b5f6; // Доп. акцент (холодный, для ссылок/иконок)
 
+$font-title: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto,
+  "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+$font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+  "Helvetica Neue", Arial, "Noto Sans", sans-serif;
 h1,
 h2,
 h3,
@@ -23,55 +24,81 @@ h6 {
 }
 
 body {
+  font-family: $font-body;
   font-weight: 400;
   line-height: 1.5;
-  color: $color-dark;
-}
-
-body {
-  background-color: $color-gray;
-  font-family: $font-body;
+  background-color: $color-dark;
+  color: $color-light;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
+
 main {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   position: relative;
 }
-.material-symbols-outlined { vertical-align: middle; line-height: 1; }
+.material-symbols-outlined {
+  vertical-align: middle;
+  line-height: 1;
+}
+.section {
+      &__bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+  &--decor {
+    position: relative;
+    padding: 50px 0;
+    z-index: 1;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba($color-dark, 0.9);
+      z-index: -1;
+    }
+  }
+  &--margin {
+    margin-bottom: 64px;
+  }
+  &__inner {
+    position: relative;
+    z-index: 2;
+  }
+}
+ 
 .container {
   max-width: 1440px;
+  height: 100%;
   margin: 0 auto;
   padding: 0 8px;
-  &--small { max-width: 992px; }
+  &--small {
+    max-width: 992px;
+  }
 }
 
 .page-content {
   flex-grow: 1;
-   padding: 32px 0;
+  padding: 32px 0;
   position: relative;
-    &__inner {
+  &__inner {
     position: relative;
     z-index: 2;
     display: flex;
     flex-direction: column;
     gap: 32px;
   }
-  }
-
-
-.block {
-  background-color: $color-light;
-  border-radius: 8px;
-  padding: 16px;
-  box-shadow: 0 0 4px  rgba(0, 0, 0, 0.35);
-}
-
-.page--review .page-content {
-  padding: 32px 0 0;
 }
 
 .visually-hidden {
@@ -87,4 +114,6 @@ main {
   white-space: nowrap !important;
 }
 
-[hidden] { display: none !important; }
+[hidden] {
+  display: none !important;
+}

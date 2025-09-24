@@ -1,0 +1,49 @@
+<header class="header" data-module="header">
+  <div class="container header__inner">
+    {# Лого #}
+    <a class="header__logo" href="/home" aria-label="{{ logo_alt|default('Logo') }}">
+      <img
+        class="header__logo-img"
+        src="{{ logo|default('/assets/images/logo.webp') }}"
+        alt="{{ logo_alt|default('Logo') }}"
+        width="140"
+        height="32"
+        decoding="async"
+      />
+    </a>
+
+    {# Кнопка-бургер #}
+    <button
+      class="header__burger"
+      type="button"
+      aria-controls="site-nav"
+      aria-expanded="false"
+      aria-label="Open main menu"
+    >
+      <span class="sr-only">Menu</span>
+      <span class="header__burger-bar"></span>
+      <span class="header__burger-bar"></span>
+      <span class="header__burger-bar"></span>
+    </button>
+
+    {# Навигация #}
+    <nav id="site-nav" class="header__nav" aria-label="Primary">
+      <ul class="header__list">
+        {% for item in nav %}
+          <li class="header__item">
+            <a
+              class="header__link{% if active_nav == item.slug %} header__link--active{% endif %}"
+              href="{{ item.href }}"
+              {% if active_nav == item.slug %}aria-current="page"{% endif %}
+            >
+              {{ item.label }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    {# Оверлей #}
+    <div class="header__overlay" hidden></div>
+  </div>
+</header>

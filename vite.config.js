@@ -14,6 +14,43 @@ import twigPlugin from "@fulcrumsaas/vite-plugin-twig"; // Twig на Vite 5
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// === load_json helper (NEW) ===============================================
+const DEV_ROOT = path.resolve(__dirname, "dev");
+const ALIASES = {
+  "@": DEV_ROOT,
+  "@components": path.resolve(DEV_ROOT, "components"),
+  "@assets": path.resolve(DEV_ROOT, "assets"),
+};
+
+function resolveFromAliases(p) {
+  let s = String(p);
+  // поддержка "@/..." (корень dev)
+  if (s.startsWith("@/")) s = s.replace(/^@\//, "");
+  // если начинается с известного алиаса
+  if (s.startsWith("@")) {
+    const parts = s.split("/");
+    const head = parts.shift(); // "@", "@components", "@assets"
+    const base = ALIASES[head] || DEV_ROOT;
+    return path.resolve(base, parts.join("/"));
+  }
+  // относительные пути -> от DEV_ROOT
+  if (!path.isAbsolute(s)) return path.resolve(DEV_ROOT, s);
+  return s;
+}
+
+Twig.extendFunction("load_json", (p) => {
+  try {
+    const abs = resolveFromAliases(p);
+    const txt = fs.readFileSync(abs, "utf8");
+    return JSON.parse(txt);
+  } catch (e) {
+    console.warn("[load_json] error:", p, e.message);
+    // безопасный дефолт (пустой список), чтобы шаблон не падал
+    return [];
+  }
+});
+// ==========================================================================
+
 // ---- purge css ------------------------------------------------
 const USE_PURGED = process.env.USE_PURGED === "1";
 const oldCss = path.resolve(__dirname, "dev/assets/styles/old-styles.css");

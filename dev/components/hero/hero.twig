@@ -1,0 +1,34 @@
+{#
+  ВХОД:
+  - title:    заголовок (обязательно)
+  - subtitle: подзаголовок (опционально)
+  - text:     описание (опционально)
+  - bg:       фон (картинка)
+  - button:   { label, href, icon, extra_class } (опционально)
+#}
+
+{% set _title   = title|default('Hero Title') %}
+{% set _bg      = bg|default('/assets/images/bg/hero.webp') %}
+{% set _subtitle = subtitle|default(null) %}
+{% set _text     = text|default(null) %}
+{% set _button   = button|default(null) %}
+
+<section class="hero">
+  <img src="{{ _bg }}" alt="" class="hero__bg">
+  <div class="container">
+    <div class="hero__inner">
+      <div class="hero__item">
+        <h1 class="hero__title">{{ _title }}</h1>
+        {% if _subtitle %}
+          <p class="hero__subtitle">{{ _subtitle }}</p>
+        {% endif %}
+        {% if _text %}
+          <p class="hero__text">{{ _text }}</p>
+        {% endif %}
+        {% if _button %}
+          {% include "../button/button.twig" with _button %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

@@ -15,15 +15,16 @@ function when(selectorOrTest, importer, runner) {
 
 function init() {
 
-//   when('[data-module="header"]', () =>
-//     import("@components/header/header.js")
-//   ); 
+  when('[data-module="header"]', () =>
+    import("@components/header/header.js")
+  ); 
+    when("[data-swiper]", () =>
+    import("@components/swiper/swiper.js")
+  ); 
 //   when("[data-date]", () =>
 //     import("@components/date/date.js")
 //   ); 
-//   when("[data-swiper]", () =>
-//     import("@components/swiper/swiper.js")
-//   ); 
+
 //   when("[data-tabs]", () =>
 //     import("@components/tabs/tabs.js")
 //   ); 

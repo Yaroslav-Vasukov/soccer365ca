@@ -1,0 +1,44 @@
+.btn {
+  display: flex;
+  &--hero &__link{
+    font-size: 18px;
+    padding: 12px 36px;
+  }
+  &--live  &__link{
+    width: 100%;
+    padding: 16px 24px;
+    &:hover {
+      box-shadow: none; 
+    }
+  }
+		&__link {
+      background-color: $color-light;
+      padding: 8px 24px;
+      color: $color-dark;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      justify-content: center;
+      font-weight: 600;
+      transition: background-color .25s ease, color .25s ease, box-shadow .25s ease;
+      &:hover {
+        background-color: $color-primary;
+        color: $color-light;
+        box-shadow: 0 0 8px 2px rgba(255, 255, 255, 1);
+      }
+      &:hover  .btn__icon{
+        transform: translateX(16px);
+      }
+		}
+
+		&__text {
+      text-transform: uppercase;
+		}
+
+		&__icon {
+      font-weight: 700;
+      font-size: 32px;
+      transition: transform .25s ease;
+		}
+}
+

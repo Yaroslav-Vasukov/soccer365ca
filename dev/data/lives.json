@@ -1,0 +1,788 @@
+[
+  {
+    "href": "/live/123",
+    "preview": {
+      "src": "/assets/images/pictures/img1.webp",
+      "alt": "Arsenal vs Chelsea"
+    },
+    "date": "2025-09-24 17:30",
+    "league": {
+      "name": "Premier League",
+      "href": "/league/premier-league"
+    },
+    "team1": {
+      "name": "Arsenal",
+      "logo": "/assets/images/teams/team-1.webp",
+      "href": "/team/arsenal"
+    },
+    "team2": {
+      "name": "Chelsea",
+      "logo": "/assets/images/teams/team-2.webp",
+      "href": "/team/chelsea"
+    },
+    "status": "live",
+    "score": {
+      "t1": 0,
+      "t2": 0
+    }
+  },
+  {
+    "href": "/live/124",
+    "preview": {
+      "src": "/assets/images/pictures/img2.webp",
+      "alt": "Chelsea vs Real Madrid"
+    },
+    "date": "2025-09-24 19:00",
+    "league": {
+      "name": "La Liga",
+      "href": "/league/la-liga"
+    },
+    "team1": {
+      "name": "Chelsea",
+      "logo": "/assets/images/teams/team-2.webp",
+      "href": "/team/chelsea"
+    },
+    "team2": {
+      "name": "Real Madrid",
+      "logo": "/assets/images/teams/team-3.webp",
+      "href": "/team/realmadrid"
+    },
+    "status": "upcoming",
+    "score": "—"
+  },
+  {
+    "href": "/live/125",
+    "preview": {
+      "src": "/assets/images/pictures/img3.webp",
+      "alt": "Real Madrid vs Bayern"
+    },
+    "date": "2025-09-24 20:30",
+    "league": {
+      "name": "Serie A",
+      "href": "/league/serie-a"
+    },
+    "team1": {
+      "name": "Real Madrid",
+      "logo": "/assets/images/teams/team-3.webp",
+      "href": "/team/realmadrid"
+    },
+    "team2": {
+      "name": "Bayern",
+      "logo": "/assets/images/teams/team-4.webp",
+      "href": "/team/bayern"
+    },
+    "status": "ht",
+    "score": {
+      "t1": 4,
+      "t2": 1
+    }
+  },
+  {
+    "href": "/live/126",
+    "preview": {
+      "src": "/assets/images/pictures/img4.webp",
+      "alt": "Bayern vs Barcelona"
+    },
+    "date": "2025-09-24 22:00",
+    "league": {
+      "name": "Bundesliga",
+      "href": "/league/bundesliga"
+    },
+    "team1": {
+      "name": "Bayern",
+      "logo": "/assets/images/teams/team-4.webp",
+      "href": "/team/bayern"
+    },
+    "team2": {
+      "name": "Barcelona",
+      "logo": "/assets/images/teams/team-5.webp",
+      "href": "/team/barcelona"
+    },
+    "status": "ft",
+    "score": {
+      "t1": 1,
+      "t2": 4
+    }
+  },
+  {
+    "href": "/live/127",
+    "preview": {
+      "src": "/assets/images/pictures/img5.webp",
+      "alt": "Barcelona vs Juventus"
+    },
+    "date": "2025-09-24 23:30",
+    "league": {
+      "name": "Ligue 1",
+      "href": "/league/ligue-1"
+    },
+    "team1": {
+      "name": "Barcelona",
+      "logo": "/assets/images/teams/team-5.webp",
+      "href": "/team/barcelona"
+    },
+    "team2": {
+      "name": "Juventus",
+      "logo": "/assets/images/teams/team-1.webp",
+      "href": "/team/juventus"
+    },
+    "status": "live",
+    "score": {
+      "t1": 3,
+      "t2": 2
+    }
+  },
+  {
+    "href": "/live/128",
+    "preview": {
+      "src": "/assets/images/pictures/img6.webp",
+      "alt": "Juventus vs Liverpool"
+    },
+    "date": "2025-09-25 01:00",
+    "league": {
+      "name": "UCL",
+      "href": "/league/champions-league"
+    },
+    "team1": {
+      "name": "Juventus",
+      "logo": "/assets/images/teams/team-14.webp",
+      "href": "/team/juventus"
+    },
+    "team2": {
+      "name": "Liverpool",
+      "logo": "/assets/images/teams/team-7.webp",
+      "href": "/team/liverpool"
+    },
+    "status": "upcoming",
+    "score": "—"
+  },
+  {
+    "href": "/live/129",
+    "preview": {
+      "src": "/assets/images/pictures/img7.webp",
+      "alt": "Liverpool vs Manchester City"
+    },
+    "date": "2025-09-25 02:30",
+    "league": {
+      "name": "Premier League",
+      "href": "/league/premier-league"
+    },
+    "team1": {
+      "name": "Liverpool",
+      "logo": "/assets/images/teams/team-7.webp",
+      "href": "/team/liverpool"
+    },
+    "team2": {
+      "name": "Manchester City",
+      "logo": "/assets/images/teams/team-6.webp",
+      "href": "/team/manchestercity"
+    },
+    "status": "ht",
+    "score": {
+      "t1": 2,
+      "t2": 3
+    }
+  },
+  {
+    "href": "/live/130",
+    "preview": {
+      "src": "/assets/images/pictures/img8.webp",
+      "alt": "Manchester City vs PSG"
+    },
+    "date": "2025-09-25 04:00",
+    "league": {
+      "name": "La Liga",
+      "href": "/league/la-liga"
+    },
+    "team1": {
+      "name": "Manchester City",
+      "logo": "/assets/images/teams/team-6.webp",
+      "href": "/team/manchestercity"
+    },
+    "team2": {
+      "name": "PSG",
+      "logo": "/assets/images/teams/team-8.webp",
+      "href": "/team/psg"
+    },
+    "status": "ft",
+    "score": {
+      "t1": 4,
+      "t2": 1
+    }
+  },
+  {
+    "href": "/live/131",
+    "preview": {
+      "src": "/assets/images/pictures/img9.webp",
+      "alt": "PSG vs Milan"
+    },
+    "date": "2025-09-25 05:30",
+    "league": {
+      "name": "Serie A",
+      "href": "/league/serie-a"
+    },
+    "team1": {
+      "name": "PSG",
+      "logo": "/assets/images/teams/team-8.webp",
+      "href": "/team/psg"
+    },
+    "team2": {
+      "name": "Milan",
+      "logo": "/assets/images/teams/team-2.webp",
+      "href": "/team/milan"
+    },
+    "status": "live",
+    "score": {
+      "t1": 1,
+      "t2": 4
+    }
+  },
+  {
+    "href": "/live/132",
+    "preview": {
+      "src": "/assets/images/pictures/img10.webp",
+      "alt": "Milan vs Inter"
+    },
+    "date": "2025-09-25 07:00",
+    "league": {
+      "name": "Bundesliga",
+      "href": "/league/bundesliga"
+    },
+    "team1": {
+      "name": "Milan",
+      "logo": "/assets/images/teams/team-2.webp",
+      "href": "/team/milan"
+    },
+    "team2": {
+      "name": "Inter",
+      "logo": "/assets/images/teams/team-12.webp",
+      "href": "/team/inter"
+    },
+    "status": "upcoming",
+    "score": "—"
+  },
+  {
+    "href": "/live/133",
+    "preview": {
+      "src": "/assets/images/pictures/img1.webp",
+      "alt": "Inter vs Napoli"
+    },
+    "date": "2025-09-25 08:30",
+    "league": {
+      "name": "Ligue 1",
+      "href": "/league/ligue-1"
+    },
+    "team1": {
+      "name": "Inter",
+      "logo": "/assets/images/teams/team-12.webp",
+      "href": "/team/inter"
+    },
+    "team2": {
+      "name": "Napoli",
+      "logo": "/assets/images/teams/team-13.webp",
+      "href": "/team/napoli"
+    },
+    "status": "ht",
+    "score": {
+      "t1": 0,
+      "t2": 0
+    }
+  },
+  {
+    "href": "/live/134",
+    "preview": {
+      "src": "/assets/images/pictures/img2.webp",
+      "alt": "Napoli vs Atletico"
+    },
+    "date": "2025-09-25 10:00",
+    "league": {
+      "name": "UCL",
+      "href": "/league/champions-league"
+    },
+    "team1": {
+      "name": "Napoli",
+      "logo": "/assets/images/teams/team-13.webp",
+      "href": "/team/napoli"
+    },
+    "team2": {
+      "name": "Atletico",
+      "logo": "/assets/images/teams/team-14.webp",
+      "href": "/team/atletico"
+    },
+    "status": "ft",
+    "score": {
+      "t1": 2,
+      "t2": 3
+    }
+  },
+  {
+    "href": "/live/135",
+    "preview": {
+      "src": "/assets/images/pictures/img3.webp",
+      "alt": "Atletico vs Dortmund"
+    },
+    "date": "2025-09-25 11:30",
+    "league": {
+      "name": "Premier League",
+      "href": "/league/premier-league"
+    },
+    "team1": {
+      "name": "Atletico",
+      "logo": "/assets/images/teams/team-14.webp",
+      "href": "/team/atletico"
+    },
+    "team2": {
+      "name": "Dortmund",
+      "logo": "/assets/images/teams/team-11.webp",
+      "href": "/team/dortmund"
+    },
+    "status": "live",
+    "score": {
+      "t1": 4,
+      "t2": 1
+    }
+  },
+  {
+    "href": "/live/136",
+    "preview": {
+      "src": "/assets/images/pictures/img4.webp",
+      "alt": "Dortmund vs Leipzig"
+    },
+    "date": "2025-09-25 13:00",
+    "league": {
+      "name": "La Liga",
+      "href": "/league/la-liga"
+    },
+    "team1": {
+      "name": "Dortmund",
+      "logo": "/assets/images/teams/team-11.webp",
+      "href": "/team/dortmund"
+    },
+    "team2": {
+      "name": "Leipzig",
+      "logo": "/assets/images/teams/team-1.webp",
+      "href": "/team/leipzig"
+    },
+    "status": "upcoming",
+    "score": "—"
+  },
+  {
+    "href": "/live/137",
+    "preview": {
+      "src": "/assets/images/pictures/img5.webp",
+      "alt": "Leipzig vs Ajax"
+    },
+    "date": "2025-09-25 14:30",
+    "league": {
+      "name": "Serie A",
+      "href": "/league/serie-a"
+    },
+    "team1": {
+      "name": "Leipzig",
+      "logo": "/assets/images/teams/team-1.webp",
+      "href": "/team/leipzig"
+    },
+    "team2": {
+      "name": "Ajax",
+      "logo": "/assets/images/teams/team-2.webp",
+      "href": "/team/ajax"
+    },
+    "status": "ht",
+    "score": {
+      "t1": 3,
+      "t2": 2
+    }
+  },
+  {
+    "href": "/live/138",
+    "preview": {
+      "src": "/assets/images/pictures/img6.webp",
+      "alt": "Ajax vs Benfica"
+    },
+    "date": "2025-09-25 16:00",
+    "league": {
+      "name": "Bundesliga",
+      "href": "/league/bundesliga"
+    },
+    "team1": {
+      "name": "Ajax",
+      "logo": "/assets/images/teams/team-2.webp",
+      "href": "/team/ajax"
+    },
+    "team2": {
+      "name": "Benfica",
+      "logo": "/assets/images/teams/team-13.webp",
+      "href": "/team/benfica"
+    },
+    "status": "ft",
+    "score": {
+      "t1": 0,
+      "t2": 0
+    }
+  },
+  {
+    "href": "/live/139",
+    "preview": {
+      "src": "/assets/images/pictures/img7.webp",
+      "alt": "Benfica vs Porto"
+    },
+    "date": "2025-09-25 17:30",
+    "league": {
+      "name": "Ligue 1",
+      "href": "/league/ligue-1"
+    },
+    "team1": {
+      "name": "Benfica",
+      "logo": "/assets/images/teams/team-13.webp",
+      "href": "/team/benfica"
+    },
+    "team2": {
+      "name": "Porto",
+      "logo": "/assets/images/teams/team-14.webp",
+      "href": "/team/porto"
+    },
+    "status": "live",
+    "score": {
+      "t1": 2,
+      "t2": 3
+    }
+  },
+  {
+    "href": "/live/140",
+    "preview": {
+      "src": "/assets/images/pictures/img8.webp",
+      "alt": "Porto vs Roma"
+    },
+    "date": "2025-09-25 19:00",
+    "league": {
+      "name": "UCL",
+      "href": "/league/champions-league"
+    },
+    "team1": {
+      "name": "Porto",
+      "logo": "/assets/images/teams/team-14.webp",
+      "href": "/team/porto"
+    },
+    "team2": {
+      "name": "Roma",
+      "logo": "/assets/images/teams/team-13.webp",
+      "href": "/team/roma"
+    },
+    "status": "upcoming",
+    "score": "—"
+  },
+  {
+    "href": "/live/141",
+    "preview": {
+      "src": "/assets/images/pictures/img9.webp",
+      "alt": "Roma vs Tottenham"
+    },
+    "date": "2025-09-25 20:30",
+    "league": {
+      "name": "Premier League",
+      "href": "/league/premier-league"
+    },
+    "team1": {
+      "name": "Roma",
+      "logo": "/assets/images/teams/team-13.webp",
+      "href": "/team/roma"
+    },
+    "team2": {
+      "name": "Tottenham",
+      "logo": "/assets/images/teams/team-4.webp",
+      "href": "/team/tottenham"
+    },
+    "status": "ht",
+    "score": {
+      "t1": 1,
+      "t2": 4
+    }
+  },
+  {
+    "href": "/live/142",
+    "preview": {
+      "src": "/assets/images/pictures/img10.webp",
+      "alt": "Tottenham vs Arsenal"
+    },
+    "date": "2025-09-25 22:00",
+    "league": {
+      "name": "La Liga",
+      "href": "/league/la-liga"
+    },
+    "team1": {
+      "name": "Tottenham",
+      "logo": "/assets/images/teams/team-2.webp",
+      "href": "/team/tottenham"
+    },
+    "team2": {
+      "name": "Arsenal",
+      "logo": "/assets/images/teams/team-1.webp",
+      "href": "/team/arsenal"
+    },
+    "status": "ft",
+    "score": {
+      "t1": 3,
+      "t2": 2
+    }
+  },
+  {
+    "href": "/live/143",
+    "preview": {
+      "src": "/assets/images/pictures/img1.webp",
+      "alt": "Arsenal vs Chelsea"
+    },
+    "date": "2025-09-25 23:30",
+    "league": {
+      "name": "Serie A",
+      "href": "/league/serie-a"
+    },
+    "team1": {
+      "name": "Arsenal",
+      "logo": "/assets/images/teams/team-1.webp",
+      "href": "/team/arsenal"
+    },
+    "team2": {
+      "name": "Chelsea",
+      "logo": "/assets/images/teams/team-2.webp",
+      "href": "/team/chelsea"
+    },
+    "status": "live",
+    "score": {
+      "t1": 0,
+      "t2": 0
+    }
+  },
+  {
+    "href": "/live/144",
+    "preview": {
+      "src": "/assets/images/pictures/img2.webp",
+      "alt": "Chelsea vs Real Madrid"
+    },
+    "date": "2025-09-26 01:00",
+    "league": {
+      "name": "Bundesliga",
+      "href": "/league/bundesliga"
+    },
+    "team1": {
+      "name": "Chelsea",
+      "logo": "/assets/images/teams/team-2.webp",
+      "href": "/team/chelsea"
+    },
+    "team2": {
+      "name": "Real Madrid",
+      "logo": "/assets/images/teams/team-3.webp",
+      "href": "/team/realmadrid"
+    },
+    "status": "upcoming",
+    "score": "—"
+  },
+  {
+    "href": "/live/145",
+    "preview": {
+      "src": "/assets/images/pictures/img3.webp",
+      "alt": "Real Madrid vs Bayern"
+    },
+    "date": "2025-09-26 02:30",
+    "league": {
+      "name": "Ligue 1",
+      "href": "/league/ligue-1"
+    },
+    "team1": {
+      "name": "Real Madrid",
+      "logo": "/assets/images/teams/team-3.webp",
+      "href": "/team/realmadrid"
+    },
+    "team2": {
+      "name": "Bayern",
+      "logo": "/assets/images/teams/team-4.webp",
+      "href": "/team/bayern"
+    },
+    "status": "ht",
+    "score": {
+      "t1": 4,
+      "t2": 1
+    }
+  },
+  {
+    "href": "/live/146",
+    "preview": {
+      "src": "/assets/images/pictures/img4.webp",
+      "alt": "Bayern vs Barcelona"
+    },
+    "date": "2025-09-26 04:00",
+    "league": {
+      "name": "UCL",
+      "href": "/league/champions-league"
+    },
+    "team1": {
+      "name": "Bayern",
+      "logo": "/assets/images/teams/team-4.webp",
+      "href": "/team/bayern"
+    },
+    "team2": {
+      "name": "Barcelona",
+      "logo": "/assets/images/teams/team-5.webp",
+      "href": "/team/barcelona"
+    },
+    "status": "ft",
+    "score": {
+      "t1": 1,
+      "t2": 4
+    }
+  },
+  {
+    "href": "/live/147",
+    "preview": {
+      "src": "/assets/images/pictures/img5.webp",
+      "alt": "Barcelona vs Juventus"
+    },
+    "date": "2025-09-26 05:30",
+    "league": {
+      "name": "Premier League",
+      "href": "/league/premier-league"
+    },
+    "team1": {
+      "name": "Barcelona",
+      "logo": "/assets/images/teams/team-5.webp",
+      "href": "/team/barcelona"
+    },
+    "team2": {
+      "name": "Juventus",
+      "logo": "/assets/images/teams/team-1.webp",
+      "href": "/team/juventus"
+    },
+    "status": "live",
+    "score": {
+      "t1": 3,
+      "t2": 2
+    }
+  },
+  {
+    "href": "/live/148",
+    "preview": {
+      "src": "/assets/images/pictures/img6.webp",
+      "alt": "Juventus vs Liverpool"
+    },
+    "date": "2025-09-26 07:00",
+    "league": {
+      "name": "La Liga",
+      "href": "/league/la-liga"
+    },
+    "team1": {
+      "name": "Juventus",
+      "logo": "/assets/images/teams/team-2.webp",
+      "href": "/team/juventus"
+    },
+    "team2": {
+      "name": "Liverpool",
+      "logo": "/assets/images/teams/team-7.webp",
+      "href": "/team/liverpool"
+    },
+    "status": "upcoming",
+    "score": "—"
+  },
+  {
+    "href": "/live/149",
+    "preview": {
+      "src": "/assets/images/pictures/img7.webp",
+      "alt": "Liverpool vs Manchester City"
+    },
+    "date": "2025-09-26 08:30",
+    "league": {
+      "name": "Serie A",
+      "href": "/league/serie-a"
+    },
+    "team1": {
+      "name": "Liverpool",
+      "logo": "/assets/images/teams/team-7.webp",
+      "href": "/team/liverpool"
+    },
+    "team2": {
+      "name": "Manchester City",
+      "logo": "/assets/images/teams/team-6.webp",
+      "href": "/team/manchestercity"
+    },
+    "status": "ht",
+    "score": {
+      "t1": 2,
+      "t2": 3
+    }
+  },
+  {
+    "href": "/live/150",
+    "preview": {
+      "src": "/assets/images/pictures/img8.webp",
+      "alt": "Manchester City vs PSG"
+    },
+    "date": "2025-09-26 10:00",
+    "league": {
+      "name": "Bundesliga",
+      "href": "/league/bundesliga"
+    },
+    "team1": {
+      "name": "Manchester City",
+      "logo": "/assets/images/teams/team-6.webp",
+      "href": "/team/manchestercity"
+    },
+    "team2": {
+      "name": "PSG",
+      "logo": "/assets/images/teams/team-8.webp",
+      "href": "/team/psg"
+    },
+    "status": "ft",
+    "score": {
+      "t1": 4,
+      "t2": 1
+    }
+  },
+  {
+    "href": "/live/151",
+    "preview": {
+      "src": "/assets/images/pictures/img9.webp",
+      "alt": "PSG vs Milan"
+    },
+    "date": "2025-09-26 11:30",
+    "league": {
+      "name": "Ligue 1",
+      "href": "/league/ligue-1"
+    },
+    "team1": {
+      "name": "PSG",
+      "logo": "/assets/images/teams/team-8.webp",
+      "href": "/team/psg"
+    },
+    "team2": {
+      "name": "Milan",
+      "logo": "/assets/images/teams/team-2.webp",
+      "href": "/team/milan"
+    },
+    "status": "live",
+    "score": {
+      "t1": 1,
+      "t2": 4
+    }
+  },
+  {
+    "href": "/live/152",
+    "preview": {
+      "src": "/assets/images/pictures/img10.webp",
+      "alt": "Milan vs Inter"
+    },
+    "date": "2025-09-26 13:00",
+    "league": {
+      "name": "UCL",
+      "href": "/league/champions-league"
+    },
+    "team1": {
+      "name": "Milan",
+      "logo": "/assets/images/teams/team-2.webp",
+      "href": "/team/milan"
+    },
+    "team2": {
+      "name": "Inter",
+      "logo": "/assets/images/teams/team-12.webp",
+      "href": "/team/inter"
+    },
+    "status": "upcoming",
+    "score": "—"
+  }
+]

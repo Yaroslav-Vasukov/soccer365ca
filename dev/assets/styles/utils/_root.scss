@@ -1,20 +1,15 @@
-/* Fonts */
-$font-title: 'Anton', sans-serif;
-$font-sub: 'Oswald', sans-serif;
-$font-body: 'Open Sans', sans-serif;
 
-/* Colors */
-$color-primary: #00C853;
-$color-primary-dark: #007E33;
-$color-primary-light: #69F0AE;
+$color-primary: #D32F2F;        // 🇨🇦 Красный (главный акцент)
+$color-primary-dark: #B71C1C;   // Тёмно-красный (hover, активные элементы)
+$color-primary-light: #FF5252;  // Светло-красный (подсветка, акценты)
 
-$color-dark: #1C1C1C;
-$color-dark-gray: #2A2A2A;
-$color-light: #FFFFFF;
-$color-gray: #E0E0E0;
+$color-dark: #121212;           // Главный фон (очень тёмный)
+$color-dark-gray: #202020;      // Второй фон (карточки, блоки)
+$color-light: #FFFFFF;          // Текст на тёмном фоне
+$color-gray: #9E9E9E;           // Второстепенный текст, разделители
 
-$color-accent-orange: #FF6B00;
-$color-accent-blue: #1DA1F2;
+$color-accent-orange: #FFB74D;  // Доп. акцент (теплый, для кнопок/ховеров)
+$color-accent-blue: #64B5F6;    // Доп. акцент (холодный, для ссылок/иконок)
 
 
 $font-title: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;

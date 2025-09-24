@@ -1,5 +1,16 @@
 @use 'utils/index' as *;
 @use '../../components/header/header.scss';
+@use '../../components/hero/hero.scss';
+@use '../../components/button/button.scss';
+@use '../../components/section-header/section-header.scss';
+
+@use '../../components/card-post/card-post.scss';
+@use '../../components/card-live/card-live.scss';
+
+@use '../../components/banner/banner.scss';
+@use '../../components/swiper/swiper.scss';
+@use '../../components/tag/tag-absolute.scss';
+@use '../../components/date/date.scss';
 
 @use '../styles/partials/content-wrap.scss';
 

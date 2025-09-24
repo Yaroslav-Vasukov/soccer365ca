@@ -1,0 +1,108 @@
+.card-live {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-dark-gray;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  border-bottom: 4px solid $color-light;
+  &:hover {
+    box-shadow: 0 0 12px 2px rgba(255, 255, 255, 0.3);
+    border-bottom: 4px solid $color-accent-orange;
+  }
+  &__preview {
+    aspect-ratio: 16 / 9;
+    position: relative;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    width: 80px;
+    height: 80px;
+    background-color: rgba($color-dark, 0.6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba($color-primary, 0.8);
+    }
+  }
+
+  &__badge {
+    font-size: 14px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: $color-primary;
+    color: $color-light;
+    padding: 4px 8px;
+    border: 2px solid $color-light;
+    border-top: none;
+    border-left: none;
+  }
+
+  &__meta {
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background-color: rgba($color-accent-orange, 0.75);
+  }
+
+  &__league {
+    color: $color-dark;
+    background-color: $color-light;
+    padding: 4px 8px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__teams {
+    padding: 24px 8px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+
+  }
+
+  &__team {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-direction: column;
+
+  }
+
+  &__logo {
+    width: 72px;
+    height: 76px;
+    object-fit: contain;
+            padding: 12px;
+    background-color: $color-light;
+    border-bottom: 4px solid $color-primary;
+  }
+
+  &__score {
+    color: $color-light;
+    font-size: 24px;
+    font-weight: 700;
+  }
+}

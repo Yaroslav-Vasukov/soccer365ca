@@ -1,0 +1,50 @@
+.card-post {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-dark-gray;
+  border-bottom: 4px solid $color-light;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  &:hover {
+    box-shadow: 0 0 12px 2px rgba(255, 255, 255, 0.3);
+    border-bottom: 4px solid $color-primary;
+  }
+  &__thumbnail {
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  &__link {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__content {
+    padding: 0 8px 16px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  &__title-link {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+    &:hover {
+      color: $color-accent-orange;
+    }
+  }
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  &__meta {
+    margin-top: auto;
+  }
+}

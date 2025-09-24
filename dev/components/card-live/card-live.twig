@@ -1,0 +1,106 @@
+{# dev/components/card-live/card-live.twig #}
+{#
+  Ожидаемые входные данные (гибко, с запасом):
+  - match: {
+      href,                      // ссылка на страницу матча/видео
+      preview: { src, alt },     // обложка/кадр
+      date | published_at,       // строка даты/времени
+      league: { name, href },    // лига
+      team1: { name, logo, href },
+      team2: { name, logo, href },
+      score: { t1, t2 } | "2 - 1" | null,
+      status: 'live'|'ht'|'ft'|'upcoming'|...   // необязательно
+    }
+  - button (опционально): объект пропсов для ../button/button.twig
+#}
+
+{# ---------- безопасные маппинги ---------- #}
+{#
+  Ожидаемые входные данные (гибко, с запасом):
+  - match: {
+      href,                      // ссылка на страницу матча/видео
+      preview: { src, alt },     // обложка/кадр
+      date | published_at,       // строка даты/времени
+      league: { name, href },    // лига
+      team1: { name, logo, href },
+      team2: { name, logo, href },
+      score: { t1, t2 } | "2 - 1" | null,
+      status: 'live'|'ht'|'ft'|'upcoming'|...   // необязательно
+    }
+  - button (опционально): объект пропсов для ../button/button.twig
+#}
+
+{# ---------- безопасные маппинги ---------- #}
+{% set _href     = match.href|default('#') %}
+{% set _preview  = match.preview is defined and match.preview.src is defined
+  ? match.preview
+  : { src: '/assets/images/pictures/img6.webp', alt: 'preview' } %}
+{% set _date     = match.date is defined ? match.date : match.published_at|default(null) %}
+{% set _league   = match.league|default({}) %}
+{% set _league_name = _league.name|default('League') %}
+{% set _league_href = _league.href|default(null) %}
+
+{% set _t1 = match.team1|default({}) %}
+{% set _t2 = match.team2|default({}) %}
+{% set _t1_logo = _t1.logo|default('/assets/images/teams/team-1.webp') %}
+{% set _t2_logo = _t2.logo|default('/assets/images/teams/team-2.webp') %}
+{% set _t1_name = _t1.name|default('Team 1') %}
+{% set _t2_name = _t2.name|default('Team 2') %}
+
+{# ---------- score: объект {t1,t2} ИЛИ строка ---------- #}
+{% set _score = '—' %}
+{% if match.score is defined %}
+  {% if match.score is iterable and match.score.t1 is defined and match.score.t2 is defined %}
+    {% set _score = match.score.t1 ~ ' - ' ~ match.score.t2 %}
+  {% elseif match.score is not iterable %}
+    {% set _score = match.score %}
+  {% endif %}
+{% endif %}
+
+{% set _status = match.status|default(null) %}
+{% set _button = button|default(null) %}
+
+<article class="card-live">
+  <a href="{{ _href }}" class="card-live__preview" aria-label="Open match">
+    <img src="{{ _preview.src }}" alt="{{ _preview.alt|default(_t1_name ~ ' vs ' ~ _t2_name) }}" class="card-live__thumb">
+    <span class="card-live__play material-symbols-outlined" aria-hidden="true">play_circle</span>
+    {% if _status %}
+      <span class="card-live__badge card-live__badge--{{ _status }}">{{ _status|upper }}</span>
+    {% endif %}
+  </a>
+
+  <div class="card-live__meta">
+    {% import "../date/date.twig" as date %}
+    {% if _date %}
+      {{ date.view(_date, { variant:'card-live', show_icon:true, icon:'calendar_today' }) }}
+    {% endif %}
+
+    {% if _league_href %}
+      <a href="{{ _league_href }}" class="card-live__league">{{ _league_name }}</a>
+    {% else %}
+      <span class="card-live__league">{{ _league_name }}</span>
+    {% endif %}
+  </div>
+
+  <div class="card-live__teams">
+    <a href="{{ _t1.href|default('#') }}" class="card-live__team" aria-label="{{ _t1_name }}">
+      <img src="{{ _t1_logo }}" alt="{{ _t1_name }}" class="card-live__logo">
+    </a>
+
+    <span class="card-live__score">{{ _score }}</span>
+
+    <a href="{{ _t2.href|default('#') }}" class="card-live__team" aria-label="{{ _t2_name }}">
+      <img src="{{ _t2_logo }}" alt="{{ _t2_name }}" class="card-live__logo">
+    </a>
+  </div>
+
+  {% if _button %}
+    {# твоя кнопка ждёт: label, href, icon?, extra_class #}
+    {% include "../button/button.twig" with {
+      label: _button.label|default('Live broadcast'),
+      href:  _button.href|default(_href),
+      icon:  _button.icon|default(null),
+      extra_class: _button.extra_class|default('btn--live')
+    } only %}
+  {% endif %}
+</article>

@@ -1,0 +1,55 @@
+
+{% set _href = post.href|default('#') %}
+{% set _img  = post.image is defined and post.image.src is defined ? post.image.src : post.thumb|default('/assets/images/placeholder.webp') %}
+{% set _alt  = post.image is defined and post.image.alt is defined ? post.image.alt : (post.title|default('Post image')) %}
+{% set _date = post.date is defined ? post.date : post.published_at|default(null) %}
+{% set _tags = tags is defined ? tags : post.tags|default([]) %}
+
+<article class="card-post">
+  <div class="card-post__thumbnail">
+    <a href="{{ _href }}" class="card-post__link">
+      <img
+        src="{{ _img }}"
+        alt="{{ _alt }}"
+        class="card-post__image"
+      />
+    </a>
+
+    {% if _tags|length %}
+      {% include "../tag/tag-absolute.twig" with { tags: _tags } only %}
+    {% endif %}
+  </div>
+
+  <div class="card-post__content">
+    <h3 class="card-post__title">
+      <a href="{{ _href }}" class="card-post__title-link">
+        {{ post.title|default('Untitled post') }}
+      </a>
+    </h3>
+
+    <div class="card-post__meta">
+      {% import "../date/date.twig" as date %}
+      {{ date.view(
+        _date,
+        { variant:'short', show_icon:true, icon:'calendar_today' }
+      ) }}
+    </div>
+  </div>
+</article>
+{#
+
+
+{% include "@components/card-post/card-post.twig" with {
+  post: {
+    href: "/posts/123",
+    title: "Barcelona beat Real Madrid in El Clasico",
+    image: { src: "/assets/images/posts/barca-real.webp", alt: "El Clasico" },
+    date: "2025-09-24"
+  },
+  tags: [
+    { label: "news", href: "/news" },
+    { label: "La Liga", href: "/league/la-liga" }
+  ]
+} %}
+
+#}

@@ -1,0 +1,22 @@
+<div class="banner">
+  <img 
+    src="/assets/images/players/player-full-3.webp" 
+    alt="player decoration" 
+    class="banner__player"
+  >
+
+  <div class="banner__content">
+    <h2 class="banner__title">Join Soccer365 today!</h2>
+    <p class="banner__text">Get access to exclusive content, live scores, and more.</p>
+
+    {% if _button %}
+      {% include "../button/button.twig" with _button %}
+    {% endif %}
+  </div>
+
+  <img 
+    src="/assets/images/canada.webp" 
+    alt="canada decoration" 
+    class="banner__decor"
+  >
+</div>

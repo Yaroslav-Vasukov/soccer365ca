@@ -1,0 +1,21 @@
+{# 
+  ВХОД:
+  - label:       текст кнопки
+  - href:        ссылка (default "#")
+  - icon:        имя иконки material (опционально)
+  - extra_class: доп. классы
+#}
+
+{% set _label       = label|default('Button') %}
+{% set _href        = href|default('#') %}
+{% set _icon        = icon|default(null) %}
+{% set _extra_class = extra_class|default('') %}
+
+<div class="btn {{ _extra_class }}">
+  <a href="{{ _href }}" class="btn__link">
+    <span class="btn__text">{{ _label }}</span>
+    {% if _icon %}
+      <span class="material-symbols-outlined btn__icon">{{ _icon }}</span>
+    {% endif %}
+  </a>
+</div>

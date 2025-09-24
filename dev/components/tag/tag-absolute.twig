@@ -1,0 +1,21 @@
+{#
+  ВХОД:
+  - tags: [
+      { label: 'news', href: '/news' },
+      { label: 'football', href: '/football' }
+    ]
+#}
+
+{% set _tags = tags|default([]) %}
+
+{% if _tags %}
+<ul class="tag-absolute">
+  {% for tag in _tags %}
+    <li class="tag-absolute__item">
+      <a href="{{ tag.href|default('#') }}" class="tag-absolute__link">
+        {{ tag.label }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+{% endif %}

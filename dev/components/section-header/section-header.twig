@@ -1,0 +1,23 @@
+{#
+  ВХОД:
+  - title:      заголовок (обязательно)
+  - subtitle:   текст для "ещё" (опционально)
+  - more:       текст ссылки (опционально, по умолчанию "More")
+  - more_href:  ссылка (по умолчанию "#")
+#}
+
+{% set _title     = title|default('Section title') %}
+{% set _subtitle  = subtitle|default(null) %}
+{% set _more      = more|default('More') %}
+{% set _more_href = more_href|default('#') %}
+
+<div class="section-header">
+  <h2 class="section-header__title">{{ _title }}</h2>
+
+  {% if _subtitle %}
+    <a href="{{ _more_href }}" class="section-header__more">
+      <span class="section-header__more-text">{{ _more }}</span>
+      <span class="material-symbols-outlined section-header__icon">arrow_right</span>
+    </a>
+  {% endif %}
+</div>
