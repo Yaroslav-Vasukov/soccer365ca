@@ -1,0 +1,2327 @@
+<!DOCTYPE html>
+<html lang="nz">
+  <head>
+    <meta charset="utf-8" />
+    <title>Teams</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0..1" rel="stylesheet"  >
+
+     
+
+    <script type="module" crossorigin src="/assets/scripts/main.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/styles/main.css">
+  </head>
+  <body class="page page--teams">
+    <main class="page__main">
+            
+
+
+
+<header class="header" data-module="header">
+  <div class="container header__row">
+    <a class="header__logo" href="/">
+      <img src="/assets/images/logo.png" alt="Sports Hub" class="header__logo-img">
+    </a>
+
+    <button class="header__burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
+      <span class="header__burger-bar" aria-hidden="true"></span>
+      <span class="header__burger-bar" aria-hidden="true"></span>
+      <span class="header__burger-bar" aria-hidden="true"></span>
+    </button>
+
+    <nav id="main-nav" class="nav" role="navigation" aria-label="Primary">
+      <ul class="nav__list" role="menubar">
+        
+          
+          <li class="nav__item" role="none">
+            <button
+              class="nav__link"
+              role="menuitem"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="panel-basketball"
+              data-sport="basketball"
+            >
+              <span class="material-symbols-outlined nav__icon" aria-hidden="true">sports_basketball</span>
+              <span class="nav__label">Basketball</span>
+              <span class="material-symbols-outlined nav__chev" aria-hidden="true">expand_more</span>
+            </button>
+
+            <div id="panel-basketball" class="mega" role="group" aria-label="Basketball menu" hidden>
+              <div class="mega__inner">
+                
+                  <section class="mega__col">
+                    <h3 class="mega__title">Featured</h3>
+                    <ul class="mega__list">
+                      
+                        <li class="mega__item"><a class="mega__link" href="/calendar">Calendar</a></li>
+                      
+                        <li class="mega__item"><a class="mega__link" href="/lives">Lives</a></li>
+                      
+                        <li class="mega__item"><a class="mega__link" href="/teams">Teams</a></li>
+                      
+                        <li class="mega__item"><a class="mega__link" href="/review">Review</a></li>
+                      
+                    </ul>
+                  </section>
+                
+
+                
+                  <section class="mega__col">
+                    <h3 class="mega__title">Leagues</h3>
+                    <ul class="mega__list">
+                      
+                        <li class="mega__item"><a class="mega__link" href="/league">NBA</a></li>
+                      
+                        <li class="mega__item"><a class="mega__link" href="/league">EuroLeague</a></li>
+                      
+                    </ul>
+                  </section>
+                
+
+                
+                  <section class="mega__col">
+                    <h3 class="mega__title">Teams</h3>
+                    <ul class="mega__list">
+                      
+                        <li class="mega__item"><a class="mega__link" href="/teams">Teams</a></li>
+                      
+                        <li class="mega__item"><a class="mega__link" href="/team">Team</a></li>
+                      
+                        <li class="mega__item"><a class="mega__link" href="/player">Player</a></li>
+                      
+                    </ul>
+                  </section>
+                
+
+                
+                
+
+  <section class="mega__col">
+    <h3 class="mega__title">Media</h3>
+    <ul class="mega__list">
+      
+        <li class="mega__item"><a class="mega__link" href="/news">News</a></li>
+      
+        <li class="mega__item"><a class="mega__link" href="/videos">Videos</a></li>
+      
+        <li class="mega__item"><a class="mega__link" href="/post">Post</a></li>
+      
+        <li class="mega__item"><a class="mega__link" href="/video">Video</a></li>
+      
+    </ul>
+  </section>
+
+
+
+
+  <section class="mega__col">
+    <h3 class="mega__title">Contact</h3>
+    <ul class="mega__list">
+      
+        <li class="mega__item"><a class="mega__link" href="contact">Contact</a></li>
+      
+    </ul>
+  </section>
+
+              </div>
+            </div>
+          </li>
+        
+          
+          <li class="nav__item" role="none">
+            <button
+              class="nav__link"
+              role="menuitem"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="panel-football"
+              data-sport="football"
+            >
+              <span class="material-symbols-outlined nav__icon" aria-hidden="true">sports_soccer</span>
+              <span class="nav__label">Football</span>
+              <span class="material-symbols-outlined nav__chev" aria-hidden="true">expand_more</span>
+            </button>
+
+            <div id="panel-football" class="mega" role="group" aria-label="Football menu" hidden>
+              <div class="mega__inner">
+                
+                  <section class="mega__col">
+                    <h3 class="mega__title">Featured</h3>
+                    <ul class="mega__list">
+                      
+                        <li class="mega__item"><a class="mega__link" href="/calendar">Calendar</a></li>
+                      
+                        <li class="mega__item"><a class="mega__link" href="/lives">Lives</a></li>
+                      
+                        <li class="mega__item"><a class="mega__link" href="/review">Review</a></li>
+                      
+                    </ul>
+                  </section>
+                
+
+                
+                  <section class="mega__col">
+                    <h3 class="mega__title">Leagues</h3>
+                    <ul class="mega__list">
+                      
+                        <li class="mega__item"><a class="mega__link" href="/league">Premier League</a></li>
+                      
+                        <li class="mega__item"><a class="mega__link" href="/league">Serie A</a></li>
+                      
+                        <li class="mega__item"><a class="mega__link" href="/league">Champions League</a></li>
+                      
+                    </ul>
+                  </section>
+                
+
+                
+                  <section class="mega__col">
+                    <h3 class="mega__title">Teams</h3>
+                    <ul class="mega__list">
+                      
+                        <li class="mega__item"><a class="mega__link" href="/teams">Teams</a></li>
+                      
+                        <li class="mega__item"><a class="mega__link" href="/team">Team</a></li>
+                      
+                        <li class="mega__item"><a class="mega__link" href="/player">Player</a></li>
+                      
+                    </ul>
+                  </section>
+                
+
+                
+                
+
+  <section class="mega__col">
+    <h3 class="mega__title">Media</h3>
+    <ul class="mega__list">
+      
+        <li class="mega__item"><a class="mega__link" href="/news">News</a></li>
+      
+        <li class="mega__item"><a class="mega__link" href="/videos">Videos</a></li>
+      
+        <li class="mega__item"><a class="mega__link" href="/post">Post</a></li>
+      
+        <li class="mega__item"><a class="mega__link" href="/video">Video</a></li>
+      
+    </ul>
+  </section>
+
+
+
+
+  <section class="mega__col">
+    <h3 class="mega__title">Contact</h3>
+    <ul class="mega__list">
+      
+        <li class="mega__item"><a class="mega__link" href="contact">Contact</a></li>
+      
+    </ul>
+  </section>
+
+              </div>
+            </div>
+          </li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+        
+
+
+
+
+
+
+
+
+<section class="header-league" data-module="header-league">
+  <div class="container">
+    <div class="header-league__inner">
+      <a href="/league" class="header-league__link">
+        <img src="/assets/images/league6.webp" alt="NBA" class="header-league__logo">
+        <h2 class="header-league__tag">NBA</h2>
+      </a>
+
+      <nav class="header-league__nav" aria-label="NBA navigation">
+        <ul class="header-league__list">
+          
+            
+            <li class="header-league__item">
+              <a href="/league" class="header-league__item-link">
+                Home
+              </a>
+            </li>
+          
+            
+            <li class="header-league__item">
+              <a href="/calendar" class="header-league__item-link">
+                Calendar
+              </a>
+            </li>
+          
+            
+            <li class="header-league__item">
+              <a href="/lives" class="header-league__item-link">
+                Lives
+              </a>
+            </li>
+          
+            
+            <li class="header-league__item">
+              <a href="/review" class="header-league__item-link">
+                Review
+              </a>
+            </li>
+          
+            
+            <li class="header-league__item">
+              <a href="/teams" class="header-league__item-link is-active">
+                Teams
+              </a>
+            </li>
+          
+            
+            <li class="header-league__item">
+              <a href="/news" class="header-league__item-link">
+                News
+              </a>
+            </li>
+          
+            
+            <li class="header-league__item">
+              <a href="/videos" class="header-league__item-link">
+                Videos
+              </a>
+            </li>
+          
+            
+            <li class="header-league__item">
+              <a href="/player" class="header-league__item-link">
+                Player
+              </a>
+            </li>
+          
+            
+            <li class="header-league__item">
+              <a href="/team" class="header-league__item-link">
+                Team
+              </a>
+            </li>
+          
+            
+            <li class="header-league__item">
+              <a href="/post" class="header-league__item-link">
+                Post
+              </a>
+            </li>
+          
+            
+            <li class="header-league__item">
+              <a href="/video" class="header-league__item-link">
+                Video
+              </a>
+            </li>
+          
+            
+            <li class="header-league__item">
+              <a href="/history" class="header-league__item-link">
+                History
+              </a>
+            </li>
+          
+        </ul>
+      </nav>
+
+      <button class="header-league__burger" type="button" aria-expanded="false"
+              aria-controls="league-offcanvas" aria-label="Open NBA menu">
+        <span class="header-league__burger-bar"></span>
+        <span class="header-league__burger-bar"></span>
+        <span class="header-league__burger-bar"></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="header-league__overlay" hidden></div>
+  <aside id="league-offcanvas" class="header-league__offcanvas" aria-hidden="true" tabindex="-1">
+    <div class="header-league__offcanvas-head">
+      <span class="header-league__offcanvas-title">NBA</span>
+    </div>
+    <nav class="header-league__offnav" aria-label="NBA menu">
+      <ul class="header-league__offlist">
+        
+          
+          <li class="header-league__offitem">
+            <a href="/league" class="header-league__offlink">
+              Home
+            </a>
+          </li>
+        
+          
+          <li class="header-league__offitem">
+            <a href="/calendar" class="header-league__offlink">
+              Calendar
+            </a>
+          </li>
+        
+          
+          <li class="header-league__offitem">
+            <a href="/lives" class="header-league__offlink">
+              Lives
+            </a>
+          </li>
+        
+          
+          <li class="header-league__offitem">
+            <a href="/review" class="header-league__offlink">
+              Review
+            </a>
+          </li>
+        
+          
+          <li class="header-league__offitem">
+            <a href="/teams" class="header-league__offlink is-active">
+              Teams
+            </a>
+          </li>
+        
+          
+          <li class="header-league__offitem">
+            <a href="/news" class="header-league__offlink">
+              News
+            </a>
+          </li>
+        
+          
+          <li class="header-league__offitem">
+            <a href="/videos" class="header-league__offlink">
+              Videos
+            </a>
+          </li>
+        
+          
+          <li class="header-league__offitem">
+            <a href="/player" class="header-league__offlink">
+              Player
+            </a>
+          </li>
+        
+          
+          <li class="header-league__offitem">
+            <a href="/team" class="header-league__offlink">
+              Team
+            </a>
+          </li>
+        
+          
+          <li class="header-league__offitem">
+            <a href="/post" class="header-league__offlink">
+              Post
+            </a>
+          </li>
+        
+          
+          <li class="header-league__offitem">
+            <a href="/video" class="header-league__offlink">
+              Video
+            </a>
+          </li>
+        
+          
+          <li class="header-league__offitem">
+            <a href="/history" class="header-league__offlink">
+              History
+            </a>
+          </li>
+        
+      </ul>
+    </nav>
+  </aside>
+</section>
+
+
+      
+
+
+  <section class="page-content">
+    <div class="container">
+      <div class="page-content__inner">
+                     <section class="block">
+              <div class="block__inner">
+                
+
+
+
+<div class="breadcrumbs__wrap">
+  <ul class="breadcrumbs">
+    
+      <li class="breadcrumbs__item">
+        
+          <a href="/" class="breadcrumbs__link">
+            
+              <span class="material-symbols-outlined breadcrumbs__icon">home</span>
+            
+            <span class="breadcrumbs__text"></span>
+          </a>
+          <span class="breadcrumbs__separator">/</span>
+        
+      </li>
+    
+      <li class="breadcrumbs__item">
+        
+          <a href="/basketball" class="breadcrumbs__link">
+            
+            <span class="breadcrumbs__text">Basketball</span>
+          </a>
+          <span class="breadcrumbs__separator">/</span>
+        
+      </li>
+    
+      <li class="breadcrumbs__item">
+        
+          <a href="/league" class="breadcrumbs__link">
+            
+            <span class="breadcrumbs__text">NBA</span>
+          </a>
+          <span class="breadcrumbs__separator">/</span>
+        
+      </li>
+    
+      <li class="breadcrumbs__item">
+        
+          <span class="breadcrumbs__current">Teams</span>
+        
+      </li>
+    
+  </ul>
+  
+</div>
+
+
+
+
+
+
+
+              </div>
+            </section>  
+                  <section class="block"
+         data-pagination
+         data-pagination-items=".teams__grid"
+         data-pagination-item=".team-card"
+         data-pagination-size="8"
+         data-pagination-param="tpage">
+          <div class="block__inner">
+            <div class="teams__grid">
+              
+  
+
+
+
+
+
+
+<article class="team-card">
+  <div class="team-card__top">
+    <a href="/teams/barcelona" class="team-card__logo" aria-label="Barcelona">
+      <img src="/assets/images/team1.webp" alt="Barcelona logo" class="team-card__logo-img"
+        loading="lazy"
+        decoding="async"
+        width="80" height="80">
+    </a>
+    <div class="team-card__top-content">
+      <h3 class="team-card__title">
+        <a href="/teams/barcelona" class="team-card__title-link">Barcelona</a>
+      </h3>
+      <p class="team-card__rank">La Liga — 1st</p>
+    </div>
+  </div>
+  
+  <ul class="team-card__stats" aria-label="Team stats">
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">2.47</span>
+        <span class="team-card__stats-title">PPG</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">85</span>
+        <span class="team-card__stats-title">GF</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">39</span>
+        <span class="team-card__stats-title">GD</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">28</span>
+        <span class="team-card__stats-title">GA</span>
+      </li>
+    
+  </ul>
+  
+  <div class="team-card__bot">
+    
+      
+      <a href="/teams/barcelona" class="btn team-card__btn ">Profile</a>
+    
+  </div>
+</article>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<article class="team-card">
+  <div class="team-card__top">
+    <a href="/teams/real-madrid" class="team-card__logo" aria-label="Real Madrid">
+      <img src="/assets/images/team2.webp" alt="Real Madrid logo" class="team-card__logo-img"
+        loading="lazy"
+        decoding="async"
+        width="80" height="80">
+    </a>
+    <div class="team-card__top-content">
+      <h3 class="team-card__title">
+        <a href="/teams/real-madrid" class="team-card__title-link">Real Madrid</a>
+      </h3>
+      <p class="team-card__rank">La Liga — 2nd</p>
+    </div>
+  </div>
+  
+  <ul class="team-card__stats" aria-label="Team stats">
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">2.32</span>
+        <span class="team-card__stats-title">PPG</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">81</span>
+        <span class="team-card__stats-title">GF</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">39</span>
+        <span class="team-card__stats-title">GD</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">34</span>
+        <span class="team-card__stats-title">GA</span>
+      </li>
+    
+  </ul>
+  
+  <div class="team-card__bot">
+    
+      
+      <a href="/teams/real-madrid" class="btn team-card__btn ">Profile</a>
+    
+  </div>
+</article>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<article class="team-card">
+  <div class="team-card__top">
+    <a href="/teams/atletico" class="team-card__logo" aria-label="Atletico Madrid">
+      <img src="/assets/images/team3.webp" alt="Atletico Madrid logo" class="team-card__logo-img"
+        loading="lazy"
+        decoding="async"
+        width="80" height="80">
+    </a>
+    <div class="team-card__top-content">
+      <h3 class="team-card__title">
+        <a href="/teams/atletico" class="team-card__title-link">Atletico Madrid</a>
+      </h3>
+      <p class="team-card__rank">La Liga — 3rd</p>
+    </div>
+  </div>
+  
+  <ul class="team-card__stats" aria-label="Team stats">
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">2.11</span>
+        <span class="team-card__stats-title">PPG</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">74</span>
+        <span class="team-card__stats-title">GF</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">39</span>
+        <span class="team-card__stats-title">GD</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">37</span>
+        <span class="team-card__stats-title">GA</span>
+      </li>
+    
+  </ul>
+  
+  <div class="team-card__bot">
+    
+      
+      <a href="/teams/atletico" class="btn team-card__btn ">Profile</a>
+    
+  </div>
+</article>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<article class="team-card">
+  <div class="team-card__top">
+    <a href="/teams/sevilla" class="team-card__logo" aria-label="Sevilla">
+      <img src="/assets/images/team4.webp" alt="Sevilla logo" class="team-card__logo-img"
+        loading="lazy"
+        decoding="async"
+        width="80" height="80">
+    </a>
+    <div class="team-card__top-content">
+      <h3 class="team-card__title">
+        <a href="/teams/sevilla" class="team-card__title-link">Sevilla</a>
+      </h3>
+      <p class="team-card__rank">La Liga — 4th</p>
+    </div>
+  </div>
+  
+  <ul class="team-card__stats" aria-label="Team stats">
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">1.95</span>
+        <span class="team-card__stats-title">PPG</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">65</span>
+        <span class="team-card__stats-title">GF</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">39</span>
+        <span class="team-card__stats-title">GD</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">44</span>
+        <span class="team-card__stats-title">GA</span>
+      </li>
+    
+  </ul>
+  
+  <div class="team-card__bot">
+    
+      
+      <a href="/teams/sevilla" class="btn team-card__btn ">Profile</a>
+    
+  </div>
+</article>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<article class="team-card">
+  <div class="team-card__top">
+    <a href="/teams/valencia" class="team-card__logo" aria-label="Valencia">
+      <img src="/assets/images/team5.webp" alt="Valencia logo" class="team-card__logo-img"
+        loading="lazy"
+        decoding="async"
+        width="80" height="80">
+    </a>
+    <div class="team-card__top-content">
+      <h3 class="team-card__title">
+        <a href="/teams/valencia" class="team-card__title-link">Valencia</a>
+      </h3>
+      <p class="team-card__rank">La Liga — 5th</p>
+    </div>
+  </div>
+  
+  <ul class="team-card__stats" aria-label="Team stats">
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">1.82</span>
+        <span class="team-card__stats-title">PPG</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">59</span>
+        <span class="team-card__stats-title">GF</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">39</span>
+        <span class="team-card__stats-title">GD</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">49</span>
+        <span class="team-card__stats-title">GA</span>
+      </li>
+    
+  </ul>
+  
+  <div class="team-card__bot">
+    
+      
+      <a href="/teams/valencia" class="btn team-card__btn ">Profile</a>
+    
+  </div>
+</article>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<article class="team-card">
+  <div class="team-card__top">
+    <a href="/teams/villarreal" class="team-card__logo" aria-label="Villarreal">
+      <img src="/assets/images/team6.webp" alt="Villarreal logo" class="team-card__logo-img"
+        loading="lazy"
+        decoding="async"
+        width="80" height="80">
+    </a>
+    <div class="team-card__top-content">
+      <h3 class="team-card__title">
+        <a href="/teams/villarreal" class="team-card__title-link">Villarreal</a>
+      </h3>
+      <p class="team-card__rank">La Liga — 6th</p>
+    </div>
+  </div>
+  
+  <ul class="team-card__stats" aria-label="Team stats">
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">1.76</span>
+        <span class="team-card__stats-title">PPG</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">58</span>
+        <span class="team-card__stats-title">GF</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">39</span>
+        <span class="team-card__stats-title">GD</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">52</span>
+        <span class="team-card__stats-title">GA</span>
+      </li>
+    
+  </ul>
+  
+  <div class="team-card__bot">
+    
+      
+      <a href="/teams/villarreal" class="btn team-card__btn ">Profile</a>
+    
+  </div>
+</article>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<article class="team-card">
+  <div class="team-card__top">
+    <a href="/teams/sociedad" class="team-card__logo" aria-label="Real Sociedad">
+      <img src="/assets/images/team7.webp" alt="Real Sociedad logo" class="team-card__logo-img"
+        loading="lazy"
+        decoding="async"
+        width="80" height="80">
+    </a>
+    <div class="team-card__top-content">
+      <h3 class="team-card__title">
+        <a href="/teams/sociedad" class="team-card__title-link">Real Sociedad</a>
+      </h3>
+      <p class="team-card__rank">La Liga — 7th</p>
+    </div>
+  </div>
+  
+  <ul class="team-card__stats" aria-label="Team stats">
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">1.64</span>
+        <span class="team-card__stats-title">PPG</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">55</span>
+        <span class="team-card__stats-title">GF</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">39</span>
+        <span class="team-card__stats-title">GD</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">53</span>
+        <span class="team-card__stats-title">GA</span>
+      </li>
+    
+  </ul>
+  
+  <div class="team-card__bot">
+    
+      
+      <a href="/teams/sociedad" class="btn team-card__btn ">Profile</a>
+    
+  </div>
+</article>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<article class="team-card">
+  <div class="team-card__top">
+    <a href="/teams/bilbao" class="team-card__logo" aria-label="Athletic Bilbao">
+      <img src="/assets/images/team8.webp" alt="Athletic Bilbao logo" class="team-card__logo-img"
+        loading="lazy"
+        decoding="async"
+        width="80" height="80">
+    </a>
+    <div class="team-card__top-content">
+      <h3 class="team-card__title">
+        <a href="/teams/bilbao" class="team-card__title-link">Athletic Bilbao</a>
+      </h3>
+      <p class="team-card__rank">La Liga — 8th</p>
+    </div>
+  </div>
+  
+  <ul class="team-card__stats" aria-label="Team stats">
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">1.58</span>
+        <span class="team-card__stats-title">PPG</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">50</span>
+        <span class="team-card__stats-title">GF</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">39</span>
+        <span class="team-card__stats-title">GD</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">56</span>
+        <span class="team-card__stats-title">GA</span>
+      </li>
+    
+  </ul>
+  
+  <div class="team-card__bot">
+    
+      
+      <a href="/teams/bilbao" class="btn team-card__btn ">Profile</a>
+    
+  </div>
+</article>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<article class="team-card">
+  <div class="team-card__top">
+    <a href="/teams/betis" class="team-card__logo" aria-label="Real Betis">
+      <img src="/assets/images/team9.webp" alt="Real Betis logo" class="team-card__logo-img"
+        loading="lazy"
+        decoding="async"
+        width="80" height="80">
+    </a>
+    <div class="team-card__top-content">
+      <h3 class="team-card__title">
+        <a href="/teams/betis" class="team-card__title-link">Real Betis</a>
+      </h3>
+      <p class="team-card__rank">La Liga — 9th</p>
+    </div>
+  </div>
+  
+  <ul class="team-card__stats" aria-label="Team stats">
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">1.52</span>
+        <span class="team-card__stats-title">PPG</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">47</span>
+        <span class="team-card__stats-title">GF</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">39</span>
+        <span class="team-card__stats-title">GD</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">58</span>
+        <span class="team-card__stats-title">GA</span>
+      </li>
+    
+  </ul>
+  
+  <div class="team-card__bot">
+    
+      
+      <a href="/teams/betis" class="btn team-card__btn ">Profile</a>
+    
+  </div>
+</article>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<article class="team-card">
+  <div class="team-card__top">
+    <a href="/teams/celta" class="team-card__logo" aria-label="Celta Vigo">
+      <img src="/assets/images/team10.webp" alt="Celta Vigo logo" class="team-card__logo-img"
+        loading="lazy"
+        decoding="async"
+        width="80" height="80">
+    </a>
+    <div class="team-card__top-content">
+      <h3 class="team-card__title">
+        <a href="/teams/celta" class="team-card__title-link">Celta Vigo</a>
+      </h3>
+      <p class="team-card__rank">La Liga — 10th</p>
+    </div>
+  </div>
+  
+  <ul class="team-card__stats" aria-label="Team stats">
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">1.40</span>
+        <span class="team-card__stats-title">PPG</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">44</span>
+        <span class="team-card__stats-title">GF</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">39</span>
+        <span class="team-card__stats-title">GD</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">60</span>
+        <span class="team-card__stats-title">GA</span>
+      </li>
+    
+  </ul>
+  
+  <div class="team-card__bot">
+    
+      
+      <a href="/teams/celta" class="btn team-card__btn ">Profile</a>
+    
+  </div>
+</article>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<article class="team-card">
+  <div class="team-card__top">
+    <a href="/teams/espanyol" class="team-card__logo" aria-label="Espanyol">
+      <img src="/assets/images/team11.webp" alt="Espanyol logo" class="team-card__logo-img"
+        loading="lazy"
+        decoding="async"
+        width="80" height="80">
+    </a>
+    <div class="team-card__top-content">
+      <h3 class="team-card__title">
+        <a href="/teams/espanyol" class="team-card__title-link">Espanyol</a>
+      </h3>
+      <p class="team-card__rank">La Liga — 11th</p>
+    </div>
+  </div>
+  
+  <ul class="team-card__stats" aria-label="Team stats">
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">1.29</span>
+        <span class="team-card__stats-title">PPG</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">41</span>
+        <span class="team-card__stats-title">GF</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">39</span>
+        <span class="team-card__stats-title">GD</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">64</span>
+        <span class="team-card__stats-title">GA</span>
+      </li>
+    
+  </ul>
+  
+  <div class="team-card__bot">
+    
+      
+      <a href="/teams/espanyol" class="btn team-card__btn ">Profile</a>
+    
+  </div>
+</article>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<article class="team-card">
+  <div class="team-card__top">
+    <a href="/teams/real-madrid" class="team-card__logo" aria-label="Real Madrid">
+      <img src="/assets/images/team2.webp" alt="Real Madrid logo" class="team-card__logo-img"
+        loading="lazy"
+        decoding="async"
+        width="80" height="80">
+    </a>
+    <div class="team-card__top-content">
+      <h3 class="team-card__title">
+        <a href="/teams/real-madrid" class="team-card__title-link">Real Madrid</a>
+      </h3>
+      <p class="team-card__rank">La Liga — 2nd</p>
+    </div>
+  </div>
+  
+  <ul class="team-card__stats" aria-label="Team stats">
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">2.32</span>
+        <span class="team-card__stats-title">PPG</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">81</span>
+        <span class="team-card__stats-title">GF</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">39</span>
+        <span class="team-card__stats-title">GD</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">34</span>
+        <span class="team-card__stats-title">GA</span>
+      </li>
+    
+  </ul>
+  
+  <div class="team-card__bot">
+    
+      
+      <a href="/teams/real-madrid" class="btn team-card__btn ">Profile</a>
+    
+  </div>
+</article>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<article class="team-card">
+  <div class="team-card__top">
+    <a href="/teams/atletico" class="team-card__logo" aria-label="Atletico Madrid">
+      <img src="/assets/images/team3.webp" alt="Atletico Madrid logo" class="team-card__logo-img"
+        loading="lazy"
+        decoding="async"
+        width="80" height="80">
+    </a>
+    <div class="team-card__top-content">
+      <h3 class="team-card__title">
+        <a href="/teams/atletico" class="team-card__title-link">Atletico Madrid</a>
+      </h3>
+      <p class="team-card__rank">La Liga — 3rd</p>
+    </div>
+  </div>
+  
+  <ul class="team-card__stats" aria-label="Team stats">
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">2.11</span>
+        <span class="team-card__stats-title">PPG</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">74</span>
+        <span class="team-card__stats-title">GF</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">39</span>
+        <span class="team-card__stats-title">GD</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">37</span>
+        <span class="team-card__stats-title">GA</span>
+      </li>
+    
+  </ul>
+  
+  <div class="team-card__bot">
+    
+      
+      <a href="/teams/atletico" class="btn team-card__btn ">Profile</a>
+    
+  </div>
+</article>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<article class="team-card">
+  <div class="team-card__top">
+    <a href="/teams/sevilla" class="team-card__logo" aria-label="Sevilla">
+      <img src="/assets/images/team4.webp" alt="Sevilla logo" class="team-card__logo-img"
+        loading="lazy"
+        decoding="async"
+        width="80" height="80">
+    </a>
+    <div class="team-card__top-content">
+      <h3 class="team-card__title">
+        <a href="/teams/sevilla" class="team-card__title-link">Sevilla</a>
+      </h3>
+      <p class="team-card__rank">La Liga — 4th</p>
+    </div>
+  </div>
+  
+  <ul class="team-card__stats" aria-label="Team stats">
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">1.95</span>
+        <span class="team-card__stats-title">PPG</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">65</span>
+        <span class="team-card__stats-title">GF</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">39</span>
+        <span class="team-card__stats-title">GD</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">44</span>
+        <span class="team-card__stats-title">GA</span>
+      </li>
+    
+  </ul>
+  
+  <div class="team-card__bot">
+    
+      
+      <a href="/teams/sevilla" class="btn team-card__btn ">Profile</a>
+    
+  </div>
+</article>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<article class="team-card">
+  <div class="team-card__top">
+    <a href="/teams/valencia" class="team-card__logo" aria-label="Valencia">
+      <img src="/assets/images/team5.webp" alt="Valencia logo" class="team-card__logo-img"
+        loading="lazy"
+        decoding="async"
+        width="80" height="80">
+    </a>
+    <div class="team-card__top-content">
+      <h3 class="team-card__title">
+        <a href="/teams/valencia" class="team-card__title-link">Valencia</a>
+      </h3>
+      <p class="team-card__rank">La Liga — 5th</p>
+    </div>
+  </div>
+  
+  <ul class="team-card__stats" aria-label="Team stats">
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">1.82</span>
+        <span class="team-card__stats-title">PPG</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">59</span>
+        <span class="team-card__stats-title">GF</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">39</span>
+        <span class="team-card__stats-title">GD</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">49</span>
+        <span class="team-card__stats-title">GA</span>
+      </li>
+    
+  </ul>
+  
+  <div class="team-card__bot">
+    
+      
+      <a href="/teams/valencia" class="btn team-card__btn ">Profile</a>
+    
+  </div>
+</article>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<article class="team-card">
+  <div class="team-card__top">
+    <a href="/teams/villarreal" class="team-card__logo" aria-label="Villarreal">
+      <img src="/assets/images/team6.webp" alt="Villarreal logo" class="team-card__logo-img"
+        loading="lazy"
+        decoding="async"
+        width="80" height="80">
+    </a>
+    <div class="team-card__top-content">
+      <h3 class="team-card__title">
+        <a href="/teams/villarreal" class="team-card__title-link">Villarreal</a>
+      </h3>
+      <p class="team-card__rank">La Liga — 6th</p>
+    </div>
+  </div>
+  
+  <ul class="team-card__stats" aria-label="Team stats">
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">1.76</span>
+        <span class="team-card__stats-title">PPG</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">58</span>
+        <span class="team-card__stats-title">GF</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">39</span>
+        <span class="team-card__stats-title">GD</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">52</span>
+        <span class="team-card__stats-title">GA</span>
+      </li>
+    
+  </ul>
+  
+  <div class="team-card__bot">
+    
+      
+      <a href="/teams/villarreal" class="btn team-card__btn ">Profile</a>
+    
+  </div>
+</article>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<article class="team-card">
+  <div class="team-card__top">
+    <a href="/teams/sociedad" class="team-card__logo" aria-label="Real Sociedad">
+      <img src="/assets/images/team7.webp" alt="Real Sociedad logo" class="team-card__logo-img"
+        loading="lazy"
+        decoding="async"
+        width="80" height="80">
+    </a>
+    <div class="team-card__top-content">
+      <h3 class="team-card__title">
+        <a href="/teams/sociedad" class="team-card__title-link">Real Sociedad</a>
+      </h3>
+      <p class="team-card__rank">La Liga — 7th</p>
+    </div>
+  </div>
+  
+  <ul class="team-card__stats" aria-label="Team stats">
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">1.64</span>
+        <span class="team-card__stats-title">PPG</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">55</span>
+        <span class="team-card__stats-title">GF</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">39</span>
+        <span class="team-card__stats-title">GD</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">53</span>
+        <span class="team-card__stats-title">GA</span>
+      </li>
+    
+  </ul>
+  
+  <div class="team-card__bot">
+    
+      
+      <a href="/teams/sociedad" class="btn team-card__btn ">Profile</a>
+    
+  </div>
+</article>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<article class="team-card">
+  <div class="team-card__top">
+    <a href="/teams/bilbao" class="team-card__logo" aria-label="Athletic Bilbao">
+      <img src="/assets/images/team8.webp" alt="Athletic Bilbao logo" class="team-card__logo-img"
+        loading="lazy"
+        decoding="async"
+        width="80" height="80">
+    </a>
+    <div class="team-card__top-content">
+      <h3 class="team-card__title">
+        <a href="/teams/bilbao" class="team-card__title-link">Athletic Bilbao</a>
+      </h3>
+      <p class="team-card__rank">La Liga — 8th</p>
+    </div>
+  </div>
+  
+  <ul class="team-card__stats" aria-label="Team stats">
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">1.58</span>
+        <span class="team-card__stats-title">PPG</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">50</span>
+        <span class="team-card__stats-title">GF</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">39</span>
+        <span class="team-card__stats-title">GD</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">56</span>
+        <span class="team-card__stats-title">GA</span>
+      </li>
+    
+  </ul>
+  
+  <div class="team-card__bot">
+    
+      
+      <a href="/teams/bilbao" class="btn team-card__btn ">Profile</a>
+    
+  </div>
+</article>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<article class="team-card">
+  <div class="team-card__top">
+    <a href="/teams/betis" class="team-card__logo" aria-label="Real Betis">
+      <img src="/assets/images/team9.webp" alt="Real Betis logo" class="team-card__logo-img"
+        loading="lazy"
+        decoding="async"
+        width="80" height="80">
+    </a>
+    <div class="team-card__top-content">
+      <h3 class="team-card__title">
+        <a href="/teams/betis" class="team-card__title-link">Real Betis</a>
+      </h3>
+      <p class="team-card__rank">La Liga — 9th</p>
+    </div>
+  </div>
+  
+  <ul class="team-card__stats" aria-label="Team stats">
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">1.52</span>
+        <span class="team-card__stats-title">PPG</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">47</span>
+        <span class="team-card__stats-title">GF</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">39</span>
+        <span class="team-card__stats-title">GD</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">58</span>
+        <span class="team-card__stats-title">GA</span>
+      </li>
+    
+  </ul>
+  
+  <div class="team-card__bot">
+    
+      
+      <a href="/teams/betis" class="btn team-card__btn ">Profile</a>
+    
+  </div>
+</article>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<article class="team-card">
+  <div class="team-card__top">
+    <a href="/teams/celta" class="team-card__logo" aria-label="Celta Vigo">
+      <img src="/assets/images/team10.webp" alt="Celta Vigo logo" class="team-card__logo-img"
+        loading="lazy"
+        decoding="async"
+        width="80" height="80">
+    </a>
+    <div class="team-card__top-content">
+      <h3 class="team-card__title">
+        <a href="/teams/celta" class="team-card__title-link">Celta Vigo</a>
+      </h3>
+      <p class="team-card__rank">La Liga — 10th</p>
+    </div>
+  </div>
+  
+  <ul class="team-card__stats" aria-label="Team stats">
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">1.40</span>
+        <span class="team-card__stats-title">PPG</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">44</span>
+        <span class="team-card__stats-title">GF</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">39</span>
+        <span class="team-card__stats-title">GD</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">60</span>
+        <span class="team-card__stats-title">GA</span>
+      </li>
+    
+  </ul>
+  
+  <div class="team-card__bot">
+    
+      
+      <a href="/teams/celta" class="btn team-card__btn ">Profile</a>
+    
+  </div>
+</article>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<article class="team-card">
+  <div class="team-card__top">
+    <a href="/teams/espanyol" class="team-card__logo" aria-label="Espanyol">
+      <img src="/assets/images/team11.webp" alt="Espanyol logo" class="team-card__logo-img"
+        loading="lazy"
+        decoding="async"
+        width="80" height="80">
+    </a>
+    <div class="team-card__top-content">
+      <h3 class="team-card__title">
+        <a href="/teams/espanyol" class="team-card__title-link">Espanyol</a>
+      </h3>
+      <p class="team-card__rank">La Liga — 11th</p>
+    </div>
+  </div>
+  
+  <ul class="team-card__stats" aria-label="Team stats">
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">1.29</span>
+        <span class="team-card__stats-title">PPG</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">41</span>
+        <span class="team-card__stats-title">GF</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">39</span>
+        <span class="team-card__stats-title">GD</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">64</span>
+        <span class="team-card__stats-title">GA</span>
+      </li>
+    
+  </ul>
+  
+  <div class="team-card__bot">
+    
+      
+      <a href="/teams/espanyol" class="btn team-card__btn ">Profile</a>
+    
+  </div>
+</article>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<article class="team-card">
+  <div class="team-card__top">
+    <a href="/teams/granada" class="team-card__logo" aria-label="Granada">
+      <img src="/assets/images/team12.webp" alt="Granada logo" class="team-card__logo-img"
+        loading="lazy"
+        decoding="async"
+        width="80" height="80">
+    </a>
+    <div class="team-card__top-content">
+      <h3 class="team-card__title">
+        <a href="/teams/granada" class="team-card__title-link">Granada</a>
+      </h3>
+      <p class="team-card__rank">La Liga — 12th</p>
+    </div>
+  </div>
+  
+  <ul class="team-card__stats" aria-label="Team stats">
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">1.18</span>
+        <span class="team-card__stats-title">PPG</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">39</span>
+        <span class="team-card__stats-title">GF</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">39</span>
+        <span class="team-card__stats-title">GD</span>
+      </li>
+    
+      <li class="team-card__stats-item">
+        <span class="team-card__stats-value">67</span>
+        <span class="team-card__stats-title">GA</span>
+      </li>
+    
+  </ul>
+  
+  <div class="team-card__bot">
+    
+      
+      <a href="/teams/granada" class="btn team-card__btn ">Profile</a>
+    
+  </div>
+</article>
+
+
+
+
+
+
+            </div>
+            <nav class="pagination" aria-label="lives pagination"></nav>
+          </div>
+      </section>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+
+ 
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+
+      <div class="footer__top">
+        
+          <div class="footer__item">
+            <h2 class="footer__title">Sports</h2>
+            
+<ul class="footer__list">
+  
+    <li class="footer__item">
+      <a
+        href="/football"
+        class="footer__link"
+        
+        
+      >
+        
+          <span class="material-symbols-outlined footer__link-icon">sports_soccer</span>
+        
+        <h3 class="footer__link-tag">Football</h3>
+      </a>
+    </li>
+  
+    <li class="footer__item">
+      <a
+        href="/basketball"
+        class="footer__link"
+        
+        
+      >
+        
+          <span class="material-symbols-outlined footer__link-icon">sports_basketball</span>
+        
+        <h3 class="footer__link-tag">Basketball</h3>
+      </a>
+    </li>
+  
+    <li class="footer__item">
+      <a
+        href="/hockey"
+        class="footer__link"
+        
+        
+      >
+        
+          <span class="material-symbols-outlined footer__link-icon">sports_hockey</span>
+        
+        <h3 class="footer__link-tag">Hockey</h3>
+      </a>
+    </li>
+  
+    <li class="footer__item">
+      <a
+        href="/volleyball"
+        class="footer__link"
+        
+        
+      >
+        
+          <span class="material-symbols-outlined footer__link-icon">sports_volleyball</span>
+        
+        <h3 class="footer__link-tag">Volleyball</h3>
+      </a>
+    </li>
+  
+</ul>
+
+          </div>
+        
+
+        
+          <div class="footer__item">
+            <h2 class="footer__title">Useful links</h2>
+            
+<ul class="footer__list">
+  
+    <li class="footer__item">
+      <a
+        href="/"
+        class="footer__link"
+        
+        
+      >
+        
+          <span class="material-symbols-outlined footer__link-icon">home</span>
+        
+        <h3 class="footer__link-tag">Home</h3>
+      </a>
+    </li>
+  
+    <li class="footer__item">
+      <a
+        href="/news"
+        class="footer__link"
+        
+        
+      >
+        
+          <span class="material-symbols-outlined footer__link-icon">news</span>
+        
+        <h3 class="footer__link-tag">News</h3>
+      </a>
+    </li>
+  
+    <li class="footer__item">
+      <a
+        href="/about"
+        class="footer__link"
+        
+        
+      >
+        
+          <span class="material-symbols-outlined footer__link-icon">contact_support</span>
+        
+        <h3 class="footer__link-tag">About</h3>
+      </a>
+    </li>
+  
+    <li class="footer__item">
+      <a
+        href="/live"
+        class="footer__link"
+        
+        
+      >
+        
+          <span class="material-symbols-outlined footer__link-icon">live_tv</span>
+        
+        <h3 class="footer__link-tag">Lives</h3>
+      </a>
+    </li>
+  
+</ul>
+
+          </div>
+        
+
+        
+          <div class="footer__item">
+            <h2 class="footer__title">Leagues</h2>
+            
+<ul class="footer__list">
+  
+    <li class="footer__item">
+      <a
+        href="/epl"
+        class="footer__link"
+        
+        
+      >
+        
+          <img
+            src="/assets/images/league1.webp"
+            alt="Premier League"
+            class="footer__link-logo"
+          >
+        
+        <h3 class="footer__link-tag">Premier League</h3>
+      </a>
+    </li>
+  
+    <li class="footer__item">
+      <a
+        href="/laliga"
+        class="footer__link"
+        
+        
+      >
+        
+          <img
+            src="/assets/images/league2.webp"
+            alt="La Liga"
+            class="footer__link-logo"
+          >
+        
+        <h3 class="footer__link-tag">La Liga</h3>
+      </a>
+    </li>
+  
+    <li class="footer__item">
+      <a
+        href="/serie-a"
+        class="footer__link"
+        
+        
+      >
+        
+          <img
+            src="/assets/images/league3.webp"
+            alt="Serie A"
+            class="footer__link-logo"
+          >
+        
+        <h3 class="footer__link-tag">Serie A</h3>
+      </a>
+    </li>
+  
+    <li class="footer__item">
+      <a
+        href="/bundesliga"
+        class="footer__link"
+        
+        
+      >
+        
+          <img
+            src="/assets/images/league4.webp"
+            alt="Bundesliga"
+            class="footer__link-logo"
+          >
+        
+        <h3 class="footer__link-tag">Bundesliga</h3>
+      </a>
+    </li>
+  
+</ul>
+
+          </div>
+        
+
+        
+          <div class="footer__item">
+            <h2 class="footer__title">Teams</h2>
+            
+<ul class="footer__list">
+  
+    <li class="footer__item">
+      <a
+        href="/teams/1"
+        class="footer__link"
+        
+        
+      >
+        
+          <img
+            src="/assets/images/team1.webp"
+            alt="Team A"
+            class="footer__link-logo"
+          >
+        
+        <h3 class="footer__link-tag">Team A</h3>
+      </a>
+    </li>
+  
+    <li class="footer__item">
+      <a
+        href="/teams/2"
+        class="footer__link"
+        
+        
+      >
+        
+          <img
+            src="/assets/images/team2.webp"
+            alt="Team B"
+            class="footer__link-logo"
+          >
+        
+        <h3 class="footer__link-tag">Team B</h3>
+      </a>
+    </li>
+  
+    <li class="footer__item">
+      <a
+        href="/teams/3"
+        class="footer__link"
+        
+        
+      >
+        
+          <img
+            src="/assets/images/team3.webp"
+            alt="Team C"
+            class="footer__link-logo"
+          >
+        
+        <h3 class="footer__link-tag">Team C</h3>
+      </a>
+    </li>
+  
+    <li class="footer__item">
+      <a
+        href="/teams/4"
+        class="footer__link"
+        
+        
+      >
+        
+          <img
+            src="/assets/images/team4.webp"
+            alt="Team D"
+            class="footer__link-logo"
+          >
+        
+        <h3 class="footer__link-tag">Team D</h3>
+      </a>
+    </li>
+  
+</ul>
+
+          </div>
+        
+
+        
+          <div class="footer__item">
+            <h2 class="footer__title">Popular players</h2>
+            
+<ul class="footer__list">
+  
+    <li class="footer__item">
+      <a
+        href="/players/1"
+        class="footer__link"
+        
+        
+      >
+        
+          <img
+            src="/assets/images/player1.webp"
+            alt="Player 1"
+            class="footer__link-logo"
+          >
+        
+        <h3 class="footer__link-tag">Player 1</h3>
+      </a>
+    </li>
+  
+    <li class="footer__item">
+      <a
+        href="/players/2"
+        class="footer__link"
+        
+        
+      >
+        
+          <img
+            src="/assets/images/player2.webp"
+            alt="Player 2"
+            class="footer__link-logo"
+          >
+        
+        <h3 class="footer__link-tag">Player 2</h3>
+      </a>
+    </li>
+  
+    <li class="footer__item">
+      <a
+        href="/players/3"
+        class="footer__link"
+        
+        
+      >
+        
+          <img
+            src="/assets/images/player3.webp"
+            alt="Player 3"
+            class="footer__link-logo"
+          >
+        
+        <h3 class="footer__link-tag">Player 3</h3>
+      </a>
+    </li>
+  
+    <li class="footer__item">
+      <a
+        href="/players/4"
+        class="footer__link"
+        
+        
+      >
+        
+          <img
+            src="/assets/images/player4.webp"
+            alt="Player 4"
+            class="footer__link-logo"
+          >
+        
+        <h3 class="footer__link-tag">Player 4</h3>
+      </a>
+    </li>
+  
+</ul>
+
+          </div>
+        
+      </div>
+
+      <div class="footer__bottom">
+        <a href="/" class="footer__logo">
+          <img src="/assets/images/logo.webp" alt="Sport Site" class="footer__logo-img">
+        </a>
+
+        <div class="footer__bottom-wrap">
+          
+            <ul class="footer__bottom-list">
+              
+                <li class="footer__bottom-item">
+                  <a href="/privacy" class="footer__bottom-link"
+                     
+                     
+                  >Privacy Policy</a>
+                </li>
+              
+                <li class="footer__bottom-item">
+                  <a href="/terms" class="footer__bottom-link"
+                     
+                     
+                  >Terms of Service</a>
+                </li>
+              
+                <li class="footer__bottom-item">
+                  <a href="/help" class="footer__bottom-link"
+                     
+                     
+                  >Help Center</a>
+                </li>
+              
+            </ul>
+          
+
+          <p class="footer__warning">© 2025 Sport Site. All rights reserved.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    </main>
+       
+
+  </body>
+</html>

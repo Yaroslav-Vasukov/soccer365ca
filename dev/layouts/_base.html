@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="nz">
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block title %}Без названия{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0..1" rel="stylesheet" />
+
+    {% block head_extra %}{% endblock %}
+     <link rel="stylesheet" href="/assets/styles/main.css" />
+  </head>
+  <body class="{% block body_class %}page{% endblock %}">
+    <main class="page__main">
+            {% include "../components/header/header.twig" with {
+          logo: { href: '/', src: '/assets/images/logo.png', alt: 'Sports Hub' },
+          sports: [
+
+
+            {
+              key: 'basketball', label: 'Basketball', icon: 'sports_basketball',
+                            panel: {
+                featured: [
+                  { label: 'Calendar', url: '/calendar' },
+                  { label: 'Lives', url: '/lives' },
+                  { label: 'Teams', url: '/teams' },
+                  { label: 'Review', url: '/review' }
+                ],
+                leagues: [
+                  { label: 'NBA', url: '/league' }, 
+                  { label: 'EuroLeague', url: '/league' }
+                ],
+                teams: [
+                  { label: 'Teams', url: '/teams' },
+                  { label: 'Team', url: '/team' },
+                  { label: 'Player',            url: '/player' }
+                ],
+                Media: [
+                  { label: 'News', url: '/news' },
+                  { label: 'Videos',   url: '/videos' },
+                  { label: 'Post',   url: '/post' },
+                  { label: 'Video',   url: '/video' },
+                ],
+                                Contact: [
+                  { label: 'Contact', url: 'contact' },
+                  { label: 'Privacy', url: 'privacy' }
+                ]
+              }
+            },
+                        {
+                          key: 'football', label: 'Football', icon: 'sports_soccer',
+              panel: {
+                featured: [
+                  { label: 'Calendar', url: '/calendar' },
+                  { label: 'Lives', url: '/lives' },
+                  { label: 'Review', url: '/review' }
+                ],
+                leagues: [
+                  { label: 'Premier League', url: '/league' },
+                  { label: 'Serie A',        url: '/league' },
+                  { label: 'Champions League', url: '/league' }
+                ],
+                teams: [
+                  { label: 'Teams', url: '/teams' },
+                  { label: 'Team', url: '/team' },
+                  { label: 'Player',            url: '/player' }
+                ],
+                media: [
+                  { label: 'News', url: '/news' },
+                  { label: 'Videos',   url: '/videos' },
+                  { label: 'Post',   url: '/post' },
+                  { label: 'Video',   url: '/video' },
+                ],
+                contact: [
+                  { label: 'Contact', url: 'contact' },
+                  { label: 'Privacy', url: 'privacy' }
+                ]
+              }
+            }
+          ]
+        } only %}
+      {% block content %}
+
+      {% endblock %}
+
+
+        {% include "../components/footer/footer.twig" with {
+  title_sports:  'Sports',
+  title_useful:  'Useful links',
+  title_leagues: 'Leagues',
+  title_teams:   'Teams',
+  title_players: 'Popular players',
+
+  sports_links: [
+    { href: '',  icon: 'sports_soccer',     tag: 'Football'   },
+    { href: '/basketball',icon: 'sports_basketball', tag: 'Basketball' },
+    { href: '/hockey',    icon: 'sports_hockey',     tag: 'Hockey'     },
+    { href: '/volleyball',icon: 'sports_volleyball', tag: 'Volleyball' }
+  ],
+
+  useful_links: [
+    { href: '/',          icon: 'home',             tag: 'Home'  },
+    { href: '/news',      icon: 'news',             tag: 'News'  },
+    { href: '/about',     icon: 'contact_support',  tag: 'About' },
+    { href: '/live',      icon: 'live_tv',          tag: 'Lives' }
+  ],
+
+  leagues: [
+    { href: '/epl', logo: '/assets/images/league1.webp', tag: 'Premier League' },
+    { href: '/laliga', logo: '/assets/images/league2.webp', tag: 'La Liga' },
+    { href: '/serie-a', logo: '/assets/images/league3.webp', tag: 'Serie A' },
+    { href: '/bundesliga', logo: '/assets/images/league4.webp', tag: 'Bundesliga' }
+  ],
+
+  teams: [
+    { href: '/teams/1', logo: '/assets/images/team1.webp', tag: 'Team A' },
+    { href: '/teams/2', logo: '/assets/images/team2.webp', tag: 'Team B' },
+    { href: '/teams/3', logo: '/assets/images/team3.webp', tag: 'Team C' },
+    { href: '/teams/4', logo: '/assets/images/team4.webp', tag: 'Team D' }
+  ],
+
+  players: [
+    { href: '/players/1', logo: '/assets/images/player1.webp', tag: 'Player 1' },
+    { href: '/players/2', logo: '/assets/images/player2.webp', tag: 'Player 2' },
+    { href: '/players/3', logo: '/assets/images/player3.webp', tag: 'Player 3' },
+    { href: '/players/4', logo: '/assets/images/player4.webp', tag: 'Player 4' }
+  ],
+
+  bottom_logo: { href: '/', src: '/assets/images/logo.webp', alt: 'Sport Site' },
+  bottom_links: [
+    { href: '/privacy', label: 'Privacy Policy' },
+    { href: '/terms',   label: 'Terms of Service' },
+    { href: '/help',    label: 'Help Center' }
+  ],
+  copyright:
+    '© 2025 Sport Site. All rights reserved.'
+} only %}
+
+
+
+
+
+
+
+
+
+
+
+    </main>
+    {% block scripts %}{% endblock %}
+    <script type="module" src="/assets/scripts/main.js"></script>
+  </body>
+</html>

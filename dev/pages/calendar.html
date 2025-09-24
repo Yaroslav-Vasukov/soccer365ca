@@ -1,0 +1,38 @@
+
+{% extends "../layouts/_base-league.html" %} 
+{% block title %}calendar{% endblock %} 
+{% block body_class %}page page--calendar{% endblock %}
+{% block active_nav %}calendar{% endblock %}
+{% block head_extra %} 
+{% endblock %} 
+{% block content %}
+
+  <section class="page-content">
+    <div class="container">
+      <div class="page-content__inner">
+             <section class="block">
+              <div class="block__inner">
+                {% include "../components/breadcrumbs/breadcrumbs.twig" with {
+                  items: [
+                    { href: "/", icon: "home" },
+                    { label: "Basketball", href: "/basketball" },
+                    { label: "NBA", href: "/league" },
+                    { label: "Calendar" }
+                  ]
+                } %}
+              </div>
+            </section>  
+             <section class="block">
+              <div class="block__inner">
+                {% include "../components/calendar/calendar.twig" %}
+              </div>
+            </section>  
+
+      </div>
+    </div>
+  </section>
+
+
+{% endblock %} 
+{% block scripts %}   
+{% endblock %}
