@@ -5,20 +5,73 @@ endblock %} {% block head_extra %}
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
 />
-{% endblock %} {% block content %} 
-{% set posts = load_json("@/data/posts.json") %} 
-{% set lives = load_json("@/data/lives.json") %} 
-{% set teams = load_json("@/data/teams.json") %}
-{% set premierLeague = load_json("@/data/leagues/premier-league.json") %} 
-{% set laLiga = load_json("@/data/leagues/la-liga.json") %} 
+{% endblock %} {% block content %} {% set leagues =
+load_json('@/data/leagues.json') %} {% set posts =
+load_json("@/data/posts.json") %} {% set lives = load_json("@/data/lives.json")
+%} {% set teams = load_json("@/data/teams.json") %} {% set premierLeague =
+load_json("@/data/leagues/premier-league.json") %} {% set laLiga =
+load_json("@/data/leagues/la-liga.json") %} 
 {% set serieA = load_json("@/data/leagues/serie-a.json") %} 
+{% include "../components/hero/hero.twig" with {
+  bg: "/assets/images/bg/hero.webp",
+  title: "Latest Soccer News",
+  subtitle: "All about leagues and matches",
+  text: "Latest news, live scores and more.",
+  button: { label: "Read more", href:
+"/news/123", icon: "arrow_right", extra_class: "btn--hero" },
+  variant: "home"
+} only %}
 
-{% include
-"../components/hero/hero.twig" with { title: "Latest Soccer News", subtitle:
-"Daily updates and highlights", text: "Stay informed with the latest scores,
-match reports, and breaking news.", button: { label: "Read more", href:
-"/news/123", icon: "arrow_right", extra_class: "btn--hero" } } %}
-
+<section class="section section--margin section--decor">
+    <img src="/assets/images/bg/bg3.webp" alt="" class="section__bg" />
+  <div class="container">
+    <div class="section__inner">
+      <div class="league-banner"> 
+          {% include "../components/section-header/section-header.twig" with {
+          title: "popular Leagues" } %}
+          <p class="league-banner__text">Get ready for the next match!</p>
+              <div
+        class="swiper home-leagues-swiper"
+        data-swiper='{
+               "slidesPerView": 1,
+               "spaceBetween": 16,
+               "loop": true,
+               "autoplay": { "delay": 1500, "disableOnInteraction": false },
+               "breakpoints": {
+                 "0":  { "slidesPerView": 2 },
+                 "480":  { "slidesPerView": 3 },
+                 "640": { "slidesPerView": 4 },
+                 "768": { "slidesPerView": 5 },
+                 "1024": { "slidesPerView": 6 }
+               }
+             }'
+      >
+        <div class="swiper-wrapper">
+          {% for l in leagues %}
+          <div class="swiper-slide">
+            {% include "../components/card-league/card-league.twig" with l only %}
+          </div>
+          {% else %}
+          <div class="swiper-slide"><p class="muted">No lives.</p></div>
+          {% endfor %}
+        </div>
+        <div class="swiper-button__wrap">
+          <button
+            class="swiper-button-prev"
+            data-swiper-prev
+            aria-label="Prev"
+          ></button>
+          <button
+            class="swiper-button-next"
+            data-swiper-next
+            aria-label="Next"
+          ></button>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="section section--margin">
   <div class="container">
     <div class="section__inner">
@@ -232,7 +285,7 @@ match reports, and breaking news.", button: { label: "Read more", href:
         <div class="swiper-wrapper">
           {% for t in teams %}
           <div class="swiper-slide">
-             {% include "../components/card-team/card-team.twig" with t only %}
+            {% include "../components/card-team/card-team.twig" with t only %}
           </div>
           {% else %}
           <div class="swiper-slide"><p class="muted">No teams.</p></div>

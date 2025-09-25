@@ -1,20 +1,25 @@
+{# components/hero/hero.twig #}
 {#
   ВХОД:
-  - title:    заголовок (обязательно)
-  - subtitle: подзаголовок (опционально)
-  - text:     описание (опционально)
-  - bg:       фон (картинка)
-  - button:   { label, href, icon, extra_class } (опционально)
+  - bg: "/assets/images/bg/hero.webp"
+  - title: "Main title"
+  - subtitle: "Optional subtitle"
+  - text: "Some description"
+  - button: { href: "/join", label: "Join now" }
+  - variant: "home"   # вариант для модификатора
 #}
 
-{% set _title   = title|default('Hero Title') %}
-{% set _bg      = bg|default('/assets/images/bg/hero.webp') %}
+{% set _bg       = bg|default(null) %}
+{% set _title    = title|default('Hero title') %}
 {% set _subtitle = subtitle|default(null) %}
 {% set _text     = text|default(null) %}
 {% set _button   = button|default(null) %}
+{% set _variant  = variant|default('default') %}
 
-<section class="hero">
-  <img src="{{ _bg }}" alt="" class="hero__bg">
+<section class="hero hero--{{ _variant }}">
+  {% if _bg %}
+    <img src="{{ _bg }}" alt="" class="hero__bg">
+  {% endif %}
   <div class="container">
     <div class="hero__inner">
       <div class="hero__item">

@@ -1,0 +1,184 @@
+[
+  {
+    "id": 1,
+    "href": "/league/ligue-1",
+    "logo": "/assets/images/leagues/leg1.webp",
+    "logo_alt": "Ligue 1",
+    "name": "Ligue 1",
+    "country": "France",
+    "champion": {
+      "href": "/team/psg",
+      "logo": "/assets/images/teams/team-11.webp",
+      "logo_alt": "Paris Saint-Germain",
+      "name": "Paris Saint-Germain"
+    }
+  },
+  {
+    "id": 2,
+    "href": "/league/premier-league",
+    "logo": "/assets/images/leagues/leg2.webp",
+    "logo_alt": "Premier League",
+    "name": "Premier League",
+    "country": "England",
+    "champion": {
+      "href": "/team/manchester-city",
+      "logo": "/assets/images/teams/team-12.webp",
+      "logo_alt": "Manchester City",
+      "name": "Manchester City"
+    }
+  },
+  {
+    "id": 3,
+    "href": "/league/la-liga",
+    "logo": "/assets/images/leagues/leg3.webp",
+    "logo_alt": "La Liga",
+    "name": "La Liga",
+    "country": "Spain",
+    "champion": {
+      "href": "/team/real-madrid",
+      "logo": "/assets/images/teams/team-1.webp",
+      "logo_alt": "Real Madrid",
+      "name": "Real Madrid"
+    }
+  },
+  {
+    "id": 4,
+    "href": "/league/serie-a",
+    "logo": "/assets/images/leagues/leg4.webp",
+    "logo_alt": "Serie A",
+    "name": "Serie A",
+    "country": "Italy",
+    "champion": {
+      "href": "/team/inter",
+      "logo": "/assets/images/teams/team-10.webp",
+      "logo_alt": "Inter",
+      "name": "Inter"
+    }
+  },
+  {
+    "id": 5,
+    "href": "/league/bundesliga",
+    "logo": "/assets/images/leagues/leg5.webp",
+    "logo_alt": "Bundesliga",
+    "name": "Bundesliga",
+    "country": "Germany",
+    "champion": {
+      "href": "/team/bayern-munich",
+      "logo": "/assets/images/teams/team-9.webp",
+      "logo_alt": "Bayern Munich",
+      "name": "Bayern Munich"
+    }
+  },
+  {
+    "id": 6,
+    "href": "/league/eredivisie",
+    "logo": "/assets/images/leagues/leg6.webp",
+    "logo_alt": "Eredivisie",
+    "name": "Eredivisie",
+    "country": "Netherlands",
+    "champion": {
+      "href": "/team/ajax",
+      "logo": "/assets/images/teams/team-8.webp",
+      "logo_alt": "Ajax",
+      "name": "Ajax"
+    }
+  },
+  {
+    "id": 7,
+    "href": "/league/primeira-liga",
+    "logo": "/assets/images/leagues/leg7.webp",
+    "logo_alt": "Primeira Liga",
+    "name": "Primeira Liga",
+    "country": "Portugal",
+    "champion": {
+      "href": "/team/porto",
+      "logo": "/assets/images/teams/team-7.webp",
+      "logo_alt": "Porto",
+      "name": "Porto"
+    }
+  },
+  {
+    "id": 8,
+    "href": "/league/super-lig",
+    "logo": "/assets/images/leagues/leg8.webp",
+    "logo_alt": "Süper Lig",
+    "name": "Süper Lig",
+    "country": "Turkey",
+    "champion": {
+      "href": "/team/galatasaray",
+      "logo": "/assets/images/teams/team-6.webp",
+      "logo_alt": "Galatasaray",
+      "name": "Galatasaray"
+    }
+  },
+  {
+    "id": 9,
+    "href": "/league/russian-premier-league",
+    "logo": "/assets/images/leagues/leg9.webp",
+    "logo_alt": "Russian Premier League",
+    "name": "Russian Premier League",
+    "country": "Russia",
+    "champion": {
+      "href": "/team/zenit",
+      "logo": "/assets/images/teams/team-5.webp",
+      "logo_alt": "Zenit",
+      "name": "Zenit"
+    }
+  },
+  {
+    "id": 10,
+    "href": "/league/mls",
+    "logo": "/assets/images/leagues/leg10.webp",
+    "logo_alt": "MLS",
+    "name": "Major League Soccer",
+    "country": "USA",
+    "champion": {
+      "href": "/team/lafc",
+      "logo": "/assets/images/teams/team-4.webp",
+      "logo_alt": "LAFC",
+      "name": "LAFC"
+    }
+  },
+  {
+    "id": 11,
+    "href": "/league/brasileirao",
+    "logo": "/assets/images/leagues/leg11.webp",
+    "logo_alt": "Brasileirão",
+    "name": "Brasileirão",
+    "country": "Brazil",
+    "champion": {
+      "href": "/team/palmeiras",
+      "logo": "/assets/images/teams/team-3.webp",
+      "logo_alt": "Palmeiras",
+      "name": "Palmeiras"
+    }
+  },
+  {
+    "id": 12,
+    "href": "/league/argentina-primera",
+    "logo": "/assets/images/leagues/leg12.webp",
+    "logo_alt": "Primera División",
+    "name": "Primera División",
+    "country": "Argentina",
+    "champion": {
+      "href": "/team/boca-juniors",
+      "logo": "/assets/images/teams/team-2.webp",
+      "logo_alt": "Boca Juniors",
+      "name": "Boca Juniors"
+    }
+  },
+  {
+    "id": 13,
+    "href": "/league/champions-league",
+    "logo": "/assets/images/leagues/leg13.webp",
+    "logo_alt": "UEFA Champions League",
+    "name": "Champions League",
+    "country": "Europe",
+    "champion": {
+      "href": "/team/real-madrid",
+      "logo": "/assets/images/teams/team-1.webp",
+      "logo_alt": "Real Madrid",
+      "name": "Real Madrid"
+    }
+  }
+]

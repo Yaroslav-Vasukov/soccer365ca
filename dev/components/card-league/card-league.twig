@@ -1,0 +1,50 @@
+{#
+  ВХОД:
+  - href: "/league/ligue-1"
+  - logo: "/assets/images/leagues/leg1.webp"
+  - logo_alt: "Ligue 1"
+  - name: "Ligue 1"
+  - country: "France"
+  - champion: {
+      href: "/team/psg",
+      logo: "/assets/images/teams/team-9.webp",
+      logo_alt: "Paris Saint-Germain",
+      name: "Paris Saint-Germain"
+    }
+#}
+
+{% set _href      = href|default('#') %}
+{% set _logo      = logo|default(null) %}
+{% set _logo_alt  = logo_alt|default('') %}
+{% set _name      = name|default('League') %}
+{% set _country   = country|default(null) %}
+{% set _champ     = champion|default(null) %}
+
+<article class="card-league">
+  <div class="card-league__top">
+    <a href="{{ _href }}" class="card-league__link">
+      {% if _logo %}
+        <img src="{{ _logo }}" alt="{{ _logo_alt }}" class="card-league__logo">
+      {% endif %}
+    </a>
+    <div class="card-league__info">
+      <h3 class="card-league__name">
+        <a href="{{ _href }}" class="card-league__name-link">{{ _name }}</a>
+      </h3>
+      {% if _country %}
+        <p class="card-league__meta">{{ _country }}</p>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if _champ %}
+  <div class="card-league__bot">
+    <a href="{{ _champ.href|default('#') }}" class="card-league__champion">
+      {% if _champ.logo %}
+        <img src="{{ _champ.logo }}" alt="{{ _champ.logo_alt|default('') }}" class="card-league__champion-logo">
+      {% endif %}
+      <span class="card-league__champion-name">{{ _champ.name|default('Champion') }}</span>
+    </a>
+  </div>
+  {% endif %}
+</article>

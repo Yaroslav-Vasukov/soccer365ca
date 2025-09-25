@@ -4,6 +4,9 @@
   position: relative;
   padding: 70px 0;
   margin-bottom: 48px;
+  &--home {
+      margin-bottom: 0;
+  }
   &::after {
       content: '';
       position: absolute;
