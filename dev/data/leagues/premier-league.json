@@ -1,0 +1,74 @@
+[
+  {
+    "pos": 1,
+    "team": { "href": "/team/arsenal", "name": "Arsenal", "logo": { "src": "/assets/images/teams/team-1.webp", "alt": "Arsenal" } },
+    "gp": 6, "w": 6, "d": 0, "l": 0, "f": 18, "a": 4, "gd": 14, "p": 18,
+    "form": ["W","W","W","W","W"]
+  },
+  {
+    "pos": 2,
+    "team": { "href": "/team/city", "name": "Man City", "logo": { "src": "/assets/images/teams/team-2.webp", "alt": "Man City" } },
+    "gp": 6, "w": 5, "d": 1, "l": 0, "f": 19, "a": 6, "gd": 13, "p": 16,
+    "form": ["W","W","D","W","W"]
+  },
+  {
+    "pos": 3,
+    "team": { "href": "/team/liverpool", "name": "Liverpool", "logo": { "src": "/assets/images/teams/team-3.webp", "alt": "Liverpool" } },
+    "gp": 6, "w": 4, "d": 2, "l": 0, "f": 15, "a": 7, "gd": 8, "p": 14,
+    "form": ["W","D","W","D","W"]
+  },
+  {
+    "pos": 4,
+    "team": { "href": "/team/chelsea", "name": "Chelsea", "logo": { "src": "/assets/images/teams/team-4.webp", "alt": "Chelsea" } },
+    "gp": 6, "w": 4, "d": 1, "l": 1, "f": 13, "a": 8, "gd": 5, "p": 13,
+    "form": ["W","W","L","W","D"]
+  },
+  {
+    "pos": 5,
+    "team": { "href": "/team/tottenham", "name": "Tottenham", "logo": { "src": "/assets/images/teams/team-5.webp", "alt": "Tottenham" } },
+    "gp": 6, "w": 3, "d": 2, "l": 1, "f": 12, "a": 9, "gd": 3, "p": 11,
+    "form": ["D","W","W","L","D"]
+  },
+  {
+    "pos": 6,
+    "team": { "href": "/team/manutd", "name": "Man United", "logo": { "src": "/assets/images/teams/team-6.webp", "alt": "Man United" } },
+    "gp": 6, "w": 3, "d": 1, "l": 2, "f": 11, "a": 10, "gd": 1, "p": 10,
+    "form": ["W","L","W","L","W"]
+  },
+  {
+    "pos": 7,
+    "team": { "href": "/team/newcastle", "name": "Newcastle", "logo": { "src": "/assets/images/teams/team-7.webp", "alt": "Newcastle" } },
+    "gp": 6, "w": 2, "d": 3, "l": 1, "f": 10, "a": 9, "gd": 1, "p": 9,
+    "form": ["D","W","D","W","D"]
+  },
+  {
+    "pos": 8,
+    "team": { "href": "/team/astonvilla", "name": "Aston Villa", "logo": { "src": "/assets/images/teams/team-8.webp", "alt": "Aston Villa" } },
+    "gp": 6, "w": 2, "d": 2, "l": 2, "f": 9, "a": 11, "gd": -2, "p": 8,
+    "form": ["L","W","D","L","W"]
+  },
+  {
+    "pos": 9,
+    "team": { "href": "/team/westham", "name": "West Ham", "logo": { "src": "/assets/images/teams/team-9.webp", "alt": "West Ham" } },
+    "gp": 6, "w": 2, "d": 1, "l": 3, "f": 8, "a": 12, "gd": -4, "p": 7,
+    "form": ["W","L","D","L","W"]
+  },
+  {
+    "pos": 10,
+    "team": { "href": "/team/brighton", "name": "Brighton", "logo": { "src": "/assets/images/teams/team-10.webp", "alt": "Brighton" } },
+    "gp": 6, "w": 1, "d": 2, "l": 3, "f": 7, "a": 13, "gd": -6, "p": 5,
+    "form": ["L","D","L","D","W"]
+  },
+  {
+    "pos": 11,
+    "team": { "href": "/team/brentford", "name": "Brentford", "logo": { "src": "/assets/images/teams/team-11.webp", "alt": "Brentford" } },
+    "gp": 6, "w": 1, "d": 1, "l": 4, "f": 6, "a": 15, "gd": -9, "p": 4,
+    "form": ["L","W","L","L","D"]
+  },
+  {
+    "pos": 12,
+    "team": { "href": "/team/fulham", "name": "Fulham", "logo": { "src": "/assets/images/teams/team-12.webp", "alt": "Fulham" } },
+    "gp": 6, "w": 0, "d": 2, "l": 4, "f": 5, "a": 16, "gd": -11, "p": 2,
+    "form": ["L","D","L","L","D"]
+  }
+]

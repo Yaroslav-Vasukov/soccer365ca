@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "href": "/team/juventus",
+    "thumb": "/assets/images/canada.webp",
+    "thumb_alt": "Juventus Stadium",
+    "logo": "/assets/images/teams/team-1.webp",
+    "logo_alt": "Juventus logo",
+    "name": "Juventus",
+    "meta": "Serie A · Italy"
+  },
+  {
+    "id": 2,
+    "href": "/team/barcelona",
+    "thumb": "/assets/images/canada.webp",
+    "thumb_alt": "Camp Nou",
+    "logo": "/assets/images/teams/team-2.webp",
+    "logo_alt": "Barcelona logo",
+    "name": "FC Barcelona",
+    "meta": "La Liga · Spain"
+  },
+  {
+    "id": 3,
+    "href": "/team/real-madrid",
+    "thumb": "/assets/images/canada.webp",
+    "thumb_alt": "Santiago Bernabéu",
+    "logo": "/assets/images/teams/team-3.webp",
+    "logo_alt": "Real Madrid logo",
+    "name": "Real Madrid",
+    "meta": "La Liga · Spain"
+  },
+  {
+    "id": 4,
+    "href": "/team/chelsea",
+    "thumb": "/assets/images/canada.webp",
+    "thumb_alt": "Stamford Bridge",
+    "logo": "/assets/images/teams/team-4.webp",
+    "logo_alt": "Chelsea logo",
+    "name": "Chelsea",
+    "meta": "Premier League · England"
+  },
+  {
+    "id": 5,
+    "href": "/team/manchester-city",
+    "thumb": "/assets/images/canada.webp",
+    "thumb_alt": "Etihad Stadium",
+    "logo": "/assets/images/teams/team-5.webp",
+    "logo_alt": "Manchester City logo",
+    "name": "Manchester City",
+    "meta": "Premier League · England"
+  },
+  {
+    "id": 6,
+    "href": "/team/manchester-united",
+    "thumb": "/assets/images/canada.webp",
+    "thumb_alt": "Old Trafford",
+    "logo": "/assets/images/teams/team-6.webp",
+    "logo_alt": "Manchester United logo",
+    "name": "Manchester United",
+    "meta": "Premier League · England"
+  },
+  {
+    "id": 7,
+    "href": "/team/bayern-munich",
+    "thumb": "/assets/images/canada.webp",
+    "thumb_alt": "Allianz Arena",
+    "logo": "/assets/images/teams/team-7.webp",
+    "logo_alt": "Bayern Munich logo",
+    "name": "Bayern Munich",
+    "meta": "Bundesliga · Germany"
+  },
+  {
+    "id": 8,
+    "href": "/team/borussia-dortmund",
+    "thumb": "/assets/images/canada.webp",
+    "thumb_alt": "Signal Iduna Park",
+    "logo": "/assets/images/teams/team-8.webp",
+    "logo_alt": "Borussia Dortmund logo",
+    "name": "Borussia Dortmund",
+    "meta": "Bundesliga · Germany"
+  },
+  {
+    "id": 9,
+    "href": "/team/psg",
+    "thumb": "/assets/images/canada.webp",
+    "thumb_alt": "Parc des Princes",
+    "logo": "/assets/images/teams/team-9.webp",
+    "logo_alt": "Paris Saint-Germain logo",
+    "name": "Paris Saint-Germain",
+    "meta": "Ligue 1 · France"
+  },
+  {
+    "id": 10,
+    "href": "/team/marseille",
+    "thumb": "/assets/images/canada.webp",
+    "thumb_alt": "Stade Vélodrome",
+    "logo": "/assets/images/teams/team-10.webp",
+    "logo_alt": "Marseille logo",
+    "name": "Marseille",
+    "meta": "Ligue 1 · France"
+  },
+  {
+    "id": 11,
+    "href": "/team/ac-milan",
+    "thumb": "/assets/images/canada.webp",
+    "thumb_alt": "San Siro",
+    "logo": "/assets/images/teams/team-11.webp",
+    "logo_alt": "AC Milan logo",
+    "name": "AC Milan",
+    "meta": "Serie A · Italy"
+  },
+  {
+    "id": 12,
+    "href": "/team/inter",
+    "thumb": "/assets/images/canada.webp",
+    "thumb_alt": "San Siro",
+    "logo": "/assets/images/teams/team-12.webp",
+    "logo_alt": "Inter logo",
+    "name": "Inter",
+    "meta": "Serie A · Italy"
+  }
+]

@@ -1,27 +1,21 @@
 .tabs {
   &__nav {
     display: inline-flex;
-    gap: 2px;
-    margin-bottom: 16px;
+    gap: 4px;
   }
 
   &__tab {
-    &:first-child {
-      border-radius: 8px 0 0 8px;
-    }
-    &:last-child {
-      border-radius: 0 8px 8px 0;
-    }
     appearance: none;
+    background-color: $color-light;
     border: 0;
     padding: 8px 12px;
     font: inherit;
     cursor: pointer;
-    background: $color-gray;
     color: $color-dark;
     font-weight: 600;
     font-size: 14px;
     transition: transform 0.12s ease, box-shadow 0.2s ease, background 0.2s ease, color .2s ease;
+     text-transform: capitalize;
 
     &:hover {
       background: $color-primary;
@@ -29,8 +23,7 @@
     
     }
     &:active {
-      transform: scale(1.1);
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+      background-color: $color-primary;
     }
     &.is-active {
       background: $color-primary-dark;

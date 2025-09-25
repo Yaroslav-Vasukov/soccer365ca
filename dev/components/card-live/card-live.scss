@@ -88,7 +88,9 @@
     align-items: center;
     gap: 8px;
     flex-direction: column;
-
+    &:hover .card-live__name {
+      color: $color-accent-orange;
+    }
   }
 
   &__logo {
@@ -103,6 +105,7 @@
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 600;
+    transition: color 0.3s ease;
   }
   &__score {
     color: $color-light;

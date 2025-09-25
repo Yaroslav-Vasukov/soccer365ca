@@ -1,76 +1,51 @@
-
-{% extends "../layouts/_base.html" %} 
-{% block title %}Home{% endblock %} {% block active_nav %}home{% endblock %} 
-{% block body_class %}page page--home{% endblock %}
-{% block head_extra %} 
+{% extends "../layouts/_base.html" %} {% block title %}Home{% endblock %} {%
+block active_nav %}home{% endblock %} {% block body_class %}page page--home{%
+endblock %} {% block head_extra %}
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-/> 
-{% endblock %} 
-{% block content %}
+/>
+{% endblock %} {% block content %} 
+{% set posts = load_json("@/data/posts.json") %} 
+{% set lives = load_json("@/data/lives.json") %} 
+{% set teams = load_json("@/data/teams.json") %}
+{% set premierLeague = load_json("@/data/leagues/premier-league.json") %} 
+{% set laLiga = load_json("@/data/leagues/la-liga.json") %} 
+{% set serieA = load_json("@/data/leagues/serie-a.json") %} 
 
-
-{% set posts = load_json("@/data/posts.json") %}
-{% set lives = load_json("@/data/lives.json") %}
-
-
-
-
-
-{% include "../components/hero/hero.twig" with {
-  title: "Latest Soccer News",
-  subtitle: "Daily updates and highlights",
-  text: "Stay informed with the latest scores, match reports, and breaking news.",
-  button: {
-    label: "Read more",
-    href: "/news/123",
-    icon: "arrow_right",
-    extra_class: "btn--hero"
-  }
-} %}
+{% include
+"../components/hero/hero.twig" with { title: "Latest Soccer News", subtitle:
+"Daily updates and highlights", text: "Stay informed with the latest scores,
+match reports, and breaking news.", button: { label: "Read more", href:
+"/news/123", icon: "arrow_right", extra_class: "btn--hero" } } %}
 
 <section class="section section--margin">
   <div class="container">
     <div class="section__inner">
-{% include "../components/section-header/section-header.twig" with {
-  title: "News",
-  subtitle: true,
-  more: "more",
-  more_href: "/news"
-} %}
-<div class="card-post__grid">
-      {% for p in posts|slice(0, 8) %}
-      
-        {% include "../components/card-post/card-post.twig" with {
-          post: {
-            href:  p.href,
-            title: p.title,
-            image: { src: p.thumb, alt: p.title },
-            date:  p.published_at
-          },
-          tags: p.tags|default([])
-        } %}
-      {% else %}
+      {% include "../components/section-header/section-header.twig" with {
+      title: "News", subtitle: true, more: "more", more_href: "/news" } %}
+      <div class="card-post__grid">
+        {% for p in posts|slice(0, 8) %} {% include
+        "../components/card-post/card-post.twig" with { post: { href: p.href,
+        title: p.title, image: { src: p.thumb, alt: p.title }, date:
+        p.published_at }, tags: p.tags|default([]) } %} {% else %}
         <p class="muted">No posts yet.</p>
-      {% endfor %}
-</div>
+        {% endfor %}
+      </div>
     </div>
   </div>
 </section>
 
 <section class="section section--margin section--decor">
-    <img src="/assets/images/bg/bg1.webp" alt="" class="section__bg">
-    <div class="container">
-      <div class="section__inner">
-        {% include "../components/section-header/section-header.twig" with {
-          title: "popular lives",
-          subtitle: true,
-          more: "more",
-          more_href: "/lives"
-        } %}
-        <div class="swiper home-live-swiper"
-             data-swiper='{
+  <img src="/assets/images/bg/bg1.webp" alt="" class="section__bg" />
+  <div class="container">
+    <div class="section__inner">
+      {% include "../components/section-header/section-header.twig" with {
+      title: "popular lives", subtitle: true, more: "more", more_href: "/lives"
+      } %}
+      <div
+        class="swiper home-live-swiper"
+        data-swiper='{
                "slidesPerView": 1,
                "spaceBetween": 16,
                "breakpoints": {
@@ -78,50 +53,211 @@
                  "768": { "slidesPerView": 2 },
                  "1024": { "slidesPerView": 3 }
                }
-             }'>
-          <div class="swiper-wrapper">
-             {% for match in lives|slice(0, 8) %}
-              <div class="swiper-slide">
-                {% include "../components/card-live/card-live.twig" with {
-                  match: match,
-                  button: { text: "live broadcast", href: match.href, variant: "primary", size: "sm" }
-                } only %}
-              </div>
-            {% else %}
-              <div class="swiper-slide"><p class="muted">No lives.</p></div>
-            {% endfor %}
+             }'
+      >
+        <div class="swiper-wrapper">
+          {% for match in lives|slice(0, 8) %}
+          <div class="swiper-slide">
+            {% include "../components/card-live/card-live.twig" with { match:
+            match, button: { text: "live broadcast", href: match.href, variant:
+            "primary", size: "sm" } } only %}
           </div>
-          <div class="swiper-button__wrap">
-            <button class="swiper-button-prev" data-swiper-prev aria-label="Prev"></button>
-            <button class="swiper-button-next" data-swiper-next aria-label="Next"></button>
-          </div>
+          {% else %}
+          <div class="swiper-slide"><p class="muted">No lives.</p></div>
+          {% endfor %}
+        </div>
+        <div class="swiper-button__wrap">
+          <button
+            class="swiper-button-prev"
+            data-swiper-prev
+            aria-label="Prev"
+          ></button>
+          <button
+            class="swiper-button-next"
+            data-swiper-next
+            aria-label="Next"
+          ></button>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="section section--margin">
-  <div class="container">
-    <div class="section__inner">
-      {% include "../components/banner/banner.twig" with {
-  title: "Join Soccer365 today!",
-  text:  "Get access to exclusive content, live scores, and more.",
-  img_left:  { src: "/assets/images/players/player-full-3.webp" },
-  img_right: { src: "/assets/images/canada.webp" },
-  button: { href: "/join", label: "Join now", extra_class: "btn--banner" }
-} only %}
-
-
     </div>
   </div>
 </section>
 
+<section class="section section--margin">
+  <div class="container">
+    <div class="section__inner">
+      {% include "../components/banner/banner.twig" with { title: "Join
+      Soccer365 today!", text: "Get access to exclusive content, live scores,
+      and more.", img_left: { src: "/assets/images/players/player-full-3.webp"
+      }, img_right: { src: "/assets/images/canada.webp" }, button: { href:
+      "/join", label: "Join now", extra_class: "btn--banner" } } only %}
+    </div>
+  </div>
+</section>
+<section class="section section--margin">
+  <div class="container">
+    <div class="section__inner">
+      <div class="tabs" data-tabs id="tabs" aria-label="NBA standings">
+        <div class="table-header__wrap">
+          {% include "../components/section-header/section-header.twig" with {
+          title: "Standings" } %}
+          <div class="tabs__nav" role="tablist" aria-label="Conferences">
+            <button
+              class="tabs__tab is-active"
+              id="tab-premier-league"
+              role="tab"
+              aria-selected="true"
+              aria-controls="panel-premier-league"
+              tabindex="0"
+              data-tab="premier-league"
+            >
+              Premier League
+            </button>
 
-{% endblock %} 
-{% block scripts %}   
+            <button
+              class="tabs__tab"
+              id="tab-laLiga"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-laLiga"
+              tabindex="-1"
+              data-tab="laLiga"
+            >
+              LaLiga
+            </button>
+            <button
+              class="tabs__tab"
+              id="tab-serieA"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-serieA"
+              tabindex="-1"
+              data-tab="serieA"
+            >
+              serie A
+            </button>
+          </div>
+        </div>
+        <div
+          class="tabs__panel is-active"
+          id="panel-premier-league"
+          role="tabpanel"
+          aria-labelledby="tab-premier-league"
+          tabindex="0"
+        >
+          {% include "../components/table/table.twig" with { variant: 'default',
+          caption: 'Premier League', columns: [ { key:'pos', label:'#',
+          align:'center', width:'64px' }, { key:'team', label:'Team',
+          type:'team',align:'left', width:'minmax(200px,1fr)' }, { key:'gp',
+          label:'GP', type:'number', align:'right', width:'4.5rem' }, { key:'w',
+          label:'W', type:'number', align:'right', width:'4rem' }, { key:'d',
+          label:'D', type:'number', align:'right', width:'4rem' }, { key:'l',
+          label:'L', type:'number', align:'right', width:'4rem' }, { key:'f',
+          label:'F', type:'number', align:'right', width:'4.5rem' }, { key:'a',
+          label:'A', type:'number', align:'right', width:'4.5rem' }, { key:'gd',
+          label:'GD', type:'number', align:'right', width:'4.5rem' }, { key:'p',
+          label:'P', type:'number', align:'right', width:'4.5rem' }, {
+          key:'form', label:'Form', type:'form', align:'center',
+          width:'minmax(200px,2fr)' } ], rows: premierLeague } only %}
+        </div>
+        <div
+          class="tabs__panel"
+          id="panel-laLiga"
+          role="tabpanel"
+          aria-labelledby="tab-laLiga"
+          tabindex="0"
+          hidden
+        >
+          {% include "../components/table/table.twig" with { variant: 'default',
+          caption: 'laLiga', columns: [ { key:'pos', label:'#', align:'center',
+          width:'64px' }, { key:'team', label:'Team', type:'team',align:'left',
+          width:'minmax(200px,1fr)' }, { key:'gp', label:'GP', type:'number',
+          align:'right', width:'4.5rem' }, { key:'w', label:'W', type:'number',
+          align:'right', width:'4rem' }, { key:'d', label:'D', type:'number',
+          align:'right', width:'4rem' }, { key:'l', label:'L', type:'number',
+          align:'right', width:'4rem' }, { key:'f', label:'F', type:'number',
+          align:'right', width:'4.5rem' }, { key:'a', label:'A', type:'number',
+          align:'right', width:'4.5rem' }, { key:'gd', label:'GD',
+          type:'number', align:'right', width:'4.5rem' }, { key:'p', label:'P',
+          type:'number', align:'right', width:'4.5rem' }, { key:'form',
+          label:'Form', type:'form', align:'center', width:'minmax(200px,2fr)' }
+          ], rows: laLiga } only %}
+        </div>
+        <div
+          class="tabs__panel"
+          id="panel-serieA"
+          role="tabpanel"
+          aria-labelledby="tab-serieA"
+          tabindex="0"
+          hidden
+        >
+          {% include "../components/table/table.twig" with { variant: 'default',
+          caption: 'Serie A', columns: [ { key:'pos', label:'#', align:'center',
+          width:'64px' }, { key:'team', label:'Team', type:'team',align:'left',
+          width:'minmax(200px,1fr)' }, { key:'gp', label:'GP', type:'number',
+          align:'right', width:'4.5rem' }, { key:'w', label:'W', type:'number',
+          align:'right', width:'4rem' }, { key:'d', label:'D', type:'number',
+          align:'right', width:'4rem' }, { key:'l', label:'L', type:'number',
+          align:'right', width:'4rem' }, { key:'f', label:'F', type:'number',
+          align:'right', width:'4.5rem' }, { key:'a', label:'A', type:'number',
+          align:'right', width:'4.5rem' }, { key:'gd', label:'GD',
+          type:'number', align:'right', width:'4.5rem' }, { key:'p', label:'P',
+          type:'number', align:'right', width:'4.5rem' }, { key:'form',
+          label:'Form', type:'form', align:'center', width:'minmax(200px,2fr)' }
+          ], rows: serieA } only %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section section--margin section--decor">
+  <img src="/assets/images/bg/bg2.webp" alt="" class="section__bg" />
+  <div class="container">
+    <div class="section__inner">
+      <div
+        class="swiper home-teams-swiper"
+        data-swiper='{
+               "slidesPerView": 1,
+               "spaceBetween": 16,
+               "loop": true,
+               "autoplay": { "delay": 2500, "disableOnInteraction": false },
+               "breakpoints": {
+                 "0":  { "slidesPerView": 1 },
+                 "480":  { "slidesPerView": 2 },
+                 "768": { "slidesPerView": 3 },
+                 "1024": { "slidesPerView": 5 }
+               }
+             }'
+      >
+        <div class="swiper-wrapper">
+          {% for t in teams %}
+          <div class="swiper-slide">
+             {% include "../components/card-team/card-team.twig" with t only %}
+          </div>
+          {% else %}
+          <div class="swiper-slide"><p class="muted">No teams.</p></div>
+          {% endfor %}
+        </div>
+        <div class="swiper-button__wrap">
+          <button
+            class="swiper-button-prev"
+            data-swiper-prev
+            aria-label="Prev"
+          ></button>
+          <button
+            class="swiper-button-next"
+            data-swiper-next
+            aria-label="Next"
+          ></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %} {% block scripts %}
 <script
   defer
   src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
->
-</script> 
+></script>
 {% endblock %}

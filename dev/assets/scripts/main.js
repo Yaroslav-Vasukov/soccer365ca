@@ -21,13 +21,16 @@ function init() {
     when("[data-swiper]", () =>
     import("@components/swiper/swiper.js")
   ); 
+  when('[data-table]', () =>
+  import('@components/table/table.js')
+);
+  when("[data-tabs]", () =>
+    import("@components/tabs/tabs.js")
+  ); 
 //   when("[data-date]", () =>
 //     import("@components/date/date.js")
 //   ); 
 
-//   when("[data-tabs]", () =>
-//     import("@components/tabs/tabs.js")
-//   ); 
 //   when('[data-module="header-league"]', () =>
 //   import("@components/header-league/header-league.js")
 //   );

@@ -1,0 +1,140 @@
+{% set _cols    = columns|default([]) %}
+{% set _rows    = rows|default([]) %}
+{% set _variant = variant|default('default') %}
+{% set _caption = caption|default(null) %}
+
+<div class="table table--{{ _variant }}" data-table="{{ _variant }}">
+	<div class="table__wrap">
+		{% if _caption %}
+			<div class="table__caption">{{ _caption }}</div>
+		{% endif %}
+		<table
+			class="table__table" role="table">
+			{# widths #}
+			{% if _cols %}
+				<colgroup>
+					{% for c in _cols %}
+						<col {% if c.width is defined %} style="width: {{ c.width }}" {% endif %}>
+					{% endfor %}
+				</colgroup>
+			{% endif %}
+
+
+			<thead class="table__head">
+				<tr>
+					{% for c in _cols %}
+						{# выравнивание через inline-style, чтобы не плодить модификаторы #}
+						<th scope="col" class="table__th" {% if c.align %} style="text-align: {{ c.align }}" {% endif %}>
+							{{ c.label }}
+						</th>
+					{% endfor %}
+				</tr>
+			</thead>
+
+			<tbody class="table__body">
+				{% if _rows is empty %}
+					<tr class="table__tr">
+						<td class="table__td" colspan="{{ _cols|length }}">No data</td>
+					</tr>
+				{% else %}
+					{% for r in _rows %}
+						<tr class="table__tr">
+							{% for c in _cols %}
+								{% set type = c.type|default('text') %}
+								{% set val  = attribute(r, c.key) %}
+								<td
+									class="table__td table__td--{{ type }}" {% if c.align %} style="text-align: {{ c.align }}" {% endif %}>
+
+									{# ====== cell renderers ====== #}
+									{% if type in ['team','player'] %}
+										{% set e = val|default({}) %}
+										<a class="entity" href="{{ e.href|default('#') }}">
+											{% if e.logo and e.logo.src %}
+												<img class="entity__logo" src="{{ e.logo.src }}" alt="{{ e.logo.alt|default('') }}">
+											{% endif %}
+											<span class="entity__name">{{ e.name|default('') }}</span>
+										</a>
+
+									{% elseif type == 'number' %}
+										{# базовое значение #}
+										{% set final = val %}
+										<span class="num">
+											{{ c.key|trim == 'gd' and final is not null and final != '' and final > 0 ? ('+' ~ final) : final }}
+										</span>
+
+									{% elseif type == 'form' %}
+										{% set formArr = val is iterable ? val : [] %}
+										<ul class="form" aria-label="recent form" role="list">
+											{% for ch in formArr %}
+												{% set cls = ch == 'W' ? 'win' : (ch == 'L' ? 'lose' : 'draw') %}
+												<li class="form__item form__item--{{ cls }}" title="{{ ch }}">{{ ch }}</li>
+											{% endfor %}
+										</ul>
+
+									{% else %}
+										{{ val }}
+									{% endif %}
+
+								</td>
+							{% endfor %}
+						</tr>
+					{% endfor %}
+				{% endif %}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+{# Table for Premier League Standings 
+
+{% include "../components/table/table.twig" with {
+  variant: 'default',
+  caption: 'Premier League — Standings',
+  columns: [
+    { key:'pos',  label:'#',  align:'center', width:'3.5rem' },
+    { key:'team', label:'Team', type:'team',  width:'minmax(200px,1fr)' },
+    { key:'gp',   label:'GP',   type:'number', align:'right', width:'4.5rem' },
+    { key:'w',    label:'W',    type:'number', align:'right', width:'4rem' },
+    { key:'d',    label:'D',    type:'number', align:'right', width:'4rem' },
+    { key:'l',    label:'L',    type:'number', align:'right', width:'4rem' },
+    { key:'f',    label:'F',    type:'number', align:'right', width:'4.5rem' },
+    { key:'a',    label:'A',    type:'number', align:'right', width:'4.5rem' },
+    { key:'gd',   label:'GD',   type:'number', align:'right', width:'4.5rem' },
+    { key:'p',    label:'P',    type:'number', align:'right', width:'4.5rem' },
+    { key:'form', label:'Form', type:'form',   align:'left',  width:'9rem' }
+  ],
+  rows: [
+    {
+      pos: 1,
+      team:{ href:'/team/arsenal', name:'Arsenal', logo:{ src:'/assets/images/teams/arsenal.webp', alt:'Arsenal' } },
+      gp: 6, w: 6, d: 0, l: 0, f: 26, a: 5,
+      form: ['W','W','W','W','W']
+    },
+    {
+      pos: 2,
+      team:{ href:'/team/city', name:'Man City', logo:{ src:'/assets/images/teams/city.webp', alt:'Man City' } },
+      gp: 6, w: 5, d: 1, l: 0, f: 19, a: 6,
+      form: ['W','W','D','W','W']
+    }
+  ]
+} only %}
+
+
+
+{% include "@components/table/table.twig" with {
+variant: 'sidebar',
+caption: 'Top Scorers',
+columns: [
+{ key: 'pos', label: '#', align: 'center', width: '3rem' },
+{ key: 'player',label: 'Player', type: 'player', width: 'minmax(160px,1fr)' },
+{ key: 'g', label: 'G', type: 'number', align: 'right', width: '4.5rem' },
+],
+rows: [
+{ pos: 1, player: { href: '/player/haaland', name: 'E. Haaland', logo: { src:'/assets/images/players/haaland.webp', alt:'Haaland' } }, g: 34 },
+{ pos: 2, player: { href: '/player/salah', name: 'M. Salah', logo: { src:'/assets/images/players/salah.webp', alt:'Salah' } }, g: 29 }
+]
+} only %}
+
+
+#}

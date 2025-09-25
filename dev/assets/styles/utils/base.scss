@@ -100,7 +100,20 @@ main {
     gap: 32px;
   }
 }
-
+.table-header__wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  & .section-header {
+    margin-bottom: 0;
+  }
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
 .visually-hidden {
   position: absolute !important;
   width: 1px !important;

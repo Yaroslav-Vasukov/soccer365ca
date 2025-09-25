@@ -1,0 +1,178 @@
+.table {
+  box-sizing: border-box;
+  &__wrap {
+    overflow-x: auto; /* только для default варианта включим */
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+  }
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: $color-dark-gray;
+  }
+  &__head {
+    background-color: $color-primary-dark;
+  }
+  &__caption {
+    caption-side: top;
+    text-align: left;
+    margin: 0 0 0.5rem;
+    font-weight: 600;
+        position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+  &__tr {
+        border-bottom: 1px solid rgba($color-light, 0.1);
+    &:hover {
+      background-color: rgba($color-light, 0.05);
+    }
+  }
+  &__th,
+  &__td {
+    padding: 0.625rem 0.75rem;
+
+    white-space: nowrap;
+  }
+  &__th {
+    font: 600 0.875rem/1.2 Inter, system-ui;
+    background-color: $color-primary-dark;
+    color: $color-light;
+    border-bottom: 3px solid $color-light;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  &__td {
+    font: 500 0.95rem/1.35 Inter, system-ui;
+    color: #e6e8ee;
+  }
+
+  /* entity cell (team/player) */
+  .entity {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s;
+    &:hover {
+      color: $color-primary;
+    }
+  }
+  .entity__logo {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    flex: 0 0 32px;
+    padding: 4px;
+    background: $color-gray;
+    transition: background 0.2s;
+    &:hover {
+      background: $color-primary-dark;
+    }
+  }
+  .entity__name {
+    display: inline-block;
+    max-width: 26ch;
+    text-transform: uppercase;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* numeric */
+  .num {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.01em;
+  }
+
+  /* form WDL */
+  .form {
+    display: inline-flex;
+    gap: 0.25rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  .form__item {
+    width: 1.4rem;
+    height: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: 700 0.8rem/1 Inter;
+    color: $color-light;
+  }
+  .form__item--win {
+    background: green;
+  }
+  .form__item--draw {
+    background: $color-accent-orange;
+  }
+  .form__item--lose {
+    background: $color-primary-dark;
+  }
+
+  /* ===== variants ===== */
+  &--default {
+    .table__wrap {
+      overflow-x: auto;
+    }
+    & tr .table__th:first-child,
+    & tr .table__td:first-child {
+      position: sticky;
+      left: 0;
+      z-index: 1;
+    }
+    & tr .table__th:nth-child(2),
+    & tr .table__td:nth-child(2) {
+      position: sticky;
+      left: 40px; /* ширина первой колонки */
+      z-index: 1;
+    }
+    & tr .table__td:first-child {
+      position: sticky;
+      left: 0;
+      z-index: 1;
+    }
+    & tr .table__th:first-child,
+    & tr .table__th:nth-child(2) {
+      background-color: $color-primary-dark;
+    }
+    & tr .table__td:first-child,
+    & tr .table__td:nth-child(2) {
+      background-color: $color-dark-gray;
+    }
+  }
+  &--sidebar {
+    .table__wrap {
+      overflow: visible;
+    }
+    .table__th,
+    .table__td {
+      padding: 0.45rem 0.5rem;
+    }
+    .table__td {
+      font-size: 0.875rem;
+    }
+    .entity__logo {
+      width: 22px;
+      height: 22px;
+    }
+    .entity__name {
+      max-width: 20ch;
+    }
+  }
+
+  /* ===== responsive rules ===== */
+  @media (max-width: 640px) {
+    /* Скрываем название у команды/игрока → остаются только логотипы */
+    .entity__name {
+      display: none;
+    }
+    .table__th,
+    .table__td {
+      white-space: nowrap;
+    }
+  }
+}

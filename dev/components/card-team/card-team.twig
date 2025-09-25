@@ -1,0 +1,52 @@
+{#
+  ВХОД:
+  - href: "/team/juventus"
+  - thumb: "/assets/images/pictures/juventus-stadium.webp"
+  - thumb_alt: "Juventus Stadium"
+  - logo: "/assets/images/teams/juventus.webp"
+  - logo_alt: "Juventus logo"
+  - name: "Juventus"
+  - meta: "Serie A · Italy"
+#}
+
+{% set _href      = href|default('#') %}
+{% set _thumb     = thumb|default(null) %}
+{% set _thumb_alt = thumb_alt|default('') %}
+{% set _logo      = logo|default(null) %}
+{% set _logo_alt  = logo_alt|default('') %}
+{% set _name      = name|default('Team name') %}
+{% set _meta      = meta|default(null) %}
+
+<article class="team-card ">
+  <a href="{{ _href }}" class="team-card__link">
+    <div class="team-card__thumb">
+      {% if _thumb %}
+        <img src="{{ _thumb }}" alt="{{ _thumb_alt }}" class="team-card__bg">
+      {% endif %}
+      {% if _logo %}
+        <img src="{{ _logo }}" alt="{{ _logo_alt }}" class="team-card__badge">
+      {% endif %}
+    </div>
+    <div class="team-card__body">
+      <h3 class="team-card__title">{{ _name }}</h3>
+      {% if _meta %}
+        <p class="team-card__meta">{{ _meta }}</p>
+      {% endif %}
+    </div>
+  </a>
+</article>
+
+
+{#
+
+{% include "@components/card-team/card-team.twig" with {
+  href: "/team/juventus",
+  thumb: "/assets/images/pictures/juventus-stadium.webp",
+  thumb_alt: "Juventus Stadium",
+  logo: "/assets/images/teams/juventus.webp",
+  logo_alt: "Juventus logo",
+  name: "Juventus",
+  meta: "Serie A · Italy"
+} only %}
+
+#}
