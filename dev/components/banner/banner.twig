@@ -1,22 +1,22 @@
 <div class="banner">
-  <img 
-    src="/assets/images/players/player-full-3.webp" 
-    alt="player decoration" 
-    class="banner__player"
-  >
+	<img src="/assets/images/players/player-full-3.webp" alt="player decoration" class="banner__player">
 
-  <div class="banner__content">
-    <h2 class="banner__title">Join Soccer365 today!</h2>
-    <p class="banner__text">Get access to exclusive content, live scores, and more.</p>
+	<div class="banner__content">
+		<h2 class="banner__title">
+			{% if title %}
+				{{ title }}
+			{% endif %}
+		</h2>
+		<p class="banner__text">
+			{% if text %}
+				{{ text }}
+			{% endif %}
+		</p>
 
-    {% if _button %}
-      {% include "../button/button.twig" with _button %}
-    {% endif %}
-  </div>
+		{% if button %}
+			{% include "../button/button.twig" with button only %}
+		{% endif %}
+	</div>
 
-  <img 
-    src="/assets/images/canada.webp" 
-    alt="canada decoration" 
-    class="banner__decor"
-  >
+	<img src="/assets/images/canada.webp" alt="canada decoration" class="banner__decor">
 </div>

@@ -99,7 +99,11 @@
     background-color: $color-light;
     border-bottom: 4px solid $color-primary;
   }
-
+  &__name {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+  }
   &__score {
     color: $color-light;
     font-size: 24px;
