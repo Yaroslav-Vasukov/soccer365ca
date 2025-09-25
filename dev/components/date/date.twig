@@ -1,10 +1,20 @@
 {% macro view(value, opts) %}
-  {% set _opts  = opts|default({ variant:'short', show_icon:true, icon:'calendar_today' }) %}
-  {% set _val   = value is defined ? value : null %}
+  {# дефолты + переопределения #}
+  {% set _opts = {
+    variant: 'short',
+    show_icon: true,
+    icon: 'calendar_today',
+    format: 'd M, Y'
+  }|merge(opts|default({})) %}
+
+  {% set _val = value is defined ? value : null %}
+
   {% if _val is not null and _val is not same as('') %}
     <time class="date date--{{ _opts.variant }}" datetime="{{ _val }}">
-      {% if _opts.show_icon %}<span class="material-symbols-outlined date__icon">{{ _opts.icon }}</span>{% endif %}
-      {{ _val }}
+      {% if _opts.show_icon %}
+        <span class="material-symbols-outlined date__icon">{{ _opts.icon }}</span>
+      {% endif %}
+      {{ _val|date(_opts.format) }}
     </time>
   {% else %}
     <span class="date date--empty">—</span>

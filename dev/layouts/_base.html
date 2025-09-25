@@ -49,6 +49,35 @@
 
       {% endblock %}
     </main>
+        {% include "../components/footer/footer.twig" with { brand: { url: '/',
+    logo_src: '/assets/images/logo.webp', logo_alt: 'football live',
+    text: 'Pushing hoops culture forward — news, videos, stats.' }, 
+    columns: [ {
+    title: 'Useful links', links: 
+    [ 
+      { label: 'Home', url: '/' }, 
+      { label:'News', url: '/news' }, 
+      { label: 'Videos',url: '/videos' }, 
+      { label: 'Teams', url: '/teams' } 
+      ] }, 
+      {
+    title: 'Leagues', links: 
+    [ 
+      { label: 'About', url: '/' }, 
+      { label:'Routes', url: '/news' }, 
+      { label: 'UEFA',url: '/videos' }, 
+      { label: 'Premier league', url: '/teams' } 
+      ] }, 
+      { title: 'More', links: 
+      [ { label: 'Calendar', url: '/calendar' }, 
+      { label: 'Lives', url: '/lives' }, 
+      { label: 'Contact', url: '/contact' }, 
+      { label: 'Review', url: '/review' } ] 
+    } ], 
+    contacts: 
+    { phone: '+380 50 352 09 82', 
+    email: 'elisa.hanaken@gmail.com' }, 
+    year: 'now'|date('Y') } %} 
     {% block scripts %}{% endblock %}
     <script type="module" src="/assets/scripts/main.js"></script>
   </body>

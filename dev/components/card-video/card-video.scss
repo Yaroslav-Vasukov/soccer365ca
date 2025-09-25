@@ -1,0 +1,70 @@
+.card-video {
+  position: relative;
+  background: $color-dark-gray;
+  display: flex;
+  border-bottom: 4px solid $color-light;
+  transition: border-bottom-color 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  &:hover {
+    box-shadow: 0 0 12px 2px rgba(255, 255, 255, 0.3);
+    border-bottom-color: $color-primary-light;
+  }
+  &__thumb {
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+  }
+
+  &__thumbnail {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  &__play {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    font-size: 32px;
+    z-index: 3;
+    transition: color 0.3s ease;
+    &:hover {
+      color: $color-accent-orange;
+    }
+  }
+
+  &__content {
+    background: linear-gradient(
+      0deg,
+      rgba(18, 18, 18, 1) 10%,
+      rgba(18, 18, 18, 0.1) 100%
+    );
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding: 8px 8px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: color 0.3s ease;
+    &:hover .card-video__link {
+      color: $color-primary-light;
+    }
+  }
+
+  &__title {
+    flex-grow: 1;
+    display: flex;
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  &__link {
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-end;
+  }
+}

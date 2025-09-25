@@ -72,7 +72,7 @@
   <div class="card-live__meta">
     {% import "../date/date.twig" as date %}
     {% if _date %}
-      {{ date.view(_date, { variant:'card-live', show_icon:true, icon:'calendar_today' }) }}
+      {{ date.view(_date, { variant:'card-live', show_icon:true, icon:'calendar_today',format:'d.m.Y H:i' }) }}
     {% endif %}
 
     {% if _league_href %}

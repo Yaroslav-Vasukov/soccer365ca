@@ -29,19 +29,19 @@
     align-items: center;
     justify-content: flex-end;
     gap: 16px;
-    min-height: 100px;
+    min-height: 64px;
   }
 
   /* logo */
   &__logo {
     position: absolute;
-    inset-block-start: 16px;   /* top */
-    inset-inline-start: 8px;     /* left */
+    inset-block-start: 24px;   /* top */
+    inset-inline-start: 16px;     /* left */
     display: block;
     z-index: 999;
     &-img {
-      width: 120px;
-      height: 120px;
+      width: 64px;
+      height: 64px;
       display: block;
       object-fit: contain;
     }

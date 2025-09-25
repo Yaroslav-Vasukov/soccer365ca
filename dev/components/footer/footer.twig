@@ -1,0 +1,71 @@
+{# props:
+  brand:   { url, logo_src, logo_alt, text }
+  columns: [ { title, links: [ {label, url} ] }, ... ]
+  contacts:{ phone, email }
+  year:    "2025" (или передавай динамически 'now'|date('Y'))
+#}
+
+{% set brand = brand|default({
+  url: '/',
+  logo_src: '/assets/images/logo.webp',
+  logo_alt: 'SOCCER365.CA',
+  text: 'Soccer news, videos and stats.'
+}) %}
+{% set columns = columns|default([]) %}
+{% set contacts = contacts|default({ phone: null, email: null }) %}
+{% set year = year|default('now'|date('Y')) %}
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__inner">
+
+      <div class="footer__top">
+        <!-- brand -->
+        <section class="footer__top-item footer__brand">
+          <a href="{{ brand.url }}" class="footer__logo" aria-label="Home">
+            <img src="{{ brand.logo_src }}" alt="{{ brand.logo_alt }}" class="footer__logo-img" width="120" height="32" loading="lazy" decoding="async">
+          </a>
+          {% if brand.text %}
+            <p class="footer__text">{{ brand.text }}</p>
+          {% endif %}
+        </section>
+
+        {# columns (навигационные блоки) #}
+        {% for col in columns %}
+          <nav class="footer__top-item footer__nav" aria-labelledby="footer-links-{{ loop.index }}">
+            <h2 id="footer-links-{{ loop.index }}" class="footer__top-title">{{ col.title }}</h2>
+            {% if col.links is defined and col.links|length %}
+              <ul class="footer__list">
+                {% for link in col.links %}
+                  <li class="footer__list-item">
+                    <a href="{{ link.url }}" class="footer__link">{{ link.label }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </nav>
+        {% endfor %}
+
+        <!-- contacts -->
+        {% if contacts.phone or contacts.email %}
+          <section class="footer__top-item footer__contact" aria-labelledby="footer-contact">
+            <h2 id="footer-contact" class="footer__top-title">Contact us</h2>
+            <address class="footer__address">
+              {% if contacts.phone %}
+                <a href="tel:{{ contacts.phone|replace({' ':'','-':''}) }}" class="footer__contact-link">{{ contacts.phone }}</a>
+              {% endif %}
+              {% if contacts.email %}
+                <a href="mailto:{{ contacts.email }}" class="footer__contact-link">{{ contacts.email }}</a>
+              {% endif %}
+            </address>
+          </section>
+        {% endif %}
+      </div>
+
+      <div class="footer__bot">
+        <p class="footer__privacy"><small>&copy; <time datetime="{{ year }}">{{ year }}</time> All rights reserved.</small></p>
+      </div>
+
+    </div>
+  </div>
+</footer>

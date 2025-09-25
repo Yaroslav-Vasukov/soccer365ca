@@ -4,6 +4,17 @@
   gap: 4px;
   font-size: 18px;
   color: $color-gray;
+  &--date {
+    font-weight: 500;
+  }
+  &--video {
+      font-size: 14px;
+      color: $color-light;
+      font-weight: 400;
+      & .date__icon {
+        font-size: 20px;
+  }
+}
 		&__icon {
       font-size: 20px;
       vertical-align: middle;

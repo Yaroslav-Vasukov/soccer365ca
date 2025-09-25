@@ -1,5 +1,6 @@
 @use 'utils/index' as *;
 @use '../../components/header/header.scss';
+@use '../../components/footer/footer.scss';
 @use '../../components/hero/hero.scss';
 @use '../../components/button/button.scss';
 @use '../../components/section-header/section-header.scss';
@@ -8,6 +9,7 @@
 @use '../../components/card-live/card-live.scss';
 @use '../../components/card-team/card-team.scss';
 @use '../../components/card-league/card-league.scss';
+@use '../../components/card-video/card-video.scss';
 
 @use '../../components/tabs/tabs.scss';
 @use '../../components/table/table.scss';

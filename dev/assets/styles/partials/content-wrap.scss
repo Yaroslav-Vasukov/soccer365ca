@@ -4,3 +4,34 @@
     grid-template-columns: repeat(auto-fill, minmax( 320px, 1fr));
     gap: 24px 16px;
 }
+.card-video__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax( 260px, 1fr));
+    gap: 24px 16px;
+    &--hidden {
+        @media (max-width: 768px) {
+            display: none;
+        }
+    } 
+    & .card-video:first-child {
+      grid-column: span 2;
+      grid-row: span 2;
+      @media (max-width: 992px) {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+    }
+    & .card-video:first-child .card-video__title {
+      font-size: 24px;
+            @media (max-width: 992px) {
+        font-size: 16px;
+      }
+    }
+}
+
+.home-videos-swiper {
+    display: none;
+    @media (max-width: 768px) {
+      display: block;
+    }
+}

@@ -1,0 +1,38 @@
+
+{#
+  ВХОД опц.:
+  - post: { href, title, thumb, date, published_at, tags: [] }
+  - href, title, thumb, tags (перекрывают post.*)
+#}
+
+{% set _src   = post|default({}) %}
+{% set _href  = href|default(_src.href|default('#')) %}
+{% set _title = title|default(_src.title|default('Video title')) %}
+{% set _thumb = thumb|default(_src.thumb|default('/assets/images/pictures/img1.webp')) %}
+{% set _tags  = tags|default(_src.tags|default([])) %}
+
+{# дата: берём post.date → post.published_at → null #}
+{% set _date  = _src.date is defined and _src.date ? _src.date
+  : (_src.published_at|default(null)) %}
+
+<article class="card-video">
+  <a href="{{ _href }}" class="card-video__thumb">
+    <img src="{{ _thumb }}" alt="thumb" class="card-video__thumbnail">
+    <span class="card-video__play material-symbols-outlined">play_circle</span>
+  </a>
+
+  <div class="card-video__content">
+    <h3 class="card-video__title">
+      <a href="{{ _href }}" class="card-video__link">{{ _title }}</a>
+    </h3>
+
+    <div class="card-video__meta">
+      {% import "../date/date.twig" as d %}
+      {{ d.view(_date, { variant:'video', show_icon:true, icon:'calendar_today' }) }}
+    </div>
+
+    {% if _tags|length %}
+      {% include "../tag/tag-absolute.twig" with { tags: _tags } only %}
+    {% endif %}
+  </div>
+</article>

@@ -14,12 +14,12 @@
     display: block;
     position: static;
     color: $color-light;
-    background-color: $color-accent-orange;
+    background-color: $color-primary-dark;
     border: none;
     z-index: 10;
     border-radius: 0;
-    height: 64px;
-    width: 64px;
+    height: 40px;
+    width: 40px;
           transition: background-color .3s;
     &::after {
       font-size: 16px;
@@ -27,14 +27,14 @@
       color: $color-light;
     }
     &:hover {
-      background-color: $color-primary;
+      background-color: $color-primary-light;
       transition: background-color .3s;
   }
   }
   }
   .swiper-button__wrap {
     position: relative;
-    height: 88px;
+    height: 56px;
     width: 100%;
     display: flex;
     align-items: flex-end;
@@ -58,9 +58,6 @@
   max-width: 100%;
   box-sizing: border-box;
 }
- .swiper-wrapper,
- .swiper-slide {
-  min-width: 0;
-  max-width: 100%;
-  box-sizing: border-box;
+.home-leagues-swiper .swiper-button__wrap {
+  height: 72px;
 }
