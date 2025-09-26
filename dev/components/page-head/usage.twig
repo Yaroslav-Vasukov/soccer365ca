@@ -1,0 +1,105 @@
+
+{#
+{# Usage Examples for Page Head with Breadcrumbs #}
+
+{# Example 1: News article page #}
+{% include "../components/page-head/page-head.twig" with {
+  title: "Manchester United vs Liverpool: Epic Derby Ends in Draw",
+  subtitle: "A thrilling encounter at Old Trafford sees both teams share the points in a 2-2 draw",
+  breadcrumbs: [
+    { label: "Home", href: "/", home: true },
+    { label: "News", href: "/news" },
+    { label: "Premier League", href: "/news/premier-league" },
+    { label: "Match Report" }
+  ],
+  meta: {
+    date: "25 Jan 2025"
+  }
+} only %}
+
+{# Example 2: Team page #}
+{% include "../components/page-head/page-head.twig" with {
+  title: "Manchester United",
+  subtitle: "Premier League • Old Trafford • Founded 1878",
+  breadcrumbs: [
+    { label: "Home", href: "/", home: true },
+    { label: "Teams", href: "/teams" },
+    { label: "Premier League", href: "/teams/premier-league" },
+    { label: "Manchester United" }
+  ],
+  meta: {
+    count: "25 Players"
+  }
+} only %}
+
+{# Example 3: Player profile #}
+{% include "../components/page-head/page-head.twig" with {
+  title: "Marcus Rashford",
+  subtitle: "Forward • Manchester United • England National Team",
+  breadcrumbs: [
+    { label: "Home", href: "/", home: true },
+    { label: "Teams", href: "/teams" },
+    { label: "Manchester United", href: "/teams/manchester-united" },
+    { label: "Players", href: "/teams/manchester-united/players" },
+    { label: "Marcus Rashford" }
+  ],
+  meta: {
+    count: "#10"
+  }
+} only %}
+
+{# Example 4: League standings #}
+{% include "../components/page-head/page-head.twig" with {
+  title: "Premier League Standings",
+  subtitle: "Current season table and team statistics",
+  breadcrumbs: [
+    { label: "Home", href: "/", home: true },
+    { label: "Leagues", href: "/leagues" },
+    { label: "Premier League Standings" }
+  ],
+  meta: {
+    count: "20 Teams",
+    date: "Updated: 25 Jan 2025"
+  }
+} only %}
+
+{# Example 5: Simple page without breadcrumbs #}
+{% include "../components/page-head/page-head.twig" with {
+  title: "Live Matches",
+  subtitle: "Watch live soccer matches and get real-time updates",
+  meta: {
+    count: "5 Live Now"
+  }
+} only %}
+
+{# Example 6: Standalone breadcrumbs usage #}
+<div class="some-page-section">
+  {% include "../components/breadcrumbs/breadcrumbs.twig" with {
+    items: [
+      { label: "Home", href: "/", home: true },
+      { label: "Videos", href: "/videos" },
+      { label: "Match Highlights", href: "/videos/highlights" },
+      { label: "Premier League Highlights" }
+    ],
+    aria_label: "Navigation breadcrumb"
+  } only %}
+</div>
+
+{# Example 7: Dynamic breadcrumbs from data #}
+{% set current_team = load_json('@/data/teams/manchester-united.json') %}
+{% include "../components/page-head/page-head.twig" with {
+  title: current_team.name,
+  subtitle: current_team.league ~ " • " ~ current_team.stadium ~ " • Founded " ~ current_team.founded,
+  breadcrumbs: [
+    { label: "Home", href: "/", home: true },
+    { label: "Teams", href: "/teams" },
+    { label: current_team.league, href: "/teams/" ~ current_team.league_slug },
+    { label: current_team.name }
+  ],
+  meta: {
+    count: current_team.players_count ~ " Players"
+  }
+} only %}
+
+
+#}

@@ -1,0 +1,73 @@
+{# Page Head Component with Breadcrumbs Props: - title: string (required) - Main
+page title - subtitle: string (optional) - Page description/subtitle -
+breadcrumbs: array (optional) - Breadcrumb items - label: string - Display text
+- href: string (optional) - Link URL (if not provided, treated as current page)
+- home: boolean (optional) - Mark as home link (uses icon) - meta: object
+(optional) - Meta information to display on the right - count: string - Count or
+additional info - date: string - Date information #} {% set breadcrumbs =
+breadcrumbs|default([]) %} {% set meta = meta|default({}) %}
+
+<section class="page-head">
+  <div class="container">
+    <div class="section__inner">
+      {% if breadcrumbs|length > 0 %}
+      <nav class="page-head__breadcrumbs" aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          {% for item in breadcrumbs %}
+          <li class="breadcrumbs__item">
+            {% if not loop.first %}
+            						<span class="breadcrumbs__separator material-symbols-outlined">
+							arrow_right
+						</span>
+            {% endif %} {% if item.href %}
+            <a
+              href="{{ item.href }}"
+              class="breadcrumbs__link{% if item.home %} breadcrumbs__home{% endif %}"
+              {%
+              if
+              item.home
+              %}aria-label="Home"
+              {%
+              endif
+              %}
+            >
+              {% if item.home %}
+              <span class="breadcrumbs__icon material-symbols-outlined">
+                home
+              </span>
+              {% else %}
+              {{ item.label }}
+              {% endif %}
+            </a>
+            {% else %}
+            <span class="breadcrumbs__current" aria-current="page">
+              {{ item.label }}
+            </span>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ol>
+      </nav>
+      {% endif %}
+
+      <div class="page-head__content">
+        <div class="page-head__main">
+          <h1 class="page-head__title">{{ title }}</h1>
+          {% if subtitle %}
+          <p class="page-head__subtitle">{{ subtitle }}</p>
+          {% endif %}
+        </div>
+
+        {% if meta.count or meta.date %}
+        <div class="page-head__meta">
+          {% if meta.count %}
+          <div class="page-head__count">{{ meta.count }}</div>
+          {% endif %} {% if meta.date %}
+          <div class="page-head__count">{{ meta.date }}</div>
+          {% endif %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

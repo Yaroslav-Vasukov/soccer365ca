@@ -1,0 +1,45 @@
+{% extends "../layouts/_base.html" %} {% block title %}leagues{% endblock %} {%
+block active_nav %}leagues{% endblock %} {% block body_class %}page page--leagues{%
+endblock %} {% block head_extra %}
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+{% endblock %} {% block content %}
+ {% set leagues = load_json("@/data/leagues.json")
+%} 
+{% include "../components/page-head/page-head.twig" with {
+  title: "Popular Leagues",
+  subtitle: "Popular leagues",
+  breadcrumbs: [
+    { label: "Home", href: "/", home: true },
+    { label: "Leagues" }
+  ],
+    meta: {
+    count: leagues|length ~ " Leagues"
+  }
+} only %}
+
+<section class="section section--margin">
+  <div class="container">
+    <div class="section__inner leagues__inner">
+      <div class="leagues__item card-leagues__grid">
+        {% for l in leagues %}
+         {% include "../components/card-league/card-league.twig" with l only %}
+        {% endfor %}
+      </div>
+      <div class="leagues__item leagues__item--left">
+        <img src="/assets/images/leagues/leagues.webp" alt="Premier League" class="leagues__image">
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+{% endblock %} {% block scripts %}
+{% endblock %}

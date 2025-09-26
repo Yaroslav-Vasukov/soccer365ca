@@ -1,0 +1,362 @@
+// ===== mixins =====
+@mixin grid-cols($n, $gap: 8px) {
+  display: grid;
+  grid-template-columns: repeat($n, minmax(0, 1fr));
+  gap: $gap;
+}
+
+@mixin button-reset {
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+// ===== calendar =====
+.calendar {
+  position: relative;
+  
+  &__wrap {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+    margin-top: 16px;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+
+  &__bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    
+    @media (max-width: 768px) {
+      justify-content: center;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 20px;
+    color: $color-light;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 180px;
+    
+    @media (max-width: 480px) {
+      font-size: 18px;
+      min-width: 160px;
+    }
+  }
+
+  &__month,
+  &__year {
+    color: $color-light;
+  }
+
+  &__nav {
+    @include button-reset;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba($color-light, 0.2);
+    border-radius: 8px;
+    background: $color-dark-gray;
+    color: $color-light;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: $color-primary;
+      border-color: $color-primary;
+      transform: translateY(-1px);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-primary;
+      outline-offset: 2px;
+    }
+
+    &--today {
+      .calendar__nav-icon {
+        font-size: 18px;
+      }
+    }
+
+    .material-symbols-outlined {
+      font-size: 20px;
+    }
+  }
+
+  &__grid {
+    flex-shrink: 0;
+    @include grid-cols(7, 4px);
+    position: relative;
+    min-width: 320px;
+    
+    @media (max-width: 480px) {
+      min-width: 280px;
+    }
+  }
+
+  &__dow {
+    @include grid-cols(7, 4px);
+    grid-area: 1/1/2/8;
+    margin-bottom: 8px;
+
+    span {
+      font-size: 14px;
+      font-weight: 600;
+      color: $color-gray;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 8px 4px;
+    }
+  }
+
+  &__cell {
+    @include button-reset;
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border: 1px solid rgba($color-light, 0.1);
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: $color-dark-gray;
+    color: $color-light;
+    transition: all 0.2s ease;
+    min-height: 48px;
+
+    @media (max-width: 768px) {
+      aspect-ratio: 2 / 1;
+      min-height: 40px;
+      padding: 6px;
+    }
+
+    @media (max-width: 480px) {
+      aspect-ratio: 1.5 / 1;
+      min-height: 36px;
+      padding: 4px;
+    }
+
+    &:hover {
+      background-color: rgba($color-primary, 0.1);
+      border-color: rgba($color-primary, 0.3);
+      transform: translateY(-1px);
+    }
+
+    &--muted {
+      opacity: 0.4;
+      cursor: default;
+      
+      &:hover {
+        background-color: $color-dark-gray;
+        border-color: rgba($color-light, 0.1);
+        transform: none;
+      }
+    }
+
+    &[aria-selected="true"] {
+      background-color: $color-primary;
+      color: $color-light;
+      border-color: $color-primary-dark;
+      transform: translateY(-1px);
+
+      .calendar__daynum {
+        color: $color-light;
+      }
+
+      .calendar__badge {
+        background: $color-light;
+        color: $color-primary;
+      }
+    }
+
+    &.calendar__today {
+      border-color: $color-primary;
+      border-width: 2px;
+      
+      .calendar__daynum {
+        color: $color-primary;
+        font-weight: 700;
+      }
+    }
+  }
+
+  &__daynum {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1;
+    
+    @media (max-width: 480px) {
+      font-size: 12px;
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 16px;
+    height: 16px;
+    background: $color-primary;
+    color: $color-light;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+    
+    @media (max-width: 480px) {
+      width: 14px;
+      height: 14px;
+      font-size: 9px;
+      top: 2px;
+      right: 2px;
+    }
+  }
+
+  &__matches {
+    flex-grow: 1;
+    min-width: 0;
+    
+    &-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: $color-light;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      
+      @media (max-width: 768px) {
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 16px;
+      }
+    }
+
+    &-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 20px;
+      
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      @media (max-width: 480px) {
+        gap: 12px;
+      }
+
+      .muted {
+        grid-column: 1 / -1;
+        text-align: center;
+        color: $color-gray;
+        font-style: italic;
+        padding: 40px 20px;
+        
+        @media (max-width: 768px) {
+          padding: 20px;
+        }
+      }
+    }
+  }
+
+  // Модификаторы календаря
+  &--large {
+    .calendar__grid {
+      min-width: 400px;
+    }
+
+    .calendar__cell {
+      min-height: 60px;
+      padding: 12px;
+    }
+
+    .calendar__daynum {
+      font-size: 16px;
+    }
+  }
+
+  &--compact {
+    .calendar__wrap {
+      gap: 20px;
+    }
+
+    .calendar__grid {
+      min-width: 280px;
+    }
+
+    .calendar__cell {
+      min-height: 40px;
+      padding: 6px;
+    }
+
+    .calendar__matches-list {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+// Интеграция с card-match компонентом
+.calendar__matches-list {
+  .card-match {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+// Адаптивность для очень маленьких экранов
+@media (max-width: 320px) {
+  .calendar {
+    &__grid {
+      min-width: 260px;
+    }
+
+    &__cell {
+      min-height: 32px;
+      padding: 2px;
+    }
+
+    &__daynum {
+      font-size: 11px;
+    }
+
+    &__badge {
+      width: 12px;
+      height: 12px;
+      font-size: 8px;
+    }
+
+    &__nav {
+      width: 36px;
+      height: 36px;
+
+      .material-symbols-outlined {
+        font-size: 18px;
+      }
+    }
+
+    &__title {
+      font-size: 16px;
+      min-width: 140px;
+    }
+  }
+}

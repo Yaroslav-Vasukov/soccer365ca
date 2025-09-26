@@ -10,7 +10,12 @@
 @use '../../components/card-team/card-team.scss';
 @use '../../components/card-league/card-league.scss';
 @use '../../components/card-video/card-video.scss';
+@use '../../components/card-match/card-match.scss';
 
+@use '../../components/calendar/calendar.scss';
+@use '../../components/infinite-scroll/infinite-scroll.scss';
+@use '../../components/page-head/page-head.scss';
+@use '../../components/breadcrumbs/breadcrumbs.scss';
 @use '../../components/tabs/tabs.scss';
 @use '../../components/table/table.scss';
 @use '../../components/banner/banner.scss';

@@ -1,0 +1,142 @@
+{# @components/infinite-scroll/infinite-scroll.twig #}
+{#
+  Универсальный компонент infinite scroll
+  
+  Параметры:
+  - type (string): тип карточек ('live', 'news', 'video', 'team', 'league', 'player')
+  - data (array): данные для отображения
+  - initial_count (number): количество элементов для первой загрузки (по умолчанию 8)
+  - items_per_page (number): количество элементов на страницу (по умолчанию 8)
+  - grid_class (string): дополнительный класс для сетки
+  - loading_text (string): текст при загрузке
+  - end_text (string): текст в конце
+  - error_text (string): текст при ошибке
+  - no_items_text (string): текст когда нет элементов
+#}
+
+{% set config = {
+  type: type|default('default'),
+  initial_count: initial_count|default(8),
+  items_per_page: items_per_page|default(8),
+  grid_class: grid_class|default(''),
+  loading_text: loading_text|default('Loading more items...'),
+  end_text: end_text|default('All items loaded'),
+  error_text: error_text|default('Error loading items. Try again'),
+  no_items_text: no_items_text|default('No items found')
+} %}
+
+<div class="infinite-scroll-wrapper" 
+     data-infinite-scroll 
+     data-card-type="{{ config.type }}"
+     data-items-per-page="{{ config.items_per_page }}">
+  
+  <div class="infinite-scroll-container">
+    <!-- Progress bar -->
+    <div class="infinite-scroll-progress" data-progress></div>
+    
+    <!-- Main grid -->
+    <div class="infinite-scroll-grid {{ config.type }}-grid {{ config.grid_class }}" data-grid>
+      
+      {% if data and data|length > 0 %}
+        
+        {# Render initial items based on type #}
+        {% for item in data|slice(0, config.initial_count) %}
+          
+          {# Live matches #}
+          {% if config.type == 'live' %}
+            {% include "../card-live/card-live.twig" with { 
+              match: item, 
+              button: { 
+                text: "live broadcast", 
+                href: item.href, 
+                variant: "primary", 
+                size: "sm" 
+              } 
+            } only %}
+            
+          {# News posts #}
+          {% elseif config.type == 'news' %}
+            {% include "../card-post/card-post.twig" with { 
+              post: { 
+                href: item.href,
+                title: item.title, 
+                image: { 
+                  src: item.thumb, 
+                  alt: item.title 
+                }, 
+                date: item.published_at,
+                excerpt: item.excerpt
+              }, 
+              tags: item.tags|default([]) 
+            } only %}
+            
+          {# Videos #}
+          {% elseif config.type == 'video' %}
+            {% include "../card-video/card-video.twig" with { 
+              post: item 
+            } only %}
+            
+          {# Teams #}
+          {% elseif config.type == 'team' %}
+            {% include "../card-team/card-team.twig" with item only %}
+            
+          {# Leagues #}
+          {% elseif config.type == 'league' %}
+            {% include "../card-league/card-league.twig" with item only %}
+            
+          {# Players #}
+          {% elseif config.type == 'player' %}
+            {% include "../card-player/card-player.twig" with item only %}
+            
+          {# Default fallback #}
+          {% else %}
+            <div class="card-default">
+              <div class="card-default__inner">
+                <h3 class="card-default__title">
+                  <a href="{{ item.href|default('#') }}">{{ item.title|default(item.name)|default('Untitled') }}</a>
+                </h3>
+                {% if item.description %}
+                  <p class="card-default__description">{{ item.description }}</p>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+          
+        {% endfor %}
+        
+      {% else %}
+        <div class="infinite-scroll-empty">
+          <p class="infinite-scroll-empty__text">{{ config.no_items_text }}</p>
+        </div>
+      {% endif %}
+      
+    </div>
+    
+    <!-- Loading states -->
+    <div class="infinite-loader" data-loader hidden>
+      <div class="infinite-loader__spinner" role="progressbar" aria-label="{{ config.loading_text }}"></div>
+      <p class="infinite-loader__text">{{ config.loading_text }}</p>
+    </div>
+    
+    <!-- End message -->
+    <div class="infinite-loader infinite-loader--end" data-end-message hidden>
+      <p class="infinite-loader__text">{{ config.end_text }}</p>
+    </div>
+    
+    <!-- Error state -->
+    <div class="infinite-loader infinite-loader--error" data-error-message hidden>
+      <p class="infinite-loader__text">
+        {{ config.error_text }}
+        <button type="button" class="infinite-loader__retry" data-retry>Try again</button>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<!-- Data for JavaScript (only if we have data) -->
+{% if data and data|length > 0 %}
+<script type="application/json" data-{{ config.type }}-data>
+  {{ data|json_encode|raw }}
+</script>
+{% endif %}

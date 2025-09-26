@@ -1,48 +1,43 @@
+{# File: dev/components/breadcrumbs/breadcrumbs.twig #}
 {# 
-  Входные параметры:
-  - items: [
-      { label: 'Home', href: '/', icon: 'home' },
-      { label: 'Football', href: '/football' },
-      { label: 'La Liga', href: '/football/la-liga' },
-      { label: 'Current Page' }
-    ]
+  Standalone Breadcrumbs Component
+  
+  Props:
+  - items: array (required) - Breadcrumb items
+    - label: string - Display text
+    - href: string (optional) - Link URL (if not provided, treated as current page)
+    - home: boolean (optional) - Mark as home link (uses icon)
+  - aria_label: string (optional) - ARIA label for navigation
 #}
 
-{% set _items = items|default([]) %}
-{% if _items %}
-<div class="breadcrumbs__wrap">
-  <ul class="breadcrumbs">
-    {% for item in _items %}
-      <li class="breadcrumbs__item">
-        {% if item.href is defined %}
-          <a href="{{ item.href }}" class="breadcrumbs__link">
-            {% if item.icon is defined %}
-              <span class="material-symbols-outlined breadcrumbs__icon">{{ item.icon }}</span>
-            {% endif %}
-            <span class="breadcrumbs__text">{{ item.label }}</span>
-          </a>
-          <span class="breadcrumbs__separator">/</span>
-        {% else %}
-          <span class="breadcrumbs__current">{{ item.label }}</span>
-        {% endif %}
-      </li>
-    {% endfor %}
-  </ul>
-  {% endif %}
-</div>
+{% set items = items|default([]) %}
+{% set aria_label = aria_label|default('Breadcrumb') %}
 
+	{% if items|length > 0 %}
+		<nav aria-label="{{ aria_label }}"> <ol class="breadcrumbs">
+			{% for item in items %}
+				<li class="breadcrumbs__item">
+					{% if not loop.first %}
+						<span class="breadcrumbs__separator material-symbols-outlined">
+							arrow_right
+						</span>
+					{% endif %}
 
-
-
-
-{# 
-{% include "@components/breadcrumbs/breadcrumbs.twig" with {
-  items: [
-    { label: "Home", href: "/", icon: "home" },
-    { label: "Football", href: "/football" },
-    { label: "La Liga", href: "/football/la-liga" },
-    { label: "Current Page" }
-  ]
-} %}
-
-#}
+					{% if item.href %}
+						<a href="{{ item.href }}" class="breadcrumbs__link{% if item.home %} breadcrumbs__home{% endif %}" {% if item.home %} aria-label="Home" {% endif %}>
+							{% if item.home %}
+								🏠
+							{% else %}
+								{{ item.label }}
+							{% endif %}
+						</a>
+					{% else %}
+						<span class="breadcrumbs__current" aria-current="page">
+							{{ item.label }}
+						</span>
+					{% endif %}
+				</li>
+			{% endfor %}
+		</ol>
+	</nav>
+{% endif %}

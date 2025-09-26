@@ -1,38 +1,44 @@
+{% extends "../layouts/_base.html" %} 
+{% block title %}Calendar{% endblock %} 
+{% block active_nav %}calendar{% endblock %} 
+{% block body_class %}page page--calendar{% endblock %} 
+{% block head_extra %}{% endblock %} 
 
-{% extends "../layouts/_base-league.html" %} 
-{% block title %}calendar{% endblock %} 
-{% block body_class %}page page--calendar{% endblock %}
-{% block active_nav %}calendar{% endblock %}
-{% block head_extra %} 
-{% endblock %} 
 {% block content %}
+{% set calendar_raw = load_json('@/data/calendar.json') %}
 
-  <section class="page-content">
-    <div class="container">
-      <div class="page-content__inner">
-             <section class="block">
-              <div class="block__inner">
-                {% include "../components/breadcrumbs/breadcrumbs.twig" with {
-                  items: [
-                    { href: "/", icon: "home" },
-                    { label: "Basketball", href: "/basketball" },
-                    { label: "NBA", href: "/league" },
-                    { label: "Calendar" }
-                  ]
-                } %}
-              </div>
-            </section>  
-             <section class="block">
-              <div class="block__inner">
-                {% include "../components/calendar/calendar.twig" %}
-              </div>
-            </section>  
+{% include "../components/page-head/page-head.twig" with {
+  title: "Calendar",
+  subtitle: "Our matches schedule",
+  breadcrumbs: [
+    { label: "Home", href: "/", home: true },
+    { label: "Calendar" }
+  ],
+  meta: {
+    count: calendar_raw|length ~ " matches"
+  }
+} only %}
 
-      </div>
+
+
+<section class="section section--margin">
+  <div class="container">
+    <div class="section__inner">
+            {% include "../components/calendar/calendar.twig" with {
+        games_list: calendar_raw,
+        id: "main-calendar",
+        class: "calendar--large"
+      } only %}
     </div>
-  </section>
-
+  </div>
+</section>
 
 {% endblock %} 
-{% block scripts %}   
+
+{% block scripts %}
 {% endblock %}
+
+
+
+
+

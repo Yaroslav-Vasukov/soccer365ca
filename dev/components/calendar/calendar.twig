@@ -1,0 +1,101 @@
+{# calendar.twig - Исправленная версия без ошибок merge #}
+{% set _games_list = games_list|default([]) %}
+{% set _id = id|default('calendar') %}
+{% set _class = class|default('') %}
+
+{# Создаем структуру данных календаря безопасным способом #}
+{% set calendar_data = {} %}
+
+{% for game in _games_list %}
+  {# Получаем дату в формате Y-m-d #}
+  {% set game_date = game.published_at|date('Y-m-d') %}
+  
+  {# Создаем объект матча #}
+  {% set calendar_match = {
+    'id': game.id,
+    'href': game.href,
+    'home': {
+      'name': game.team1.name,
+      'href': game.team1.href,
+      'logo': game.team1.logo
+    },
+    'away': {
+      'name': game.team2.name,
+      'href': game.team2.href,
+      'logo': game.team2.logo
+    },
+    'score_home': game.score.t1|default(null),
+    'score_away': game.score.t2|default(null),
+    'status': game.status,
+    'date_value': game.published_at,
+    'league': game.league
+  } %}
+  
+  {# ИСПРАВЛЕНО: Безопасное добавление матчей к календарю #}
+  {% if calendar_data[game_date] is defined and calendar_data[game_date] is not null %}
+    {# Дата уже существует, добавляем к существующему массиву #}
+    {% set existing_matches = calendar_data[game_date] %}
+    {% set calendar_data = calendar_data|merge({
+      (game_date): existing_matches|merge([calendar_match])
+    }) %}
+  {% else %}
+    {# Новая дата, создаем новый массив #}
+    {% set calendar_data = calendar_data|merge({
+      (game_date): [calendar_match]
+    }) %}
+  {% endif %}
+{% endfor %}
+
+<div 
+  class="calendar{{ _class ? ' ' ~ _class : '' }}" 
+  id="{{ _id }}"
+  data-calendar
+  data-matches="{{ calendar_data|json_encode|e('html_attr') }}"
+>
+  <header class="calendar__bar">
+    <a class="calendar__nav calendar__nav--today" data-go-today href="#">
+      <span class="material-symbols-outlined calendar__nav-icon">event</span>
+    </a>
+    
+    <button
+      class="calendar__nav"
+      data-prev-month
+      aria-label="Previous month"
+    >
+      <span class="material-symbols-outlined">chevron_left</span>
+    </button>
+    
+    <div class="calendar__title">
+      <span class="calendar__month" data-el="month"></span>
+      <span class="calendar__year" data-el="year"></span>
+    </div>
+    
+    <button class="calendar__nav" data-next-month aria-label="Next month">
+      <span class="material-symbols-outlined">chevron_right</span>
+    </button>
+  </header>
+
+  <div class="calendar__wrap">
+    <div
+      class="calendar__grid"
+      data-el="grid"
+      aria-label="Month view"
+      role="grid"
+    ></div>
+    
+    <aside class="calendar__matches">
+      <h3 class="calendar__matches-title">
+        Matches on <span data-el="matches-date">—</span>
+      </h3>
+      <div class="calendar__matches-list" data-el="matches"></div>
+    </aside>
+  </div>
+</div>
+
+{# Debug информация (опционально) #}
+{% set total_days = calendar_data|keys|length %}
+{% if total_days > 0 %}
+  <!-- Debug: Calendar has matches on {{ total_days }} days -->
+{% else %}
+  <!-- Debug: No calendar data found -->
+{% endif %}

@@ -80,7 +80,7 @@ load_json("@/data/leagues/la-liga.json") %}
       {% include "../components/section-header/section-header.twig" with {
       title: "News", subtitle: true, more: "more", more_href: "/news" } %}
       <div class="card-post__grid">
-        {% for p in posts|slice(0, 8) %} {% include
+        {% for p in posts|slice(16, 8) %} {% include
         "../components/card-post/card-post.twig" with { post: { href: p.href,
         title: p.title, image: { src: p.thumb, alt: p.title }, date:
         p.published_at }, tags: p.tags|default([]) } %} {% else %}

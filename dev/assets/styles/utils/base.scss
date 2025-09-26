@@ -115,6 +115,36 @@ main {
     gap: 16px;
   }
 }
+
+.leagues {
+
+		&__inner {
+      display: grid;
+      grid-template-columns:1fr 1fr;
+      gap: 32px 16px;
+      @media (max-width: 992px) {
+        grid-template-columns: 1fr;
+      }
+		}
+
+		&__item--left {
+      position: relative;
+            @media (max-width: 992px) {
+        display: none;
+      }
+		}
+
+		&__image {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      @media (max-width: 768px) {
+            max-height: none;
+        }
+		}
+}
+
 .visually-hidden {
   position: absolute !important;
   width: 1px !important;
@@ -131,3 +161,42 @@ main {
 [hidden] {
   display: none !important;
 }
+/* стабилизируем макет при появлении скролла */
+
+
+/* дефолты через CSS-переменные */
+:root{
+  --sb-size: 10px;
+  --sb-track: transparent;
+  --sb-thumb: #ff5252; 
+}
+
+/* Firefox */
+*{
+  scrollbar-width: thin;
+  scrollbar-color: var(--sb-thumb) var(--sb-track);
+}
+
+/* Chromium/WebKit */
+*::-webkit-scrollbar{
+  width: var(--sb-size);
+  height: var(--sb-size);
+}
+*::-webkit-scrollbar-track{ background: var(--sb-track); }
+*::-webkit-scrollbar-thumb{
+  background: var(--sb-thumb);
+  border-radius: 999px;
+  border: 2px solid var(--sb-track); /* видимая «дорожка» вокруг */
+}
+*::-webkit-scrollbar-corner{ background: var(--sb-track); }
+
+:root{
+  --sel-bg: #ff5252;   /* зелёный */
+  --sel-fg: #ffffff;   /* текст на выделении */
+}
+::selection{ background: var(--sel-bg); color: var(--sel-fg); }
+::-moz-selection{ background: var(--sel-bg); color: var(--sel-fg); }
+
+/* чтобы сработало и в формах */
+input::selection,
+textarea::selection{ background: var(--sel-bg); color: var(--sel-fg); }

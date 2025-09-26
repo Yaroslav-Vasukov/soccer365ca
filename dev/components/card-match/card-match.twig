@@ -1,0 +1,133 @@
+{% set _league = league|default({}) %}
+{% set _team1 = team1|default(home|default({})) %}
+{% set _team2 = team2|default(away|default({})) %}
+{% set _date = date|default(date_value|default('')) %}
+{% set _status = status|default('scheduled') %}
+{% set _button = button|default({}) %}
+{% set _href = href|default('#') %}
+
+{# Score handling #}
+{% set _score = score|default({}) %}
+{% set t1 = _score.t1|default(score_home|default(null)) %}
+{% set t2 = _score.t2|default(score_away|default(null)) %}
+{% set has_score = t1 is not null and t2 is not null and t1 != '—' and t2 != '—' %}
+{% set w1 = has_score and t1 > t2 %}
+{% set w2 = has_score and t2 > t1 %}
+
+{# Auto-generate button based on status if not provided #}
+{% if not _button or not _button.label %}
+  {% set status_lower = _status|lower %}
+  {% if status_lower in ['live', 'ongoing'] %}
+    {% set _button = {
+      'label': 'Watch Live',
+      'href': _href,
+      'icon': 'play_arrow'
+    } %}
+  {% elseif status_lower in ['finished', 'final', 'ft'] %}
+    {% set _button = {
+      'label': 'Match Report',
+      'href': _href,
+      'icon': 'article'
+    } %}
+  {% elseif status_lower in ['scheduled', 'upcoming'] %}
+    {% set _button = {
+      'label': 'Preview',
+      'href': _href,
+      'icon': 'visibility'
+    } %}
+  {% else %}
+    {% set _button = {
+      'label': 'Match Center',
+      'href': _href,
+      'icon': 'sports_soccer'
+    } %}
+  {% endif %}
+{% endif %}
+
+{# Status classes #}
+{% set status_class = 'card-match__status' %}
+{% if _status|lower in ['live', 'ongoing'] %}
+  {% set status_class = status_class ~ ' card-match__status--live' %}
+{% elseif _status|lower in ['finished', 'final', 'ft'] %}
+  {% set status_class = status_class ~ ' card-match__status--finished' %}
+{% else %}
+  {% set status_class = status_class ~ ' card-match__status--scheduled' %}
+{% endif %}
+
+<article class="card-match">
+  <div class="card-match__top">
+    <a href="{{ _league.href|default('#') }}" class="card-match__league-link">
+      <img
+        src="{{ _league.logo|default('/assets/images/leagues/default.webp') }}"
+        alt="{{ _league.name|default('League') }}"
+        class="card-match__league-img"
+        loading="lazy"
+        decoding="async">
+    </a>
+  </div>
+
+  <div class="card-match__teams-section">
+    <a href="{{ _team1.href|default('#') }}" class="card-match__team">
+      <img
+        src="{{ _team1.logo|default('/assets/images/teams/default.webp') }}"
+        alt="{{ _team1.name|default('Team 1') }}"
+        class="card-match__team-logo"
+        loading="lazy"
+        decoding="async">
+      <span class="card-match__team-name">{{ _team1.name|default('Team 1') }}</span>
+    </a>
+
+    <div class="card-match__center">
+      {% if has_score %}
+        <div class="card-match__score">
+          <span class="card-match__score-num{{ w1 ? ' card-match__score-num--winner' : '' }}">{{ t1 }}</span>
+          <span class="card-match__score-dash">-</span>
+          <span class="card-match__score-num{{ w2 ? ' card-match__score-num--winner' : '' }}">{{ t2 }}</span>
+        </div>
+      {% else %}
+        <div class="card-match__vs">vs</div>
+      {% endif %}
+    </div>
+
+    <a href="{{ _team2.href|default('#') }}" class="card-match__team">
+      <img
+        src="{{ _team2.logo|default('/assets/images/teams/default.webp') }}"
+        alt="{{ _team2.name|default('Team 2') }}"
+        class="card-match__team-logo"
+        loading="lazy"
+        decoding="async">
+      <span class="card-match__team-name">{{ _team2.name|default('Team 2') }}</span>
+    </a>
+  </div>
+
+  <div class="card-match__bottom">
+    <div class="card-match__date">
+      <span class="material-symbols-outlined">
+        {%- if _status|lower == 'live' -%}schedule{%- else -%}calendar_today{%- endif -%}
+      </span>
+      <span>
+        {%- if _status|lower == 'live' -%}
+          Live
+        {%- elseif _date -%}
+          {%- set date_obj = _date|date('Y-m-d H:i:s')|date_modify('') -%}
+          {{ _date|date('d M, H:i') }}
+        {%- else -%}
+          TBD
+        {%- endif -%}
+      </span>
+    </div>
+    
+    <div class="{{ status_class }}">{{ _status|title }}</div>
+
+    {% if _button and _button.label %}
+      <a href="{{ _button.href|default(_button.url|default(_href)) }}" class="btn btn--match">
+        <span>{{ _button.label }}</span>
+        {% if _button.icon %}
+          <span class="material-symbols-outlined">{{ _button.icon }}</span>
+        {% else %}
+          <span class="material-symbols-outlined">arrow_forward</span>
+        {% endif %}
+      </a>
+    {% endif %}
+  </div>
+</article>

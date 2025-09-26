@@ -14,7 +14,7 @@
 
 /* ========== Header ========== */
 .header {
-  background: $color-dark-gray;
+  background: rgba($color-dark-gray, .85);
   color: $color-light;
   position: sticky;
   top: 0;
@@ -108,9 +108,9 @@
     font-weight: 400;
     transition: color .25s ease;
 
-    &:hover { color: $color-primary; }
+    &:hover { color: $color-primary-light; }
     &--active,
-    &[aria-current="page"] { color: $color-primary; }
+    &[aria-current="page"] { color: $color-primary-light; }
   }
 
   /* overlay */
@@ -140,7 +140,7 @@
   }
 
   /* desktop */
-  @media (min-width: 1240px) {
+  @media (min-width: 1440px) {
     &__burger { display: none; }
 
     &__nav {

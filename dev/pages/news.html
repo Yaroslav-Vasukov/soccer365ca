@@ -1,79 +1,41 @@
-
-{% extends "../layouts/_base-league.html" %} 
+{% extends "../layouts/_base.html" %} 
 {% block title %}News{% endblock %} 
-{% block body_class %}page page--news{% endblock %}
-{% block active_nav %}news{% endblock %}
-{% block head_extra %} 
-{% endblock %} 
+{% block active_nav %}news{% endblock %} 
+{% block body_class %}page page--news{% endblock %} 
+{% block head_extra %}{% endblock %} 
+
 {% block content %}
-{% set posts = [
-  { href: '/post/1',  title: 'Mahomes magic: Chiefs edge Bills in primetime thriller',      descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,        thumb: '/assets/images/img1.webp',  published_at: '2023-10-01', sport: 'Football',   league: 'NFL' },
-  { href: '/post/2',  title: 'Eagles defense smothers Cowboys in statement win',            descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,        thumb: '/assets/images/img2.webp',  published_at: '2023-10-02', sport: 'Football',   league: 'NFL' },
-  { href: '/post/3',  title: 'Arsenal outlast Spurs in five-goal North London derby',       descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,        thumb: '/assets/images/img3.webp',  published_at: '2023-10-03', sport: 'Football',     league: 'Premier League' },
-  { href: '/post/4',  title: 'Barcelona rally to defeat Sevilla with late winner',          descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,         thumb: '/assets/images/img4.webp',  published_at: '2023-10-04', sport: 'Football',     league: 'LaLiga' },
-  { href: '/post/5',  title: 'Inter dominate Milan in emphatic Derby della Madonnina',      descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,         thumb: '/assets/images/img5.webp',  published_at: '2023-10-05', sport: 'Football',     league: 'Serie A' },
-  { href: '/post/6',  title: 'LeBron drops triple-double as Lakers top Warriors',          descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'  ,        thumb: '/assets/images/img6.webp',  published_at: '2023-10-06', sport: 'Basketball', league: 'NBA' },
-  { href: '/post/7',  title: 'Aces clinch playoff spot with road blowout',                 descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'  ,        thumb: '/assets/images/img7.webp',  published_at: '2023-10-07', sport: 'Basketball', league: 'WNBA' },
-  { href: '/post/8',  title: 'Maple Leafs win OT classic against Bruins',                  descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'  ,        thumb: '/assets/images/img8.webp',  published_at: '2023-10-08', sport: 'Basketball',     league: 'NHL' },
-  { href: '/post/9',  title: 'Real Madrid book UCL quarterfinal spot after away win',      descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'  ,        thumb: '/assets/images/img9.webp',  published_at: '2023-10-09', sport: 'Football',     league: 'UEFA Champions League' },
-  { href: '/post/10', title: 'Bayern cruise past Dortmund in Der Klassiker',                descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,         thumb: '/assets/images/img10.webp', published_at: '2023-10-10', sport: 'Football',     league: 'Bundesliga' },
-  { href: '/post/11', title: 'Mbappé brace lifts PSG over Lyon',                            descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'  ,        thumb: '/assets/images/img11.webp', published_at: '2023-10-11', sport: 'Football',     league: 'Ligue 1' },
-  { href: '/post/12', title: 'LAFC edge Seattle in wild MLS shootout',                      descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,         thumb: '/assets/images/img12.webp', published_at: '2023-10-12', sport: 'Football',     league: 'MLS' },
-  { href: '/post/13', title: 'Djokovic survives five-set epic in Paris',                    descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,         thumb: '/assets/images/img13.webp', published_at: '2023-10-13', sport: 'Basketball',     league: 'ATP' },
-  { href: '/post/14', title: 'Świątek sweeps to title in Rome',                             descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'  ,        thumb: '/assets/images/img14.webp', published_at: '2023-10-14', sport: 'Basketball',     league: 'WTA' },
-  { href: '/post/15', title: 'Verstappen wins chaotic Monaco GP',                           descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'  ,        thumb: '/assets/images/img15.webp', published_at: '2023-10-15', sport: 'Basketball', league: 'F1' },
-  { href: '/post/16', title: 'Makhachev retains title with dominant submission',            descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'  ,        thumb: '/assets/images/img16.webp', published_at: '2023-10-16', sport: 'Basketball',        league: 'UFC' },
-  { href: '/post/17', title: 'Kohli masterclass lights up IPL chase',                       descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'   ,       thumb: '/assets/images/img17.webp', published_at: '2023-10-17', sport: 'Basketball',    league: 'IPL' },
-  { href: '/post/18', title: 'Yankees power past Red Sox with late homers',                 descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'   ,       thumb: '/assets/images/img1.webp',  published_at: '2023-10-18', sport: 'Basketball',   league: 'MLB' },
-  { href: '/post/19', title: 'Ireland claim dramatic Six Nations victory at Twickenham',     descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit' ,        thumb: '/assets/images/img2.webp',  published_at: '2023-10-19', sport: 'Basketball',      league: 'Six Nations' },
-  { href: '/post/20', title: 'Ajax youngsters shine in Eredivisie rout',                     descr: 'lorem ipsum dolor sit amet consectetur adipiscing elit'  ,       thumb: '/assets/images/img3.webp',  published_at: '2023-10-20', sport: 'Football',     league: 'NBA' }
-] %}
+{% set posts = load_json("@/data/posts.json") %}
 
-  <section class="page-content">
-    <div class="container">
-      <div class="page-content__inner">
-                     <section class="block">
-              <div class="block__inner">
-                {% include "../components/breadcrumbs/breadcrumbs.twig" with {
-                  items: [
-                    { href: "/", icon: "home" },
-                    { label: "Basketball", href: "/basketball" },
-                    { label: "NBA", href: "/league" },
-                    { label: "News" }
-                  ]
-                } %}
-              </div>
-            </section>  
-                  <section class="block"
-         data-pagination
-         data-pagination-items=".card-post-list__grid"
-         data-pagination-item=".card-post"
-         data-pagination-size="9"
-         data-pagination-param="tpage">
-          <div class="block__inner">
-<div class="card-post-list__grid card-post-list__grid--large">
-   {% for post in posts %}
-    {% include "../components/card-post/card-post.twig" with {
-        href:       post.href,
-        title:      post.title,
-        thumb_src:  post.thumb,
-        date_value: post.published_at,
-        sport:      post.sport|default(null),
-        descr:      post.descr,
-        league:     post.league|default(null)
+{% include "../components/page-head/page-head.twig" with {
+  title: "Latest Posts",
+  subtitle: "Popular news",
+  breadcrumbs: [
+    { label: "Home", href: "/", home: true },
+    { label: "Latest Posts" }
+  ],
+  meta: {
+    count: posts|length ~ " posts" 
+  }
+} only %}
+
+<section class="section section--margin">
+  <div class="container">
+    <div class="section__inner">
+      {% include "../components/infinite-scroll/infinite-scroll.twig" with {
+        type: 'news',
+        data: posts,
+        initial_count: 8,
+        items_per_page: 8,
+        loading_text: 'Loading more articles...',
+        end_text: 'All articles loaded',
+        no_items_text: 'No articles available'
       } only %}
-      {% else %}
-        <p class="muted">No posts.</p>
-      {% endfor %}
-</div>
-            <nav class="pagination" aria-label="lives pagination"></nav>
-          </div>
-      </section>
-      </div>
     </div>
-  </section>
-
+  </div>
+</section>
 
 {% endblock %} 
-{% block scripts %}   
+
+{% block scripts %}
 {% endblock %}

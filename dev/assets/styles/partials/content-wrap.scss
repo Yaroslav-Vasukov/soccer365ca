@@ -4,6 +4,20 @@
     grid-template-columns: repeat(auto-fill, minmax( 320px, 1fr));
     gap: 24px 16px;
 }
+.card-lives__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax( 360px, 1fr));
+    gap: 24px 16px;
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(auto-fill, minmax( 320px, 1fr));
+          gap: 16px;
+    }
+}
+.card-leagues__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax( 200px, 1fr));
+    gap: 48px 24px;
+}
 .card-video__grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax( 260px, 1fr));

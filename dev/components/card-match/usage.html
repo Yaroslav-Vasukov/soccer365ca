@@ -1,0 +1,114 @@
+{# Usage examples for card-match component #}
+
+{# 1. Finished match - кнопка автоматически "Match Report" #}
+{% include "../components/card-match/card-match.twig" with {
+  "id": 201,
+  "href": "/match/201",
+  "league": { 
+    "name": "Premier League", 
+    "href": "/league/premier-league", 
+    "logo": "/assets/images/leagues/leg3.webp" 
+  },
+  "team1": { 
+    "name": "Arsenal", 
+    "href": "/team/arsenal", 
+    "logo": "/assets/images/teams/team1.webp" 
+  },
+  "team2": { 
+    "name": "Chelsea", 
+    "href": "/team/chelsea", 
+    "logo": "/assets/images/teams/team2.webp" 
+  },
+  "date": "2025-09-24 19:30",
+  "status": "finished",
+  "score": { "t1": 3, "t2": 2 }
+  {# button будет автоматически: "Match Report" с иконкой article #}
+} only %}
+
+{# 2. Live match - кнопка автоматически "Watch Live" #}
+{% include "../components/card-match/card-match.twig" with {
+  "home": { 
+    "name": "Barcelona", 
+    "href": "/teams/barcelona", 
+    "logo": "/assets/images/teams/barcelona.webp" 
+  },
+  "away": { 
+    "name": "Real Madrid", 
+    "href": "/teams/real-madrid", 
+    "logo": "/assets/images/teams/real-madrid.webp" 
+  },
+  "score_home": 1,
+  "score_away": 1,
+  "status": "Live",
+  "date_value": "2025-09-28 18:00:00",
+  "href": "/match/live/5",
+  "league": { 
+    "name": "El Clasico", 
+    "href": "/leagues/la-liga", 
+    "logo": "/assets/images/leagues/la-liga.webp" 
+  }
+  {# button будет автоматически: "Watch Live" с иконкой play_arrow #}
+} only %}
+
+{# 3. Scheduled match - кнопка автоматически "Preview" #}
+{% include "../components/card-match/card-match.twig" with {
+  "team1": { 
+    "name": "Juventus", 
+    "href": "/team/juventus", 
+    "logo": "/assets/images/teams/juventus.webp" 
+  },
+  "team2": { 
+    "name": "AC Milan", 
+    "href": "/team/milan", 
+    "logo": "/assets/images/teams/milan.webp" 
+  },
+  "date": "2025-09-30 21:00",
+  "status": "scheduled",
+  "href": "/match/preview/6",
+  "league": { 
+    "name": "Serie A", 
+    "href": "/league/serie-a", 
+    "logo": "/assets/images/leagues/serie-a.webp" 
+  }
+  {# button будет автоматически: "Preview" с иконкой visibility #}
+} only %}
+
+{# 4. Кастомная кнопка (переопределяет автоматическую) #}
+{% include "../components/card-match/card-match.twig" with {
+  "team1": { 
+    "name": "Manchester United", 
+    "href": "/team/man-utd", 
+    "logo": "/assets/images/teams/man-utd.webp" 
+  },
+  "team2": { 
+    "name": "Liverpool", 
+    "href": "/team/liverpool", 
+    "logo": "/assets/images/teams/liverpool.webp" 
+  },
+  "date": "2025-10-01 16:30",
+  "status": "scheduled",
+  "href": "/match/7",
+  "league": { 
+    "name": "Premier League", 
+    "href": "/league/premier-league", 
+    "logo": "/assets/images/leagues/premier-league.webp" 
+  },
+  "button": {
+    "label": "Buy Tickets",
+    "href": "/tickets/match/7",
+    "icon": "confirmation_number"
+  }
+} only %}
+
+{# 5. Автоматические кнопки по статусам: #}
+
+{# Live → "Watch Live" + play_arrow #}
+{# Final/Finished/FT → "Match Report" + article #}
+{# Scheduled/Upcoming → "Preview" + visibility #}
+{# Любой другой → "Match Center" + sports_soccer #}
+
+{# 6. В цикле с календарными данными #}
+{% for match in matches %}
+  {% include "../components/card-match/card-match.twig" with match only %}
+  {# button автоматически определится по status #}
+{% endfor %}
