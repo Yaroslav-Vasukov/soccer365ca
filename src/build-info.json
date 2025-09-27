@@ -1,0 +1,14 @@
+{
+  "generated": "2025-09-27T10:14:30.677Z",
+  "build_time": 1758968070677,
+  "version": "0.0.0",
+  "total_files": 64,
+  "total_size_mb": 3.62,
+  "files": {
+    "html": 0,
+    "css": 0,
+    "js": 19,
+    "images": 44,
+    "other": 1
+  }
+}

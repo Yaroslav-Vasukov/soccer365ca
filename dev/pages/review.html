@@ -1,341 +1,46 @@
-
-{% extends "../layouts/_base-league.html" %} 
-{% block title %}Review{% endblock %} 
-{% block body_class %}page page--review{% endblock %}
-{% block active_nav %}review{% endblock %}
-{% block head_extra %} 
+{% extends "../layouts/_base.html" %} {% block title %}Lives{% endblock %} {%
+block active_nav %}lives{% endblock %} {% block body_class %}page page--lives{%
+endblock %} {% block head_extra %}
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-/> 
-{% endblock %} 
-{% block content %}
-{% set lives = [
-  {
-    sport:  'Basketball',
-    league: 'La Liga',
-    time:   '12:34',
-    status: 'live',
-    date_value: '2025-09-15 12:30:00',
-    team1: { name: 'Barcelona',   logo: '/assets/images/team1.webp', href: '/teams/barcelona' },
-    team2: { name: 'Real Madrid', logo: '/assets/images/team2.webp', href: '/teams/real-madrid' },
-    href:  '/match/1'
-  },
-  {
-    sport:  'Basketball',
-    league: 'Premier League',
-    time:   '35:20',
-    status: 'live',
-    date_value: '2025-09-15 11:00:00',
-    team1: { name: 'Arsenal', logo: '/assets/images/team5.webp', href: '/teams/arsenal' },
-    team2: { name: 'Chelsea', logo: '/assets/images/team2.webp', href: '/teams/chelsea' },
-    href:  '/match/2'
-  },
-  {
-    sport:  'Basketball',
-    league: 'NBA',
-    time:   'Q2 08:12',
-    status: 'live',
-    date_value: '2025-09-15 10:00:00',
-    team1: { name: 'Lakers', logo: '/assets/images/team3.webp', href: '/teams/lakers' },
-    team2: { name: 'Celtics', logo: '/assets/images/team2.webp', href: '/teams/celtics' },
-    href:  '/match/3'
-  },
-  {
-    sport:  'Basketball', league: 'Serie A', time: 'HT', status: 'live',
-    date_value: '2025-09-15 09:45:00',
-    team1: { name: 'Inter', logo: '/assets/images/team1.webp', href: '/teams/inter' },
-    team2: { name: 'Milan', logo: '/assets/images/team7.webp', href: '/teams/milan' },
-    href:  '/match/4'
-  },
-  {
-    sport:  'Basketball', league: 'Bundesliga', time: '19:00', status: 'upcoming',
-    date_value: '2025-09-15 19:00:00',
-    team1: { name: 'Bayern', logo: '/assets/images/team1.webp', href: '/teams/bayern' },
-    team2: { name: 'Dortmund', logo: '/assets/images/team4.webp', href: '/teams/bvb' },
-    href:  '/match/5'
-  },
-  {
-    sport:  'Basketball', league: 'EuroLeague', time: 'FT', status: 'finished',
-    date_value: '2025-09-14 21:00:00',
-    team1: { name: 'Real Madrid', logo: '/assets/images/team7.webp', href: '/teams/realm' },
-    team2: { name: 'Barcelona', logo: '/assets/images/team8.webp', href: '/teams/barca' },
-    href:  '/match/6'
-  },
-  {
-    sport:  'Basketball', league: 'Ligue 1', time: '21:45', status: 'upcoming',
-    date_value: '2025-09-15 21:45:00',
-    team1: { name: 'PSG', logo: '/assets/images/team4.webp', href: '/teams/psg' },
-    team2: { name: 'Marseille', logo: '/assets/images/team1.webp', href: '/teams/om' },
-    href:  '/match/7'
-  },
-  {
-    sport:  'Basketball', league: 'NBA', time: 'FT', status: 'finished',
-    date_value: '2025-09-14 18:00:00',
-    team1: { name: 'Ajax', logo: '/assets/images/team6.webp', href: '/teams/ajax' },
-    team2: { name: 'PSV',  logo: '/assets/images/team5.webp',  href: '/teams/psv' },
-    href:  '/match/8'
-  },
-  {
-    sport:  'Basketball', league: 'NBA', time: 'Q3 04:10', status: 'live',
-    date_value: '2025-09-15 07:30:00',
-    team1: { name: 'Warriors', logo: '/assets/images/team4.webp', href: '/teams/warriors' },
-    team2: { name: 'Suns',     logo: '/assets/images/team3.webp',     href: '/teams/suns' },
-    href:  '/match/9'
-  },
-  {
-    sport:  'Basketball', league: 'NBA', time: '22:00', status: 'upcoming',
-    date_value: '2025-09-16 22:00:00',
-    team1: { name: 'Man City', logo: '/assets/images/team2.webp', href: '/teams/mancity' },
-    team2: { name: 'Napoli',   logo: '/assets/images/team1.webp',  href: '/teams/napoli' },
-    href:  '/match/10'
-  }
-] %}
-
-  <section class="page-content">
-    <div class="container">
-      <div class="page-content__inner">
-
-            {% include "../components/review-header/review-header.twig" with {
-  league: {
-    name: "NBA",
-    href: "/leagues/la-liga",
-    logo: "/assets/images/league6.webp"
-  },
-  match: {
-    date_value: "2025-09-20 21:45:00",
-    date_opts: { variant: "review", show_icon: true, icon: "schedule" },
-    status: "Final",
-    score1: 2,
-    score2: 1,
-    team1: { name:"Barcelona", href:"/teams/barcelona", logo:"/assets/images/team1.webp" },
-    team2: { name:"Real Madrid", href:"/teams/real-madrid", logo:"/assets/images/team2.webp" }
+/>
+{% endblock %} {% block content %}
+ {% set lives = load_json("@/data/lives.json")
+%} 
+{% include "../components/page-head/page-head.twig" with {
+  title: "Live Matches",
+  subtitle: "Popular live matches",
+  breadcrumbs: [
+    { label: "Home", href: "/", home: true },
+    { label: "Live Matches" }
+  ],
+    meta: {
+    count: lives|length ~ " Lives" 
   }
 } only %}
+
+<section class="section section--margin">
+  <div class="container">
+    <div class="section__inner">
+              {% include "../components/infinite-scroll/infinite-scroll.twig" with {
+        type: 'live',
+        data: lives,
+        initial_count: 9,
+        items_per_page: 6,
+        loading_text: 'Loading more matches...',
+        end_text: 'All matches loaded',
+        no_items_text: 'No live matches available'
+      } only %}
       </div>
-    </div>
-  </section>
-  {% set content %}
-             <section class="block">
-              <div class="block__inner">
-                {% include "../components/breadcrumbs/breadcrumbs.twig" with {
-                  items: [
-                    { href: "/", icon: "home" },
-                    { label: "Basketball", href: "/basketball" },
-                    { label: "NBA", href: "/league" },
-                    { label: "Calendar", href: "/calendar" },
-                    { label: "Review" }
-                  ]
-                } %}
-              </div>
-            </section>  
-               <section class="block">
-              <div class="block__inner">
-                {% include "../components/section-head/section-head.twig" with {
-      title: "Text review",
-      icon: "article",
-    } %} 
-    {% include "../components/review-text/review-text.twig" with {
-  video: {
-    href: "/videos/highlights-1",
-    thumb: "/assets/images/img14.webp",
-    alt: "Highlights thumbnail"
-  },
-  descr: [
-    "lorem245 ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis, auctor consequat urna. In the end, Barcelona secured a narrow 2–1 victory to maintain their lead in the league standings.",
-    " lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis, auctor consequat urna. In the end, Barcelona secured a narrow 2–1 victory to maintain their lead in the league standings.",
-    "In the end, Barcelona secured a narrow 2–1 victory to maintain their lead in the league standings. Real Madrid created several dangerous chances in the first half, but were unable to convert them into goals. Real Madrid created several dangerous chances in the first half, but were unable to convert them into goals.",
-    "The match was marked by intense competition and strategic plays from both teams.",
-  ]
-} only %}
-              </div>
-            </section>  
-            <section class="block">
-               <div class="block__inner">
-                    {% include "../components/section-head/section-head.twig" with {
-      title: "Key stats",
-      icon: "percent",
-    } %}
-
-    {% include "../components/review-teams/review-teams.twig" with {
-  home: { href: "/teams/barcelona", logo: "/assets/images/team1.webp", name: "Barcelona" },
-  away: { href: "/teams/real-madrid", logo: "/assets/images/team2.webp", name: "Real Madrid" },
-} only %}
-
-                {% set stats = [
-  { title: 'Ball possession',     left: 111,  right: 34 },
-  { title: 'Blows',               left: 56,  right: 456 },
-  { title: 'Shots (on target)',   left: 78,  right: 98 },
-  { title: 'Fouls (committed)',   left: 241, right: 124 },
-  { title: 'Yellow cards',        left: 12,  right: 5 },
-  { title: 'Saves',               left: 24,  right: 33 },
-  { title: 'Number of gears',     left: 68,  right: 76 },
-  { title: 'Moments created',     left: 21,  right: 31 },
-  { title: 'Goal scoring chances',left: 87,  right: 43 },
-  { title: 'Canopies',            left: 21,  right: 22 },
-  { title: 'Penalty kicks',       left: 546, right: 312 },
-  { title: 'Offsides',            left: 52,  right: 21 },
-  { title: 'Red cards',           left: 2,   right: 1 },
-  { title: 'Goal kicks',          left: 24,  right: 21 },
-  { title: 'Throw-ins',           left: 23,  right: 67 }
-] %}
-
-{% include "../components/match-stats/match-stats.twig" with {
-  items: stats,
-  extra_class: 'match-stats--basic', 
-  show_values: true,
-  round: 0
-} only %}
-               </div> 
-            </section>
-<section class="block">
-  <div class="block__inner">
-    {% include "../components/section-head/section-head.twig" with {
-      title: "Popular Lives",
-      icon: "scoreboard",
-      link_url: "/league/serie-a",
-      link_label: "All Lives"
-    } %}
-
-    <div class="swiper home-live-swiper"
-         data-swiper='{
-           "slidesPerView": 1,
-           "spaceBetween": 16,
-           "breakpoints": {
-             "0":  { "slidesPerView": 1 }
-           }
-         }'>
-      <div class="swiper-wrapper">
-        {% for m in lives %}
-          <div class="swiper-slide">
-            {% include "../components/card-live/card-live.twig" with {
-              sport:  m.sport,
-              league: m.league,
-              sport_href:  m.sport_href,
-              league_href: m.league_href,
-              team1: m.team1,
-              team2: m.team2,
-              time:  m.time,
-              date_value: m.date_value,
-              date_opts: { variant: 'lives', show_icon: true, icon: 'calendar_today' }
-            } only %}
-          </div>
-        {% else %}
-          <div class="swiper-slide"><p class="muted">No lives.</p></div>
-        {% endfor %}
-      </div>
-        <button class="swiper-button-prev" data-swiper-prev aria-label="Prev"></button>
-        <button class="swiper-button-next" data-swiper-next aria-label="Next"></button>
     </div>
   </div>
 </section>
 
-  {% endset %}
-
-
-  {% set right %}
-  {% set columns = [
-  { key:'pos',   label:'#',    align:'right', width:'32px',  template:'../table/_cell-number.twig' },
-  { key:'team',   label:'Team',    align:'left',  width:'minmax(40px,1fr)', template:'../table/_cell-team.twig' },
-
-  { key:'w',      label:'W',       align:'right', width:'44px', is_numeric:true, template:'../table/_cell-number.twig' },
-  { key:'l',      label:'L',       align:'right', width:'44px', is_numeric:true, template:'../table/_cell-number.twig' },
-  { key:'pct',    label:'PCT',     align:'right', width:'64px', is_numeric:true, template:'../table/_cell-number.twig' },
-  { key:'pts',    label:'PTS',     align:'right', width:'64px', is_numeric:true, template:'../table/_cell-number.twig' }
-
-] %}
-
-{% set rows = [
-  {
-    pos:1,
-    team: { name:'Dallas Mavericks', logo:'/assets/images/team1.webp', href:'/teams/mavericks' },
-    w:52, l:20, pct:0.722, pts: 124
-  },
-  {
-    pos:2,
-    team: { name:'Boston Celtics', logo:'/assets/images/team2.webp', href:'/teams/celtics' },
-    w:50, l:22, pct:0.694, pts: 120
-  },
-  {
-    pos:3,
-    team: { name:'Denver Nuggets', logo:'/assets/images/team3.webp', href:'/teams/nuggets' },
-    w:48, l:24, pct:0.667, pts: 115
-  },
-  {
-    pos:4,
-    team: { name:'Oklahoma City Thunder', logo:'/assets/images/team4.webp', href:'/teams/thunder' },
-    w:46, l:26, pct:0.639, pts: 110
-  },
-  {
-    pos:5,
-    team: { name:'Milwaukee Bucks', logo:'/assets/images/team5.webp', href:'/teams/bucks' },
-    w:45, l:27, pct:0.625, pts: 105
-  },
-  {
-    pos:6,
-    team: { name:'New York Knicks', logo:'/assets/images/team6.webp', href:'/teams/knicks' },
-    w:43, l:29, pct:0.597, pts: 100
-  },
-  {
-    pos:7,
-    team: { name:'Golden State Warriors', logo:'/assets/images/team7.webp', href:'/teams/warriors' },
-    w:41, l:31, pct:0.569, pts: 95
-  },
-  {
-    pos:8,
-    team: { name:'Miami Heat', logo:'/assets/images/team8.webp', href:'/teams/heat' },
-    w:39, l:33, pct:0.542, pts: 90
-  }
-] %}
-  <div class="block">
-    <div class="block__inner"> 
-      {% include "../components/section-head/section-head.twig" with {
-      title: "Standings",
-      icon: "table_chart",
-    } %}
-    {% include "../components/table/table.twig" with {
-      columns: columns,
-      rows: rows,
-      extra_class: 'table--compact',
-      head_sticky: false,
-      no_results_text: 'No teams',
-      scroll: false
-    } only %}
-    </div>
-  </div>
-
-  {% include "../components/list/list.twig" with {
-  title: "Popular Teams",
-  icon: "groups",
-  teams: [
-    { name: "Roma", url: "/team/roma", logo: "/assets/images/team1.webp" },
-    { name: "Chicago Bulls", url: "/team/roma", logo: "/assets/images/team2.webp" },
-    { name: "Athletic Club", url: "/team/roma", logo: "/assets/images/team3.webp" },
-     { name: "Borrysia", url: "/team/roma", logo: "/assets/images/team4.webp" },
-    { name: "Real Madrid", url: "/team/roma", logo: "/assets/images/team5.webp" },
-    { name: "Barcelona", url: "/team/roma", logo: "/assets/images/team6.webp" },
-    { name: "S.S. Lazio", url: "/team/roma", logo: "/assets/images/team7.webp" },
-    { name: "Milan", url: "/team/milan", logo: "/assets/images/team8.webp" } 
-  ]
-} %}
-  {% endset %}
-
-
-  {% include "../layouts/hub.twig" with {
-    extra_class: "hub--review",
-    content: content,
-    right: right
-  } %}
 
 
 
 
 
-
-
-
-
-{% endblock %} 
-{% block scripts %}   
-<script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+{% endblock %} {% block scripts %}
 {% endblock %}

@@ -9,12 +9,18 @@ import pxtorem from "postcss-pxtorem";
 import { PurgeCSS } from "purgecss";
 import glob from "glob-all";
 import Twig from "twig";
-import twigPlugin from "@fulcrumsaas/vite-plugin-twig"; // Twig на Vite 5
+import twigPlugin from "@fulcrumsaas/vite-plugin-twig";
+import { generateRouterConfig, updateDevRouter } from './build/router-generator.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const isDev = process.env.NODE_ENV !== 'production';
+const SRC_ROOT = path.resolve(__dirname, "src");
+const SCSS_CACHE = new Map(); // Кэш компиляции SCSS
+const SCSS_ENTRY = path.resolve(__dirname, "dev/assets/styles/main.scss");
+const CSS_OUTPUT_DEV = path.resolve(__dirname, "dev/assets/styles/main.css");
 
-// === load_json helper (NEW) ===============================================
+// === load_json helper ===============================================
 const DEV_ROOT = path.resolve(__dirname, "dev");
 const ALIASES = {
   "@": DEV_ROOT,
@@ -24,16 +30,13 @@ const ALIASES = {
 
 function resolveFromAliases(p) {
   let s = String(p);
-  // поддержка "@/..." (корень dev)
   if (s.startsWith("@/")) s = s.replace(/^@\//, "");
-  // если начинается с известного алиаса
   if (s.startsWith("@")) {
     const parts = s.split("/");
-    const head = parts.shift(); // "@", "@components", "@assets"
+    const head = parts.shift();
     const base = ALIASES[head] || DEV_ROOT;
     return path.resolve(base, parts.join("/"));
   }
-  // относительные пути -> от DEV_ROOT
   if (!path.isAbsolute(s)) return path.resolve(DEV_ROOT, s);
   return s;
 }
@@ -45,11 +48,9 @@ Twig.extendFunction("load_json", (p) => {
     return JSON.parse(txt);
   } catch (e) {
     console.warn("[load_json] error:", p, e.message);
-    // безопасный дефолт (пустой список), чтобы шаблон не падал
     return [];
   }
 });
-// ==========================================================================
 
 // ---- purge css ------------------------------------------------
 const USE_PURGED = process.env.USE_PURGED === "1";
@@ -57,15 +58,12 @@ const oldCss = path.resolve(__dirname, "dev/assets/styles/old-styles.css");
 
 // ---- shared constants/helpers ------------------------------------------------
 const IMG_DIR_DEV = path.resolve(__dirname, "dev/assets/images");
-const IMG_URL_RE =
-  /\/assets\/images\/[^"')\s]+\.(jpg|jpeg|png|bmp)(?=(?:[?#][^"')\s]*)?)/gi;
+const IMG_URL_RE = /\/assets\/images\/[^"')\s]+\.(jpg|jpeg|png|bmp)(?=(?:[?#][^"')\s]*)?)/gi;
 const SRC_IMAGE_EXTS = [".jpg", ".jpeg", ".png", ".bmp"];
-
-const REM_ROOT = Number(process.env.REM_ROOT || 16); // 1rem = REM_ROOT px
+const REM_ROOT = Number(process.env.REM_ROOT || 16);
 
 const norm = (p) => p.replace(/\\/g, "/");
-const hasAnyExt = (name, exts) =>
-  exts.some((e) => name.toLowerCase().endsWith(e));
+const hasAnyExt = (name, exts) => exts.some((e) => name.toLowerCase().endsWith(e));
 
 // Smart webp options: lossless for png with alpha, else quality 82
 async function webpConvert(inPath, outPath) {
@@ -80,38 +78,12 @@ async function webpConvert(inPath, outPath) {
   }
 }
 
-function twigDevPlugin() {
+// =============================================================================
+// ENHANCED TWIG PLUGIN WITH ERROR HANDLING
+// =============================================================================
+function enhancedTwigPlugin() {
   return {
-    name: "twig-dev-transform",
-    apply: "serve",
-    order: "pre",              // ← вместо enforce: "pre"
-    configResolved() {
-      Twig.cache(false);
-    },
-    transformIndexHtml: {
-      order: "pre",            // ← вместо enforce: "pre"
-      async handler(_html, ctx) { // ← вместо transform()
-        return await new Promise((resolve, reject) => {
-          Twig.renderFile(ctx.filename, {}, (err, out) => {
-            if (err) reject(err);
-            else resolve(out);
-          });
-        });
-      },
-    },
-    configureServer(server) {
-      server.watcher.on("change", (file) => {
-        if (/\.(twig|html)$/.test(file)) {
-          server.ws.send({ type: "full-reload" });
-        }
-      });
-    },
-  };
-}
-function twigBuildPlugin() {
-  return {
-    name: "twig-build-transform",
-    apply: "build",
+    name: "enhanced-twig-transform",
     order: "pre",
     configResolved() {
       Twig.cache(false);
@@ -121,16 +93,222 @@ function twigBuildPlugin() {
       async handler(_html, ctx) {
         return await new Promise((resolve, reject) => {
           Twig.renderFile(ctx.filename, {}, (err, out) => {
-            if (err) reject(err);
-            else resolve(out);
+            if (err) {
+              // Детальная информация об ошибке
+              const errorInfo = {
+                file: ctx.filename,
+                message: err.message,
+                line: err.line || 'unknown',
+                column: err.column || 'unknown',
+                stack: err.stack
+              };
+              
+              console.error('❌ Twig Template Error:');
+              console.error(`📄 File: ${errorInfo.file}`);
+              console.error(`📍 Line: ${errorInfo.line}, Column: ${errorInfo.column}`);
+              console.error(`💬 Message: ${errorInfo.message}`);
+              
+              // Создаем понятную HTML страницу с ошибкой для dev режима
+              if (process.env.NODE_ENV !== 'production') {
+                const errorHtml = createErrorPage(errorInfo);
+                resolve(errorHtml);
+              } else {
+                reject(err);
+              }
+            } else {
+              resolve(out);
+            }
           });
         });
       },
     },
+    configureServer(server) {
+      if (server) {
+        server.watcher.on("change", (file) => {
+          if (/\.(twig|html)$/.test(file)) {
+            console.log(`🔄 Reloading: ${path.basename(file)}`);
+            server.ws.send({ type: "full-reload" });
+          }
+        });
+      }
+    },
   };
 }
 
+// Создание страницы с ошибкой для удобной отладки
+function createErrorPage(errorInfo) {
+  return `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twig Template Error</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #1a1a1a;
+            color: #ff6b6b;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .error-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #2a2a2a;
+            border-radius: 8px;
+            padding: 30px;
+            border-left: 5px solid #ff6b6b;
+        }
+        .error-title {
+            color: #ff6b6b;
+            font-size: 24px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        .error-info {
+            background: #333;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .error-label {
+            color: #74c0fc;
+            font-weight: bold;
+        }
+        .error-value {
+            color: #ffd43b;
+            margin-left: 10px;
+        }
+        .error-message {
+            background: #400;
+            border: 1px solid #600;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            white-space: pre-wrap;
+        }
+        .reload-hint {
+            color: #51cf66;
+            margin-top: 20px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-title">🚨 Twig Template Error</div>
+        
+        <div class="error-info">
+            <div><span class="error-label">📄 File:</span><span class="error-value">${errorInfo.file}</span></div>
+            <div><span class="error-label">📍 Line:</span><span class="error-value">${errorInfo.line}</span></div>
+            <div><span class="error-label">📍 Column:</span><span class="error-value">${errorInfo.column}</span></div>
+        </div>
+        
+        <div class="error-message">
+            <strong>Error Message:</strong><br>
+            ${errorInfo.message}
+        </div>
+        
+        <div class="reload-hint">
+            💡 Fix the error and save the file - the page will reload automatically
+        </div>
+    </div>
+    
+    <script>
+        // Автоматическая перезагрузка при исправлении
+        if (window.location.protocol === 'http:') {
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
+        }
+    </script>
+</body>
+</html>`;
+}
+// =============================================================================
+// JSON VALIDATION PLUGIN
+// =============================================================================
+function jsonValidationPlugin() {
+  return {
+    name: 'json-validation',
+    configureServer(server) {
+      if (server) {
+        server.watcher.on('change', (file) => {
+          if (file.endsWith('.json') && file.includes('/data/')) {
+            validateJsonFile(file);
+          }
+        });
+      }
+    },
+    buildStart() {
+      // Валидация всех JSON файлов при сборке
+      const dataDir = path.resolve(__dirname, 'dev/data');
+      if (fs.existsSync(dataDir)) {
+        validateAllJsonFiles(dataDir);
+      }
+    }
+  };
+}
 
+function validateJsonFile(filePath) {
+  try {
+    const content = fs.readFileSync(filePath, 'utf8');
+    JSON.parse(content);
+    console.log(`✅ JSON valid: ${path.basename(filePath)}`);
+  } catch (error) {
+    console.error(`❌ JSON Error in ${path.basename(filePath)}:`);
+    console.error(`📍 Line: ${getJsonErrorLine(error, filePath)}`);
+    console.error(`💬 ${error.message}`);
+  }
+}
+
+function validateAllJsonFiles(dir) {
+  try {
+    const files = fs.readdirSync(dir, { withFileTypes: true });
+    let validCount = 0;
+    let errorCount = 0;
+    
+    for (const file of files) {
+      const fullPath = path.resolve(dir, file.name);
+      
+      if (file.isDirectory()) {
+        const result = validateAllJsonFiles(fullPath);
+        validCount += result.valid;
+        errorCount += result.errors;
+      } else if (file.name.endsWith('.json')) {
+        try {
+          const content = fs.readFileSync(fullPath, 'utf8');
+          JSON.parse(content);
+          validCount++;
+        } catch (error) {
+          console.error(`❌ JSON Error in ${file.name}: ${error.message}`);
+          errorCount++;
+        }
+      }
+    }
+    
+    if (errorCount === 0) {
+      console.log(`✅ All ${validCount} JSON files are valid`);
+    }
+    
+    return { valid: validCount, errors: errorCount };
+  } catch (error) {
+    console.warn(`⚠️ Could not validate JSON files in ${dir}`);
+    return { valid: 0, errors: 0 };
+  }
+}
+
+function getJsonErrorLine(error, filePath) {
+  // Пытаемся извлечь номер строки из ошибки JSON
+  const match = error.message.match(/line (\d+)|position (\d+)/i);
+  if (match) {
+    return match[1] || match[2];
+  }
+  return 'unknown';
+}
 // tiny concurrency limiter
 function createLimiter(limit = 4) {
   let active = 0;
@@ -194,10 +372,7 @@ async function compileScss(outFile) {
         }
       }
 
-      const fromA = tryCandidates(
-        path.resolve(__dirname, "dev/assets/styles"),
-        url
-      );
+      const fromA = tryCandidates(path.resolve(__dirname, "dev/assets/styles"), url);
       if (fromA) return pathToFileURL(fromA);
       const fromB = tryCandidates(path.resolve(__dirname, "dev"), url);
       if (fromB) return pathToFileURL(fromB);
@@ -210,16 +385,13 @@ async function compileScss(outFile) {
       const p = fileURLToPath(u);
       const src = fs.readFileSync(p, "utf8");
 
-      const isUtils =
-        /[\\\/]dev[\\\/]assets[\\\/]styles[\\\/]utils[\\\/]/i.test(p);
+      const isUtils = /[\\\/]dev[\\\/]assets[\\\/]styles[\\\/]utils[\\\/]/i.test(p);
       const hasNoUtilsPragma = /@no-utils\b/.test(src);
       if (isUtils || hasNoUtilsPragma) {
         return { contents: src, syntax: "scss" };
       }
 
-      const alreadyUsesIndex = /@use\s+["'](?:\.{1,2}\/)*utils\/index["']/.test(
-        src
-      );
+      const alreadyUsesIndex = /@use\s+["'](?:\.{1,2}\/)*utils\/index["']/.test(src);
       const prelude = alreadyUsesIndex ? "" : '@use "utils/index" as *;\n';
       return { contents: prelude + src, syntax: "scss" };
     },
@@ -228,14 +400,15 @@ async function compileScss(outFile) {
   const entry = fs.readFileSync(entryScss, "utf8");
   const src = '@use "utils/index" as *;\n' + entry;
 
-  const res = sass.compileString(src, {
-    style: "compressed",
-    loadPaths: [
-      path.resolve(__dirname, "dev/assets/styles"),
-      path.resolve(__dirname, "dev"),
-    ],
-    importers: [scssImporter],
-  });
+const res = sass.compileString(src, {
+  style: isDev ? "expanded" : "compressed",
+  loadPaths: [
+    path.resolve(__dirname, "dev/assets/styles"),
+    path.resolve(__dirname, "dev"),
+  ],
+  importers: [scssImporter],
+  sourceMap: isDev, // Source maps для dev
+});
 
   const processed = await postcss([
     pxtorem({
@@ -247,13 +420,16 @@ async function compileScss(outFile) {
       exclude: (file) => !!file && /node_modules/i.test(file),
     }),
   ]).process(res.css, {
-    from: entryScss,
-    to: outFile,
-    map: false,
-  });
+  from: entryScss,
+  to: outFile,
+  map: isDev ? { inline: false } : false,
+});
 
   fs.mkdirSync(path.dirname(outFile), { recursive: true });
   fs.writeFileSync(outFile, processed.css);
+  if (isDev && processed.map) {
+  fs.writeFileSync(`${outFile}.map`, processed.map.toString());
+}
   console.log("✅ SCSS →", outFile);
 }
 
@@ -265,48 +441,349 @@ function debounce(fn, ms = 120) {
   };
 }
 
+// =============================================================================
+// OPTIMIZED SCSS COMPILATION
+// =============================================================================
+async function compileScssOptimized(outFile, isDevelopment = false) {
+  try {
+    // Проверяем кэш для dev режима
+    if (isDevelopment) {
+      const cacheKey = await generateScssCache();
+      
+      if (SCSS_CACHE.has(cacheKey) && fs.existsSync(outFile)) {
+        const outStat = fs.statSync(outFile);
+        const cachedTime = SCSS_CACHE.get(cacheKey);
+        
+        if (outStat.mtimeMs >= cachedTime) {
+          console.log("⚡ SCSS cache hit - skipping compilation");
+          return;
+        }
+      }
+    }
+    
+    console.log(`🎨 Compiling SCSS${isDevelopment ? ' (dev)' : ' (prod)'}...`);
+    const startTime = Date.now();
+    
+    await compileScss(outFile);
+    
+    const duration = Date.now() - startTime;
+    console.log(`✅ SCSS compiled in ${duration}ms`);
+    
+    // Сохраняем в кэш для dev режима
+    if (isDevelopment) {
+      const cacheKey = await generateScssCache();
+      SCSS_CACHE.set(cacheKey, Date.now());
+    }
+    
+  } catch (error) {
+    console.error('❌ SCSS compilation error:', error.message);
+    throw error;
+  }
+}
 
+// Генерация ключа кэша на основе времени изменения SCSS файлов
+async function generateScssCache() {
+  const scssFiles = [];
+  
+  function collectScssFiles(dir) {
+    try {
+      const entries = fs.readdirSync(dir, { withFileTypes: true });
+      
+      for (const entry of entries) {
+        const fullPath = path.resolve(dir, entry.name);
+        
+        if (entry.isDirectory()) {
+          collectScssFiles(fullPath);
+        } else if (entry.name.endsWith('.scss')) {
+          scssFiles.push(fullPath);
+        }
+      }
+    } catch (e) {
+      // Игнорируем ошибки доступа к папкам
+    }
+  }
+  
+  // Сканируем основные папки со стилями
+  collectScssFiles(path.resolve(__dirname, "dev/assets/styles"));
+  collectScssFiles(path.resolve(__dirname, "dev/components"));
+  
+  // Создаем хэш на основе времени изменения файлов
+  let cacheString = '';
+  for (const file of scssFiles) {
+    try {
+      const stat = fs.statSync(file);
+      cacheString += `${file}:${stat.mtimeMs};`;
+    } catch (e) {
+      // Файл может быть удален между сканированием и проверкой
+    }
+  }
+  
+  return cacheString;
+}
+
+// =============================================================================
+// SMART SRC CLEAN
+// =============================================================================
+function smartSrcCleanPlugin() {
+  return {
+    name: 'smart-src-clean',
+    apply: 'build',
+    buildStart() {
+      if (!fs.existsSync(SRC_ROOT)) {
+        fs.mkdirSync(SRC_ROOT, { recursive: true });
+        console.log('📁 Created src/ directory');
+        return;
+      }
+      
+      console.log('🧹 Cleaning src/ for fresh build...');
+      
+      const protectedFiles = [
+        '.htaccess', 'web.config', 'robots.txt', 'sitemap.xml', 
+        'favicon.ico', '.well-known', 'README.md', '.env'
+      ];
+      
+      const protectedExtensions = ['.php', '.py', '.htaccess'];
+      const protectedFolders = ['config', 'uploads', 'cache', 'storage', 'api'];
+      
+      try {
+        const entries = fs.readdirSync(SRC_ROOT, { withFileTypes: true });
+        let cleanedCount = 0;
+        let protectedCount = 0;
+        
+        for (const entry of entries) {
+          const fullPath = path.resolve(SRC_ROOT, entry.name);
+          let isProtected = false;
+          
+          if (protectedFiles.includes(entry.name.toLowerCase())) {
+            isProtected = true;
+          }
+          
+          if (!isProtected) {
+            const ext = path.extname(entry.name).toLowerCase();
+            if (protectedExtensions.includes(ext)) {
+              isProtected = true;
+            }
+          }
+          
+          if (!isProtected && entry.isDirectory()) {
+            if (protectedFolders.includes(entry.name.toLowerCase())) {
+              isProtected = true;
+            }
+          }
+          
+          if (!isProtected && entry.name.startsWith('.') && entry.name !== '.well-known') {
+            if (!protectedFiles.includes(entry.name)) {
+              isProtected = true;
+            }
+          }
+          
+          if (isProtected) {
+            console.log(`🛡️  Protected: ${entry.name}`);
+            protectedCount++;
+          } else {
+            try {
+              fs.rmSync(fullPath, { recursive: true, force: true });
+              console.log(`🗑️  Removed: ${entry.name}`);
+              cleanedCount++;
+            } catch (err) {
+              console.warn(`⚠️  Could not remove ${entry.name}:`, err.message);
+            }
+          }
+        }
+        
+        console.log(`✅ Cleaned ${cleanedCount} items, protected ${protectedCount} items`);
+        
+      } catch (error) {
+        console.error('❌ Error during cleaning:', error.message);
+      }
+    }
+  };
+}
+
+// AUTO ROUTER PLUGIN
+function autoRouterPlugin() {
+  return {
+    name: 'auto-router',
+    
+    configureServer(server) {
+      if (server) {
+        updateDevRouter(__dirname);
+        
+        server.watcher.on('add', (file) => {
+          if (file.includes('/pages/') && file.endsWith('.html')) {
+            console.log('📄 New page:', path.basename(file));
+            updateDevRouter(__dirname);
+          }
+        });
+        
+        server.watcher.on('unlink', (file) => {
+          if (file.includes('/pages/') && file.endsWith('.html')) {
+            console.log('🗑️ Removed page:', path.basename(file));
+            updateDevRouter(__dirname);
+          }
+        });
+      }
+    },
+    
+    generateBundle() {
+      const router = generateRouterConfig(__dirname);
+      
+      this.emitFile({
+        type: 'asset',
+        fileName: '__router.json',
+        source: JSON.stringify(router, null, 2)
+      });
+      
+      console.log(`📋 Generated __router.json (${router.length} pages)`);
+    }
+  };
+}
+
+// DEPLOY MANIFEST PLUGIN
+function deployManifestPlugin() {
+  return {
+    name: 'deploy-manifest',
+    apply: 'build',
+    generateBundle(options, bundle) {
+      let totalSize = 0;
+      const fileTypes = {
+        html: 0, css: 0, js: 0, images: 0, other: 0
+      };
+      
+      for (const [fileName, asset] of Object.entries(bundle)) {
+        try {
+          if (asset.source) {
+            const size = typeof asset.source === 'string' 
+              ? Buffer.byteLength(asset.source, 'utf8')
+              : asset.source.length || 0;
+            totalSize += size;
+          }
+        } catch (e) {
+          console.warn('⚠️ Could not calculate size for:', fileName);
+        }
+        
+        const ext = fileName.split('.').pop()?.toLowerCase() || '';
+        
+        if (ext === 'html') {
+          fileTypes.html++;
+        } else if (ext === 'css') {
+          fileTypes.css++;
+        } else if (ext === 'js') {
+          fileTypes.js++;
+        } else if (['webp', 'jpg', 'jpeg', 'png', 'gif', 'svg'].includes(ext)) {
+          fileTypes.images++;
+        } else {
+          fileTypes.other++;
+        }
+      }
+      
+      const manifest = {
+        generated: new Date().toISOString(),
+        build_time: Date.now(),
+        version: process.env.npm_package_version || '1.0.0',
+        total_files: Object.keys(bundle).length,
+        total_size_mb: Math.round(totalSize / 1024 / 1024 * 100) / 100,
+        files: fileTypes
+      };
+      
+      this.emitFile({
+        type: 'asset',
+        fileName: 'build-info.json',
+        source: JSON.stringify(manifest, null, 2)
+      });
+      
+      console.log(`📊 Deploy manifest: ${manifest.total_files} files, ${manifest.total_size_mb}MB`);
+    }
+  };
+}
+// =============================================================================
+// AUTO PAGE INPUT GENERATION
+// =============================================================================
+function generatePageInputs() {
+  const pagesDir = path.resolve(__dirname, "dev/pages");
+  
+  if (!fs.existsSync(pagesDir)) {
+    console.warn("⚠️ Pages directory not found:", pagesDir);
+    return { index: path.resolve(__dirname, "dev/pages/home.html") };
+  }
+  
+  const pages = fs.readdirSync(pagesDir)
+    .filter(file => file.endsWith('.html'))
+    .reduce((acc, file) => {
+      const name = path.basename(file, '.html');
+      const key = name === 'home' ? 'index' : name;
+      acc[key] = path.resolve(pagesDir, file);
+      return acc;
+    }, {});
+  
+  console.log(`📄 Auto-detected ${Object.keys(pages).length} pages for build`);
+  return pages;
+}
 // -----------------------------------------------------------------------------
 // Vite config
 export default defineConfig({
   appType: "mpa",
   root: path.resolve(__dirname, "dev"),
   base: "/",
-  optimizeDeps: {
-    entries: [path.resolve(__dirname, "dev/assets/scripts/main.js")],
-  },
+optimizeDeps: {
+  entries: [path.resolve(__dirname, "dev/assets/scripts/main.js")],
+  exclude: [] // Исключаем проблемные зависимости если появятся
+},
 
   plugins: [
-    
-    twigDevPlugin(), 
-    twigBuildPlugin(),
+    smartSrcCleanPlugin(),
+    autoRouterPlugin(),
+    deployManifestPlugin(),
+
+    enhancedTwigPlugin(),
+    jsonValidationPlugin(),
     twigPlugin({
-  root: path.resolve(__dirname, "dev"),
-  namespaces: {
-    layouts:    path.resolve(__dirname, "dev/layouts"),
-    components: path.resolve(__dirname, "dev/components"),
-    pages:      path.resolve(__dirname, "dev/pages"),
-  },
-}),
+      root: path.resolve(__dirname, "dev"),
+      namespaces: {
+        layouts: path.resolve(__dirname, "dev/layouts"),
+        components: path.resolve(__dirname, "dev/components"),
+        pages: path.resolve(__dirname, "dev/pages"),
+      },
+    }),
 
     // routes (pretty URLs → .html)
-    {
-      name: "pretty-routes",
-      apply: "serve",
-      configureServer(server) {
-        server.middlewares.use((req, _res, next) => {
-          if (!req.url) return next();
-          if (req.url === "/" || req.url === "/index")
-            req.url = "/pages/home.html";
-          const m = req.url.match(
-            /^\/(news|post|videos|calendar|league|leagues|history|review|video|teams|team|player|contact|lives|privacy)\/?$/i
-          );
-          if (m) req.url = `/pages/${m[1]}.html`;
-          next();
-        });
-      },
-    },
-
+{
+  name: "pretty-routes",
+  apply: "serve", // Добавим и для preview
+  configureServer(server) {
+    server.middlewares.use((req, _res, next) => {
+      if (!req.url) return next();
+      if (req.url === "/" || req.url === "/index")
+        req.url = "/pages/home.html";
+      const m = req.url.match(
+        /^\/(news|post|videos|calendar|league|leagues|history|review|video|teams|team|player|contact|lives|privacy)\/?$/i
+      );
+      if (m) req.url = `/pages/${m[1]}.html`;
+      next();
+    });
+  },
+  configurePreviewServer(server) {
+    // Добавляем ту же логику для preview
+    server.middlewares.use((req, _res, next) => {
+      if (!req.url) return next();
+      
+      // Главная страница
+      if (req.url === "/" || req.url === "/index") {
+        req.url = "/index.html";
+        return next();
+      }
+      
+      // Остальные страницы
+      const m = req.url.match(
+        /^\/(news|post|videos|calendar|league|leagues|history|review|video|teams|team|player|contact|lives|privacy|test)\/?$/i
+      );
+      if (m) {
+        req.url = `/${m[1]}.html`;
+      }
+      next();
+    });
+  },
+},
     // одноразовая очистка старого CSS (Purge по .html/.twig)
     {
       name: "purge-once",
@@ -330,16 +807,8 @@ export default defineConfig({
 
         const safelist = {
           standard: [
-            "html",
-            "body",
-            "active",
-            "open",
-            "hidden",
-            "show",
-            "is-active",
-            "is-open",
-            "is-hidden",
-            "is-sticky",
+            "html", "body", "active", "open", "hidden", "show",
+            "is-active", "is-open", "is-hidden", "is-sticky",
           ],
           deep: [/^swiper-/, /^lg-/, /^toast/, /^modal/],
           greedy: [/^is-/, /^has-/],
@@ -367,29 +836,98 @@ export default defineConfig({
       },
     },
 
-    // SCSS live compile (dev)
+    // SCSS live compile (dev) - OPTIMIZED
     {
-      name: "scss-dev",
+      name: "scss-dev-optimized",
       apply: "serve",
       configureServer(server) {
         if (USE_PURGED) return;
-        const reload = debounce(() => server.ws.send({ type: "full-reload" }));
-        compileScss(devCss).then(reload);
-        server.watcher.on("change", (file) => {
-          if (file.endsWith(".scss")) {
-            compileScss(devCss).then(reload);
+        
+        let isCompiling = false;
+        let pendingCompilation = false;
+        
+        const reload = debounce(() => {
+          if (isCompiling) {
+            pendingCompilation = true;
+            return;
           }
+          
+          server.ws.send({ 
+            type: "update", 
+            updates: [{
+              type: "css-update",
+              timestamp: Date.now(),
+              path: "/assets/styles/main.css"
+            }]
+          });
+        }, 150);
+        
+        // Первичная компиляция при запуске
+        compileScssOptimized(CSS_OUTPUT_DEV, true)
+          .then(() => {
+            console.log("🎨 Initial SCSS ready");
+          })
+          .catch(console.error);
+        
+        // Отслеживаем изменения SCSS файлов
+        server.watcher.on("change", async (file) => {
+          if (file.endsWith(".scss")) {
+            if (isCompiling) {
+              pendingCompilation = true;
+              return;
+            }
+            
+            isCompiling = true;
+            const fileName = path.basename(file);
+            
+            try {
+              console.log(`📝 SCSS changed: ${fileName}`);
+              await compileScssOptimized(CSS_OUTPUT_DEV, true);
+              reload();
+              
+              // Если была отложенная компиляция - запускаем её
+              if (pendingCompilation) {
+                pendingCompilation = false;
+                setTimeout(() => {
+                  isCompiling = false;
+                  server.watcher.emit('change', file);
+                }, 100);
+              } else {
+                isCompiling = false;
+              }
+              
+            } catch (error) {
+              console.error('❌ SCSS error:', error.message);
+              isCompiling = false;
+              
+              // Отправляем ошибку в браузер
+              server.ws.send({
+                type: 'error',
+                err: {
+                  message: `SCSS Error: ${error.message}`,
+                  stack: error.stack
+                }
+              });
+            }
+          }
+        });
+        
+        // Очищаем кэш при перезапуске
+        server.watcher.on('restart', () => {
+          SCSS_CACHE.clear();
+          console.log('🔄 SCSS cache cleared');
         });
       },
     },
 
-    // SCSS build step
+    // SCSS build step - OPTIMIZED
     {
-      name: "scss-build",
+      name: "scss-build-optimized",
       apply: "build",
       async buildStart() {
-        if (USE_PURGED) return;
-        await compileScss(devCss);
+        if (!USE_PURGED) {
+          await compileScssOptimized(CSS_OUTPUT_DEV, false);
+        }
       },
     },
 
@@ -404,8 +942,7 @@ export default defineConfig({
         const limit = createLimiter(4);
 
         const inImages = (p) => p && norm(p).toLowerCase().startsWith(ROOT);
-        const isConvertible = (p) =>
-          inImages(p) && hasAnyExt(p, SRC_IMAGE_EXTS);
+        const isConvertible = (p) => inImages(p) && hasAnyExt(p, SRC_IMAGE_EXTS);
 
         async function toWebp(srcPath) {
           try {
@@ -445,9 +982,7 @@ export default defineConfig({
 
         server.middlewares.use((req, _res, next) => {
           if (!req.url) return next();
-          const m = req.url.match(
-            /^\/assets\/images\/(.+)\.(jpg|jpeg|png|bmp)$/i
-          );
+          const m = req.url.match(/^\/assets\/images\/(.+)\.(jpg|jpeg|png|bmp)$/i);
           if (!m) return next();
           const webpPath = path.resolve(IMG_DIR_DEV, m[1] + ".webp");
           if (fs.existsSync(webpPath)) req.url = `/assets/images/${m[1]}.webp`;
@@ -556,50 +1091,66 @@ export default defineConfig({
     },
   ],
 
-  build: {
-    assetsInlineLimit: 0,
-    outDir: path.resolve(__dirname, "src"),
-    emptyOutDir: false,
-    cssCodeSplit: false,
-    rollupOptions: {
-      input: {
-        index: path.resolve(__dirname, "dev/pages/home.html"),
-        news: path.resolve(__dirname, "dev/pages/news.html"),
-        lives: path.resolve(__dirname, "dev/pages/lives.html"),
-        league: path.resolve(__dirname, "dev/pages/league.html"),
-        leagues: path.resolve(__dirname, "dev/pages/leagues.html"),
-        privacy: path.resolve(__dirname, "dev/pages/privacy.html"),
-        history: path.resolve(__dirname, "dev/pages/history.html"),
-        calendar: path.resolve(__dirname, "dev/pages/calendar.html"),
-        post: path.resolve(__dirname, "dev/pages/post.html"),
-        videos: path.resolve(__dirname, "dev/pages/videos.html"),
-        review: path.resolve(__dirname, "dev/pages/review.html"),
-        video: path.resolve(__dirname, "dev/pages/video.html"),
-        teams: path.resolve(__dirname, "dev/pages/teams.html"),
-        team: path.resolve(__dirname, "dev/pages/team.html"),
-        player: path.resolve(__dirname, "dev/pages/player.html"),
-        contact: path.resolve(__dirname, "dev/pages/contact.html"),
+build: {
+  assetsInlineLimit: 4096,
+  outDir: path.resolve(__dirname, "src"),
+  emptyOutDir: false,
+  cssCodeSplit: false,
+  sourcemap: isDev,
+  minify: 'esbuild',
+  target: 'es2020',
+  
+  rollupOptions: {
+    input: generatePageInputs(),
+    preserveEntrySignatures: false,
+    
+    output: {
+      entryFileNames: "assets/scripts/[name].[hash:8].js",
+      chunkFileNames: "assets/scripts/[name].[hash:8].js",
+      
+      assetFileNames: (info) => {
+        const ext = info.name.split(".").pop().toLowerCase();
+        
+        if (ext === "css") return "assets/styles/[name].[hash:8].css";
+        if (["png", "jpg", "jpeg", "bmp", "webp", "gif", "svg"].includes(ext))
+          return "assets/images/[name][extname]";
+        if (["woff", "woff2", "ttf", "otf", "eot"].includes(ext))
+          return "assets/fonts/[name][extname]";
+        if (["mp4", "webm", "ogg", "mp3", "wav"].includes(ext))
+          return "assets/media/[name][extname]";
+        if (["ico", "xml", "txt", "json", "map"].includes(ext))
+          return "[name][extname]";
+        return "assets/other/[name][extname]";
       },
-      preserveEntrySignatures: false,
-      output: {
-        entryFileNames: "assets/scripts/[name].js",
-        chunkFileNames: "assets/scripts/[name].js",
-        assetFileNames: (info) => {
-          const ext = info.name.split(".").pop().toLowerCase();
-          if (ext === "css") return "assets/styles/main[extname]";
-          if (["png", "jpg", "jpeg", "bmp", "webp", "gif", "svg"].includes(ext))
-            return "assets/images/[name][extname]";
-          if (["woff", "woff2", "ttf", "otf", "eot"].includes(ext))
-            return "assets/fonts/[name][extname]";
-          if (["mp4", "webm", "ogg", "mp3", "wav"].includes(ext))
-            return "assets/media/[name][extname]";
-          if (["ico", "xml", "txt", "json", "map"].includes(ext))
-            return "assets/[name][extname]";
-          return "assets/other/[name][extname]";
-        },
+      
+      // ИСПРАВЛЕННАЯ версия manualChunks
+      manualChunks(id) {
+        if (id.includes('node_modules')) {
+          if (id.includes('swiper')) {
+            return 'vendor-swiper';
+          }
+          return 'vendor';
+        }
+        
+        if (id.includes('/components/')) {
+          return 'components';
+        }
+        
+        if (id.includes('/utils/')) {
+          return 'utils';
+        }
+        
+        return undefined;
       },
     },
+    
+    treeshake: {
+      moduleSideEffects: false,
+      propertyReadSideEffects: false,
+      unknownGlobalSideEffects: false
+    }
   },
+},
 
   resolve: {
     alias: {
@@ -608,24 +1159,33 @@ export default defineConfig({
     },
   },
 
-  css: {
-    preprocessorOptions: {
-      scss: {
-        includePaths: [
-          path.resolve(__dirname, "dev/components"),
-          path.resolve(__dirname, "dev/assets/styles"),
-        ],
-      },
+css: {
+  devSourcemap: isDev,
+  preprocessorOptions: {
+    scss: {
+      includePaths: [
+        path.resolve(__dirname, "dev/components"),
+        path.resolve(__dirname, "dev/assets/styles"),
+      ],
+      charset: false, // Убирает ненужный @charset
+      quietDeps: true // Убирает warnings от зависимостей
     },
   },
+},
 
-  server: {
-    host: true,
-    port: 5500,
-    https: false,
-    strictPort: true,
-    open: "/pages/home.html", // теперь открываем .html
-    fs: { allow: [path.resolve(__dirname, "dev")] },
+server: {
+  host: true,
+  port: 5500,
+  https: false,
+  strictPort: true,
+  open: "/pages/home.html",
+  fs: { 
+    allow: [path.resolve(__dirname, "dev")],
+    strict: false // Ускоряет file watching
   },
-  hmr: { clientPort: 5500 },
+  watch: {
+    usePolling: false, // Быстрее на Windows
+    interval: 100
+  }
+},
 });
