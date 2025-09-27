@@ -45,7 +45,7 @@ function initCalendar(root) {
     console.error('Error parsing matches data:', e);
     matchesByDate = {};
   }
-
+  let hideEmptyDays = false;
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   let view = new Date(today.getFullYear(), today.getMonth(), 1);
@@ -55,7 +55,7 @@ function initCalendar(root) {
   const prevBtn = root.querySelector("[data-prev-month]");
   const nextBtn = root.querySelector("[data-next-month]");
   const todayBtn = root.querySelector("[data-go-today]");
-
+  const toggleBtn = root.querySelector("[data-toggle-empty]");
   if (prevBtn) {
     prevBtn.addEventListener("click", () => {
       view = new Date(view.getFullYear(), view.getMonth() - 1, 1);
@@ -79,7 +79,19 @@ function initCalendar(root) {
       render();
     });
   }
-
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      hideEmptyDays = !hideEmptyDays;
+      toggleBtn.setAttribute('aria-pressed', String(hideEmptyDays));
+      // Обновляем иконку
+      const icon = toggleBtn.querySelector('.material-symbols-outlined');
+      if (icon) {
+        icon.textContent = hideEmptyDays ? 'visibility' : 'visibility_off';
+      }
+      render();
+    });
+  }
   render();
 
   function render() {
@@ -93,10 +105,11 @@ function initCalendar(root) {
     yearEl.textContent = view.getFullYear();
   }
 
-  function renderGrid() {
-    grid.innerHTML = "";
+function renderGrid() {
+  grid.innerHTML = "";
 
-    // Days of week header
+  // Days of week header (только для полного календаря)
+  if (!hideEmptyDays) {
     const dow = document.createElement("div");
     dow.className = "calendar__dow";
     DOW.forEach((d) => {
@@ -105,13 +118,44 @@ function initCalendar(root) {
       dow.appendChild(s);
     });
     grid.appendChild(dow);
+  }
 
-    const y = view.getFullYear();
-    const m = view.getMonth();
-    const first = new Date(y, m, 1);
-    const daysInMonth = new Date(y, m + 1, 0).getDate();
-    const startIndex = (first.getDay() + 6) % 7;
+  const y = view.getFullYear();
+  const m = view.getMonth();
+  const first = new Date(y, m, 1);
+  const daysInMonth = new Date(y, m + 1, 0).getDate();
+  const startIndex = (first.getDay() + 6) % 7;
 
+  if (hideEmptyDays) {
+    // Отображаем только дни с матчами
+    const daysWithMatches = [];
+    for (let d = 1; d <= daysInMonth; d++) {
+      const key = iso(y, m, d);
+      if (matchesByDate[key] && matchesByDate[key].length > 0) {
+        daysWithMatches.push(d);
+      }
+    }
+
+    // Если есть матчи, отображаем только эти дни
+    if (daysWithMatches.length > 0) {
+      // Создаем компактную сетку для дней с матчами
+      const compactGrid = document.createElement("div");
+      compactGrid.className = "calendar__compact-grid";
+      
+      daysWithMatches.forEach(d => {
+        compactGrid.appendChild(dayCell(new Date(y, m, d), false));
+      });
+      
+      grid.appendChild(compactGrid);
+    } else {
+      // Если нет матчей, показываем сообщение
+      const noMatches = document.createElement("div");
+      noMatches.className = "calendar__no-matches";
+      noMatches.textContent = "No matches this month";
+      grid.appendChild(noMatches);
+    }
+  } else {
+    // Стандартный календарь с полной сеткой
     // Previous month tail
     const prevMonthDays = new Date(y, m, 0).getDate();
     for (let i = 0; i < startIndex; i++) {
@@ -131,6 +175,7 @@ function initCalendar(root) {
       grid.appendChild(dayCell(new Date(y, m + 1, d), true));
     }
   }
+}
 
   function dayCell(dateObj, muted) {
     const y = dateObj.getFullYear();
