@@ -747,39 +747,37 @@ optimizeDeps: {
     }),
 
     // routes (pretty URLs → .html)
+// Более автоматическое решение в vite.config.js
+
 {
   name: "pretty-routes",
-  apply: "serve", // Добавим и для preview
+  apply: "serve",
   configureServer(server) {
-    server.middlewares.use((req, _res, next) => {
-      if (!req.url) return next();
-      if (req.url === "/" || req.url === "/index")
-        req.url = "/pages/home.html";
-      const m = req.url.match(
-        /^\/(news|post|videos|calendar|league|leagues|history|review|video|teams|team|player|contact|lives|privacy)\/?$/i
-      );
-      if (m) req.url = `/pages/${m[1]}.html`;
-      next();
-    });
-  },
-  configurePreviewServer(server) {
-    // Добавляем ту же логику для preview
     server.middlewares.use((req, _res, next) => {
       if (!req.url) return next();
       
       // Главная страница
       if (req.url === "/" || req.url === "/index") {
-        req.url = "/index.html";
+        req.url = "/pages/home.html";
         return next();
       }
       
-      // Остальные страницы
-      const m = req.url.match(
-        /^\/(news|post|videos|calendar|league|leagues|history|review|video|teams|team|player|contact|lives|privacy|test)\/?$/i
-      );
-      if (m) {
-        req.url = `/${m[1]}.html`;
+      // Автоматическая обработка history-* страниц
+      const historyMatch = req.url.match(/^\/history-([a-z-]+)\/?$/i);
+      if (historyMatch) {
+        const leagueName = historyMatch[1];
+        req.url = `/pages/history-${leagueName}.html`;
+        return next();
       }
+      
+      // Обычные страницы
+      const simplePages = /^\/(news|post|videos|calendar|league|review|video|teams|team|player|contact|lives|privacy)\/?$/i;
+      const simpleMatch = req.url.match(simplePages);
+      if (simpleMatch) {
+        req.url = `/pages/${simpleMatch[1]}.html`;
+        return next();
+      }
+      
       next();
     });
   },

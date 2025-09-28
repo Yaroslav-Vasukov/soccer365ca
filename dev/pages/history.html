@@ -1,46 +1,111 @@
-{% extends "../layouts/_base.html" %} {% block title %}Lives{% endblock %} {%
-block active_nav %}lives{% endblock %} {% block body_class %}page page--lives{%
-endblock %} {% block head_extra %}
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-/>
-{% endblock %} {% block content %}
- {% set lives = load_json("@/data/lives.json")
-%} 
+{% extends "../layouts/_base.html" %}
+
+{# Загружаем данные для нужной лиги #}
+{% set historyData = load_json('@/data/history/' ~ (league_slug|default('premier-league')) ~ '.json') %}
+
+{# Получаем данные из JSON #}
+{% set league = historyData.league %}
+{% set intro = historyData.introduction %}
+{% set timeline = historyData.timeline %}
+{% set achievements = historyData.achievements %}
+
+{% block title %}{{ league.name }} - История{% endblock %}
+{% block active_nav %}history{% endblock %}
+{% block body_class %}page page--history{% endblock %}
+
+{% block content %}
 {% include "../components/page-head/page-head.twig" with {
-  title: "Live Matches",
-  subtitle: "Popular live matches",
+  title: intro.title,
+  subtitle: intro.subtitle,
   breadcrumbs: [
-    { label: "Home", href: "/", home: true },
-    { label: "Live Matches" }
+    { label: "Главная", href: "/", home: true },
+    { label: league.name },
+    { label: "History" }
   ],
-    meta: {
-    count: lives|length ~ " Lives" 
-  }
 } only %}
 
+<!-- Введение -->
 <section class="section section--margin">
   <div class="container">
     <div class="section__inner">
-              {% include "../components/infinite-scroll/infinite-scroll.twig" with {
-        type: 'live',
-        data: lives,
-        initial_count: 9,
-        items_per_page: 6,
-        loading_text: 'Loading more matches...',
-        end_text: 'All matches loaded',
-        no_items_text: 'No live matches available'
-      } only %}
+      <div class="history-intro">
+        <div class="history-intro__content">
+          <h2 class="history-intro__title">{{ league.name }}</h2>
+          <p class="history-intro__subtitle">{{ league.country }} • Founded {{ league.founded }}</p>
+          
+          {% for paragraph in intro.description %}
+          <p class="history-intro__text">{{ paragraph }}</p>
+          {% endfor %}
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- Временная шкала -->
+<section class="section section--margin section--decor">
+  <img src="/assets/images/bg/bg1.webp" alt="" class="section__bg" />
+  <div class="container">
+    <div class="section__inner">
+      {% include "../components/section-header/section-header.twig" with {
+        title: "History " ~ league.name
+      } %}
+      
+      <div class="timeline">
+        {% for item in timeline %}
+        <div class="timeline__item{% if item.current %} timeline__item--current{% endif %}">
+          <div class="timeline__marker">
+            <span class="timeline__year">{{ item.year }}</span>
+          </div>
+          <div class="timeline__content">
+            <h3 class="timeline__title">{{ item.title }}</h3>
+            <p class="timeline__text">{{ item.description }}</p>
+            
+            {% if item.stats %}
+            <div class="timeline__stats">
+              {% for stat in item.stats %}
+              <div class="timeline__stat">
+                <span class="timeline__stat-number">{{ stat.number }}</span>
+                <span class="timeline__stat-label">{{ stat.label }}</span>
+              </div>
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- Достижения -->
+<section class="section section--margin">
+  <div class="container">
+    <div class="section__inner">
+      {% include "../components/section-header/section-header.twig" with {
+        title: "Main Achievements"
+      } %}
+      
+      <div class="achievements">
+        <div class="achievements__grid">
+          {% for achievement in achievements %}
+          <div class="achievement">
+            <div class="achievement__icon">
+              <span class="material-symbols-outlined">{{ achievement.icon }}</span>
+            </div>
+            <div class="achievement__content">
+              <h3 class="achievement__title">{{ achievement.title }}</h3>
+              <p class="achievement__text">{{ achievement.description }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-
-
-
-{% endblock %} {% block scripts %}
 {% endblock %}
+
+{% block scripts %}{% endblock %}

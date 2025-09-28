@@ -1,46 +1,204 @@
-{% extends "../layouts/_base.html" %} {% block title %}Lives{% endblock %} {%
-block active_nav %}lives{% endblock %} {% block body_class %}page page--lives{%
-endblock %} {% block head_extra %}
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-/>
-{% endblock %} {% block content %}
- {% set lives = load_json("@/data/lives.json")
-%} 
+{% extends "../layouts/_base.html" %}
+{% block title %}Contact{% endblock %}
+{% block active_nav %}contact{% endblock %}
+{% block body_class %}page page--contact{% endblock %}
+{% block head_extra %}{% endblock %}
+
+{% block content %}
 {% include "../components/page-head/page-head.twig" with {
-  title: "Live Matches",
-  subtitle: "Popular live matches",
+  title: "Contact Us",
+  subtitle: "Get in touch with us",
   breadcrumbs: [
     { label: "Home", href: "/", home: true },
-    { label: "Live Matches" }
+    { label: "Contact Us" }
   ],
-    meta: {
-    count: lives|length ~ " Lives" 
-  }
 } only %}
 
 <section class="section section--margin">
   <div class="container">
     <div class="section__inner">
-              {% include "../components/infinite-scroll/infinite-scroll.twig" with {
-        type: 'live',
-        data: lives,
-        initial_count: 9,
-        items_per_page: 6,
-        loading_text: 'Loading more matches...',
-        end_text: 'All matches loaded',
-        no_items_text: 'No live matches available'
-      } only %}
+      <div class="contact">
+        <div class="contact__grid">
+          <!-- Contact Information -->
+          <div class="contact__info">
+            {% include "../components/section-header/section-header.twig" with {
+              title: "Contact Information"
+            } %}
+            <p class="contact__description">
+              Have questions about soccer news, live matches, or want to share your thoughts? 
+              We'd love to hear from you. Send us a message and we'll get back to you as soon as possible.
+            </p>
+            
+            <div class="contact__links">
+              <div class="contact__link">
+                <span class="material-symbols-outlined contact__icon">mail</span>
+                <div class="contact__link-content">
+                  <h3 class="contact__link-title">Email</h3>
+                  <a href="mailto:info@soccer365.com" class="contact__link-text">info@soccer365.com</a>
+                </div>
+              </div>
+              
+              <div class="contact__link">
+                <span class="material-symbols-outlined contact__icon">phone</span>
+                <div class="contact__link-content">
+                  <h3 class="contact__link-title">Phone</h3>
+                  <a href="tel:+1234567890" class="contact__link-text">+1 (234) 567-8900</a>
+                </div>
+              </div>
+              
+              <div class="contact__link">
+                <span class="material-symbols-outlined contact__icon">location_on</span>
+                <div class="contact__link-content">
+                  <h3 class="contact__link-title">Address</h3>
+                  <span class="contact__text">123 Soccer Street<br>Sports City, SC 12345</span>
+                </div>
+              </div>
+              
+              <div class="contact__link">
+                <span class="material-symbols-outlined contact__icon">schedule</span>
+                <div class="contact__link-content">
+                  <h3 class="contact__link-title">Working Hours</h3>
+                  <span class="contact__text">Mon - Fri: 9:00 AM - 6:00 PM<br>Sat - Sun: 10:00 AM - 4:00 PM</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact__form-wrapper">
+            <form class="contact__form" data-contact-form action="/contact" method="post">
+              <h2 class="contact__form-title">Send us a Message</h2>
+              
+              <div class="form-group">
+                <label for="name" class="form-label">Full Name</label>
+                <input 
+                  type="text" 
+                  id="name" 
+                  name="name" 
+                  class="form-input" 
+                  required
+                  placeholder="Enter your full name"
+                >
+              </div>
+              
+              <div class="form-group">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input 
+                  type="tel" 
+                  id="phone" 
+                  name="phone" 
+                  class="form-input" 
+                  required
+                  placeholder="Enter your phone number"
+                >
+              </div>
+              
+              <div class="form-group">
+                <label for="email" class="form-label">Email Address</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  class="form-input" 
+                  required
+                  placeholder="Enter your email address"
+                >
+              </div>
+              
+              <div class="form-group">
+                <label for="subject" class="form-label">Subject</label>
+                <select id="subject" name="subject" class="form-input form-select" required>
+                  <option value="">Select a subject</option>
+                  <option value="general">General Inquiry</option>
+                  <option value="news">News & Articles</option>
+                  <option value="live-matches">Live Matches</option>
+                  <option value="technical">Technical Support</option>
+                  <option value="partnership">Partnership</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="message" class="form-label">Message</label>
+                <textarea 
+                  id="message" 
+                  name="message" 
+                  class="form-input form-textarea" 
+                  rows="5" 
+                  required
+                  placeholder="Enter your message here..."
+                ></textarea>
+              </div>
+              
+              <div class="form-group form-group--checkbox">
+                <label class="form-checkbox">
+                  <input type="checkbox" name="newsletter" value="1">
+                  <span class="form-checkbox__mark"></span>
+                  <span class="form-checkbox__text">Subscribe to our newsletter for latest soccer news and updates</span>
+                </label>
+              </div>
+              <button type="submit" class="contact__btn contact__submit">
+                <span class="contact__btn-text">Send Message</span>
+                <span class="material-symbols-outlined contact__btn-icon">send</span>
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
+{% endblock %}
 
-
-
-
-
-
-{% endblock %} {% block scripts %}
+{% block scripts %}
+<script>
+// Простая валидация формы
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.querySelector('[data-contact-form]');
+  if (!form) return;
+  
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Получаем данные формы
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    
+    // Простая валидация
+    if (!data.name.trim()) {
+      alert('Please enter your name');
+      return;
+    }
+    
+    if (!data.phone.trim()) {
+      alert('Please enter your phone number');
+      return;
+    }
+    
+    if (!data.email.trim() || !data.email.includes('@')) {
+      alert('Please enter a valid email address');
+      return;
+    }
+    
+    if (!data.message.trim()) {
+      alert('Please enter your message');
+      return;
+    }
+    
+    // Имитация отправки
+    const submitBtn = form.querySelector('.contact__submit');
+    const originalText = submitBtn.innerHTML;
+    
+    submitBtn.innerHTML = '<span class="btn__text">Sending...</span>';
+    submitBtn.disabled = true;
+    
+    setTimeout(() => {
+      alert('Thank you for your message! We will get back to you soon.');
+      form.reset();
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
+    }, 1500);
+  });
+});
+</script>
 {% endblock %}

@@ -1,0 +1,208 @@
+{
+  "league": {
+    "name": "La Liga",
+    "founded": "1929",
+    "country": "Spain",
+    "logo": "/assets/images/leagues/la-liga.webp"
+  },
+  "introduction": {
+    "title": "The Heart of Spanish Football",
+    "subtitle": "Founded in 1929",
+    "description": [
+      "La Liga, officially known as Primera División, was founded in 1929 and has since become one of the most prestigious football leagues in the world, showcasing the beautiful game with unparalleled technical excellence.",
+      "Home to legendary clubs like Real Madrid and FC Barcelona, La Liga has produced some of football's greatest players and most memorable moments, establishing itself as a global benchmark for football quality."
+    ],
+    "image": {
+      "src": "/assets/images/history/la-liga-foundation.webp",
+      "alt": "La Liga Foundation"
+    }
+  },
+  "timeline": [
+    {
+      "year": "1929",
+      "title": "Foundation & First Championship",
+      "description": "La Liga was established with 10 founding clubs. FC Barcelona won the first championship, marking the beginning of Spanish football's premier competition.",
+      "stats": [
+        {
+          "number": "10",
+          "label": "Founding Clubs"
+        },
+        {
+          "number": "1",
+          "label": "Season Duration"
+        }
+      ],
+      "highlights": [
+        {
+          "icon": "sports_soccer",
+          "text": "FC Barcelona First Champions"
+        }
+      ]
+    },
+    {
+      "year": "1940",
+      "title": "Real Madrid Era Begins",
+      "description": "Real Madrid began their rise to dominance, starting what would become the most successful period in the club's history and establishing El Clásico rivalry.",
+      "stats": [
+        {
+          "number": "2",
+          "label": "Consecutive Titles"
+        }
+      ],
+      "highlights": [
+        {
+          "icon": "emoji_events",
+          "text": "Madrid Dominance"
+        },
+        {
+          "icon": "sports",
+          "text": "El Clásico Rivalry"
+        }
+      ]
+    },
+    {
+      "year": "1950",
+      "title": "The Di Stéfano Era",
+      "description": "Alfredo Di Stéfano joined Real Madrid, leading them to unprecedented success and helping establish La Liga as Europe's premier competition.",
+      "stats": [
+        {
+          "number": "5",
+          "label": "European Cups"
+        },
+        {
+          "number": "8",
+          "label": "League Titles"
+        }
+      ],
+      "highlights": [
+        {
+          "icon": "star",
+          "text": "Di Stéfano Arrival"
+        },
+        {
+          "icon": "public",
+          "text": "European Recognition"
+        }
+      ]
+    },
+    {
+      "year": "1984",
+      "title": "Modern Era & TV Revolution",
+      "description": "La Liga entered the modern era with improved organization, international broadcasting, and the arrival of foreign superstars that elevated the league's global profile.",
+      "stats": [
+        {
+          "number": "20",
+          "label": "Teams Format"
+        }
+      ],
+      "highlights": [
+        {
+          "icon": "tv",
+          "text": "Broadcasting Rights"
+        },
+        {
+          "icon": "public",
+          "text": "Global Expansion"
+        }
+      ]
+    },
+    {
+      "year": "2009",
+      "title": "Messi vs Ronaldo Era",
+      "description": "The arrival of Cristiano Ronaldo at Real Madrid intensified the Messi-Ronaldo rivalry, bringing unprecedented global attention to La Liga and setting new standards for individual excellence.",
+      "stats": [
+        {
+          "number": "12",
+          "label": "Ballon d'Or"
+        },
+        {
+          "number": "91",
+          "label": "Goals (Messi 2012)"
+        }
+      ],
+      "highlights": [
+        {
+          "icon": "sports_soccer",
+          "text": "Greatest Rivalry"
+        },
+        {
+          "icon": "trending_up",
+          "text": "Global Viewership"
+        }
+      ]
+    },
+    {
+      "year": "2025",
+      "title": "Innovation & Future",
+      "description": "Today, La Liga continues to innovate with cutting-edge technology, sustainable practices, and remains home to world-class talent, maintaining its status as one of football's elite competitions.",
+      "stats": [
+        {
+          "number": "2.7B",
+          "label": "Global Followers"
+        },
+        {
+          "number": "183",
+          "label": "Countries"
+        },
+        {
+          "number": "20",
+          "label": "Elite Clubs"
+        }
+      ],
+      "highlights": [
+        {
+          "icon": "smart_toy",
+          "text": "Tech Innovation"
+        },
+        {
+          "icon": "eco",
+          "text": "Sustainability Focus"
+        }
+      ],
+      "current": true
+    }
+  ],
+  "achievements": [
+    {
+      "icon": "emoji_events",
+      "title": "Most UEFA Champions League Titles",
+      "description": "Spanish clubs have won more Champions League titles than any other country, with Real Madrid leading with 15 titles."
+    },
+    {
+      "icon": "star",
+      "title": "Home to Football Legends",
+      "description": "La Liga has been home to the greatest players in history, including Messi, Ronaldo, Ronaldinho, and many more."
+    },
+    {
+      "icon": "sports_soccer",
+      "title": "Technical Excellence",
+      "description": "Renowned worldwide for its technical quality, tactical sophistication, and beautiful style of play."
+    },
+    {
+      "icon": "public",
+      "title": "Global Following",
+      "description": "Broadcast in 183 countries with over 2.7 billion followers worldwide, making it one of the most-watched leagues globally."
+    }
+  ],
+  "vision": {
+    "title": "The Future of Spanish Football",
+    "description": "La Liga continues to lead innovation in football, combining tradition with cutting-edge technology to deliver the best possible experience for players and fans worldwide.",
+    "goals": [
+      {
+        "icon": "smart_toy",
+        "title": "Digital Innovation",
+        "description": "Implementing AI and advanced analytics to enhance fan engagement and improve the quality of football analysis."
+      },
+      {
+        "icon": "eco",
+        "title": "Sustainability Leadership",
+        "description": "Leading environmental initiatives across all clubs and promoting sustainable practices in Spanish football."
+      },
+      {
+        "icon": "diversity_3",
+        "title": "Global Development",
+        "description": "Expanding La Liga's international academies and development programs to nurture talent worldwide."
+      }
+    ]
+  }
+}

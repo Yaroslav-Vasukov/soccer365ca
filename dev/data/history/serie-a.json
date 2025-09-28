@@ -1,0 +1,196 @@
+{
+  "league": {
+    "name": "Serie A",
+    "founded": "1898",
+    "country": "Italy",
+    "logo": "/assets/images/leagues/serie-a.webp"
+  },
+  "introduction": {
+    "title": "The Theater of Italian Football",
+    "subtitle": "Founded in 1898",
+    "description": [
+      "Serie A, established in 1898, is Italy's premier football division and one of the most tactically sophisticated leagues in world football, renowned for its defensive excellence and strategic depth.",
+      "From the legendary clubs of Milan, Juventus, and Inter to the passionate tifosi culture, Serie A has shaped football history with its unique blend of tactical innovation, individual brilliance, and dramatic storytelling."
+    ],
+    "image": {
+      "src": "/assets/images/history/serie-a-foundation.webp",
+      "alt": "Serie A Foundation"
+    }
+  },
+  "timeline": [
+    {
+      "year": "1898",
+      "title": "Birth of Italian Football",
+      "description": "The first Italian Football Championship was held with just 4 teams. Genoa won the inaugural title, laying the foundation for what would become one of football's most prestigious competitions.",
+      "stats": [
+        {
+          "number": "4",
+          "label": "Original Teams"
+        },
+        {
+          "number": "1",
+          "label": "Champion (Genoa)"
+        }
+      ],
+      "highlights": [
+        {
+          "icon": "sports_soccer",
+          "text": "First Championship"
+        }
+      ]
+    },
+    {
+      "year": "1929",
+      "title": "Modern League Format",
+      "description": "Serie A adopted its modern round-robin format with 18 teams, establishing the structure that would define Italian football for decades to come.",
+      "stats": [
+        {
+          "number": "18",
+          "label": "Teams"
+        }
+      ],
+      "highlights": [
+        {
+          "icon": "settings",
+          "text": "Round-Robin Format"
+        }
+      ]
+    },
+    {
+      "year": "1960",
+      "title": "The Golden Years Begin",
+      "description": "The 1960s marked the beginning of Serie A's golden era, with Italian clubs dominating European competitions and introducing revolutionary tactical concepts.",
+      "stats": [
+        {
+          "number": "6",
+          "label": "European Cups (1960s)"
+        }
+      ],
+      "highlights": [
+        {
+          "icon": "emoji_events",
+          "text": "European Dominance"
+        },
+        {
+          "icon": "psychology",
+          "text": "Tactical Innovation"
+        }
+      ]
+    },
+    {
+      "year": "1980",
+      "title": "Foreign Stars Arrive",
+      "description": "Serie A became the destination for world's best players including Maradona, Platini, and later Ronaldo, establishing itself as the most competitive league globally.",
+      "stats": [
+        {
+          "number": "3",
+          "label": "Foreign Player Limit"
+        }
+      ],
+      "highlights": [
+        {
+          "icon": "star",
+          "text": "Global Superstars"
+        },
+        {
+          "icon": "public",
+          "text": "International Appeal"
+        }
+      ]
+    },
+    {
+      "year": "2006",
+      "title": "Calciopoli & Rebuilding",
+      "description": "After the Calciopoli scandal, Serie A underwent major reforms to restore integrity and competitiveness, leading to a period of rebuilding and modernization.",
+      "stats": [
+        {
+          "number": "2006",
+          "label": "World Cup Win"
+        }
+      ],
+      "highlights": [
+        {
+          "icon": "gavel",
+          "text": "Reforms & Integrity"
+        },
+        {
+          "icon": "emoji_events",
+          "text": "World Cup Victory"
+        }
+      ]
+    },
+    {
+      "year": "2025",
+      "title": "Renaissance & Innovation",
+      "description": "Today's Serie A combines traditional tactical excellence with modern innovation, featuring world-class stadiums, cutting-edge technology, and a new generation of Italian and international talent.",
+      "stats": [
+        {
+          "number": "20",
+          "label": "Teams"
+        },
+        {
+          "number": "1.2B",
+          "label": "Global Followers"
+        },
+        {
+          "number": "200+",
+          "label": "Countries Broadcast"
+        }
+      ],
+      "highlights": [
+        {
+          "icon": "stadium",
+          "text": "Modern Stadiums"
+        },
+        {
+          "icon": "trending_up",
+          "text": "Growing Globally"
+        }
+      ],
+      "current": true
+    }
+  ],
+  "achievements": [
+    {
+      "icon": "psychology",
+      "title": "Tactical Mastery",
+      "description": "Serie A is renowned as the tactical laboratory of football, introducing concepts like Catenaccio, Total Football adaptations, and modern pressing systems."
+    },
+    {
+      "icon": "emoji_events",
+      "title": "European Success",
+      "description": "Italian clubs have won more UEFA competitions than any other country, with a total of 48 European trophies across all competitions."
+    },
+    {
+      "icon": "sports_soccer",
+      "title": "Defensive Excellence",
+      "description": "Home to the world's finest defenders and goalkeepers, Serie A has set the standard for defensive play and goalkeeping technique globally."
+    },
+    {
+      "icon": "diversity_3",
+      "title": "Cultural Impact",
+      "description": "Beyond football, Serie A has influenced global culture through its passionate tifosi, iconic stadiums, and the integration of football into Italian society."
+    }
+  ],
+  "vision": {
+    "title": "The Future of Italian Football",
+    "description": "Serie A is writing a new chapter in its storied history, combining its tactical heritage with modern innovation to create the most complete football experience in the world.",
+    "goals": [
+      {
+        "icon": "stadium",
+        "title": "Infrastructure Revolution",
+        "description": "Modernizing stadiums across Italy to create world-class venues that enhance the matchday experience while preserving historical significance."
+      },
+      {
+        "icon": "groups",
+        "title": "Youth Development",
+        "description": "Investing in youth academies and grassroots programs to develop the next generation of Italian talent and maintain competitive excellence."
+      },
+      {
+        "icon": "smart_toy",
+        "title": "Digital Innovation",
+        "description": "Implementing advanced analytics, VAR improvements, and digital fan engagement tools to enhance both player performance and spectator experience."
+      }
+    ]
+  }
+}

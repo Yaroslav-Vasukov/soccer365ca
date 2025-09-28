@@ -1,0 +1,234 @@
+// dev/assets/styles/blocks/privacy.scss
+
+.privacy {
+  max-width: 800px;
+  
+  &__intro {
+    margin-bottom: 48px;
+    padding: 24px;
+    background-color: $color-dark-gray;
+    border-left: 4px solid $color-primary;
+    
+    @media (max-width: 480px) {
+      padding: 20px;
+      margin-bottom: 32px;
+    }
+  }
+  
+  &__intro-text {
+    color: $color-gray;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+    
+    strong {
+      color: $color-light;
+    }
+  }
+  
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    
+    @media (max-width: 480px) {
+      gap: 32px;
+    }
+  }
+  
+  &__section {
+    &--contact {
+      background-color: $color-dark-gray;
+      padding: 32px;
+      border-left: 4px solid $color-accent-blue;
+      
+      @media (max-width: 480px) {
+        padding: 24px;
+      }
+    }
+  }
+  
+  &__section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $color-light;
+    margin-bottom: 20px;
+    
+    @media (max-width: 480px) {
+      font-size: 1.25rem;
+      margin-bottom: 16px;
+    }
+  }
+  
+  &__section-content {
+    color: $color-gray;
+    line-height: 1.6;
+  }
+  
+  &__subsection-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: $color-light;
+    margin: 24px 0 12px 0;
+    
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  
+  &__text {
+    margin-bottom: 16px;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+    
+    strong {
+      color: $color-light;
+    }
+  }
+  
+  &__list {
+    margin: 16px 0;
+    padding-left: 20px;
+    
+    li {
+      margin-bottom: 8px;
+      position: relative;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+      
+      &::marker {
+        color: $color-primary;
+      }
+      
+      strong {
+        color: $color-light;
+      }
+    }
+  }
+  
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  &__contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  &__contact-icon {
+    color: $color-accent-orange;
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  
+  &__contact-content {
+    flex: 1;
+    
+    strong {
+      display: block;
+      color: $color-light;
+      margin-bottom: 4px;
+    }
+  }
+  
+  &__contact-link {
+    color: $color-accent-orange;
+    transition: opacity 0.3s ease;
+    
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+// Table of Contents (если понадобится)
+.privacy-toc {
+  background-color: $color-dark-gray;
+  padding: 24px;
+  margin-bottom: 32px;
+  
+  &__title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $color-light;
+    margin-bottom: 16px;
+  }
+  
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    li {
+      margin-bottom: 8px;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    
+    a {
+      color: $color-accent-orange;
+      font-size: 0.9rem;
+      transition: opacity 0.3s ease;
+      
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+// Responsive improvements
+@media (max-width: 768px) {
+  .privacy {
+    &__section-title {
+      font-size: 1.3rem;
+    }
+    
+    &__list {
+      padding-left: 16px;
+    }
+    
+    &__contact-item {
+      flex-direction: column;
+      gap: 8px;
+      
+      .privacy__contact-icon {
+        align-self: flex-start;
+      }
+    }
+  }
+}
+
+// Print styles
+@media print {
+  .privacy {
+    &__intro,
+    &__section--contact {
+      background: none !important;
+      border: 1px solid #ccc !important;
+    }
+    
+    &__contact-link {
+      color: inherit !important;
+      
+      &::after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+      }
+    }
+  }
+}

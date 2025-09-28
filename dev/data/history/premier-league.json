@@ -1,0 +1,211 @@
+{
+  "league": {
+    "name": "Premier League",
+    "founded": "1992",
+    "country": "England",
+    "logo": "/assets/images/leagues/premier-league.webp"
+  },
+  "introduction": {
+    "title": "The Birth of English Football Excellence",
+    "subtitle": "Founded in 1992",
+    "description": [
+      "The Premier League was established in 1992 as the top tier of English football, revolutionizing the sport with unprecedented commercial success and global reach.",
+      "From its inception with 22 founding clubs to becoming the most-watched football league worldwide, the Premier League has set new standards for competitive football and entertainment."
+    ],
+    "image": {
+      "src": "/assets/images/history/premier-league-foundation.webp",
+      "alt": "Premier League Foundation"
+    }
+  },
+  "timeline": [
+    {
+      "year": "1992",
+      "title": "Foundation & First Season",
+      "description": "The Premier League was officially founded on 20 February 1992. The first season began on 15 August 1992 with 22 clubs breaking away from the Football League First Division.",
+      "stats": [
+        {
+          "number": "22",
+          "label": "Founding Clubs"
+        },
+        {
+          "number": "£1M",
+          "label": "TV Deal Value"
+        }
+      ],
+      "highlights": []
+    },
+    {
+      "year": "1993",
+      "title": "Manchester United Dominance Begins",
+      "description": "Manchester United won their first Premier League title, ending a 26-year wait. This marked the beginning of an era of unprecedented success under Sir Alex Ferguson.",
+      "stats": [
+        {
+          "number": "10",
+          "label": "Points Clear"
+        },
+        {
+          "number": "67",
+          "label": "Goals Scored"
+        }
+      ],
+      "highlights": [
+        {
+          "icon": "emoji_events",
+          "text": "First Premier League Champions"
+        },
+        {
+          "icon": "sports_soccer",
+          "text": "End of 26-year Title Drought"
+        }
+      ]
+    },
+    {
+      "year": "1995",
+      "title": "Reduction to 20 Teams",
+      "description": "The league was reduced from 22 to 20 teams, creating the current format that allows for a more competitive and manageable season structure.",
+      "stats": [
+        {
+          "number": "20",
+          "label": "Teams"
+        },
+        {
+          "number": "38",
+          "label": "Matches per Team"
+        }
+      ],
+      "highlights": [
+        {
+          "icon": "settings",
+          "text": "Format Optimization"
+        }
+      ]
+    },
+    {
+      "year": "2003",
+      "title": "Arsenal's Invincibles",
+      "description": "Arsenal completed the 2003-04 season unbeaten in the league, earning the nickname 'The Invincibles' - a feat unmatched in Premier League history.",
+      "stats": [
+        {
+          "number": "38",
+          "label": "Unbeaten Games"
+        },
+        {
+          "number": "26",
+          "label": "Wins"
+        },
+        {
+          "number": "12",
+          "label": "Draws"
+        }
+      ],
+      "highlights": [
+        {
+          "icon": "shield",
+          "text": "Unbeaten Season"
+        },
+        {
+          "icon": "history",
+          "text": "Historic Achievement"
+        }
+      ]
+    },
+    {
+      "year": "2008",
+      "title": "Global Broadcasting Revolution",
+      "description": "The Premier League signed landmark broadcasting deals worth £1.7 billion, establishing itself as the most commercially successful league globally.",
+      "stats": [
+        {
+          "number": "£1.7B",
+          "label": "TV Deal Value"
+        },
+        {
+          "number": "200+",
+          "label": "Countries"
+        }
+      ],
+      "highlights": [
+        {
+          "icon": "tv",
+          "text": "Global Broadcasting"
+        },
+        {
+          "icon": "public",
+          "text": "Worldwide Reach"
+        }
+      ]
+    },
+    {
+      "year": "2025",
+      "title": "Modern Era & Future",
+      "description": "Today, the Premier League continues to set standards with cutting-edge technology, VAR implementation, and record-breaking commercial deals, maintaining its position as the world's most popular football league.",
+      "stats": [
+        {
+          "number": "3.2B",
+          "label": "Global Audience"
+        },
+        {
+          "number": "£5B+",
+          "label": "Annual Revenue"
+        },
+        {
+          "number": "20",
+          "label": "Elite Clubs"
+        }
+      ],
+      "highlights": [
+        {
+          "icon": "smart_toy",
+          "text": "VAR Technology"
+        },
+        {
+          "icon": "trending_up",
+          "text": "Record Growth"
+        }
+      ],
+      "current": true
+    }
+  ],
+  "achievements": [
+    {
+      "icon": "emoji_events",
+      "title": "Most Watched League Globally",
+      "description": "With over 3.2 billion viewers worldwide, the Premier League is the most-watched football league in the world."
+    },
+    {
+      "icon": "attach_money",
+      "title": "£5+ Billion Annual Revenue",
+      "description": "The Premier League generates over £5 billion annually, making it the wealthiest football league globally."
+    },
+    {
+      "icon": "public",
+      "title": "Global Reach",
+      "description": "Broadcast in over 200 countries and territories, reaching fans in every corner of the world."
+    },
+    {
+      "icon": "sports_soccer",
+      "title": "Elite Competition",
+      "description": "Home to some of the world's best players and most successful clubs, maintaining the highest competitive standards."
+    }
+  ],
+  "vision": {
+    "title": "The Future of English Football",
+    "description": "The Premier League continues to innovate and evolve, setting new standards for football excellence and fan engagement worldwide.",
+    "goals": [
+      {
+        "icon": "smart_toy",
+        "title": "Technology Integration",
+        "description": "Advanced analytics, VAR improvements, and fan engagement technologies to enhance the football experience."
+      },
+      {
+        "icon": "eco",
+        "title": "Sustainability",
+        "description": "Leading environmental initiatives and sustainable practices across all Premier League clubs and operations."
+      },
+      {
+        "icon": "diversity_3",
+        "title": "Global Community",
+        "description": "Expanding grassroots programs and community outreach to develop football talent worldwide."
+      }
+    ]
+  }
+}

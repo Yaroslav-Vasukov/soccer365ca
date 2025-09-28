@@ -1,0 +1,134 @@
+// Простые стили для страницы истории
+.history-intro {
+  margin-bottom: 48px;
+  
+  &__title {
+    font-size: 2rem;
+    color: $color-light;
+    margin-bottom: 8px;
+  }
+  
+  &__subtitle {
+    color: $color-gray;
+    margin-bottom: 24px;
+  }
+  
+  &__text {
+    color: $color-gray;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    max-width: 800px;
+  }
+}
+
+// Временная шкала
+.timeline {
+  max-width: 600px;
+  
+  &__item {
+    display: flex;
+    margin-bottom: 32px;
+    
+    &--current .timeline__marker {
+      background-color: $color-primary;
+    }
+  }
+  
+  &__marker {
+    width: 60px;
+    height: 60px;
+    background-color: $color-dark-gray;
+    border: 2px solid $color-primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 24px;
+    flex-shrink: 0;
+  }
+  
+  &__year {
+    font-size: 0.8rem;
+    color: $color-light;
+    font-weight: bold;
+  }
+  
+  &__content {
+    flex: 1;
+    padding-top: 8px;
+  }
+  
+  &__title {
+    color: $color-light;
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+  }
+  
+  &__text {
+    color: $color-gray;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  
+  &__stats {
+    display: flex;
+    gap: 24px;
+  }
+  
+  &__stat {
+    text-align: center;
+    
+    &-number {
+      display: block;
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: $color-primary;
+    }
+    
+    &-label {
+      font-size: 0.8rem;
+      color: $color-gray;
+    }
+  }
+}
+
+// Достижения
+.achievements {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+}
+
+.achievement {
+  display: flex;
+  gap: 16px;
+  padding: 24px;
+  background-color: $color-dark-gray;
+  
+  &__icon {
+    width: 48px;
+    height: 48px;
+    background-color: $color-primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    
+    .material-symbols-outlined {
+      color: $color-light;
+      font-size: 24px;
+    }
+  }
+  
+  &__title {
+    color: $color-light;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+  
+  &__text {
+    color: $color-gray;
+    line-height: 1.5;
+  }
+}
