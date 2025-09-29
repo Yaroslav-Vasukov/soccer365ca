@@ -1,7 +1,24 @@
 {% extends "../layouts/_base.html" %}
 
+{# Получаем slug лиги из URL параметров или используем значение по умолчанию #}
+{% set league_slug = get_url_param('league', 'premier-league') %}
+
 {# Загружаем данные для нужной лиги #}
-{% set historyData = load_json('@/data/history/' ~ (league_slug|default('premier-league')) ~ '.json') %}
+{% set historyData = load_json('@/data/history/' ~ league_slug ~ '.json') %}
+
+{# Если данные не найдены, используем заглушку #}
+{% if not historyData or not historyData.league %}
+  {% set historyData = {
+    league: { name: "League Not Found", founded: "N/A", country: "Unknown" },
+    introduction: { 
+      title: "League History Not Available", 
+      subtitle: "Coming Soon",
+      description: ["The history for this league is not yet available. Please check back later."]
+    },
+    timeline: [],
+    achievements: []
+  } %}
+{% endif %}
 
 {# Получаем данные из JSON #}
 {% set league = historyData.league %}
@@ -19,19 +36,26 @@
   subtitle: intro.subtitle,
   breadcrumbs: [
     { label: "Главная", href: "/", home: true },
-    { label: league.name },
-    { label: "History" }
+    { label: "Лиги", href: "/leagues" },
+    { label: league.name, href: "/league/" ~ league_slug },
+    { label: "История" }
   ],
 } only %}
 
-<!-- Введение -->
+<!-- Введение с логотипом лиги -->
 <section class="section section--margin">
   <div class="container">
     <div class="section__inner">
       <div class="history-intro">
         <div class="history-intro__content">
-          <h2 class="history-intro__title">{{ league.name }}</h2>
-          <p class="history-intro__subtitle">{{ league.country }} • Founded {{ league.founded }}</p>
+          <div class="history-intro__league">
+            <div class="history-intro__league-info">
+              <h2 class="history-intro__league-name">{{ league.name }}</h2>
+              <p class="history-intro__league-details">
+                {{ league.country }} • Основана в {{ league.founded }}
+              </p>
+            </div>
+          </div>
           
           {% for paragraph in intro.description %}
           <p class="history-intro__text">{{ paragraph }}</p>
@@ -43,12 +67,13 @@
 </section>
 
 <!-- Временная шкала -->
+{% if timeline and timeline|length > 0 %}
 <section class="section section--margin section--decor">
   <img src="/assets/images/bg/bg1.webp" alt="" class="section__bg" />
   <div class="container">
     <div class="section__inner">
       {% include "../components/section-header/section-header.twig" with {
-        title: "History " ~ league.name
+        title: "История " ~ league.name
       } %}
       
       <div class="timeline">
@@ -71,6 +96,17 @@
               {% endfor %}
             </div>
             {% endif %}
+            
+            {% if item.highlights %}
+            <div class="timeline__highlights">
+              {% for highlight in item.highlights %}
+              <div class="timeline__highlight">
+                <span class="material-symbols-outlined">{{ highlight.icon }}</span>
+                <span>{{ highlight.text }}</span>
+              </div>
+              {% endfor %}
+            </div>
+            {% endif %}
           </div>
         </div>
         {% endfor %}
@@ -78,13 +114,15 @@
     </div>
   </div>
 </section>
+{% endif %}
 
 <!-- Достижения -->
+{% if achievements and achievements|length > 0 %}
 <section class="section section--margin">
   <div class="container">
     <div class="section__inner">
       {% include "../components/section-header/section-header.twig" with {
-        title: "Main Achievements"
+        title: "Главные достижения"
       } %}
       
       <div class="achievements">
@@ -105,7 +143,20 @@
     </div>
   </div>
 </section>
+{% endif %}
 
 {% endblock %}
 
-{% block scripts %}{% endblock %}
+{% block scripts %}
+<script>
+// Получаем параметр лиги из URL для клиентского JavaScript
+const getCurrentLeague = () => {
+  const path = window.location.pathname;
+  const match = path.match(/\/league\/([^\/]+)\/history/);
+  return match ? match[1] : 'premier-league';
+};
+
+// Можно использовать для дополнительной логики
+console.log('Current league:', getCurrentLeague());
+</script>
+{% endblock %}

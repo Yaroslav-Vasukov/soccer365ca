@@ -27,15 +27,12 @@
   margin-top: 16px;
   
   @media (max-width: 1024px) {
-    gap: 24px;
-  }
-  
-  @media (max-width: 768px) {
     flex-direction: column;
     align-items: stretch;
     gap: 20px;
   }
   
+
   @media (max-width: 480px) {
     gap: 16px;
     margin-top: 12px;
@@ -81,7 +78,6 @@
     width: 40px;
     height: 40px;
     border: 1px solid rgba($color-light, 0.2);
-    border-radius: 8px;
     background: $color-dark-gray;
     color: $color-light;
     transition: all 0.2s ease;
@@ -146,7 +142,6 @@
     aspect-ratio: 1.2 / 1;
     border: 2px solid rgba($color-primary, 0.3);
     background: rgba($color-primary, 0.1);
-    
     .calendar__daynum {
       font-size: 16px;
       font-weight: 700;
@@ -167,7 +162,6 @@
   font-style: italic;
   padding: 40px 20px;
   background: rgba($color-gray, 0.1);
-  border-radius: 8px;
   margin-top: 20px;
 }
 
@@ -192,7 +186,6 @@
     position: relative;
     aspect-ratio: 1 / 1;
     border: 1px solid rgba($color-light, 0.1);
-    border-radius: 8px;
     padding: 8px;
     display: flex;
     flex-direction: column;
@@ -205,11 +198,12 @@
     @media (max-width: 1024px) {
     min-height: 44px;
     padding: 6px;
+    aspect-ratio: 2 / 1.2;
   }
 
   @media (max-width: 768px) {
-    aspect-ratio: 1.5 / 1;
-    min-height: 40px;
+    aspect-ratio: 1 / 1;
+    min-height: 24px;
   }
 
   @media (max-width: 640px) {
@@ -261,7 +255,7 @@
       border-width: 2px;
       
       .calendar__daynum {
-        color: $color-primary;
+        color: $color-light;
         font-weight: 700;
       }
     }
@@ -324,7 +318,7 @@
 
     &-list {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 20px;
       
       @media (max-width: 768px) {
@@ -353,12 +347,17 @@
   // Модификаторы календаря
   &--large {
     .calendar__grid {
-      min-width: 400px;
+      min-width: 340px;
     }
 
     .calendar__cell {
       min-height: 60px;
       padding: 12px;
+      @media (max-width: 640px) {
+        min-height: 24px;
+        padding: 4px;
+        aspect-ratio: 1.5 / 1;
+      }
     }
 
     .calendar__daynum {
@@ -432,3 +431,12 @@
   }
 }
 
+.calendar__grid.calendar__grid--compact {
+  display: flex;
+}
+.calendar__compact-grid {
+  grid-template-columns: repeat(5, 1fr);
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr))
+  }
+}

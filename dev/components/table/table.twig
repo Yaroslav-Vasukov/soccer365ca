@@ -1,140 +1,398 @@
-{% set _cols    = columns|default([]) %}
-{% set _rows    = rows|default([]) %}
+{# 
+  Универсальный компонент таблицы
+  
+  Параметры:
+  - id: string - ID таблицы
+  - variant: string - варианты: 'default', 'compact', 'sticky', 'sticky-two', 'borderless', 'striped', 'responsive'
+  - class: string - дополнительные CSS классы
+  - title: string - заголовок таблицы
+  - actions: array - кнопки действий в заголовке
+  - columns: array - конфигурация колонок
+  - rows: array - данные строк
+  - empty_message: string - сообщение при отсутствии данных
+  - sortable: boolean - включить сортировку
+  - selectable: boolean - включить выбор строк
+  - footer: boolean - показывать футер таблицы
+#}
+
+{% set _id = id|default('table-' ~ random()) %}
 {% set _variant = variant|default('default') %}
-{% set _caption = caption|default(null) %}
+{% set _class = class|default('') %}
+{% set _title = title|default(null) %}
+{% set _actions = actions|default([]) %}
+{% set _columns = columns|default([]) %}
+{% set _rows = rows|default([]) %}
+{% set _empty_message = empty_message|default('Нет данных для отображения') %}
+{% set _sortable = sortable|default(false) %}
+{% set _selectable = selectable|default(false) %}
+{% set _footer = footer|default(false) %}
 
-<div class="table table--{{ _variant }}" data-table="{{ _variant }}">
-	<div class="table__wrap">
-		{% if _caption %}
-			<div class="table__caption">{{ _caption }}</div>
-		{% endif %}
-		<table
-			class="table__table" role="table">
-			{# widths #}
-			{% if _cols %}
-				<colgroup>
-					{% for c in _cols %}
-						<col {% if c.width is defined %} style="width: {{ c.width }}" {% endif %}>
-					{% endfor %}
-				</colgroup>
-			{% endif %}
+{# Собираем классы #}
+{% set table_classes = ['table'] %}
+{% if _variant %}
+  {% set table_classes = table_classes|merge(['table--' ~ _variant]) %}
+{% endif %}
+{% if _class %}
+  {% set table_classes = table_classes|merge([_class]) %}
+{% endif %}
 
-
-			<thead class="table__head">
-				<tr>
-					{% for c in _cols %}
-						{# выравнивание через inline-style, чтобы не плодить модификаторы #}
-						<th scope="col" class="table__th" {% if c.align %} style="text-align: {{ c.align }}" {% endif %}>
-							{{ c.label }}
-						</th>
-					{% endfor %}
-				</tr>
-			</thead>
-
-			<tbody class="table__body">
-				{% if _rows is empty %}
-					<tr class="table__tr">
-						<td class="table__td" colspan="{{ _cols|length }}">No data</td>
-					</tr>
-				{% else %}
-					{% for r in _rows %}
-						<tr class="table__tr">
-							{% for c in _cols %}
-								{% set type = c.type|default('text') %}
-								{% set val  = attribute(r, c.key) %}
-								<td
-									class="table__td table__td--{{ type }}" {% if c.align %} style="text-align: {{ c.align }}" {% endif %}>
-
-									{# ====== cell renderers ====== #}
-									{% if type in ['team','player'] %}
-										{% set e = val|default({}) %}
-										<a class="entity" href="{{ e.href|default('#') }}">
-											{% if e.logo and e.logo.src %}
-												<img class="entity__logo" src="{{ e.logo.src }}" alt="{{ e.logo.alt|default('') }}">
-											{% endif %}
-											<span class="entity__name">{{ e.name|default('') }}</span>
-										</a>
-
-									{% elseif type == 'number' %}
-										{# базовое значение #}
-										{% set final = val %}
-										<span class="num">
-											{{ c.key|trim == 'gd' and final is not null and final != '' and final > 0 ? ('+' ~ final) : final }}
-										</span>
-
-									{% elseif type == 'form' %}
-										{% set formArr = val is iterable ? val : [] %}
-										<ul class="form" aria-label="recent form" role="list">
-											{% for ch in formArr %}
-												{% set cls = ch == 'W' ? 'win' : (ch == 'L' ? 'lose' : 'draw') %}
-												<li class="form__item form__item--{{ cls }}" title="{{ ch }}">{{ ch }}</li>
-											{% endfor %}
-										</ul>
-
-									{% else %}
-										{{ val }}
-									{% endif %}
-
-								</td>
-							{% endfor %}
-						</tr>
-					{% endfor %}
-				{% endif %}
-			</tbody>
-		</table>
-	</div>
+<div id="{{ _id }}" class="{{ table_classes|join(' ') }}" data-table="{{ _variant }}">
+  
+  {# Заголовок таблицы с действиями #}
+  {% if _title or _actions %}
+    <div class="table__header">
+      {% if _title %}
+        <h3 class="table__header-title">{{ _title }}</h3>
+      {% endif %}
+      
+      {% if _actions %}
+        <div class="table__header-actions">
+          {% for action in _actions %}
+            <button 
+              class="btn btn--{{ action.variant|default('secondary') }} btn--sm"
+              {% if action.id %}id="{{ action.id }}"{% endif %}
+              {% if action.onclick %}onclick="{{ action.onclick }}"{% endif %}
+              type="button"
+            >
+              {% if action.icon %}
+                <span class="material-symbols-outlined">{{ action.icon }}</span>
+              {% endif %}
+              {{ action.label }}
+            </button>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+  
+  {# Обертка таблицы #}
+  <div class="table__wrap">
+    <table class="table__table" role="table">
+      
+      {# Определение ширины колонок #}
+      {% if _columns %}
+        <colgroup>
+          {% if _selectable %}
+            <col style="width: 48px">
+          {% endif %}
+          {% for column in _columns %}
+            <col {% if column.width %}style="width: {{ column.width }}"{% endif %}>
+          {% endfor %}
+        </colgroup>
+      {% endif %}
+      
+      {# Шапка таблицы #}
+      <thead class="table__head">
+        <tr class="table__tr">
+          {% if _selectable %}
+            <th class="table__th table__th--checkbox">
+              <input 
+                type="checkbox" 
+                class="table__select-all"
+                aria-label="Выбрать все"
+              >
+            </th>
+          {% endif %}
+          
+          {% for column in _columns %}
+            {% set th_classes = ['table__th'] %}
+            {% if column.sortable or (_sortable and column.sortable != false) %}
+              {% set th_classes = th_classes|merge(['table__th--sortable']) %}
+            {% endif %}
+            {% if column.class %}
+              {% set th_classes = th_classes|merge([column.class]) %}
+            {% endif %}
+            {% if column.hide_mobile %}
+              {% set th_classes = th_classes|merge(['hide-mobile']) %}
+            {% endif %}
+            
+            <th 
+              scope="col" 
+              class="{{ th_classes|join(' ') }}"
+              {% if column.align %}style="text-align: {{ column.align }}"{% endif %}
+              {% if column.sortable or (_sortable and column.sortable != false) %}
+                data-sort-key="{{ column.key }}"
+                data-sort="none"
+                role="button"
+                tabindex="0"
+              {% endif %}
+            >
+              {{ column.label }}
+            </th>
+          {% endfor %}
+        </tr>
+      </thead>
+      
+      {# Тело таблицы #}
+      <tbody class="table__body">
+        {% if _rows is empty %}
+          <tr class="table__tr">
+            <td 
+              class="table__td table__td--empty" 
+              colspan="{{ _selectable ? _columns|length + 1 : _columns|length }}"
+            >
+              {{ _empty_message }}
+            </td>
+          </tr>
+        {% else %}
+          {% for row in _rows %}
+            {% set row_classes = ['table__tr'] %}
+            {% if row._highlighted %}
+              {% set row_classes = row_classes|merge(['table__tr--highlighted']) %}
+            {% endif %}
+            {% if row._clickable %}
+              {% set row_classes = row_classes|merge(['table__tr--clickable']) %}
+            {% endif %}
+            
+            <tr 
+              class="{{ row_classes|join(' ') }}"
+              {% if row._id %}data-row-id="{{ row._id }}"{% endif %}
+              {% if row._clickable and row._href %}onclick="window.location.href='{{ row._href }}'"{% endif %}
+            >
+              {% if _selectable %}
+                <td class="table__td table__td--checkbox">
+                  <input 
+                    type="checkbox" 
+                    class="table__select-row"
+                    value="{{ row._id|default(loop.index) }}"
+                    aria-label="Выбрать строку {{ loop.index }}"
+                  >
+                </td>
+              {% endif %}
+              
+              {% for column in _columns %}
+                {% set type = column.type|default('text') %}
+                {% set value = attribute(row, column.key) %}
+                {% set td_classes = ['table__td', 'table__td--' ~ type] %}
+                {% if column.class %}
+                  {% set td_classes = td_classes|merge([column.class]) %}
+                {% endif %}
+                {% if column.hide_mobile %}
+                  {% set td_classes = td_classes|merge(['hide-mobile']) %}
+                {% endif %}
+                
+                <td 
+                  class="{{ td_classes|join(' ') }}"
+                  {% if column.align %}style="text-align: {{ column.align }}"{% endif %}
+                >
+                  {# ===== Рендеринг разных типов ячеек ===== #}
+                  
+                  {# Позиция #}
+                  {% if type == 'position' %}
+                    <span class="pos pos--{{ value }}">{{ value }}</span>
+                  
+                  {# Команда/Игрок #}
+                  {% elseif type in ['team', 'player'] %}
+                    {% set entity = value|default({}) %}
+                    <a class="entity" href="{{ entity.href|default('#') }}" title="{{ entity.name|default('') }}">
+                      {% if entity.logo %}
+                        <div class="entity__logo">
+                          <img 
+                            src="{{ entity.logo.src|default('') }}" 
+                            alt="{{ entity.logo.alt|default(entity.name|default('')) }}"
+                            loading="lazy"
+                          >
+                        </div>
+                      {% endif %}
+                      <div class="entity__info">
+                        <span class="entity__name">{{ entity.name|default('—') }}</span>
+                        {% if entity.meta %}
+                          <span class="entity__meta">{{ entity.meta }}</span>
+                        {% endif %}
+                      </div>
+                    </a>
+                  
+                  {# Число #}
+                  {% elseif type == 'number' %}
+                    <span class="num">
+                      {% if column.prefix %}{{ column.prefix }}{% endif %}
+                      {{ value|default(0) }}
+                      {% if column.suffix %}{{ column.suffix }}{% endif %}
+                    </span>
+                  
+                  {# Процент #}
+                  {% elseif type == 'percent' %}
+                    <span class="num">{{ value|default(0) }}</span>
+                  
+                  {# Деньги #}
+                  {% elseif type == 'currency' %}
+                    <span class="num">{{ value|number_format(0, '.', ',') }}</span>
+                  
+                  {# Goal Difference #}
+                  {% elseif type == 'gd' %}
+                    <span class="num">
+                      {{ value > 0 ? '+' ~ value : value }}
+                    </span>
+                  
+                  {# Форма (W/D/L) #}
+                  {% elseif type == 'form' %}
+                    {% set form_array = value is iterable ? value : [] %}
+                    <ul class="form" aria-label="Последние 5 матчей" role="list">
+                      {% for result in form_array|slice(0, 5) %}
+                        {% set result_class = result == 'W' ? 'win' : (result == 'L' ? 'lose' : 'draw') %}
+                        {% set result_label = result == 'W' ? 'Победа' : (result == 'L' ? 'Поражение' : 'Ничья') %}
+                        <li 
+                          class="form__item form__item--{{ result_class }}" 
+                          aria-label="{{ result_label }}"
+                          title="{{ result_label }}"
+                        >
+                          {{ result }}
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  
+                  {# Статус #}
+                  {% elseif type == 'status' %}
+                    {% set status_map = {
+                      'live': 'LIVE',
+                      'finished': 'FT',
+                      'scheduled': value.time|default('TBD')
+                    } %}
+                    <span class="status status--{{ value.type|default('scheduled') }}">
+                      {{ status_map[value.type]|default(value.text|default('—')) }}
+                    </span>
+                  
+                  {# Прогресс-бар #}
+                  {% elseif type == 'progress' %}
+                    {% set progress_value = value|default(0) %}
+                    <div class="progress">
+                      <div class="progress__bar">
+                        <div class="progress__fill" style="width: {{ progress_value }}%"></div>
+                      </div>
+                      <span class="progress__value">{{ progress_value }}%</span>
+                    </div>
+                  
+                  {# Дата #}
+                  {% elseif type == 'date' %}
+                    <time datetime="{{ value }}">
+                      {{ value|date(column.format|default('d.m.Y')) }}
+                    </time>
+                  
+                  {# Действия #}
+                  {% elseif type == 'actions' %}
+                    <div class="table__actions">
+                      {% for action in value|default([]) %}
+                        <button 
+                          class="btn btn--icon btn--sm"
+                          title="{{ action.title }}"
+                          onclick="{{ action.onclick }}"
+                        >
+                          <span class="material-symbols-outlined">{{ action.icon }}</span>
+                        </button>
+                      {% endfor %}
+                    </div>
+                  
+                  {# Обычный текст #}
+                  {% else %}
+                    {{ value|default('—') }}
+                  {% endif %}
+                  
+                </td>
+              {% endfor %}
+            </tr>
+          {% endfor %}
+        {% endif %}
+      </tbody>
+      
+      {# Футер таблицы #}
+      {% if _footer and _rows is not empty %}
+        <tfoot class="table__foot">
+          <tr class="table__tr">
+            {% if _selectable %}
+              <td class="table__td"></td>
+            {% endif %}
+            {% for column in _columns %}
+              <td 
+                class="table__td table__td--footer"
+                {% if column.align %}style="text-align: {{ column.align }}"{% endif %}
+              >
+                {% if column.footer %}
+                  {{ column.footer }}
+                {% endif %}
+              </td>
+            {% endfor %}
+          </tr>
+        </tfoot>
+      {% endif %}
+      
+    </table>
+  </div>
 </div>
 
 
-{# Table for Premier League Standings 
+{# ===== ПРИМЕРЫ ИСПОЛЬЗОВАНИЯ ===== #}
 
-{% include "../components/table/table.twig" with {
-  variant: 'default',
-  caption: 'Premier League — Standings',
-  columns: [
-    { key:'pos',  label:'#',  align:'center', width:'3.5rem' },
-    { key:'team', label:'Team', type:'team',  width:'minmax(200px,1fr)' },
-    { key:'gp',   label:'GP',   type:'number', align:'right', width:'4.5rem' },
-    { key:'w',    label:'W',    type:'number', align:'right', width:'4rem' },
-    { key:'d',    label:'D',    type:'number', align:'right', width:'4rem' },
-    { key:'l',    label:'L',    type:'number', align:'right', width:'4rem' },
-    { key:'f',    label:'F',    type:'number', align:'right', width:'4.5rem' },
-    { key:'a',    label:'A',    type:'number', align:'right', width:'4.5rem' },
-    { key:'gd',   label:'GD',   type:'number', align:'right', width:'4.5rem' },
-    { key:'p',    label:'P',    type:'number', align:'right', width:'4.5rem' },
-    { key:'form', label:'Form', type:'form',   align:'left',  width:'9rem' }
-  ],
-  rows: [
-    {
-      pos: 1,
-      team:{ href:'/team/arsenal', name:'Arsenal', logo:{ src:'/assets/images/teams/arsenal.webp', alt:'Arsenal' } },
-      gp: 6, w: 6, d: 0, l: 0, f: 26, a: 5,
-      form: ['W','W','W','W','W']
-    },
-    {
-      pos: 2,
-      team:{ href:'/team/city', name:'Man City', logo:{ src:'/assets/images/teams/city.webp', alt:'Man City' } },
-      gp: 6, w: 5, d: 1, l: 0, f: 19, a: 6,
-      form: ['W','W','D','W','W']
-    }
-  ]
-} only %}
-
-
-
+{# 1. Таблица турнирной таблицы (Premier League)
 {% include "@components/table/table.twig" with {
-variant: 'sidebar',
-caption: 'Top Scorers',
-columns: [
-{ key: 'pos', label: '#', align: 'center', width: '3rem' },
-{ key: 'player',label: 'Player', type: 'player', width: 'minmax(160px,1fr)' },
-{ key: 'g', label: 'G', type: 'number', align: 'right', width: '4.5rem' },
-],
-rows: [
-{ pos: 1, player: { href: '/player/haaland', name: 'E. Haaland', logo: { src:'/assets/images/players/haaland.webp', alt:'Haaland' } }, g: 34 },
-{ pos: 2, player: { href: '/player/salah', name: 'M. Salah', logo: { src:'/assets/images/players/salah.webp', alt:'Salah' } }, g: 29 }
-]
+  id: 'premier-league-table',
+  variant: 'sticky-two responsive',
+  title: 'Premier League 2024/25',
+  actions: [
+    { label: 'Обновить', icon: 'refresh', variant: 'primary', onclick: 'refreshTable()' }
+  ],
+  sortable: true,
+  columns: [
+    { key: 'pos', label: '#', type: 'position', align: 'center', width: '48px' },
+    { key: 'team', label: 'Команда', type: 'team', width: 'minmax(200px, 1fr)' },
+    { key: 'gp', label: 'И', type: 'number', align: 'center', width: '60px' },
+    { key: 'w', label: 'В', type: 'number', align: 'center', width: '60px' },
+    { key: 'd', label: 'Н', type: 'number', align: 'center', width: '60px' },
+    { key: 'l', label: 'П', type: 'number', align: 'center', width: '60px' },
+    { key: 'gf', label: 'ГЗ', type: 'number', align: 'center', width: '60px', hide_mobile: true },
+    { key: 'ga', label: 'ГП', type: 'number', align: 'center', width: '60px', hide_mobile: true },
+    { key: 'gd', label: 'РМ', type: 'gd', align: 'center', width: '60px' },
+    { key: 'pts', label: 'О', type: 'number', align: 'center', width: '60px' },
+    { key: 'form', label: 'Форма', type: 'form', align: 'center', width: '140px', hide_mobile: true }
+  ],
+  rows: premierLeagueData
 } only %}
+#}
 
+{# 2. Таблица матчей
+{% include "@components/table/table.twig" with {
+  variant: 'striped',
+  title: 'Расписание матчей',
+  columns: [
+    { key: 'date', label: 'Дата', type: 'date', format: 'd.m.Y H:i', width: '140px' },
+    { key: 'home', label: 'Дома', type: 'team', align: 'right', width: '200px' },
+    { key: 'score', label: 'Счет', align: 'center', width: '80px' },
+    { key: 'away', label: 'В гостях', type: 'team', align: 'left', width: '200px' },
+    { key: 'status', label: 'Статус', type: 'status', align: 'center', width: '100px' },
+    { key: 'actions', label: '', type: 'actions', width: '80px' }
+  ],
+  rows: matchesData
+} only %}
+#}
 
+{# 3. Таблица бомбардиров
+{% include "@components/table/table.twig" with {
+  variant: 'compact',
+  title: 'Лучшие бомбардиры',
+  columns: [
+    { key: 'pos', label: '#', type: 'position', align: 'center', width: '40px' },
+    { key: 'player', label: 'Игрок', type: 'player', width: 'minmax(180px, 1fr)' },
+    { key: 'team', label: 'Команда', type: 'team', width: '160px', hide_mobile: true },
+    { key: 'goals', label: 'Голы', type: 'number', align: 'center', width: '70px' },
+    { key: 'assists', label: 'ПГ', type: 'number', align: 'center', width: '60px' },
+    { key: 'games', label: 'И', type: 'number', align: 'center', width: '60px' }
+  ],
+  rows: topScorersData
+} only %}
+#}
+
+{# 4. Финансовая таблица
+{% include "@components/table/table.twig" with {
+  variant: 'default',
+  title: 'Зарплаты игроков',
+  selectable: true,
+  footer: true,
+  columns: [
+    { key: 'player', label: 'Игрок', type: 'player', width: '200px' },
+    { key: 'position', label: 'Позиция', width: '100px' },
+    { key: 'salary', label: 'Зарплата', type: 'currency', align: 'right', width: '120px', 
+      footer: 'Итого: $45,000,000' },
+    { key: 'performance', label: 'Эффективность', type: 'progress', width: '180px' }
+  ],
+  rows: salaryData
+} only %}
 #}

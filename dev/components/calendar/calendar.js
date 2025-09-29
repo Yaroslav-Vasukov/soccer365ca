@@ -79,19 +79,28 @@ function initCalendar(root) {
       render();
     });
   }
-  if (toggleBtn) {
-    toggleBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      hideEmptyDays = !hideEmptyDays;
-      toggleBtn.setAttribute('aria-pressed', String(hideEmptyDays));
-      // Обновляем иконку
-      const icon = toggleBtn.querySelector('.material-symbols-outlined');
-      if (icon) {
-        icon.textContent = hideEmptyDays ? 'visibility' : 'visibility_off';
-      }
-      render();
-    });
-  }
+if (toggleBtn) {
+  toggleBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    hideEmptyDays = !hideEmptyDays;
+    toggleBtn.setAttribute('aria-pressed', String(hideEmptyDays));
+    
+    // Обновляем иконку
+    const icon = toggleBtn.querySelector('.material-symbols-outlined');
+    if (icon) {
+      icon.textContent = hideEmptyDays ? 'visibility' : 'visibility_off';
+    }
+    
+    // Добавляем/удаляем класс на calendar__grid
+    if (hideEmptyDays) {
+      grid.classList.add('calendar__grid--compact');
+    } else {
+      grid.classList.remove('calendar__grid--compact');
+    }
+    
+    render();
+  });
+}
   render();
 
   function render() {

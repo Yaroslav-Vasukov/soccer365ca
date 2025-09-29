@@ -52,6 +52,27 @@ Twig.extendFunction("load_json", (p) => {
   }
 });
 
+
+Twig.extendFunction("get_url_param", (paramName, defaultValue = null) => {
+  try {
+    // В серверной среде Twig нет доступа к URL, но мы можем использовать
+    // глобальную переменную или другой способ передачи параметров
+    if (typeof global !== 'undefined' && global.currentUrlParams) {
+      return global.currentUrlParams[paramName] || defaultValue;
+    }
+    return defaultValue;
+  } catch (e) {
+    console.warn("[get_url_param] error:", paramName, e.message);
+    return defaultValue;
+  }
+});
+
+// Также добавим функцию для установки параметров URL
+const setTwigUrlParams = (params) => {
+  if (typeof global !== 'undefined') {
+    global.currentUrlParams = params;
+  }
+};
 // ---- purge css ------------------------------------------------
 const USE_PURGED = process.env.USE_PURGED === "1";
 const oldCss = path.resolve(__dirname, "dev/assets/styles/old-styles.css");
@@ -750,11 +771,16 @@ optimizeDeps: {
 // Более автоматическое решение в vite.config.js
 
 {
-  name: "pretty-routes",
+  name: "dynamic-routes",
   apply: "serve",
   configureServer(server) {
     server.middlewares.use((req, _res, next) => {
       if (!req.url) return next();
+      
+      // Сброс параметров URL
+      if (typeof global !== 'undefined') {
+        global.currentUrlParams = {};
+      }
       
       // Главная страница
       if (req.url === "/" || req.url === "/index") {
@@ -762,16 +788,35 @@ optimizeDeps: {
         return next();
       }
       
-      // Автоматическая обработка history-* страниц
-      const historyMatch = req.url.match(/^\/history-([a-z-]+)\/?$/i);
-      if (historyMatch) {
-        const leagueName = historyMatch[1];
-        req.url = `/pages/history-${leagueName}.html`;
+      // Динамическая история лиг - /league/{slug}/history
+      const leagueHistoryMatch = req.url.match(/^\/league\/([a-z0-9-]+)\/history\/?(\?.*)?$/i);
+      if (leagueHistoryMatch) {
+        const leagueSlug = leagueHistoryMatch[1];
+        
+        // Устанавливаем параметры для Twig
+        if (typeof global !== 'undefined') {
+          global.currentUrlParams = { league: leagueSlug };
+        }
+        
+        req.url = `/pages/history.html`;
+        return next();
+      }
+      
+      // Поддержка прямых URL (для обратной совместимости)
+      const directHistoryMatch = req.url.match(/^\/history-([a-z-]+)\/?$/i);
+      if (directHistoryMatch) {
+        const leagueName = directHistoryMatch[1];
+        
+        if (typeof global !== 'undefined') {
+          global.currentUrlParams = { league: leagueName };
+        }
+        
+        req.url = `/pages/history.html`;
         return next();
       }
       
       // Обычные страницы
-      const simplePages = /^\/(news|post|videos|calendar|league|review|video|teams|team|player|contact|lives|privacy)\/?$/i;
+      const simplePages = /^\/(news|post|videos|calendar|league|review|video|teams|team|player|contact|lives|privacy|leagues)\/?$/i;
       const simpleMatch = req.url.match(simplePages);
       if (simpleMatch) {
         req.url = `/pages/${simpleMatch[1]}.html`;

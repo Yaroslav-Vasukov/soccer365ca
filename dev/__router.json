@@ -28,27 +28,6 @@
     "isHome": false
   },
   {
-    "file": "pages/history-la-liga.html",
-    "name": "History-la-liga",
-    "pin": "",
-    "url": "history-la-liga",
-    "isHome": false
-  },
-  {
-    "file": "pages/history-premier-league.html",
-    "name": "History-premier-league",
-    "pin": "",
-    "url": "history-premier-league",
-    "isHome": false
-  },
-  {
-    "file": "pages/history-serie-a.html",
-    "name": "History-serie-a",
-    "pin": "",
-    "url": "history-serie-a",
-    "isHome": false
-  },
-  {
     "file": "pages/league.html",
     "name": "League",
     "pin": "",

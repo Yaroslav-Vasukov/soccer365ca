@@ -1,0 +1,584 @@
+// post.scss - Стили для страницы поста
+
+// === Hero section ===
+.post-hero {
+  position: relative;
+  min-height: 500px;
+  padding: 80px 0 48px;
+  margin-bottom: 48px;
+  overflow: hidden;
+  &__inner {
+    width: 100%;
+    min-height: 500px;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+  }
+  
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba($color-dark, 0.3) 0%,
+      rgba($color-dark, 0.7) 50%,
+      rgba($color-dark, 0.95) 100%
+    );
+  }
+  
+  &__content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+  }
+  
+  &__title {
+    font: 700 clamp(2rem, 5vw, 3.5rem)/1.1 $font-title;
+    color: $color-light;
+    margin: 24px 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+    color: rgba($color-light, 0.9);
+    
+    > span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      
+      .material-symbols-outlined {
+        font-size: 18px;
+        opacity: 0.7;
+      }
+    }
+  }
+  
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+}
+
+// === Layout ===
+.post-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 48px;
+  align-items: start;
+  
+  @media (max-width: 1200px) {
+    grid-template-columns: 1fr 320px;
+    gap: 32px;
+  }
+  
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+// === Article content ===
+.post-content {
+  background: $color-dark-gray;
+  padding: 32px;
+  
+  &__lead {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: rgba($color-light, 0.95);
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba($color-light, 0.1);
+    font-weight: 300;
+  }
+  
+  &__body {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: rgba($color-light, 0.85);
+    
+    p {
+      margin-bottom: 24px;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    
+    h2 {
+      font: 600 1.75rem/1.3 $font-title;
+      color: $color-light;
+      margin: 40px 0 24px;
+      
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    
+    h3 {
+      font: 600 1.375rem/1.3 $font-title;
+      color: $color-light;
+      margin: 32px 0 20px;
+    }
+  }
+  
+  &__figure {
+    margin: 32px -32px;
+    
+    img {
+      width: 100%;
+      height: auto;
+    }
+    
+    figcaption {
+      padding: 12px 32px;
+      font-size: 0.875rem;
+      color: rgba($color-light, 0.6);
+      font-style: italic;
+      text-align: center;
+    }
+    
+    @media (max-width: 768px) {
+      margin: 24px -24px;
+      
+      figcaption {
+        padding: 12px 24px;
+      }
+    }
+  }
+  
+  &__quote {
+    position: relative;
+    margin: 32px 0;
+    padding: 24px 32px 24px 48px;
+    background: rgba($color-primary, 0.05);
+    border-left: 4px solid $color-primary;
+    
+    &::before {
+      content: '"';
+      position: absolute;
+      left: 16px;
+      top: 16px;
+      font-size: 3rem;
+      color: $color-primary;
+      opacity: 0.3;
+      line-height: 1;
+    }
+    
+    p {
+      margin: 0;
+      font-size: 1.125rem;
+      font-style: italic;
+      color: rgba($color-light, 0.9);
+    }
+    
+    cite {
+      display: block;
+      margin-top: 12px;
+      font-size: 0.875rem;
+      font-style: normal;
+      color: rgba($color-light, 0.6);
+    }
+  }
+  
+  &__list {
+    margin: 24px 0;
+    padding-left: 24px;
+    
+    li {
+      margin-bottom: 12px;
+      color: rgba($color-light, 0.85);
+      
+      &::marker {
+        color: $color-primary;
+      }
+    }
+  }
+  
+  @media (max-width: 768px) {
+    padding: 24px;
+    
+    &__lead {
+      font-size: 1.125rem;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+    }
+    
+    &__body {
+      font-size: 1rem;
+      
+      p {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+// === Share buttons ===
+.post-share {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid rgba($color-light, 0.1);
+  
+  &__title {
+    font: 600 1rem/1.2 $font-body;
+    color: rgba($color-light, 0.7);
+    margin-bottom: 16px;
+  }
+  
+  &__buttons {
+    display: flex;
+    gap: 12px;
+  }
+  
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: rgba($color-light, 0.05);
+    color: $color-light;
+    transition: all 0.2s;
+    
+    svg {
+      fill: currentColor;
+    }
+    
+    &:hover {
+      transform: translateY(-2px);
+    }
+    
+    &--facebook:hover {
+      background: #1877f2;
+    }
+    
+    &--twitter:hover {
+      background: #1da1f2;
+    }
+    
+    &--telegram:hover {
+      background: #0088cc;
+    }
+    
+    &--copy:hover {
+      background: $color-primary;
+    }
+  }
+}
+
+// === Related posts ===
+.post-related {
+  margin-top: 64px;
+  
+  &__title {
+    font: 600 1.75rem/1.2 $font-title;
+    color: $color-light;
+    margin-bottom: 24px;
+  }
+  
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+}
+
+// === Sidebar ===
+.post-sidebar {
+  position: sticky;
+  top: 100px;
+  
+  &__block {
+    background: $color-dark-gray;
+    padding: 24px;
+    margin-bottom: 24px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &--newsletter {
+      background: linear-gradient(135deg, $color-primary-dark, $color-primary);
+    }
+  }
+  
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font: 600 1.125rem/1.2 $font-title;
+    color: $color-light;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba($color-light, 0.1);
+    
+    .material-symbols-outlined {
+      font-size: 20px;
+      color: $color-primary;
+    }
+  }
+  
+  &__content {
+    .table {
+      margin: -8px -8px 16px;
+      
+      .table__wrap {
+        background: transparent;
+      }
+    }
+  }
+  
+  &__more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px;
+    background: rgba($color-primary, 0.1);
+    color: $color-light;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    transition: all 0.2s;
+    
+    &:hover {
+      background: rgba($color-primary, 0.2);
+    }
+    
+    .material-symbols-outlined {
+      font-size: 16px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    
+    &__block {
+      margin-bottom: 0;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// === Scorers list ===
+.scorers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.scorer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: rgba($color-light, 0.02);
+  transition: all 0.2s;
+  
+  &:hover {
+    background: rgba($color-light, 0.05);
+  }
+  
+  &__rank {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: $color-primary;
+    color: $color-light;
+    border-radius: 50%;
+    font-size: 0.875rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    
+    .scorer:first-child & {
+      background: #ffd700;
+      color: $color-dark;
+    }
+    
+    .scorer:nth-child(2) & {
+      background: #c0c0c0;
+      color: $color-dark;
+    }
+    
+    .scorer:nth-child(3) & {
+      background: #cd7f32;
+      color: $color-light;
+    }
+  }
+  
+  &__info {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  &__name {
+    font-weight: 500;
+    color: $color-light;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    & a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s;
+      &:hover {
+        color: $color-primary-light;
+      }
+    }
+  }
+  
+  &__team {
+    font-size: 0.75rem;
+    color: rgba($color-light, 0.5);
+    margin-top: 2px;
+    transition: color 0.2s;
+    &:hover {
+      color: $color-light;
+    }
+  }
+  
+  &__goals {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: $color-primary;
+  }
+}
+
+// === Matches list ===
+.matches-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.match-item {
+  padding: 12px;
+  background: rgba($color-light, 0.02);
+  transition: all 0.2s;
+  
+  &:hover {
+    background: rgba($color-light, 0.05);
+  }
+  
+  &__date {
+    font-size: 0.75rem;
+    color: rgba($color-light, 0.5);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+  }
+  
+  &__teams {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 500;
+    color: $color-light;
+    
+    span:first-child,
+    span:last-child {
+      flex: 1;
+    }
+    
+    span:first-child {
+      text-align: right;
+    }
+    
+    span:last-child {
+      text-align: left;
+    }
+  }
+  
+  &__vs {
+    padding: 0 12px;
+    font-size: 0.75rem;
+    color: rgba($color-light, 0.3);
+    text-transform: uppercase;
+  }
+}
+
+// === Newsletter ===
+.newsletter {
+  &__text {
+    font-size: 0.875rem;
+    color: rgba($color-light, 0.8);
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+  
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  &__input {
+    padding: 10px 16px;
+    background: rgba($color-light, 0.1);
+    border: 1px solid rgba($color-light, 0.2);
+    color: $color-light;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+    
+    &::placeholder {
+      color: rgba($color-light, 0.4);
+    }
+    
+    &:focus {
+      outline: none;
+      background: rgba($color-light, 0.15);
+      border-color: $color-primary;
+    }
+  }
+  
+  .btn {
+    width: 100%;
+  }
+}
+
+// === Tags ===
+.tag {
+  &--white {
+    background: rgba($color-light, 0.15);
+    color: $color-light;
+    
+    &:hover {
+      background: rgba($color-light, 0.25);
+    }
+  }
+}

@@ -4,13 +4,11 @@
   flex-direction: column;
   background-color: $color-dark-gray;
   border: 1px solid rgba($color-light, 0.1);
-  border-radius: 12px;
   overflow: hidden;
   transition: all 0.3s ease;
   height: 100%;
 
   &:hover {
-    transform: translateY(-4px);
     box-shadow: 0 8px 25px rgba($color-primary, 0.15);
     border-color: rgba($color-primary, 0.3);
   }
@@ -34,7 +32,6 @@
     font-weight: 600;
     font-size: 14px;
     padding: 6px 12px;
-    border-radius: 6px;
     background: rgba($color-light, 0.1);
     transition: all 0.2s ease;
 
@@ -53,7 +50,6 @@
     height: 20px;
     width: 20px;
     object-fit: contain;
-    border-radius: 2px;
   }
 
   // ===== Teams section =====
@@ -74,11 +70,9 @@
     color: $color-light;
     transition: all 0.2s ease;
     padding: 8px;
-    border-radius: 8px;
 
     &:hover {
       background: rgba($color-primary, 0.1);
-      transform: scale(1.02);
 
       .card-match__team-name {
         color: $color-primary-light;
@@ -150,7 +144,6 @@
         width: 20px;
         height: 2px;
         background: $color-primary;
-        border-radius: 1px;
       }
     }
   }
@@ -172,7 +165,6 @@
     letter-spacing: 1px;
     padding: 8px 12px;
     border: 2px solid rgba($color-gray, 0.3);
-    border-radius: 6px;
     background: rgba($color-gray, 0.1);
 
     @media (max-width: 480px) {
@@ -220,7 +212,6 @@
   // ===== Status indicators =====
   &__status {
     padding: 4px 8px;
-    border-radius: 12px;
     font-size: 11px;
     font-weight: 600;
     text-transform: uppercase;
@@ -262,7 +253,6 @@
       background: $color-primary;
       color: $color-light;
       text-decoration: none;
-      border-radius: 6px;
       font-size: 12px;
       font-weight: 600;
       transition: all 0.2s ease;

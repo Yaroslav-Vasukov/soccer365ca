@@ -1,46 +1,250 @@
-{% extends "../layouts/_base.html" %} {% block title %}Lives{% endblock %} {%
-block active_nav %}lives{% endblock %} {% block body_class %}page page--lives{%
-endblock %} {% block head_extra %}
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-/>
-{% endblock %} {% block content %}
- {% set lives = load_json("@/data/lives.json")
-%} 
-{% include "../components/page-head/page-head.twig" with {
-  title: "Live Matches",
-  subtitle: "Popular live matches",
-  breadcrumbs: [
-    { label: "Home", href: "/", home: true },
-    { label: "Live Matches" }
-  ],
-    meta: {
-    count: lives|length ~ " Lives" 
-  }
-} only %}
+{% extends "../layouts/_base.html" %}
 
-<section class="section section--margin">
+{% block title %}{{ post.title|default('Post') }}{% endblock %}
+{% block active_nav %}post{% endblock %}
+{% block body_class %}page page--post{% endblock %}
+
+{% block content %}
+{# Получаем данные поста по ID из URL или используем первый пост #}
+{% set postId = app.request.get('id')|default(101) %}
+{% set allPosts = load_json('@/data/posts.json') %}
+{% set post = null %}
+{% for p in allPosts %}
+  {% if p.id == postId %}
+    {% set post = p %}
+  {% endif %}
+{% endfor %}
+
+{# Если пост не найден, используем первый #}
+{% if not post %}
+  {% set post = allPosts[0] %}
+{% endif %}
+
+{# Загружаем данные лиги для сайдбара #}
+{% set leagueData = null %}
+{% set leagueSlug = null %}
+{% if post.league == 'Premier League' %}
+  {% set leagueData = load_json('@/data/leagues/premier-league.json') %}
+  {% set leagueSlug = 'premier-league' %}
+{% elseif post.league == 'La Liga' %}
+  {% set leagueData = load_json('@/data/leagues/la-liga.json') %}
+  {% set leagueSlug = 'la-liga' %}
+{% elseif post.league == 'Serie A' %}
+  {% set leagueData = load_json('@/data/leagues/serie-a.json') %}
+  {% set leagueSlug = 'serie-a' %}
+{% endif %}
+
+{# Похожие посты #}
+{% set relatedPosts = [] %}
+{% for p in allPosts %}
+  {% if p.league == post.league and p.id != post.id and relatedPosts|length < 3 %}
+    {% set relatedPosts = relatedPosts|merge([p]) %}
+  {% endif %}
+{% endfor %}
+
+{# Hero section #}
+<section class="post-hero">
+  <div class="post-hero__bg">
+    <img src="{{ post.image|default(post.thumb) }}" alt="{{ post.title }}" loading="eager">
+    <div class="post-hero__overlay"></div>
+  </div>
   <div class="container">
-    <div class="section__inner">
-              {% include "../components/infinite-scroll/infinite-scroll.twig" with {
-        type: 'live',
-        data: lives,
-        initial_count: 9,
-        items_per_page: 6,
-        loading_text: 'Loading more matches...',
-        end_text: 'All matches loaded',
-        no_items_text: 'No live matches available'
-      } only %}
+    <div class="post-hero__inner">
+      <div class="post-hero__content">
+        {% include "../components/breadcrumbs/breadcrumbs.twig" with {
+          items: [
+            { label: "Home", href: "/", home: true },
+            { label: "News", href: "/news" },
+            { label: post.league, href: '/league/' ~ leagueSlug },
+            { label: post.title, active: true }
+          ]
+        } only %}
+        
+        <h1 class="post-hero__title">{{ post.title }}</h1>
+        
+        <div class="post-hero__meta">
+          <time class="post-hero__date" datetime="{{ post.published_at }}">
+            <span class="material-symbols-outlined">calendar_today</span>
+            {{ post.published_at|date('d F Y, H:i') }}
+          </time>
+          <span class="post-hero__league">
+            <span class="material-symbols-outlined">sports_soccer</span>
+            {{ post.league }}
+          </span>
+          {% if post.author %}
+            <span class="post-hero__author">
+              <span class="material-symbols-outlined">person</span>
+              {{ post.author }}
+            </span>
+          {% endif %}
+        </div>
+        
+        {% if post.tags %}
+          <div class="post-hero__tags">
+            {% for tag in post.tags %}
+              <a href="{{ tag.href }}" class="tag tag--white">{{ tag.label }}</a>
+            {% endfor %}
+          </div>
+        {% endif %}
       </div>
     </div>
   </div>
 </section>
 
+{# Main content #}
+<section class="page-content">
+  <div class="container">
+    <div class="post-layout">
+      
+      {# Article content #}
+      <article class="post-content">
+        {# Lead paragraph #}
+        {% if post.lead %}
+          <div class="post-content__lead">
+            {{ post.lead }}
+          </div>
+        {% endif %}
+        
+        {# Main content #}
+        <div class="post-content__body">
+          {% if post.content %}
+            {% for paragraph in post.content %}
+              {% if paragraph.type == 'text' %}
+                <p>{{ paragraph.text }}</p>
+              {% elseif paragraph.type == 'heading' %}
+                <h2>{{ paragraph.text }}</h2>
+              {% elseif paragraph.type == 'image' %}
+                <figure class="post-content__figure">
+                  <img src="{{ paragraph.src }}" alt="{{ paragraph.alt|default('') }}" loading="lazy">
+                  {% if paragraph.caption %}
+                    <figcaption>{{ paragraph.caption }}</figcaption>
+                  {% endif %}
+                </figure>
+              {% elseif paragraph.type == 'quote' %}
+                <blockquote class="post-content__quote">
+                  <p>{{ paragraph.text }}</p>
+                  {% if paragraph.author %}
+                    <cite>— {{ paragraph.author }}</cite>
+                  {% endif %}
+                </blockquote>
+              {% elseif paragraph.type == 'list' %}
+                <ul class="post-content__list">
+                  {% for item in paragraph.items %}
+                    <li>{{ item }}</li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            {% endfor %}
+          {% else %}
+            {# Fallback content if no structured content #}
+            <p>{{ post.descr }}</p>
+          {% endif %}
+        </div>
+             
+        {# Related posts #}
+        {% if relatedPosts %}
+          <div class="post-related">
+            <h2 class="post-related__title">Похожие новости</h2>
+            <div class="post-related__grid">
+              {% for relPost in relatedPosts %}
+                {% include "../components/card-post/card-post.twig" with {
+                  post: {
+                    href: relPost.href,
+                    title: relPost.title,
+                    image: { src: relPost.thumb, alt: relPost.title },
+                    date: relPost.published_at
+                  },
+                  tags: relPost.tags|default([])
+                } only %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      </article>
+      
+      {# Sidebar #}
+      <aside class="post-sidebar">
+        {# League standings #}
+        {% if leagueData %}
+          <div class="post-sidebar__block">
+            <h3 class="post-sidebar__title">
+              <span class="material-symbols-outlined">leaderboard</span>
+              Table
+            </h3>
+            <div class="post-sidebar__content">
+              {% include "../components/table/table.twig" with {
+                variant: 'compact borderless',
+                columns: [
+                  { key: 'pos', label: '#', type: 'position', align: 'center', width: '32px' },
+                  { key: 'team', label: 'Team', type: 'team' },
+                  { key: 'gp', label: 'GP', type: 'number', align: 'center', width: '32px' },
+                  { key: 'pts', label: 'PTS', type: 'number', align: 'center', width: '40px' }
+                ],
+                rows: leagueData|slice(0, 10)
+              } only %}
+              <a href="/league/{{ leagueSlug }}" class="post-sidebar__more">
+                full table
+                <span class="material-symbols-outlined">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        {% endif %}
+        
+        {# Top scorers #}
+        <div class="post-sidebar__block">
+          <h3 class="post-sidebar__title">
+            <span class="material-symbols-outlined">sports_soccer</span>
+            Best Scorers
+          </h3>
+          <div class="post-sidebar__content">
+            <div class="scorers-list">
+              <div class="scorer">
+                <div class="scorer__rank">1</div>
+                <div class="scorer__info">
+                  <div class="scorer__name"><a href="/players/haaland">E. Haaland</a></div>
+                  <div class="scorer__team"><a href="/teams/man-city">Man City</a></div>
+                </div>
+                <div class="scorer__goals">12</div>
+              </div>
+              <div class="scorer">
+                <div class="scorer__rank">2</div>
+                <div class="scorer__info">
+                  <div class="scorer__name"><a href="/players/salah">M. Salah</a></div>
+                  <div class="scorer__team"><a href="/teams/liverpool">Liverpool</a></div>
+                </div>
+                <div class="scorer__goals">10</div>
+              </div>
+              <div class="scorer">
+                <div class="scorer__rank">3</div>
+                <div class="scorer__info">
+                  <div class="scorer__name"><a href="/players/haaland">E. Haaland</a></div>
+                  <div class="scorer__team"><a href="/teams/arsenal">Arsenal</a></div>
+                </div>
+                <div class="scorer__goals">8</div>
+              </div>
+              <div class="scorer">
+                <div class="scorer__rank">4</div>
+                <div class="scorer__info">
+                  <div class="scorer__name"><a href="/players/son">Son Heung-min</a></div>
+                  <div class="scorer__team"><a href="/teams/tottenham">Tottenham</a></div>
+                </div>
+                <div class="scorer__goals">7</div>
+              </div>
+              <div class="scorer">
+                <div class="scorer__rank">5</div>
+                <div class="scorer__info">
+                  <div class="scorer__name"><a href="/players/palmer">C. Palmer</a></div>
+                  <div class="scorer__team"><a href="/teams/chelsea">Chelsea</a></div>
+                </div>
+                <div class="scorer__goals">7</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+      
+    </div>
+  </div>
+</section>
 
-
-
-
-
-{% endblock %} {% block scripts %}
 {% endblock %}
