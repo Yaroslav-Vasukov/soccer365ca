@@ -22,6 +22,14 @@
         top: 50%;
         transform: translateY(-50%);
       }
+      @media (max-width: 640px) {
+        font-size: 24px;
+        padding-left: 32px;
+        &::after {
+          height: 24px;
+          width: 24px;
+        }
+      }
 		}
 
 		&__more {

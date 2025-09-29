@@ -1,46 +1,86 @@
-{% extends "../layouts/_base.html" %} {% block title %}Lives{% endblock %} {%
-block active_nav %}lives{% endblock %} {% block body_class %}page page--lives{%
-endblock %} {% block head_extra %}
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-/>
-{% endblock %} {% block content %}
- {% set lives = load_json("@/data/lives.json")
-%} 
+{% extends "../layouts/_base.html" %} 
+{% block title %}Video{% endblock %} 
+{% block active_nav %}video{% endblock %} 
+{% block body_class %}page page--video{% endblock %} 
+{% block head_extra %}{% endblock %} 
+
+{% block content %}
+
+{# Получаем данные видео по ID из URL или используем первое видео #}
+{% set videoId = app.request.get('id')|default(101) %}
+{% set allVideos = load_json('@/data/videos.json') %}
+{% set video = null %}
+{% for v in allVideos %}
+  {% if v.id == videoId %}
+    {% set video = v %}
+  {% endif %}
+{% endfor %}
+
+{# Если видео не найдено, используем первое #}
+{% if not video %}
+  {% set video = allVideos[0] %}
+{% endif %}
+
+{# Похожие видео #}
+{% set relatedVideos = [] %}
+  {% for v in allVideos if v.id != video.id and relatedVideos|length < 7 %}
+    {% set relatedVideos = relatedVideos|merge([v]) %}
+  {% endfor %}
+
+
 {% include "../components/page-head/page-head.twig" with {
-  title: "Live Matches",
-  subtitle: "Popular live matches",
+  title: video.title,
   breadcrumbs: [
     { label: "Home", href: "/", home: true },
-    { label: "Live Matches" }
+    { label: "Videos", href: "/videos" },
+    { label: video.title }
   ],
-    meta: {
-    count: lives|length ~ " Lives" 
-  }
 } only %}
-
 <section class="section section--margin">
   <div class="container">
     <div class="section__inner">
-              {% include "../components/infinite-scroll/infinite-scroll.twig" with {
-        type: 'live',
-        data: lives,
-        initial_count: 9,
-        items_per_page: 6,
-        loading_text: 'Loading more matches...',
-        end_text: 'All matches loaded',
-        no_items_text: 'No live matches available'
-      } only %}
+      <div class="video__block">
+        <a href="#{{ video.id }}" class="video__link">
+          <img src="{{ video.thumb }}" alt="{{ video.title }}" class="video__thumb">
+                  <span class="card-live__play material-symbols-outlined" aria-hidden="true">play_circle</span>
+        </a>
+        <h3 class="video__title">{{ video.title }}</h3>
       </div>
     </div>
   </div>
 </section>
 
+                    {% if relatedVideos %}
+<section class="section section--margin">
+  <div class="container">
+    <div class="section__inner">
+              {% include "../components/section-header/section-header.twig" with {
+      title: "latest videos", subtitle: true, more: "more", more_href: "/videos"
+      } %}
+      <div class="card-video__grid">
+        {% for relVideo in relatedVideos %}
+          {% set href = relVideo.href|default('#') %}
+          {% set title = relVideo.title|default('Untitled') %}
+          {% set thumb = relVideo.thumb|default('/assets/images/pictures/img2.webp') %}
+          {% set date = relVideo.published_at is defined ? (relVideo.published_at|date('d F Y, H:i')) : '' %}
 
+          {% include "../components/card-video/card-video.twig" with {
+            post: {
+              href: href,
+              title: title,
+              image: { src: thumb, alt: title },
+              thumb: thumb,
+              date: date
+            },
+            tags: relVideo.tags|default([])
+          } only %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+        {% endif %}
+{% endblock %} 
 
-
-
-
-{% endblock %} {% block scripts %}
+{% block scripts %}
 {% endblock %}

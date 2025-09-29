@@ -8,7 +8,7 @@
 {% set _src   = post|default({}) %}
 {% set _href  = href|default(_src.href|default('#')) %}
 {% set _title = title|default(_src.title|default('Video title')) %}
-{% set _thumb = thumb|default(_src.thumb|default('/assets/images/pictures/img1.webp')) %}
+{% set _thumb = thumb|default(_src.thumb|default('/assets/images/pictures/img3.webp')) %}
 {% set _tags  = tags|default(_src.tags|default([])) %}
 
 {# дата: берём post.date → post.published_at → null #}
@@ -17,7 +17,7 @@
 
 <article class="card-video">
   <a href="{{ _href }}" class="card-video__thumb">
-    <img src="{{ _thumb }}" alt="thumb" class="card-video__thumbnail">
+    <img src="{{ _thumb }}" alt="{{ _title }}" class="card-video__thumbnail">
     <span class="card-video__play material-symbols-outlined">play_circle</span>
   </a>
 

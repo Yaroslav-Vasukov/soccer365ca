@@ -1,0 +1,45 @@
+.video {
+
+		&__block {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 16px;
+      background-color: $color-dark-gray;
+		}
+
+		&__link {
+      display: flex;
+      position: relative;
+      aspect-ratio: 16 / 6;
+      overflow: hidden;
+      @media (max-width: 1024px) {
+            aspect-ratio: 16 / 9;
+        }
+      @media (max-width: 768px) {
+            aspect-ratio: 1 / 1;
+        }
+		}
+
+		&__thumb {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      object-position: top;
+		}
+
+		&__title {
+      font-size: 32px;
+            @media (max-width: 1024px) {
+            font-size: 24px;
+        }
+            @media (max-width: 640px) {
+            font-size: 20px;
+            text-align: center;
+        }
+		}
+}
+
+
+
