@@ -1,12 +1,5 @@
 [
   {
-    "file": "home.html",
-    "name": "Home",
-    "pin": "",
-    "url": "",
-    "isHome": true
-  },
-  {
     "file": "pages/calendar.html",
     "name": "Calendar",
     "pin": "",
@@ -25,6 +18,13 @@
     "name": "History",
     "pin": "",
     "url": "history",
+    "isHome": false
+  },
+  {
+    "file": "pages/index.html",
+    "name": "Index",
+    "pin": "",
+    "url": "index",
     "isHome": false
   },
   {

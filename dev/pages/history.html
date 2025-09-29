@@ -1,23 +1,33 @@
 {% extends "../layouts/_base.html" %}
 
-{# Получаем slug лиги из URL параметров или используем значение по умолчанию #}
-{% set league_slug = get_url_param('league', 'premier-league') %}
+
+{# Устанавливаем дефолтное значение для league_slug #}
+{% set league_slug = league_slug | default('la-liga') | trim %}
+{% if league_slug == '' %}
+  {% set league_slug = 'la-liga' %}
+{% endif %}
 
 {# Загружаем данные для нужной лиги #}
 {% set historyData = load_json('@/data/history/' ~ league_slug ~ '.json') %}
 
-{# Если данные не найдены, используем заглушку #}
+{# Если данные не найдены, используем LaLiga как fallback #}
 {% if not historyData or not historyData.league %}
-  {% set historyData = {
-    league: { name: "League Not Found", founded: "N/A", country: "Unknown" },
-    introduction: { 
-      title: "League History Not Available", 
-      subtitle: "Coming Soon",
-      description: ["The history for this league is not yet available. Please check back later."]
-    },
-    timeline: [],
-    achievements: []
-  } %}
+  {% set league_slug = 'la-liga' %}
+  {% set historyData = load_json('@/data/history/la-liga.json') %}
+  
+  {# Последняя заглушка, если даже LaLiga не найдена #}
+  {% if not historyData or not historyData.league %}
+    {% set historyData = {
+      league: { name: "League Not Found", founded: "N/A", country: "Unknown" },
+      introduction: { 
+        title: "League History Not Available", 
+        subtitle: "Coming Soon",
+        description: ["The history for this league is not yet available. Please check back later."]
+      },
+      timeline: [],
+      achievements: []
+    } %}
+  {% endif %}
 {% endif %}
 
 {# Получаем данные из JSON #}

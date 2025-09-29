@@ -725,14 +725,14 @@ function generatePageInputs() {
   
   if (!fs.existsSync(pagesDir)) {
     console.warn("⚠️ Pages directory not found:", pagesDir);
-    return { index: path.resolve(__dirname, "dev/pages/home.html") };
+    return { index: path.resolve(__dirname, "dev/pages/index.html") };
   }
   
   const pages = fs.readdirSync(pagesDir)
     .filter(file => file.endsWith('.html'))
     .reduce((acc, file) => {
       const name = path.basename(file, '.html');
-      const key = name === 'home' ? 'index' : name;
+      const key = name === 'index' ? 'index' : name;
       acc[key] = path.resolve(pagesDir, file);
       return acc;
     }, {});
@@ -784,7 +784,7 @@ optimizeDeps: {
       
       // Главная страница
       if (req.url === "/" || req.url === "/index") {
-        req.url = "/pages/home.html";
+        req.url = "/pages/index.html";
         return next();
       }
       
@@ -1144,7 +1144,13 @@ build: {
   target: 'es2020',
   
   rollupOptions: {
-    input: generatePageInputs(),
+        input: {
+
+      ...generatePageInputs(),
+      
+      // JavaScript точка входа - УБЕДИТЕСЬ ЧТО ОНА ВНУТРИ input: {}
+      main: path.resolve(__dirname, "dev/assets/scripts/main.js")
+    },
     preserveEntrySignatures: false,
     
     output: {
@@ -1221,7 +1227,7 @@ server: {
   port: 5500,
   https: false,
   strictPort: true,
-  open: "/pages/home.html",
+  open: "/pages/index.html",
   fs: { 
     allow: [path.resolve(__dirname, "dev")],
     strict: false // Ускоряет file watching

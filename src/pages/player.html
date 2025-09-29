@@ -2,7 +2,7 @@
 <html lang="nz">
   <head>
     <meta charset="utf-8" />
-    <title>Lives</title>
+    <title> - Player</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,15 +14,16 @@
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
 />
-
+
     <script type="module" crossorigin src="/assets/scripts/main.B5Qt9EMX.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/styles/style.CAuXVH1i.css">
+    <script type="module" crossorigin src="/assets/scripts/main.D3XjwrX2.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/styles/style.BC_5AcZC.css">
   </head>
-  <body class="page page--lives">
+  <body class="page page--player">
     <header class="header" data-module="header">
   <div class="container header__inner">
     
-    <a class="header__logo" href="/home" aria-label="Soccer365 Logo">
+    <a class="header__logo" href="/" aria-label="Soccer365 Logo">
       <img
         class="header__logo-img"
         src="/assets/images/logo.webp"
@@ -63,9 +64,9 @@
         
           <li class="header__item">
             <a
-              class="header__link header__link--active"
+              class="header__link"
               href="/lives"
-              aria-current="page"
+              
             >
               Live
             </a>
@@ -133,9 +134,9 @@
         
           <li class="header__item">
             <a
-              class="header__link"
+              class="header__link header__link--active"
               href="/player"
-              
+              aria-current="page"
             >
               Player
             </a>
@@ -221,95 +222,1837 @@
 
     <main class="page__main">
         
-  
+<!-- Hero секция с фоном -->
+<section class="player-hero">
+  <div class="player-hero__bg">
+    <img src="/assets/images/bg1.webp" alt="Erling Haaland" loading="eager">
+    <div class="player-hero__overlay"></div>
+  </div>
 
-<section class="page-head">
   <div class="container">
-    <div class="section__inner">
-      
-      <nav class="page-head__breadcrumbs" aria-label="Breadcrumb">
-        <ol class="breadcrumbs">
-          
-          <li class="breadcrumbs__item">
-             
-            <a
-              href="/"
-              class="breadcrumbs__link breadcrumbs__home"
-              aria-label="Home"
-              
-            >
-              
-              <span class="breadcrumbs__icon material-symbols-outlined">
-                home
-              </span>
-              
-            </a>
-            
-          </li>
-          
-          <li class="breadcrumbs__item">
-            
-            						<span class="breadcrumbs__separator material-symbols-outlined">
+    <div class="player-hero__inner">
+      <div class="player-hero__content">
+        
+
+
+
+
+
+	
+		<nav aria-label="Breadcrumb"> <ol class="breadcrumbs">
+			
+				<li class="breadcrumbs__item">
+					
+
+					
+						<a href="/" class="breadcrumbs__link breadcrumbs__home"  aria-label="Home" >
+							
+														<span class="breadcrumbs__icon material-symbols-outlined">
+							home
+						</span>
+							
+						</a>
+					
+				</li>
+			
+				<li class="breadcrumbs__item">
+					
+						<span class="breadcrumbs__separator material-symbols-outlined">
 							arrow_right
 						</span>
-             
-            <span class="breadcrumbs__current" aria-current="page">
-              Live Matches
-            </span>
-            
-          </li>
-          
-        </ol>
-      </nav>
-      
+					
 
-      <div class="page-head__content">
-        <div class="page-head__main">
-          <h1 class="page-head__title">Live Matches</h1>
-          
-          <p class="page-head__subtitle">Popular live matches</p>
-          
-        </div>
+					
+						<a href="/teams" class="breadcrumbs__link" >
+							
+								Teams
+							
+						</a>
+					
+				</li>
+			
+				<li class="breadcrumbs__item">
+					
+						<span class="breadcrumbs__separator material-symbols-outlined">
+							arrow_right
+						</span>
+					
+
+					
+						<a href="/team/manchester-city" class="breadcrumbs__link" >
+							
+								Manchester City
+							
+						</a>
+					
+				</li>
+			
+				<li class="breadcrumbs__item">
+					
+						<span class="breadcrumbs__separator material-symbols-outlined">
+							arrow_right
+						</span>
+					
+
+					
+						<span class="breadcrumbs__current" aria-current="page">
+							Erling Haaland
+						</span>
+					
+				</li>
+			
+		</ol>
+	</nav>
 
         
-        <div class="page-head__meta">
-          
-          <div class="page-head__count">30 Lives</div>
-           
+        <div class="player-hero__main">
+          <div class="player-hero__avatar">
+            <img src="/assets/images/player-full-6.webp" alt="Erling Haaland">
+          </div>
+          <div class="player-hero__info">
+            <h1 class="player-hero__title">Erling Haaland</h1>
+            <div class="player-hero__number">9</div>
+          </div>
         </div>
         
+        <div class="player-hero__meta">
+          <span class="player-hero__meta-item">
+            <span class="material-symbols-outlined">sports_soccer</span>
+            Forward
+          </span>
+          <span class="player-hero__meta-item">
+            <span class="material-symbols-outlined">flag</span>
+            Norway
+          </span>
+          <span class="player-hero__meta-item">
+            <span class="material-symbols-outlined">cake</span>
+            24 years
+          </span>
+        </div>
+        
+        <div class="player-hero__team">
+          <a href="/team/manchester-city" class="player-hero__team-link">
+            <img src="/assets/images/team-4.webp" alt="Manchester City">
+            <span>Manchester City</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
+  </div>
 </section>
 
-<section class="section section--margin">
+<div class="container">
+  <div class="page-content">
+    <div class="page-content__inner">
+      
+      <!-- Основная информация -->
+      <section class="player__info">
+        <h2 class="player__subtitle">Player Information</h2>
+        <div class="player__info-grid">
+                    <div class="player__info-item">
+            <span class="player__info-label">Full Name</span>
+            <span class="player__info-value">Erling Braut Haaland</span>
+          </div>
+                    <div class="player__info-item">
+            <span class="player__info-label">Date of Birth</span>
+            <span class="player__info-value">21 July 2000</span>
+          </div>
+                    <div class="player__info-item">
+            <span class="player__info-label">Place of Birth</span>
+            <span class="player__info-value">Leeds, England</span>
+          </div>
+                    <div class="player__info-item">
+            <span class="player__info-label">Height</span>
+            <span class="player__info-value">1.95 m (6 ft 5 in)</span>
+          </div>
+                    <div class="player__info-item">
+            <span class="player__info-label">Weight</span>
+            <span class="player__info-value">88 kg (194 lb)</span>
+          </div>
+                    <div class="player__info-item">
+            <span class="player__info-label">Preferred Foot</span>
+            <span class="player__info-value">Left</span>
+          </div>
+                    <div class="player__info-item">
+            <span class="player__info-label">Current Club</span>
+            <span class="player__info-value">Manchester City</span>
+          </div>
+                    <div class="player__info-item">
+            <span class="player__info-label">Squad Number</span>
+            <span class="player__info-value">9</span>
+          </div>
+                    <div class="player__info-item">
+            <span class="player__info-label">Contract Until</span>
+            <span class="player__info-value">30 June 2027</span>
+          </div>
+                    <div class="player__info-item">
+            <span class="player__info-label">Market Value</span>
+            <span class="player__info-value">€180M</span>
+          </div>
+                  </div>
+      </section>
+
+      <!-- Статистика сезона -->
+      <section class="player__stats">
+        <h2 class="player__subtitle">Season Statistics</h2>
+        <div class="player__stats-grid">
+                    <div class="player__stat-card">
+            <div class="player__stat-icon">
+              <span class="material-symbols-outlined">sports_soccer</span>
+            </div>
+            <div class="player__stat-content">
+              <div class="player__stat-value">36</div>
+              <div class="player__stat-label">Goals</div>
+            </div>
+          </div>
+                    <div class="player__stat-card">
+            <div class="player__stat-icon">
+              <span class="material-symbols-outlined">timeline</span>
+            </div>
+            <div class="player__stat-content">
+              <div class="player__stat-value">8</div>
+              <div class="player__stat-label">Assists</div>
+            </div>
+          </div>
+                    <div class="player__stat-card">
+            <div class="player__stat-icon">
+              <span class="material-symbols-outlined">confirmation_number</span>
+            </div>
+            <div class="player__stat-content">
+              <div class="player__stat-value">37</div>
+              <div class="player__stat-label">Appearances</div>
+            </div>
+          </div>
+                    <div class="player__stat-card">
+            <div class="player__stat-icon">
+              <span class="material-symbols-outlined">schedule</span>
+            </div>
+            <div class="player__stat-content">
+              <div class="player__stat-value">3142</div>
+              <div class="player__stat-label">Minutes Played</div>
+            </div>
+          </div>
+                    <div class="player__stat-card">
+            <div class="player__stat-icon">
+              <span class="material-symbols-outlined">bolt</span>
+            </div>
+            <div class="player__stat-content">
+              <div class="player__stat-value">4.8</div>
+              <div class="player__stat-label">Shots per Game</div>
+            </div>
+          </div>
+                    <div class="player__stat-card">
+            <div class="player__stat-icon">
+              <span class="material-symbols-outlined">target</span>
+            </div>
+            <div class="player__stat-content">
+              <div class="player__stat-value">62%</div>
+              <div class="player__stat-label">Shot Accuracy</div>
+            </div>
+          </div>
+                    <div class="player__stat-card">
+            <div class="player__stat-icon">
+              <span class="material-symbols-outlined">warning</span>
+            </div>
+            <div class="player__stat-content">
+              <div class="player__stat-value">4</div>
+              <div class="player__stat-label">Yellow Cards</div>
+            </div>
+          </div>
+                    <div class="player__stat-card">
+            <div class="player__stat-icon">
+              <span class="material-symbols-outlined">block</span>
+            </div>
+            <div class="player__stat-content">
+              <div class="player__stat-value">0</div>
+              <div class="player__stat-label">Red Cards</div>
+            </div>
+          </div>
+                  </div>
+      </section>
+
+      <!-- Биография -->
+      <section class="player__bio">
+        <h2 class="player__subtitle">Biography</h2>
+        <div class="player__bio-content">
+          <p><strong>Erling Braut Haaland</strong> is a Norwegian professional footballer who plays as a striker for Premier League club Manchester City and the Norway national team. Considered one of the best players in the world, he is known for his speed, strength, positioning, and finishing inside the box.</p><p>Born in Leeds, England, while his father Alf-Inge Haaland was playing for Leeds United, Haaland moved to Bryne at the age of three. He joined the youth system at Bryne in 2006, and moved to that of Molde in 2014. In 2017, he signed his first professional contract with Molde, and also spent time on loan with the reserve team of fellow Eliteserien side Strømsgodset. He made his professional debut in 2016.</p><p>After his performances in Austria, Haaland signed with Borussia Dortmund in December 2019. In his debut match, he scored a hat-trick in just 23 minutes. He finished the 2020–21 season with 41 goals in 41 matches across all competitions. In May 2022, Haaland signed for Manchester City on a five-year contract.</p><p>In his debut season with Manchester City, Haaland broke the Premier League single-season scoring record with 36 goals, surpassing the previous records of 32 goals in a 38-game season and 34 goals in a 42-game season. He also helped City win their first UEFA Champions League title, scoring twice in the final against Inter Milan.</p>
+        </div>
+      </section>
+
+      <!-- Достижения -->
+            <section class="player__achievements">
+        <h2 class="player__subtitle">Achievements</h2>
+        <div class="player__achievements-grid">
+                    <div class="player__achievement">
+            <div class="player__achievement-icon">
+              <span class="material-symbols-outlined">emoji_events</span>
+            </div>
+            <div class="player__achievement-content">
+              <h3 class="player__achievement-title">Premier League Champion</h3>
+              <p class="player__achievement-year">2022-23</p>
+            </div>
+          </div>
+                    <div class="player__achievement">
+            <div class="player__achievement-icon">
+              <span class="material-symbols-outlined">public</span>
+            </div>
+            <div class="player__achievement-content">
+              <h3 class="player__achievement-title">UEFA Champions League Winner</h3>
+              <p class="player__achievement-year">2022-23</p>
+            </div>
+          </div>
+                    <div class="player__achievement">
+            <div class="player__achievement-icon">
+              <span class="material-symbols-outlined">military_tech</span>
+            </div>
+            <div class="player__achievement-content">
+              <h3 class="player__achievement-title">FA Cup Winner</h3>
+              <p class="player__achievement-year">2022-23</p>
+            </div>
+          </div>
+                    <div class="player__achievement">
+            <div class="player__achievement-icon">
+              <span class="material-symbols-outlined">sports_soccer</span>
+            </div>
+            <div class="player__achievement-content">
+              <h3 class="player__achievement-title">Premier League Golden Boot</h3>
+              <p class="player__achievement-year">2022-23</p>
+            </div>
+          </div>
+                    <div class="player__achievement">
+            <div class="player__achievement-icon">
+              <span class="material-symbols-outlined">star</span>
+            </div>
+            <div class="player__achievement-content">
+              <h3 class="player__achievement-title">PFA Players' Player of the Year</h3>
+              <p class="player__achievement-year">2022-23</p>
+            </div>
+          </div>
+                    <div class="player__achievement">
+            <div class="player__achievement-icon">
+              <span class="material-symbols-outlined">workspace_premium</span>
+            </div>
+            <div class="player__achievement-content">
+              <h3 class="player__achievement-title">UEFA Champions League Top Scorer</h3>
+              <p class="player__achievement-year">2022-23</p>
+            </div>
+          </div>
+                  </div>
+      </section>
+      
+      <!-- Карьерная статистика -->
+      <section class="player__career">
+        <h2 class="player__subtitle">Career Statistics</h2>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+<div id="table-1350869719" class="table table--default" data-table="default">
+  
+  
+  
+  
+  
+  <div class="table__wrap">
+    <table class="table__table" role="table">
+      
+      
+      
+        <colgroup>
+          
+          
+            <col style="width: 120px">
+          
+            <col style="width: minmax(200px, 1fr)">
+          
+            <col style="width: 150px">
+          
+            <col style="width: 80px">
+          
+            <col style="width: 80px">
+          
+            <col style="width: 80px">
+          
+        </colgroup>
+      
+      
+      
+      <thead class="table__head">
+        <tr class="table__tr">
+          
+          
+          
+            
+            
+            
+            
+            
+            <th 
+              scope="col" 
+              class="table__th"
+              style="text-align: left"
+              
+            >
+              Season
+            </th>
+          
+            
+            
+            
+            
+            
+            <th 
+              scope="col" 
+              class="table__th"
+              style="text-align: left"
+              
+            >
+              Team
+            </th>
+          
+            
+            
+            
+            
+            
+            <th 
+              scope="col" 
+              class="table__th"
+              style="text-align: left"
+              
+            >
+              Competition
+            </th>
+          
+            
+            
+            
+            
+            
+            <th 
+              scope="col" 
+              class="table__th"
+              style="text-align: center"
+              
+            >
+              Apps
+            </th>
+          
+            
+            
+            
+            
+            
+            <th 
+              scope="col" 
+              class="table__th"
+              style="text-align: center"
+              
+            >
+              Goals
+            </th>
+          
+            
+            
+            
+            
+            
+            <th 
+              scope="col" 
+              class="table__th"
+              style="text-align: center"
+              
+            >
+              Assists
+            </th>
+          
+        </tr>
+      </thead>
+      
+      
+      <tbody class="table__body">
+        
+          
+            
+            
+            
+            
+            <tr 
+              class="table__tr"
+              
+              
+            >
+              
+              
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--text"
+                  style="text-align: left"
+                >
+                  
+                  
+                  
+                  
+                    2024-25
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--team"
+                  style="text-align: left"
+                >
+                  
+                  
+                  
+                  
+                    
+                    <a class="entity" href="/team/manchester-city" title="Manchester City">
+                      
+                        <div class="entity__logo">
+                          <img 
+                            src="/assets/images/team-4.webp" 
+                            alt="Manchester City"
+                            loading="lazy"
+                          >
+                        </div>
+                      
+                      <div class="entity__info">
+                        <span class="entity__name">Manchester City</span>
+                        
+                      </div>
+                    </a>
+                  
+                  
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--text"
+                  style="text-align: left"
+                >
+                  
+                  
+                  
+                  
+                    Premier League
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--number"
+                  style="text-align: center"
+                >
+                  
+                  
+                  
+                  
+                    <span class="num">
+                      
+                      10
+                      
+                    </span>
+                  
+                  
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--number"
+                  style="text-align: center"
+                >
+                  
+                  
+                  
+                  
+                    <span class="num">
+                      
+                      12
+                      
+                    </span>
+                  
+                  
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--number"
+                  style="text-align: center"
+                >
+                  
+                  
+                  
+                  
+                    <span class="num">
+                      
+                      2
+                      
+                    </span>
+                  
+                  
+                  
+                  
+                </td>
+              
+            </tr>
+          
+            
+            
+            
+            
+            <tr 
+              class="table__tr"
+              
+              
+            >
+              
+              
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--text"
+                  style="text-align: left"
+                >
+                  
+                  
+                  
+                  
+                    2023-24
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--team"
+                  style="text-align: left"
+                >
+                  
+                  
+                  
+                  
+                    
+                    <a class="entity" href="/team/manchester-city" title="Manchester City">
+                      
+                        <div class="entity__logo">
+                          <img 
+                            src="/assets/images/team-2.webp" 
+                            alt="Manchester City"
+                            loading="lazy"
+                          >
+                        </div>
+                      
+                      <div class="entity__info">
+                        <span class="entity__name">Manchester City</span>
+                        
+                      </div>
+                    </a>
+                  
+                  
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--text"
+                  style="text-align: left"
+                >
+                  
+                  
+                  
+                  
+                    Premier League
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--number"
+                  style="text-align: center"
+                >
+                  
+                  
+                  
+                  
+                    <span class="num">
+                      
+                      37
+                      
+                    </span>
+                  
+                  
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--number"
+                  style="text-align: center"
+                >
+                  
+                  
+                  
+                  
+                    <span class="num">
+                      
+                      36
+                      
+                    </span>
+                  
+                  
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--number"
+                  style="text-align: center"
+                >
+                  
+                  
+                  
+                  
+                    <span class="num">
+                      
+                      8
+                      
+                    </span>
+                  
+                  
+                  
+                  
+                </td>
+              
+            </tr>
+          
+            
+            
+            
+            
+            <tr 
+              class="table__tr"
+              
+              
+            >
+              
+              
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--text"
+                  style="text-align: left"
+                >
+                  
+                  
+                  
+                  
+                    2022-23
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--team"
+                  style="text-align: left"
+                >
+                  
+                  
+                  
+                  
+                    
+                    <a class="entity" href="/team/manchester-city" title="Manchester City">
+                      
+                        <div class="entity__logo">
+                          <img 
+                            src="data:image/webp;base64,UklGRkoFAABXRUJQVlA4WAoAAAAQAAAATwAATwAAQUxQSI4BAAABd6C2jSQ1eHxPGVP8ERFQe493//G0FnJAEQBGkTPHJ8ukzpXBMjPXMWkmzVfJYO8BlewYNXMlbncfsZtkM2USEf134LZtJDHjva92DOwfBJyTW5NJF/oc3epTLuBgmskAi5o+stK+PrMLeJ4l+fnjWTLHnsV/f3YksP4hYl+B2CMcSbo3RICVS3o0hBMrL2PzKAY3sfJ0tpYXg5NYeSzbjKa7sxNiuPweDOtWaoe4esD9AfBTn8AOcV99qBEnIUk1uJiPzWtAGNhJ8BMcPF4VWAevHAI7aWPpU+B1uyBq5bNw9KNoocA+2EnOO7w4E1bqnQ2MjOHchaJCMGvQompImwUVgvlZWfja50CFgMXh9Bhaj6TXNWFhWIYvKhLQCioEQzdIrcVk+aGsSj2BmFyv81pwSqZVBTqYVb6twfGcE4Vg3S0gNnWOKITk9CpQsmyqn9CZtknKvtBe5zoJZ8IqmTVc10jZUHWVc6oi47LvaVVQXUOE/DlDrZYfr6KnSLwCP6+yXmQRr3LM13IiAFZQOCCWAwAAsBQAnQEqUABQAD5tLJJGpCIhoSj23jCADYljNwAD5FV2uRxive0O+X/Rt0fQ/WOU6Pp/wfCvtS/4DelLjuMz6d+U9p3fprZzXnn/te4T/Kv6n/tuuz+3fsq/rMhdfk8AWtD584FJStG4HL5fzd0eu1BdzlS3MaQFzuiR7f36b0V56349BPKYMnVvteq5larnyszkVSuW21HqQ49sxX0R39Vc3mbONnvmUze+5cIAAP7r43+tvinDzkI0BQaU6nQ3/KJMQNbvX1SlD4lN/zus//1f/uKBvcizkybfMVsShFIFBIaZabUHIzYhff6d+4aBS/gVv0TkEdXrYtqIie8l/GA4uAfM5LLOKnIV6c9HTxsMgFsbUMMRsuvtVtTcEZfn2tNOg/+DX+oR8/eAKxVQuQUjVNE9d/D8vrc8prX+35/kmivzO6LVRQzkl/pDbLTsFKDo517wczaXK7LESglfg7f37Or9zOcG4TrNC0z9d9+3JAAYvQEE8IAnGhxeFCUL88i/+vEPJG5xmLt0QeR/qFNldOW3/6+w1LIAoSA4YCnFcf2+18ub4/mjuEWhZeV5Bc0H9uGfNr0O5lvlTTIDrxewj4yjneTKCZGZ4chcuuCHEup9myaRfoWAO/niQlgwPa/UEnbQ1scJTn/wWiTVBDa66u+NOCnWP/il2pnbdKJidVZwXI7ZcTvtv+n9vjrPvilOqz0FYKxaN4rkG14PBh/AC8wyGC7/sMZ5fbLQ6saDRhriBhGfXe+cLJCNUuo/6tCsmfkIpWlilq4rx4WCP4zIi4MnUx+MjCU4iF/LxOlARtBB0Yuqpzu+iB+1rzSTK8+9wJzZ3orG5Ykz10e8RdJv/y0e65PJjPsRJmCtiWDrjFSK++oA02eSSuHKa3DQ1A3Sz0422g7xKYQVP4/4mPjjQzGCr6tEbv6+CnaKWGBtTDGOlGQGen11tlR6xycpGziTc5nsKRZl8DqsC1gBQHzauZp7Lf5icWW322VcH19OrNPTM/7TAwjxQd7j5pxJUiX7zybdpSLf6D1bkf6zsh9gDLjl37Q15qy/e6MlLtHtBc1Q167sjY4kn9IJ4v1IRRaM/i2IxFN1Nu1ptjGKp+qgM8DYvFL/k/P+wETYjeiGS1eiLHMadorxO0zK0RK/gP7/WRjWRZktJO0ABV8YHp9YaYGO/6znVPEPZYz1NWDJVFQUQOl9jNUYjg/B/5BuV/FYgAAA" 
+                            alt="Manchester City"
+                            loading="lazy"
+                          >
+                        </div>
+                      
+                      <div class="entity__info">
+                        <span class="entity__name">Manchester City</span>
+                        
+                      </div>
+                    </a>
+                  
+                  
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--text"
+                  style="text-align: left"
+                >
+                  
+                  
+                  
+                  
+                    Premier League
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--number"
+                  style="text-align: center"
+                >
+                  
+                  
+                  
+                  
+                    <span class="num">
+                      
+                      35
+                      
+                    </span>
+                  
+                  
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--number"
+                  style="text-align: center"
+                >
+                  
+                  
+                  
+                  
+                    <span class="num">
+                      
+                      36
+                      
+                    </span>
+                  
+                  
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--number"
+                  style="text-align: center"
+                >
+                  
+                  
+                  
+                  
+                    <span class="num">
+                      
+                      8
+                      
+                    </span>
+                  
+                  
+                  
+                  
+                </td>
+              
+            </tr>
+          
+            
+            
+            
+            
+            <tr 
+              class="table__tr"
+              
+              
+            >
+              
+              
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--text"
+                  style="text-align: left"
+                >
+                  
+                  
+                  
+                  
+                    2021-22
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--team"
+                  style="text-align: left"
+                >
+                  
+                  
+                  
+                  
+                    
+                    <a class="entity" href="/team/dortmund" title="Borussia Dortmund">
+                      
+                        <div class="entity__logo">
+                          <img 
+                            src="/assets/images/team-5.webp" 
+                            alt="Borussia Dortmund"
+                            loading="lazy"
+                          >
+                        </div>
+                      
+                      <div class="entity__info">
+                        <span class="entity__name">Borussia Dortmund</span>
+                        
+                      </div>
+                    </a>
+                  
+                  
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--text"
+                  style="text-align: left"
+                >
+                  
+                  
+                  
+                  
+                    Bundesliga
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--number"
+                  style="text-align: center"
+                >
+                  
+                  
+                  
+                  
+                    <span class="num">
+                      
+                      24
+                      
+                    </span>
+                  
+                  
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--number"
+                  style="text-align: center"
+                >
+                  
+                  
+                  
+                  
+                    <span class="num">
+                      
+                      22
+                      
+                    </span>
+                  
+                  
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--number"
+                  style="text-align: center"
+                >
+                  
+                  
+                  
+                  
+                    <span class="num">
+                      
+                      7
+                      
+                    </span>
+                  
+                  
+                  
+                  
+                </td>
+              
+            </tr>
+          
+            
+            
+            
+            
+            <tr 
+              class="table__tr"
+              
+              
+            >
+              
+              
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--text"
+                  style="text-align: left"
+                >
+                  
+                  
+                  
+                  
+                    2020-21
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--team"
+                  style="text-align: left"
+                >
+                  
+                  
+                  
+                  
+                    
+                    <a class="entity" href="/team/dortmund" title="Borussia Dortmund">
+                      
+                        <div class="entity__logo">
+                          <img 
+                            src="/assets/images/team-5.webp" 
+                            alt="Borussia Dortmund"
+                            loading="lazy"
+                          >
+                        </div>
+                      
+                      <div class="entity__info">
+                        <span class="entity__name">Borussia Dortmund</span>
+                        
+                      </div>
+                    </a>
+                  
+                  
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--text"
+                  style="text-align: left"
+                >
+                  
+                  
+                  
+                  
+                    Bundesliga
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--number"
+                  style="text-align: center"
+                >
+                  
+                  
+                  
+                  
+                    <span class="num">
+                      
+                      28
+                      
+                    </span>
+                  
+                  
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--number"
+                  style="text-align: center"
+                >
+                  
+                  
+                  
+                  
+                    <span class="num">
+                      
+                      27
+                      
+                    </span>
+                  
+                  
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--number"
+                  style="text-align: center"
+                >
+                  
+                  
+                  
+                  
+                    <span class="num">
+                      
+                      6
+                      
+                    </span>
+                  
+                  
+                  
+                  
+                </td>
+              
+            </tr>
+          
+            
+            
+            
+            
+            <tr 
+              class="table__tr"
+              
+              
+            >
+              
+              
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--text"
+                  style="text-align: left"
+                >
+                  
+                  
+                  
+                  
+                    2019-20
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--team"
+                  style="text-align: left"
+                >
+                  
+                  
+                  
+                  
+                    
+                    <a class="entity" href="/team/salzburg" title="Red Bull Salzburg">
+                      
+                        <div class="entity__logo">
+                          <img 
+                            src="/assets/images/team-6.webp" 
+                            alt="Red Bull Salzburg"
+                            loading="lazy"
+                          >
+                        </div>
+                      
+                      <div class="entity__info">
+                        <span class="entity__name">Red Bull Salzburg</span>
+                        
+                      </div>
+                    </a>
+                  
+                  
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--text"
+                  style="text-align: left"
+                >
+                  
+                  
+                  
+                  
+                    Austrian Bundesliga
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--number"
+                  style="text-align: center"
+                >
+                  
+                  
+                  
+                  
+                    <span class="num">
+                      
+                      16
+                      
+                    </span>
+                  
+                  
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--number"
+                  style="text-align: center"
+                >
+                  
+                  
+                  
+                  
+                    <span class="num">
+                      
+                      17
+                      
+                    </span>
+                  
+                  
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--number"
+                  style="text-align: center"
+                >
+                  
+                  
+                  
+                  
+                    <span class="num">
+                      
+                      5
+                      
+                    </span>
+                  
+                  
+                  
+                  
+                </td>
+              
+            </tr>
+          
+            
+            
+            
+            
+            <tr 
+              class="table__tr"
+              
+              
+            >
+              
+              
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--text"
+                  style="text-align: left"
+                >
+                  
+                  
+                  
+                  
+                    2019-20
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--team"
+                  style="text-align: left"
+                >
+                  
+                  
+                  
+                  
+                    
+                    <a class="entity" href="/team/dortmund" title="Borussia Dortmund">
+                      
+                        <div class="entity__logo">
+                          <img 
+                            src="/assets/images/team-5.webp" 
+                            alt="Borussia Dortmund"
+                            loading="lazy"
+                          >
+                        </div>
+                      
+                      <div class="entity__info">
+                        <span class="entity__name">Borussia Dortmund</span>
+                        
+                      </div>
+                    </a>
+                  
+                  
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--text"
+                  style="text-align: left"
+                >
+                  
+                  
+                  
+                  
+                    Bundesliga
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--number"
+                  style="text-align: center"
+                >
+                  
+                  
+                  
+                  
+                    <span class="num">
+                      
+                      13
+                      
+                    </span>
+                  
+                  
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--number"
+                  style="text-align: center"
+                >
+                  
+                  
+                  
+                  
+                    <span class="num">
+                      
+                      13
+                      
+                    </span>
+                  
+                  
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--number"
+                  style="text-align: center"
+                >
+                  
+                  
+                  
+                  
+                    <span class="num">
+                      
+                      2
+                      
+                    </span>
+                  
+                  
+                  
+                  
+                </td>
+              
+            </tr>
+          
+            
+            
+            
+            
+            <tr 
+              class="table__tr"
+              
+              
+            >
+              
+              
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--text"
+                  style="text-align: left"
+                >
+                  
+                  
+                  
+                  
+                    2018-19
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--team"
+                  style="text-align: left"
+                >
+                  
+                  
+                  
+                  
+                    
+                    <a class="entity" href="/team/salzburg" title="Red Bull Salzburg">
+                      
+                        <div class="entity__logo">
+                          <img 
+                            src="/assets/images/team-6.webp" 
+                            alt="Red Bull Salzburg"
+                            loading="lazy"
+                          >
+                        </div>
+                      
+                      <div class="entity__info">
+                        <span class="entity__name">Red Bull Salzburg</span>
+                        
+                      </div>
+                    </a>
+                  
+                  
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--text"
+                  style="text-align: left"
+                >
+                  
+                  
+                  
+                  
+                    Austrian Bundesliga
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--number"
+                  style="text-align: center"
+                >
+                  
+                  
+                  
+                  
+                    <span class="num">
+                      
+                      27
+                      
+                    </span>
+                  
+                  
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--number"
+                  style="text-align: center"
+                >
+                  
+                  
+                  
+                  
+                    <span class="num">
+                      
+                      16
+                      
+                    </span>
+                  
+                  
+                  
+                  
+                </td>
+              
+                
+                
+                
+                
+                
+                
+                <td 
+                  class="table__td table__td--number"
+                  style="text-align: center"
+                >
+                  
+                  
+                  
+                  
+                    <span class="num">
+                      
+                      7
+                      
+                    </span>
+                  
+                  
+                  
+                  
+                </td>
+              
+            </tr>
+          
+        
+      </tbody>
+      
+      
+      
+      
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+      </section>
+
+    </div>
+  </div>
+</div>
+<section class="section section--margin section--decor">
+  <img src="/assets/images/bg6.webp" alt="" class="section__bg" />
   <div class="container">
     <div class="section__inner">
-              
+      
 
 
 
 
-<div class="infinite-scroll-wrapper" 
-     data-infinite-scroll 
-     data-card-type="live"
-     data-items-per-page="6">
+
+
+<div class="section-header">
+  <h2 class="section-header__title">popular lives</h2>
+
   
-  <div class="infinite-scroll-container">
-    <!-- Progress bar -->
-    <div class="infinite-scroll-progress" data-progress></div>
-    
-    <!-- Main grid -->
-    <div class="infinite-scroll-grid live-grid " data-grid>
-      
-      
-        
-        
-        
-          
-          
-          
+    <a href="/lives" class="section-header__more">
+      <span class="section-header__more-text">more</span>
+      <span class="material-symbols-outlined section-header__icon">arrow_right</span>
+    </a>
+  
+</div>      <div
+        class="swiper home-live-swiper"
+        data-swiper='{
+               "slidesPerView": 1,
+               "spaceBetween": 16,
+               "breakpoints": {
+                 "0":  { "slidesPerView": 1 },
+                 "768": { "slidesPerView": 2 },
+                 "1024": { "slidesPerView": 3 }
+               }
+             }'
+      >
+        <div class="swiper-wrapper">
+                    <div class="swiper-slide">
             
 
 
@@ -407,15 +2150,8 @@
 </div>
 
   
-</article>
-            
-          
-          
-          
-        
-          
-          
-          
+</article>          </div>
+                    <div class="swiper-slide">
             
 
 
@@ -513,15 +2249,8 @@
 </div>
 
   
-</article>
-            
-          
-          
-          
-        
-          
-          
-          
+</article>          </div>
+                    <div class="swiper-slide">
             
 
 
@@ -619,15 +2348,8 @@
 </div>
 
   
-</article>
-            
-          
-          
-          
-        
-          
-          
-          
+</article>          </div>
+                    <div class="swiper-slide">
             
 
 
@@ -725,15 +2447,8 @@
 </div>
 
   
-</article>
-            
-          
-          
-          
-        
-          
-          
-          
+</article>          </div>
+                    <div class="swiper-slide">
             
 
 
@@ -831,15 +2546,8 @@
 </div>
 
   
-</article>
-            
-          
-          
-          
-        
-          
-          
-          
+</article>          </div>
+                    <div class="swiper-slide">
             
 
 
@@ -937,15 +2645,8 @@
 </div>
 
   
-</article>
-            
-          
-          
-          
-        
-          
-          
-          
+</article>          </div>
+                    <div class="swiper-slide">
             
 
 
@@ -1043,15 +2744,8 @@
 </div>
 
   
-</article>
-            
-          
-          
-          
-        
-          
-          
-          
+</article>          </div>
+                    <div class="swiper-slide">
             
 
 
@@ -1149,160 +2843,1623 @@
 </div>
 
   
-</article>
-            
-          
-          
-          
-        
-          
-          
-          
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-
-
-
-
-<article class="card-live">
-  <a href="/live/131" class="card-live__preview" aria-label="Open match">
-    <img src="/assets/images/img8.webp" alt="PSG vs Milan" class="card-live__thumb">
-    <span class="card-live__play material-symbols-outlined" aria-hidden="true">play_circle</span>
-    
-      <span class="card-live__badge card-live__badge--live">LIVE</span>
-    
-  </a>
-
-  <div class="card-live__meta">
-    
-    
-      
-  
-  
-
-  
-
-  
-    <time class="date date--card-live" datetime="2025-09-25 05:30">
-      
-        <span class="material-symbols-outlined date__icon">calendar_today</span>
-      
-      25.09.2025 05:30
-    </time>
-  
-
-    
-
-    
-      <a href="/league/serie-a" class="card-live__league">Serie A</a>
-    
-  </div>
-
-  <div class="card-live__teams">
-    <a href="/team/psg" class="card-live__team" aria-label="PSG">
-      <img src="/assets/images/team-8.webp" alt="PSG" class="card-live__logo">
-      <span class="card-live__name">PSG</span>
-    </a>
-
-    <span class="card-live__score">1 - 4</span>
-
-    <a href="/team/milan" class="card-live__team" aria-label="Milan">
-      <img src="/assets/images/team-2.webp" alt="Milan" class="card-live__logo">
-      <span class="card-live__name">Milan</span>
-    </a>
-  </div>
-
-  
-    
-    
-
-
-
-
-
-
-<div class="btn btn--live">
-  <a href="/live/131" class="btn__link">
-    <span class="btn__text">Live broadcast</span>
-    
-  </a>
-</div>
-
-  
-</article>
-            
-          
-          
-          
-        
-        
-      
-      
-    </div>
-    
-    <!-- Loading states -->
-    <div class="infinite-loader" data-loader hidden>
-      <div class="infinite-loader__spinner" role="progressbar" aria-label="Loading more matches..."></div>
-      <p class="infinite-loader__text">Loading more matches...</p>
-    </div>
-    
-    <!-- End message -->
-    <div class="infinite-loader infinite-loader--end" data-end-message hidden>
-      <p class="infinite-loader__text">All matches loaded</p>
-    </div>
-    
-    <!-- Error state -->
-    <div class="infinite-loader infinite-loader--error" data-error-message hidden>
-      <p class="infinite-loader__text">
-        Error loading items. Try again
-        <button type="button" class="infinite-loader__retry" data-retry>Try again</button>
-      </p>
-    </div>
-    
-  </div>
-</div>
-
-<!-- Data for JavaScript (only if we have data) -->
-
-<script type="application/json" data-live-data>
-  [{"href":"/live/123","preview":{"src":"/assets/images/pictures/img1.webp","alt":"Arsenal vs Chelsea"},"date":"2025-09-24 17:30","league":{"name":"Premier League","href":"/league/premier-league"},"team1":{"name":"Arsenal","logo":"/assets/images/teams/team-1.webp","href":"/team/arsenal"},"team2":{"name":"Chelsea","logo":"/assets/images/teams/team-2.webp","href":"/team/chelsea"},"status":"live","score":{"t1":0,"t2":0}},{"href":"/live/124","preview":{"src":"/assets/images/pictures/img2.webp","alt":"Chelsea vs Real Madrid"},"date":"2025-09-24 19:00","league":{"name":"La Liga","href":"/league/la-liga"},"team1":{"name":"Chelsea","logo":"/assets/images/teams/team-2.webp","href":"/team/chelsea"},"team2":{"name":"Real Madrid","logo":"/assets/images/teams/team-3.webp","href":"/team/realmadrid"},"status":"upcoming","score":"—"},{"href":"/live/125","preview":{"src":"/assets/images/pictures/img3.webp","alt":"Real Madrid vs Bayern"},"date":"2025-09-24 20:30","league":{"name":"Serie A","href":"/league/serie-a"},"team1":{"name":"Real Madrid","logo":"/assets/images/teams/team-3.webp","href":"/team/realmadrid"},"team2":{"name":"Bayern","logo":"/assets/images/teams/team-4.webp","href":"/team/bayern"},"status":"ht","score":{"t1":4,"t2":1}},{"href":"/live/126","preview":{"src":"/assets/images/pictures/img4.webp","alt":"Bayern vs Barcelona"},"date":"2025-09-24 22:00","league":{"name":"Bundesliga","href":"/league/bundesliga"},"team1":{"name":"Bayern","logo":"/assets/images/teams/team-4.webp","href":"/team/bayern"},"team2":{"name":"Barcelona","logo":"/assets/images/teams/team-5.webp","href":"/team/barcelona"},"status":"ft","score":{"t1":1,"t2":4}},{"href":"/live/127","preview":{"src":"/assets/images/pictures/img5.webp","alt":"Barcelona vs Juventus"},"date":"2025-09-24 23:30","league":{"name":"Ligue 1","href":"/league/ligue-1"},"team1":{"name":"Barcelona","logo":"/assets/images/teams/team-5.webp","href":"/team/barcelona"},"team2":{"name":"Juventus","logo":"/assets/images/teams/team-1.webp","href":"/team/juventus"},"status":"live","score":{"t1":3,"t2":2}},{"href":"/live/128","preview":{"src":"/assets/images/pictures/img6.webp","alt":"Juventus vs Liverpool"},"date":"2025-09-25 01:00","league":{"name":"UCL","href":"/league/champions-league"},"team1":{"name":"Juventus","logo":"/assets/images/teams/team-14.webp","href":"/team/juventus"},"team2":{"name":"Liverpool","logo":"/assets/images/teams/team-7.webp","href":"/team/liverpool"},"status":"upcoming","score":"—"},{"href":"/live/129","preview":{"src":"/assets/images/pictures/img7.webp","alt":"Liverpool vs Manchester City"},"date":"2025-09-25 02:30","league":{"name":"Premier League","href":"/league/premier-league"},"team1":{"name":"Liverpool","logo":"/assets/images/teams/team-7.webp","href":"/team/liverpool"},"team2":{"name":"Manchester City","logo":"/assets/images/teams/team-6.webp","href":"/team/manchestercity"},"status":"ht","score":{"t1":2,"t2":3}},{"href":"/live/130","preview":{"src":"/assets/images/pictures/img8.webp","alt":"Manchester City vs PSG"},"date":"2025-09-25 04:00","league":{"name":"La Liga","href":"/league/la-liga"},"team1":{"name":"Manchester City","logo":"/assets/images/teams/team-6.webp","href":"/team/manchestercity"},"team2":{"name":"PSG","logo":"/assets/images/teams/team-8.webp","href":"/team/psg"},"status":"ft","score":{"t1":4,"t2":1}},{"href":"/live/131","preview":{"src":"/assets/images/pictures/img8.webp","alt":"PSG vs Milan"},"date":"2025-09-25 05:30","league":{"name":"Serie A","href":"/league/serie-a"},"team1":{"name":"PSG","logo":"/assets/images/teams/team-8.webp","href":"/team/psg"},"team2":{"name":"Milan","logo":"/assets/images/teams/team-2.webp","href":"/team/milan"},"status":"live","score":{"t1":1,"t2":4}},{"href":"/live/132","preview":{"src":"/assets/images/pictures/img10.webp","alt":"Milan vs Inter"},"date":"2025-09-25 07:00","league":{"name":"Bundesliga","href":"/league/bundesliga"},"team1":{"name":"Milan","logo":"/assets/images/teams/team-2.webp","href":"/team/milan"},"team2":{"name":"Inter","logo":"/assets/images/teams/team-12.webp","href":"/team/inter"},"status":"upcoming","score":"—"},{"href":"/live/133","preview":{"src":"/assets/images/pictures/img1.webp","alt":"Inter vs Napoli"},"date":"2025-09-25 08:30","league":{"name":"Ligue 1","href":"/league/ligue-1"},"team1":{"name":"Inter","logo":"/assets/images/teams/team-12.webp","href":"/team/inter"},"team2":{"name":"Napoli","logo":"/assets/images/teams/team-13.webp","href":"/team/napoli"},"status":"ht","score":{"t1":0,"t2":0}},{"href":"/live/134","preview":{"src":"/assets/images/pictures/img2.webp","alt":"Napoli vs Atletico"},"date":"2025-09-25 10:00","league":{"name":"UCL","href":"/league/champions-league"},"team1":{"name":"Napoli","logo":"/assets/images/teams/team-13.webp","href":"/team/napoli"},"team2":{"name":"Atletico","logo":"/assets/images/teams/team-14.webp","href":"/team/atletico"},"status":"ft","score":{"t1":2,"t2":3}},{"href":"/live/135","preview":{"src":"/assets/images/pictures/img3.webp","alt":"Atletico vs Dortmund"},"date":"2025-09-25 11:30","league":{"name":"Premier League","href":"/league/premier-league"},"team1":{"name":"Atletico","logo":"/assets/images/teams/team-14.webp","href":"/team/atletico"},"team2":{"name":"Dortmund","logo":"/assets/images/teams/team-11.webp","href":"/team/dortmund"},"status":"live","score":{"t1":4,"t2":1}},{"href":"/live/136","preview":{"src":"/assets/images/pictures/img4.webp","alt":"Dortmund vs Leipzig"},"date":"2025-09-25 13:00","league":{"name":"La Liga","href":"/league/la-liga"},"team1":{"name":"Dortmund","logo":"/assets/images/teams/team-11.webp","href":"/team/dortmund"},"team2":{"name":"Leipzig","logo":"/assets/images/teams/team-1.webp","href":"/team/leipzig"},"status":"upcoming","score":"—"},{"href":"/live/137","preview":{"src":"/assets/images/pictures/img5.webp","alt":"Leipzig vs Ajax"},"date":"2025-09-25 14:30","league":{"name":"Serie A","href":"/league/serie-a"},"team1":{"name":"Leipzig","logo":"/assets/images/teams/team-1.webp","href":"/team/leipzig"},"team2":{"name":"Ajax","logo":"/assets/images/teams/team-2.webp","href":"/team/ajax"},"status":"ht","score":{"t1":3,"t2":2}},{"href":"/live/138","preview":{"src":"/assets/images/pictures/img6.webp","alt":"Ajax vs Benfica"},"date":"2025-09-25 16:00","league":{"name":"Bundesliga","href":"/league/bundesliga"},"team1":{"name":"Ajax","logo":"/assets/images/teams/team-2.webp","href":"/team/ajax"},"team2":{"name":"Benfica","logo":"/assets/images/teams/team-13.webp","href":"/team/benfica"},"status":"ft","score":{"t1":0,"t2":0}},{"href":"/live/139","preview":{"src":"/assets/images/pictures/img7.webp","alt":"Benfica vs Porto"},"date":"2025-09-25 17:30","league":{"name":"Ligue 1","href":"/league/ligue-1"},"team1":{"name":"Benfica","logo":"/assets/images/teams/team-13.webp","href":"/team/benfica"},"team2":{"name":"Porto","logo":"/assets/images/teams/team-14.webp","href":"/team/porto"},"status":"live","score":{"t1":2,"t2":3}},{"href":"/live/140","preview":{"src":"/assets/images/pictures/img8.webp","alt":"Porto vs Roma"},"date":"2025-09-25 19:00","league":{"name":"UCL","href":"/league/champions-league"},"team1":{"name":"Porto","logo":"/assets/images/teams/team-14.webp","href":"/team/porto"},"team2":{"name":"Roma","logo":"/assets/images/teams/team-13.webp","href":"/team/roma"},"status":"upcoming","score":"—"},{"href":"/live/141","preview":{"src":"/assets/images/pictures/img9.webp","alt":"Roma vs Tottenham"},"date":"2025-09-25 20:30","league":{"name":"Premier League","href":"/league/premier-league"},"team1":{"name":"Roma","logo":"/assets/images/teams/team-13.webp","href":"/team/roma"},"team2":{"name":"Tottenham","logo":"/assets/images/teams/team-4.webp","href":"/team/tottenham"},"status":"ht","score":{"t1":1,"t2":4}},{"href":"/live/142","preview":{"src":"/assets/images/pictures/img10.webp","alt":"Tottenham vs Arsenal"},"date":"2025-09-25 22:00","league":{"name":"La Liga","href":"/league/la-liga"},"team1":{"name":"Tottenham","logo":"/assets/images/teams/team-2.webp","href":"/team/tottenham"},"team2":{"name":"Arsenal","logo":"/assets/images/teams/team-1.webp","href":"/team/arsenal"},"status":"ft","score":{"t1":3,"t2":2}},{"href":"/live/143","preview":{"src":"/assets/images/pictures/img1.webp","alt":"Arsenal vs Chelsea"},"date":"2025-09-25 23:30","league":{"name":"Serie A","href":"/league/serie-a"},"team1":{"name":"Arsenal","logo":"/assets/images/teams/team-1.webp","href":"/team/arsenal"},"team2":{"name":"Chelsea","logo":"/assets/images/teams/team-2.webp","href":"/team/chelsea"},"status":"live","score":{"t1":0,"t2":0}},{"href":"/live/144","preview":{"src":"/assets/images/pictures/img2.webp","alt":"Chelsea vs Real Madrid"},"date":"2025-09-26 01:00","league":{"name":"Bundesliga","href":"/league/bundesliga"},"team1":{"name":"Chelsea","logo":"/assets/images/teams/team-2.webp","href":"/team/chelsea"},"team2":{"name":"Real Madrid","logo":"/assets/images/teams/team-3.webp","href":"/team/realmadrid"},"status":"upcoming","score":"—"},{"href":"/live/145","preview":{"src":"/assets/images/pictures/img3.webp","alt":"Real Madrid vs Bayern"},"date":"2025-09-26 02:30","league":{"name":"Ligue 1","href":"/league/ligue-1"},"team1":{"name":"Real Madrid","logo":"/assets/images/teams/team-3.webp","href":"/team/realmadrid"},"team2":{"name":"Bayern","logo":"/assets/images/teams/team-4.webp","href":"/team/bayern"},"status":"ht","score":{"t1":4,"t2":1}},{"href":"/live/146","preview":{"src":"/assets/images/pictures/img4.webp","alt":"Bayern vs Barcelona"},"date":"2025-09-26 04:00","league":{"name":"UCL","href":"/league/champions-league"},"team1":{"name":"Bayern","logo":"/assets/images/teams/team-4.webp","href":"/team/bayern"},"team2":{"name":"Barcelona","logo":"/assets/images/teams/team-5.webp","href":"/team/barcelona"},"status":"ft","score":{"t1":1,"t2":4}},{"href":"/live/147","preview":{"src":"/assets/images/pictures/img5.webp","alt":"Barcelona vs Juventus"},"date":"2025-09-26 05:30","league":{"name":"Premier League","href":"/league/premier-league"},"team1":{"name":"Barcelona","logo":"/assets/images/teams/team-5.webp","href":"/team/barcelona"},"team2":{"name":"Juventus","logo":"/assets/images/teams/team-1.webp","href":"/team/juventus"},"status":"live","score":{"t1":3,"t2":2}},{"href":"/live/148","preview":{"src":"/assets/images/pictures/img6.webp","alt":"Juventus vs Liverpool"},"date":"2025-09-26 07:00","league":{"name":"La Liga","href":"/league/la-liga"},"team1":{"name":"Juventus","logo":"/assets/images/teams/team-2.webp","href":"/team/juventus"},"team2":{"name":"Liverpool","logo":"/assets/images/teams/team-7.webp","href":"/team/liverpool"},"status":"upcoming","score":"—"},{"href":"/live/149","preview":{"src":"/assets/images/pictures/img7.webp","alt":"Liverpool vs Manchester City"},"date":"2025-09-26 08:30","league":{"name":"Serie A","href":"/league/serie-a"},"team1":{"name":"Liverpool","logo":"/assets/images/teams/team-7.webp","href":"/team/liverpool"},"team2":{"name":"Manchester City","logo":"/assets/images/teams/team-6.webp","href":"/team/manchestercity"},"status":"ht","score":{"t1":2,"t2":3}},{"href":"/live/150","preview":{"src":"/assets/images/pictures/img8.webp","alt":"Manchester City vs PSG"},"date":"2025-09-26 10:00","league":{"name":"Bundesliga","href":"/league/bundesliga"},"team1":{"name":"Manchester City","logo":"/assets/images/teams/team-6.webp","href":"/team/manchestercity"},"team2":{"name":"PSG","logo":"/assets/images/teams/team-8.webp","href":"/team/psg"},"status":"ft","score":{"t1":4,"t2":1}},{"href":"/live/151","preview":{"src":"/assets/images/pictures/img9.webp","alt":"PSG vs Milan"},"date":"2025-09-26 11:30","league":{"name":"Ligue 1","href":"/league/ligue-1"},"team1":{"name":"PSG","logo":"/assets/images/teams/team-8.webp","href":"/team/psg"},"team2":{"name":"Milan","logo":"/assets/images/teams/team-2.webp","href":"/team/milan"},"status":"live","score":{"t1":1,"t2":4}},{"href":"/live/152","preview":{"src":"/assets/images/pictures/img10.webp","alt":"Milan vs Inter"},"date":"2025-09-26 13:00","league":{"name":"UCL","href":"/league/champions-league"},"team1":{"name":"Milan","logo":"/assets/images/teams/team-2.webp","href":"/team/milan"},"team2":{"name":"Inter","logo":"/assets/images/teams/team-12.webp","href":"/team/inter"},"status":"upcoming","score":"—"}]
-</script>
+</article>          </div>
+                  </div>
+        <div class="swiper-button__wrap">
+          <button
+            class="swiper-button-prev"
+            data-swiper-prev
+            aria-label="Prev"
+          ></button>
+          <button
+            class="swiper-button-next"
+            data-swiper-next
+            aria-label="Next"
+          ></button>
+        </div>
       </div>
     </div>
   </div>
 </section>
+<section class="section section--margin">
+  <div class="container">
+    <div class="section__inner">
+              
 
 
 
 
 
 
+<div class="section-header">
+  <h2 class="section-header__title">latest videos</h2>
+
+  
+    <a href="/videos" class="section-header__more">
+      <span class="section-header__more-text">more</span>
+      <span class="material-symbols-outlined section-header__icon">arrow_right</span>
+    </a>
+  
+</div>      <div class="card-video__grid card-video__grid--hidden">
+              
+
+
+
+
+
+
+
+
+
+
+
+<article class="card-video">
+  <a href="/video/ajax-vs-psv" class="card-video__thumb">
+    <img src="/assets/images/img13.webp" alt="Ajax vs PSV full match" class="card-video__thumbnail">
+    <span class="card-video__play material-symbols-outlined">play_circle</span>
+  </a>
+
+  <div class="card-video__content">
+    <h3 class="card-video__title">
+      <a href="/video/ajax-vs-psv" class="card-video__link">Ajax vs PSV full match</a>
+    </h3>
+
+    <div class="card-video__meta">
+      
+      
+  
+  
+
+  
+
+  
+    <time class="date date--video" datetime="2025-09-03 21:00:00">
+      
+        <span class="material-symbols-outlined date__icon">calendar_today</span>
+      
+      03 Sep, 2025
+    </time>
+  
+
+    </div>
+
+    
+      
+
+
+
+
+<ul class="tag-absolute">
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/eredivisie" class="tag-absolute__link">
+        Eredivisie
+      </a>
+    </li>
+  
+</ul>
+
+
+    
+  </div>
+</article>
+      
+
+
+
+
+
+
+
+
+
+
+
+<article class="card-video">
+  <a href="/video/porto-vs-sporting" class="card-video__thumb">
+    <img src="/assets/images/img14.webp" alt="Primeira Liga big match" class="card-video__thumbnail">
+    <span class="card-video__play material-symbols-outlined">play_circle</span>
+  </a>
+
+  <div class="card-video__content">
+    <h3 class="card-video__title">
+      <a href="/video/porto-vs-sporting" class="card-video__link">Primeira Liga big match</a>
+    </h3>
+
+    <div class="card-video__meta">
+      
+      
+  
+  
+
+  
+
+  
+    <time class="date date--video" datetime="2025-09-02 20:00:00">
+      
+        <span class="material-symbols-outlined date__icon">calendar_today</span>
+      
+      02 Sep, 2025
+    </time>
+  
+
+    </div>
+
+    
+      
+
+
+
+
+<ul class="tag-absolute">
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/primeira-liga" class="tag-absolute__link">
+        Primeira Liga
+      </a>
+    </li>
+  
+</ul>
+
+
+    
+  </div>
+</article>
+      
+
+
+
+
+
+
+
+
+
+
+
+<article class="card-video">
+  <a href="/video/psg-vs-lyon" class="card-video__thumb">
+    <img src="/assets/images/img15.webp" alt="PSG vs Lyon highlights" class="card-video__thumbnail">
+    <span class="card-video__play material-symbols-outlined">play_circle</span>
+  </a>
+
+  <div class="card-video__content">
+    <h3 class="card-video__title">
+      <a href="/video/psg-vs-lyon" class="card-video__link">PSG vs Lyon highlights</a>
+    </h3>
+
+    <div class="card-video__meta">
+      
+      
+  
+  
+
+  
+
+  
+    <time class="date date--video" datetime="2025-09-01 21:00:00">
+      
+        <span class="material-symbols-outlined date__icon">calendar_today</span>
+      
+      01 Sep, 2025
+    </time>
+  
+
+    </div>
+
+    
+      
+
+
+
+
+<ul class="tag-absolute">
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/ligue-1" class="tag-absolute__link">
+        Ligue 1
+      </a>
+    </li>
+  
+</ul>
+
+
+    
+  </div>
+</article>
+      
+
+
+
+
+
+
+
+
+
+
+
+<article class="card-video">
+  <a href="/video/man-city-vs-newcastle" class="card-video__thumb">
+    <img src="/assets/images/img16.webp" alt="Man City vs Newcastle 2-0 goals" class="card-video__thumbnail">
+    <span class="card-video__play material-symbols-outlined">play_circle</span>
+  </a>
+
+  <div class="card-video__content">
+    <h3 class="card-video__title">
+      <a href="/video/man-city-vs-newcastle" class="card-video__link">Man City vs Newcastle 2-0 goals</a>
+    </h3>
+
+    <div class="card-video__meta">
+      
+      
+  
+  
+
+  
+
+  
+    <time class="date date--video" datetime="2025-08-31 20:00:00">
+      
+        <span class="material-symbols-outlined date__icon">calendar_today</span>
+      
+      31 Aug, 2025
+    </time>
+  
+
+    </div>
+
+    
+      
+
+
+
+
+<ul class="tag-absolute">
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/premier-league" class="tag-absolute__link">
+        Premier League
+      </a>
+    </li>
+  
+</ul>
+
+
+    
+  </div>
+</article>
+      
+
+
+
+
+
+
+
+
+
+
+
+<article class="card-video">
+  <a href="/video/tottenham-vs-arsenal" class="card-video__thumb">
+    <img src="/assets/images/img17.webp" alt="North London Derby Highlights" class="card-video__thumbnail">
+    <span class="card-video__play material-symbols-outlined">play_circle</span>
+  </a>
+
+  <div class="card-video__content">
+    <h3 class="card-video__title">
+      <a href="/video/tottenham-vs-arsenal" class="card-video__link">North London Derby Highlights</a>
+    </h3>
+
+    <div class="card-video__meta">
+      
+      
+  
+  
+
+  
+
+  
+    <time class="date date--video" datetime="2025-08-30 21:00:00">
+      
+        <span class="material-symbols-outlined date__icon">calendar_today</span>
+      
+      30 Aug, 2025
+    </time>
+  
+
+    </div>
+
+    
+      
+
+
+
+
+<ul class="tag-absolute">
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/premier-league" class="tag-absolute__link">
+        Premier League
+      </a>
+    </li>
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/derby" class="tag-absolute__link">
+        Derby
+      </a>
+    </li>
+  
+</ul>
+
+
+    
+  </div>
+</article>
+      
+
+
+
+
+
+
+
+
+
+
+
+<article class="card-video">
+  <a href="/video/real-sociedad-vs-valencia" class="card-video__thumb">
+    <img src="/assets/images/img18.webp" alt="La Liga weekend match" class="card-video__thumbnail">
+    <span class="card-video__play material-symbols-outlined">play_circle</span>
+  </a>
+
+  <div class="card-video__content">
+    <h3 class="card-video__title">
+      <a href="/video/real-sociedad-vs-valencia" class="card-video__link">La Liga weekend match</a>
+    </h3>
+
+    <div class="card-video__meta">
+      
+      
+  
+  
+
+  
+
+  
+    <time class="date date--video" datetime="2025-08-29 22:00:00">
+      
+        <span class="material-symbols-outlined date__icon">calendar_today</span>
+      
+      29 Aug, 2025
+    </time>
+  
+
+    </div>
+
+    
+      
+
+
+
+
+<ul class="tag-absolute">
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/laliga" class="tag-absolute__link">
+        La Liga
+      </a>
+    </li>
+  
+</ul>
+
+
+    
+  </div>
+</article>
+      
+
+
+
+
+
+
+
+
+
+
+
+<article class="card-video">
+  <a href="/video/dortmund-vs-leipzig" class="card-video__thumb">
+    <img src="/assets/images/img19.webp" alt="Bundesliga highlights" class="card-video__thumbnail">
+    <span class="card-video__play material-symbols-outlined">play_circle</span>
+  </a>
+
+  <div class="card-video__content">
+    <h3 class="card-video__title">
+      <a href="/video/dortmund-vs-leipzig" class="card-video__link">Bundesliga highlights</a>
+    </h3>
+
+    <div class="card-video__meta">
+      
+      
+  
+  
+
+  
+
+  
+    <time class="date date--video" datetime="2025-08-28 20:00:00">
+      
+        <span class="material-symbols-outlined date__icon">calendar_today</span>
+      
+      28 Aug, 2025
+    </time>
+  
+
+    </div>
+
+    
+      
+
+
+
+
+<ul class="tag-absolute">
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/bundesliga" class="tag-absolute__link">
+        Bundesliga
+      </a>
+    </li>
+  
+</ul>
+
+
+    
+  </div>
+</article>
+      
+
+
+
+
+
+
+
+
+
+
+
+<article class="card-video">
+  <a href="/video/napoli-vs-lazio" class="card-video__thumb">
+    <img src="/assets/images/img20.webp" alt="Serie A top game" class="card-video__thumbnail">
+    <span class="card-video__play material-symbols-outlined">play_circle</span>
+  </a>
+
+  <div class="card-video__content">
+    <h3 class="card-video__title">
+      <a href="/video/napoli-vs-lazio" class="card-video__link">Serie A top game</a>
+    </h3>
+
+    <div class="card-video__meta">
+      
+      
+  
+  
+
+  
+
+  
+    <time class="date date--video" datetime="2025-08-27 21:00:00">
+      
+        <span class="material-symbols-outlined date__icon">calendar_today</span>
+      
+      27 Aug, 2025
+    </time>
+  
+
+    </div>
+
+    
+      
+
+
+
+
+<ul class="tag-absolute">
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/serie-a" class="tag-absolute__link">
+        Serie A
+      </a>
+    </li>
+  
+</ul>
+
+
+    
+  </div>
+</article>
+      
+
+
+
+
+
+
+
+
+
+
+
+<article class="card-video">
+  <a href="/video/flamengo-vs-palmeiras" class="card-video__thumb">
+    <img src="/assets/images/img21.webp" alt="Brasileirão classic" class="card-video__thumbnail">
+    <span class="card-video__play material-symbols-outlined">play_circle</span>
+  </a>
+
+  <div class="card-video__content">
+    <h3 class="card-video__title">
+      <a href="/video/flamengo-vs-palmeiras" class="card-video__link">Brasileirão classic</a>
+    </h3>
+
+    <div class="card-video__meta">
+      
+      
+  
+  
+
+  
+
+  
+    <time class="date date--video" datetime="2025-08-26 22:00:00">
+      
+        <span class="material-symbols-outlined date__icon">calendar_today</span>
+      
+      26 Aug, 2025
+    </time>
+  
+
+    </div>
+
+    
+      
+
+
+
+
+<ul class="tag-absolute">
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/brasileirao" class="tag-absolute__link">
+        Brasileirão
+      </a>
+    </li>
+  
+</ul>
+
+
+    
+  </div>
+</article>
+      
+
+
+
+
+
+
+
+
+
+
+
+<article class="card-video">
+  <a href="/video/boca-vs-river" class="card-video__thumb">
+    <img src="/assets/images/img22.webp" alt="Superclásico highlights" class="card-video__thumbnail">
+    <span class="card-video__play material-symbols-outlined">play_circle</span>
+  </a>
+
+  <div class="card-video__content">
+    <h3 class="card-video__title">
+      <a href="/video/boca-vs-river" class="card-video__link">Superclásico highlights</a>
+    </h3>
+
+    <div class="card-video__meta">
+      
+      
+  
+  
+
+  
+
+  
+    <time class="date date--video" datetime="2025-08-25 21:30:00">
+      
+        <span class="material-symbols-outlined date__icon">calendar_today</span>
+      
+      25 Aug, 2025
+    </time>
+  
+
+    </div>
+
+    
+      
+
+
+
+
+<ul class="tag-absolute">
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/primera" class="tag-absolute__link">
+        Primera División
+      </a>
+    </li>
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/derby" class="tag-absolute__link">
+        Derby
+      </a>
+    </li>
+  
+</ul>
+
+
+    
+  </div>
+</article>
+      
+
+
+
+
+
+
+
+
+
+
+
+<article class="card-video">
+  <a href="/video/la-galaxy-vs-lafc" class="card-video__thumb">
+    <img src="/assets/images/img23.webp" alt="El Trafico derby goals" class="card-video__thumbnail">
+    <span class="card-video__play material-symbols-outlined">play_circle</span>
+  </a>
+
+  <div class="card-video__content">
+    <h3 class="card-video__title">
+      <a href="/video/la-galaxy-vs-lafc" class="card-video__link">El Trafico derby goals</a>
+    </h3>
+
+    <div class="card-video__meta">
+      
+      
+  
+  
+
+  
+
+  
+    <time class="date date--video" datetime="2025-08-24 20:00:00">
+      
+        <span class="material-symbols-outlined date__icon">calendar_today</span>
+      
+      24 Aug, 2025
+    </time>
+  
+
+    </div>
+
+    
+      
+
+
+
+
+<ul class="tag-absolute">
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/mls" class="tag-absolute__link">
+        MLS
+      </a>
+    </li>
+  
+</ul>
+
+
+    
+  </div>
+</article>
+      
+
+
+
+
+
+
+
+
+
+
+
+<article class="card-video">
+  <a href="/video/nycfc-vs-inter-miami" class="card-video__thumb">
+    <img src="/assets/images/img24.webp" alt="Messi show in MLS" class="card-video__thumbnail">
+    <span class="card-video__play material-symbols-outlined">play_circle</span>
+  </a>
+
+  <div class="card-video__content">
+    <h3 class="card-video__title">
+      <a href="/video/nycfc-vs-inter-miami" class="card-video__link">Messi show in MLS</a>
+    </h3>
+
+    <div class="card-video__meta">
+      
+      
+  
+  
+
+  
+
+  
+    <time class="date date--video" datetime="2025-08-23 19:00:00">
+      
+        <span class="material-symbols-outlined date__icon">calendar_today</span>
+      
+      23 Aug, 2025
+    </time>
+  
+
+    </div>
+
+    
+      
+
+
+
+
+<ul class="tag-absolute">
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/mls" class="tag-absolute__link">
+        MLS
+      </a>
+    </li>
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/messi" class="tag-absolute__link">
+        Messi
+      </a>
+    </li>
+  
+</ul>
+
+
+    
+  </div>
+</article>
+        </div>
+            <div
+        class="swiper home-videos-swiper"
+        data-swiper='{
+               "slidesPerView": 1,
+               "spaceBetween": 16,
+               "loop": true,
+               "autoplay": { "delay": 2500, "disableOnInteraction": false },
+               "breakpoints": {
+                 "0":  { "slidesPerView": 1 },
+                 "768":  { "slidesPerView": 3 }
+               }
+             }'
+      >
+        <div class="swiper-wrapper">
+                     <div class="swiper-slide">
+            
+
+
+
+
+
+
+
+
+
+
+
+<article class="card-video">
+  <a href="/video/ajax-vs-psv" class="card-video__thumb">
+    <img src="/assets/images/img13.webp" alt="Ajax vs PSV full match" class="card-video__thumbnail">
+    <span class="card-video__play material-symbols-outlined">play_circle</span>
+  </a>
+
+  <div class="card-video__content">
+    <h3 class="card-video__title">
+      <a href="/video/ajax-vs-psv" class="card-video__link">Ajax vs PSV full match</a>
+    </h3>
+
+    <div class="card-video__meta">
+      
+      
+  
+  
+
+  
+
+  
+    <time class="date date--video" datetime="2025-09-03 21:00:00">
+      
+        <span class="material-symbols-outlined date__icon">calendar_today</span>
+      
+      03 Sep, 2025
+    </time>
+  
+
+    </div>
+
+    
+      
+
+
+
+
+<ul class="tag-absolute">
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/eredivisie" class="tag-absolute__link">
+        Eredivisie
+      </a>
+    </li>
+  
+</ul>
+
+
+    
+  </div>
+</article>
+          </div>
+                    <div class="swiper-slide">
+            
+
+
+
+
+
+
+
+
+
+
+
+<article class="card-video">
+  <a href="/video/porto-vs-sporting" class="card-video__thumb">
+    <img src="/assets/images/img14.webp" alt="Primeira Liga big match" class="card-video__thumbnail">
+    <span class="card-video__play material-symbols-outlined">play_circle</span>
+  </a>
+
+  <div class="card-video__content">
+    <h3 class="card-video__title">
+      <a href="/video/porto-vs-sporting" class="card-video__link">Primeira Liga big match</a>
+    </h3>
+
+    <div class="card-video__meta">
+      
+      
+  
+  
+
+  
+
+  
+    <time class="date date--video" datetime="2025-09-02 20:00:00">
+      
+        <span class="material-symbols-outlined date__icon">calendar_today</span>
+      
+      02 Sep, 2025
+    </time>
+  
+
+    </div>
+
+    
+      
+
+
+
+
+<ul class="tag-absolute">
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/primeira-liga" class="tag-absolute__link">
+        Primeira Liga
+      </a>
+    </li>
+  
+</ul>
+
+
+    
+  </div>
+</article>
+          </div>
+                    <div class="swiper-slide">
+            
+
+
+
+
+
+
+
+
+
+
+
+<article class="card-video">
+  <a href="/video/psg-vs-lyon" class="card-video__thumb">
+    <img src="/assets/images/img15.webp" alt="PSG vs Lyon highlights" class="card-video__thumbnail">
+    <span class="card-video__play material-symbols-outlined">play_circle</span>
+  </a>
+
+  <div class="card-video__content">
+    <h3 class="card-video__title">
+      <a href="/video/psg-vs-lyon" class="card-video__link">PSG vs Lyon highlights</a>
+    </h3>
+
+    <div class="card-video__meta">
+      
+      
+  
+  
+
+  
+
+  
+    <time class="date date--video" datetime="2025-09-01 21:00:00">
+      
+        <span class="material-symbols-outlined date__icon">calendar_today</span>
+      
+      01 Sep, 2025
+    </time>
+  
+
+    </div>
+
+    
+      
+
+
+
+
+<ul class="tag-absolute">
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/ligue-1" class="tag-absolute__link">
+        Ligue 1
+      </a>
+    </li>
+  
+</ul>
+
+
+    
+  </div>
+</article>
+          </div>
+                    <div class="swiper-slide">
+            
+
+
+
+
+
+
+
+
+
+
+
+<article class="card-video">
+  <a href="/video/man-city-vs-newcastle" class="card-video__thumb">
+    <img src="/assets/images/img16.webp" alt="Man City vs Newcastle 2-0 goals" class="card-video__thumbnail">
+    <span class="card-video__play material-symbols-outlined">play_circle</span>
+  </a>
+
+  <div class="card-video__content">
+    <h3 class="card-video__title">
+      <a href="/video/man-city-vs-newcastle" class="card-video__link">Man City vs Newcastle 2-0 goals</a>
+    </h3>
+
+    <div class="card-video__meta">
+      
+      
+  
+  
+
+  
+
+  
+    <time class="date date--video" datetime="2025-08-31 20:00:00">
+      
+        <span class="material-symbols-outlined date__icon">calendar_today</span>
+      
+      31 Aug, 2025
+    </time>
+  
+
+    </div>
+
+    
+      
+
+
+
+
+<ul class="tag-absolute">
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/premier-league" class="tag-absolute__link">
+        Premier League
+      </a>
+    </li>
+  
+</ul>
+
+
+    
+  </div>
+</article>
+          </div>
+                    <div class="swiper-slide">
+            
+
+
+
+
+
+
+
+
+
+
+
+<article class="card-video">
+  <a href="/video/tottenham-vs-arsenal" class="card-video__thumb">
+    <img src="/assets/images/img17.webp" alt="North London Derby Highlights" class="card-video__thumbnail">
+    <span class="card-video__play material-symbols-outlined">play_circle</span>
+  </a>
+
+  <div class="card-video__content">
+    <h3 class="card-video__title">
+      <a href="/video/tottenham-vs-arsenal" class="card-video__link">North London Derby Highlights</a>
+    </h3>
+
+    <div class="card-video__meta">
+      
+      
+  
+  
+
+  
+
+  
+    <time class="date date--video" datetime="2025-08-30 21:00:00">
+      
+        <span class="material-symbols-outlined date__icon">calendar_today</span>
+      
+      30 Aug, 2025
+    </time>
+  
+
+    </div>
+
+    
+      
+
+
+
+
+<ul class="tag-absolute">
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/premier-league" class="tag-absolute__link">
+        Premier League
+      </a>
+    </li>
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/derby" class="tag-absolute__link">
+        Derby
+      </a>
+    </li>
+  
+</ul>
+
+
+    
+  </div>
+</article>
+          </div>
+                    <div class="swiper-slide">
+            
+
+
+
+
+
+
+
+
+
+
+
+<article class="card-video">
+  <a href="/video/real-sociedad-vs-valencia" class="card-video__thumb">
+    <img src="/assets/images/img18.webp" alt="La Liga weekend match" class="card-video__thumbnail">
+    <span class="card-video__play material-symbols-outlined">play_circle</span>
+  </a>
+
+  <div class="card-video__content">
+    <h3 class="card-video__title">
+      <a href="/video/real-sociedad-vs-valencia" class="card-video__link">La Liga weekend match</a>
+    </h3>
+
+    <div class="card-video__meta">
+      
+      
+  
+  
+
+  
+
+  
+    <time class="date date--video" datetime="2025-08-29 22:00:00">
+      
+        <span class="material-symbols-outlined date__icon">calendar_today</span>
+      
+      29 Aug, 2025
+    </time>
+  
+
+    </div>
+
+    
+      
+
+
+
+
+<ul class="tag-absolute">
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/laliga" class="tag-absolute__link">
+        La Liga
+      </a>
+    </li>
+  
+</ul>
+
+
+    
+  </div>
+</article>
+          </div>
+                    <div class="swiper-slide">
+            
+
+
+
+
+
+
+
+
+
+
+
+<article class="card-video">
+  <a href="/video/dortmund-vs-leipzig" class="card-video__thumb">
+    <img src="/assets/images/img19.webp" alt="Bundesliga highlights" class="card-video__thumbnail">
+    <span class="card-video__play material-symbols-outlined">play_circle</span>
+  </a>
+
+  <div class="card-video__content">
+    <h3 class="card-video__title">
+      <a href="/video/dortmund-vs-leipzig" class="card-video__link">Bundesliga highlights</a>
+    </h3>
+
+    <div class="card-video__meta">
+      
+      
+  
+  
+
+  
+
+  
+    <time class="date date--video" datetime="2025-08-28 20:00:00">
+      
+        <span class="material-symbols-outlined date__icon">calendar_today</span>
+      
+      28 Aug, 2025
+    </time>
+  
+
+    </div>
+
+    
+      
+
+
+
+
+<ul class="tag-absolute">
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/bundesliga" class="tag-absolute__link">
+        Bundesliga
+      </a>
+    </li>
+  
+</ul>
+
+
+    
+  </div>
+</article>
+          </div>
+                    <div class="swiper-slide">
+            
+
+
+
+
+
+
+
+
+
+
+
+<article class="card-video">
+  <a href="/video/napoli-vs-lazio" class="card-video__thumb">
+    <img src="/assets/images/img20.webp" alt="Serie A top game" class="card-video__thumbnail">
+    <span class="card-video__play material-symbols-outlined">play_circle</span>
+  </a>
+
+  <div class="card-video__content">
+    <h3 class="card-video__title">
+      <a href="/video/napoli-vs-lazio" class="card-video__link">Serie A top game</a>
+    </h3>
+
+    <div class="card-video__meta">
+      
+      
+  
+  
+
+  
+
+  
+    <time class="date date--video" datetime="2025-08-27 21:00:00">
+      
+        <span class="material-symbols-outlined date__icon">calendar_today</span>
+      
+      27 Aug, 2025
+    </time>
+  
+
+    </div>
+
+    
+      
+
+
+
+
+<ul class="tag-absolute">
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/serie-a" class="tag-absolute__link">
+        Serie A
+      </a>
+    </li>
+  
+</ul>
+
+
+    
+  </div>
+</article>
+          </div>
+                    <div class="swiper-slide">
+            
+
+
+
+
+
+
+
+
+
+
+
+<article class="card-video">
+  <a href="/video/flamengo-vs-palmeiras" class="card-video__thumb">
+    <img src="/assets/images/img21.webp" alt="Brasileirão classic" class="card-video__thumbnail">
+    <span class="card-video__play material-symbols-outlined">play_circle</span>
+  </a>
+
+  <div class="card-video__content">
+    <h3 class="card-video__title">
+      <a href="/video/flamengo-vs-palmeiras" class="card-video__link">Brasileirão classic</a>
+    </h3>
+
+    <div class="card-video__meta">
+      
+      
+  
+  
+
+  
+
+  
+    <time class="date date--video" datetime="2025-08-26 22:00:00">
+      
+        <span class="material-symbols-outlined date__icon">calendar_today</span>
+      
+      26 Aug, 2025
+    </time>
+  
+
+    </div>
+
+    
+      
+
+
+
+
+<ul class="tag-absolute">
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/brasileirao" class="tag-absolute__link">
+        Brasileirão
+      </a>
+    </li>
+  
+</ul>
+
+
+    
+  </div>
+</article>
+          </div>
+                    <div class="swiper-slide">
+            
+
+
+
+
+
+
+
+
+
+
+
+<article class="card-video">
+  <a href="/video/boca-vs-river" class="card-video__thumb">
+    <img src="/assets/images/img22.webp" alt="Superclásico highlights" class="card-video__thumbnail">
+    <span class="card-video__play material-symbols-outlined">play_circle</span>
+  </a>
+
+  <div class="card-video__content">
+    <h3 class="card-video__title">
+      <a href="/video/boca-vs-river" class="card-video__link">Superclásico highlights</a>
+    </h3>
+
+    <div class="card-video__meta">
+      
+      
+  
+  
+
+  
+
+  
+    <time class="date date--video" datetime="2025-08-25 21:30:00">
+      
+        <span class="material-symbols-outlined date__icon">calendar_today</span>
+      
+      25 Aug, 2025
+    </time>
+  
+
+    </div>
+
+    
+      
+
+
+
+
+<ul class="tag-absolute">
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/primera" class="tag-absolute__link">
+        Primera División
+      </a>
+    </li>
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/derby" class="tag-absolute__link">
+        Derby
+      </a>
+    </li>
+  
+</ul>
+
+
+    
+  </div>
+</article>
+          </div>
+                    <div class="swiper-slide">
+            
+
+
+
+
+
+
+
+
+
+
+
+<article class="card-video">
+  <a href="/video/la-galaxy-vs-lafc" class="card-video__thumb">
+    <img src="/assets/images/img23.webp" alt="El Trafico derby goals" class="card-video__thumbnail">
+    <span class="card-video__play material-symbols-outlined">play_circle</span>
+  </a>
+
+  <div class="card-video__content">
+    <h3 class="card-video__title">
+      <a href="/video/la-galaxy-vs-lafc" class="card-video__link">El Trafico derby goals</a>
+    </h3>
+
+    <div class="card-video__meta">
+      
+      
+  
+  
+
+  
+
+  
+    <time class="date date--video" datetime="2025-08-24 20:00:00">
+      
+        <span class="material-symbols-outlined date__icon">calendar_today</span>
+      
+      24 Aug, 2025
+    </time>
+  
+
+    </div>
+
+    
+      
+
+
+
+
+<ul class="tag-absolute">
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/mls" class="tag-absolute__link">
+        MLS
+      </a>
+    </li>
+  
+</ul>
+
+
+    
+  </div>
+</article>
+          </div>
+                    <div class="swiper-slide">
+            
+
+
+
+
+
+
+
+
+
+
+
+<article class="card-video">
+  <a href="/video/nycfc-vs-inter-miami" class="card-video__thumb">
+    <img src="/assets/images/img24.webp" alt="Messi show in MLS" class="card-video__thumbnail">
+    <span class="card-video__play material-symbols-outlined">play_circle</span>
+  </a>
+
+  <div class="card-video__content">
+    <h3 class="card-video__title">
+      <a href="/video/nycfc-vs-inter-miami" class="card-video__link">Messi show in MLS</a>
+    </h3>
+
+    <div class="card-video__meta">
+      
+      
+  
+  
+
+  
+
+  
+    <time class="date date--video" datetime="2025-08-23 19:00:00">
+      
+        <span class="material-symbols-outlined date__icon">calendar_today</span>
+      
+      23 Aug, 2025
+    </time>
+  
+
+    </div>
+
+    
+      
+
+
+
+
+<ul class="tag-absolute">
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/mls" class="tag-absolute__link">
+        MLS
+      </a>
+    </li>
+  
+    <li class="tag-absolute__item">
+      <a href="/tag/messi" class="tag-absolute__link">
+        Messi
+      </a>
+    </li>
+  
+</ul>
+
+
+    
+  </div>
+</article>
+          </div>
+                  </div>
+        <div class="swiper-button__wrap">
+          <button
+            class="swiper-button-prev"
+            data-swiper-prev
+            aria-label="Prev"
+          ></button>
+          <button
+            class="swiper-button-next"
+            data-swiper-next
+            aria-label="Next"
+          ></button>
+        </div>
+      </div>
+  </div>
+</section>
 
     </main>
         
@@ -1429,6 +4586,11 @@
   </div>
 </footer>
  
-    
+    <script
+  defer
+  src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+></script>
+
+
   </body>
 </html>

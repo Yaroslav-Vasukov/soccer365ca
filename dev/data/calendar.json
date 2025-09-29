@@ -2,9 +2,9 @@
   {
     "id": 201,
     "href": "/match/201",
-    "league": { "name": "Premier League", "href": "/league/premier-league", "logo": "/assets/images/leagues/leg3.webp" },
-    "team1": { "name": "Arsenal", "href": "/team/arsenal", "logo": "/assets/images/teams/team-1.webp" },
-    "team2": { "name": "Chelsea", "href": "/team/chelsea", "logo": "/assets/images/teams/team-2.webp" },
+    "league": { "name": "Premier League", "href": "/league/premier-league", "logo": "/assets/images/leg3.webp" },
+    "team1": { "name": "Arsenal", "href": "/team/arsenal", "logo": "/assets/images/team-1.webp" },
+    "team2": { "name": "Chelsea", "href": "/team/chelsea", "logo": "/assets/images/team-2.webp" },
     "published_at": "2025-09-24 19:30",
     "status": "finished",
     "score": { "t1": 3, "t2": 2 }
@@ -12,18 +12,18 @@
   {
     "id": 202,
     "href": "/match/202",
-    "league": { "name": "La Liga", "href": "/league/la-liga", "logo": "/assets/images/leagues/leg2.webp" },
-    "team1": { "name": "Barcelona", "href": "/team/barcelona", "logo": "/assets/images/teams/team-3.webp" },
-    "team2": { "name": "Real Madrid", "href": "/team/real-madrid", "logo": "/assets/images/teams/team-4.webp" },
+    "league": { "name": "La Liga", "href": "/league/la-liga", "logo": "/assets/images/leg2.webp" },
+    "team1": { "name": "Barcelona", "href": "/team/barcelona", "logo": "/assets/images/team-3.webp" },
+    "team2": { "name": "Real Madrid", "href": "/team/real-madrid", "logo": "/assets/images/team-4.webp" },
     "published_at": "2025-10-02 22:00",
     "status": "scheduled"
   },
   {
     "id": 203,
     "href": "/match/203",
-    "league": { "name": "Serie A", "href": "/league/serie-a", "logo": "/assets/images/leagues/leg1.webp" },
-    "team1": { "name": "Inter", "href": "/team/inter", "logo": "/assets/images/teams/team-5.webp" },
-    "team2": { "name": "Milan", "href": "/team/milan", "logo": "/assets/images/teams/team-6.webp" },
+    "league": { "name": "Serie A", "href": "/league/serie-a", "logo": "/assets/images/leg1.webp" },
+    "team1": { "name": "Inter", "href": "/team/inter", "logo": "/assets/images/team-5.webp" },
+    "team2": { "name": "Milan", "href": "/team/milan", "logo": "/assets/images/team-6.webp" },
     "published_at": "2025-09-20 21:45",
     "status": "finished",
     "score": { "t1": 2, "t2": 0 }
@@ -31,18 +31,18 @@
   {
     "id": 204,
     "href": "/match/204",
-    "league": { "name": "Bundesliga", "href": "/league/bundesliga", "logo": "/assets/images/leagues/leg1.webp" },
-    "team1": { "name": "Bayern", "href": "/team/bayern", "logo": "/assets/images/teams/team-7.webp" },
-    "team2": { "name": "Dortmund", "href": "/team/dortmund", "logo": "/assets/images/teams/team-8.webp" },
+    "league": { "name": "Bundesliga", "href": "/league/bundesliga", "logo": "/assets/images/leg1.webp" },
+    "team1": { "name": "Bayern", "href": "/team/bayern", "logo": "/assets/images/team-7.webp" },
+    "team2": { "name": "Dortmund", "href": "/team/dortmund", "logo": "/assets/images/team-8.webp" },
     "published_at": "2025-11-03 19:30",
     "status": "scheduled"
   },
   {
     "id": 205,
     "href": "/match/205",
-    "league": { "name": "Ligue 1", "href": "/league/ligue-1", "logo": "/assets/images/leagues/leg3.webp" },
-    "team1": { "name": "PSG", "href": "/team/psg", "logo": "/assets/images/teams/team-9.webp" },
-    "team2": { "name": "Marseille", "href": "/team/marseille", "logo": "/assets/images/teams/team-10.webp" },
+    "league": { "name": "Ligue 1", "href": "/league/ligue-1", "logo": "/assets/images/leg3.webp" },
+    "team1": { "name": "PSG", "href": "/team/psg", "logo": "/assets/images/team-9.webp" },
+    "team2": { "name": "Marseille", "href": "/team/marseille", "logo": "/assets/images/team-10.webp" },
     "published_at": "2025-09-19 22:00",
     "status": "finished",
     "score": { "t1": 4, "t2": 1 }
@@ -50,9 +50,9 @@
   {
     "id": 206,
     "href": "/match/206",
-    "league": { "name": "Champions League", "href": "/league/champions-league", "logo": "/assets/images/leagues/leg4.webp" },
-    "team1": { "name": "Arsenal", "href": "/team/arsenal", "logo": "/assets/images/teams/team-1.webp" },
-    "team2": { "name": "Juventus", "href": "/team/juventus", "logo": "/assets/images/teams/team-11.webp" },
+    "league": { "name": "Champions League", "href": "/league/champions-league", "logo": "/assets/images/leg4.webp" },
+    "team1": { "name": "Arsenal", "href": "/team/arsenal", "logo": "/assets/images/team-1.webp" },
+    "team2": { "name": "Juventus", "href": "/team/juventus", "logo": "/assets/images/team-11.webp" },
     "published_at": "2025-09-17 21:00",
     "status": "finished",
     "score": { "t1": 2, "t2": 1 }
@@ -60,18 +60,18 @@
   {
     "id": 207,
     "href": "/match/207",
-    "league": { "name": "Premier League", "href": "/league/premier-league", "logo": "/assets/images/leagues/leg7.webp" },
-    "team1": { "name": "Liverpool", "href": "/team/liverpool", "logo": "/assets/images/teams/team-12.webp" },
-    "team2": { "name": "Manchester City", "href": "/team/man-city", "logo": "/assets/images/teams/team-13.webp" },
+    "league": { "name": "Premier League", "href": "/league/premier-league", "logo": "/assets/images/leg7.webp" },
+    "team1": { "name": "Liverpool", "href": "/team/liverpool", "logo": "/assets/images/team-12.webp" },
+    "team2": { "name": "Manchester City", "href": "/team/man-city", "logo": "/assets/images/team-13.webp" },
     "published_at": "2025-10-05 18:30",
     "status": "scheduled"
   },
   {
     "id": 208,
     "href": "/match/208",
-    "league": { "name": "La Liga", "href": "/league/la-liga", "logo": "/assets/images/leagues/leg2.webp" },
-    "team1": { "name": "Atletico", "href": "/team/atletico", "logo": "/assets/images/teams/team-14.webp" },
-    "team2": { "name": "Sevilla", "href": "/team/sevilla", "logo": "/assets/images/teams/team-5.webp" },
+    "league": { "name": "La Liga", "href": "/league/la-liga", "logo": "/assets/images/leg2.webp" },
+    "team1": { "name": "Atletico", "href": "/team/atletico", "logo": "/assets/images/team-14.webp" },
+    "team2": { "name": "Sevilla", "href": "/team/sevilla", "logo": "/assets/images/team-5.webp" },
     "published_at": "2025-09-13 20:30",
     "status": "finished",
     "score": { "t1": 1, "t2": 1 }
@@ -79,18 +79,18 @@
   {
     "id": 209,
     "href": "/match/209",
-    "league": { "name": "Serie A", "href": "/league/serie-a", "logo": "/assets/images/leagues/leg6.webp" },
-    "team1": { "name": "Napoli", "href": "/team/napoli", "logo": "/assets/images/teams/team-6.webp" },
-    "team2": { "name": "Roma", "href": "/team/roma", "logo": "/assets/images/teams/team-1.webp" },
+    "league": { "name": "Serie A", "href": "/league/serie-a", "logo": "/assets/images/leg6.webp" },
+    "team1": { "name": "Napoli", "href": "/team/napoli", "logo": "/assets/images/team-6.webp" },
+    "team2": { "name": "Roma", "href": "/team/roma", "logo": "/assets/images/team-1.webp" },
     "published_at": "2025-10-12 21:45",
     "status": "scheduled"
   },
   {
     "id": 210,
     "href": "/match/210",
-    "league": { "name": "Bundesliga", "href": "/league/bundesliga", "logo": "/assets/images/leagues/leg1.webp" },
-    "team1": { "name": "Leipzig", "href": "/team/leipzig", "logo": "/assets/images/teams/team-8.webp" },
-    "team2": { "name": "Leverkusen", "href": "/team/leverkusen", "logo": "/assets/images/teams/team-9.webp" },
+    "league": { "name": "Bundesliga", "href": "/league/bundesliga", "logo": "/assets/images/leg1.webp" },
+    "team1": { "name": "Leipzig", "href": "/team/leipzig", "logo": "/assets/images/team-8.webp" },
+    "team2": { "name": "Leverkusen", "href": "/team/leverkusen", "logo": "/assets/images/team-9.webp" },
     "published_at": "2025-09-11 19:30",
     "status": "finished",
     "score": { "t1": 0, "t2": 2 }
@@ -98,18 +98,18 @@
   {
     "id": 211,
     "href": "/match/211",
-    "league": { "name": "Ligue 1", "href": "/league/ligue-1", "logo": "/assets/images/leagues/leg4.webp" },
-    "team1": { "name": "Lyon", "href": "/team/lyon", "logo": "/assets/images/teams/team-2.webp" },
-    "team2": { "name": "Monaco", "href": "/team/monaco", "logo": "/assets/images/teams/team-4.webp" },
+    "league": { "name": "Ligue 1", "href": "/league/ligue-1", "logo": "/assets/images/leg4.webp" },
+    "team1": { "name": "Lyon", "href": "/team/lyon", "logo": "/assets/images/team-2.webp" },
+    "team2": { "name": "Monaco", "href": "/team/monaco", "logo": "/assets/images/team-4.webp" },
     "published_at": "2025-10-20 22:00",
     "status": "scheduled"
   },
   {
     "id": 212,
     "href": "/match/212",
-    "league": { "name": "Champions League", "href": "/league/champions-league", "logo": "/assets/images/leagues/leg6.webp" },
-    "team1": { "name": "Real Madrid", "href": "/team/real-madrid", "logo": "/assets/images/teams/team-4.webp" },
-    "team2": { "name": "Bayern", "href": "/team/bayern", "logo": "/assets/images/teams/team-7.webp" },
+    "league": { "name": "Champions League", "href": "/league/champions-league", "logo": "/assets/images/leg6.webp" },
+    "team1": { "name": "Real Madrid", "href": "/team/real-madrid", "logo": "/assets/images/team-4.webp" },
+    "team2": { "name": "Bayern", "href": "/team/bayern", "logo": "/assets/images/team-7.webp" },
     "published_at": "2025-09-06 21:00",
     "status": "finished",
     "score": { "t1": 3, "t2": 1 }
@@ -117,18 +117,18 @@
   {
     "id": 213,
     "href": "/match/213",
-    "league": { "name": "Premier League", "href": "/league/premier-league", "logo": "/assets/images/leagues/leg2.webp" },
-    "team1": { "name": "Tottenham", "href": "/team/tottenham", "logo": "/assets/images/teams/team-9.webp" },
-    "team2": { "name": "Newcastle", "href": "/team/newcastle", "logo": "/assets/images/teams/team-10.webp" },
+    "league": { "name": "Premier League", "href": "/league/premier-league", "logo": "/assets/images/leg2.webp" },
+    "team1": { "name": "Tottenham", "href": "/team/tottenham", "logo": "/assets/images/team-9.webp" },
+    "team2": { "name": "Newcastle", "href": "/team/newcastle", "logo": "/assets/images/team-10.webp" },
     "published_at": "2025-09-28 17:00",
     "status": "scheduled"
   },
   {
     "id": 214,
     "href": "/match/214",
-    "league": { "name": "La Liga", "href": "/league/la-liga", "logo": "/assets/images/leagues/leg7.webp" },
-    "team1": { "name": "Valencia", "href": "/team/valencia", "logo": "/assets/images/teams/team-2.webp" },
-    "team2": { "name": "Villarreal", "href": "/team/villarreal", "logo": "/assets/images/teams/team-5.webp" },
+    "league": { "name": "La Liga", "href": "/league/la-liga", "logo": "/assets/images/leg7.webp" },
+    "team1": { "name": "Valencia", "href": "/team/valencia", "logo": "/assets/images/team-2.webp" },
+    "team2": { "name": "Villarreal", "href": "/team/villarreal", "logo": "/assets/images/team-5.webp" },
     "published_at": "2025-09-05 20:00",
     "status": "finished",
     "score": { "t1": 2, "t2": 2 }
@@ -136,36 +136,36 @@
   {
     "id": 215,
     "href": "/match/215",
-    "league": { "name": "Serie A", "href": "/league/serie-a", "logo": "/assets/images/leagues/leg1.webp" },
-    "team1": { "name": "Lazio", "href": "/team/lazio", "logo": "/assets/images/teams/team-14.webp" },
-    "team2": { "name": "Fiorentina", "href": "/team/fiorentina", "logo": "/assets/images/teams/team-9.webp" },
+    "league": { "name": "Serie A", "href": "/league/serie-a", "logo": "/assets/images/leg1.webp" },
+    "team1": { "name": "Lazio", "href": "/team/lazio", "logo": "/assets/images/team-14.webp" },
+    "team2": { "name": "Fiorentina", "href": "/team/fiorentina", "logo": "/assets/images/team-9.webp" },
     "published_at": "2025-11-10 21:45",
     "status": "scheduled"
   },
   {
     "id": 216,
     "href": "/match/216",
-    "league": { "name": "Bundesliga", "href": "/league/bundesliga", "logo": "/assets/images/leagues/leg4.webp" },
-    "team1": { "name": "Gladbach", "href": "/team/gladbach", "logo": "/assets/images/teams/team-4.webp" },
-    "team2": { "name": "Frankfurt", "href": "/team/frankfurt", "logo": "/assets/images/teams/team-9.webp" },
+    "league": { "name": "Bundesliga", "href": "/league/bundesliga", "logo": "/assets/images/leg4.webp" },
+    "team1": { "name": "Gladbach", "href": "/team/gladbach", "logo": "/assets/images/team-4.webp" },
+    "team2": { "name": "Frankfurt", "href": "/team/frankfurt", "logo": "/assets/images/team-9.webp" },
     "published_at": "2025-10-01 19:30",
     "status": "scheduled"
   },
   {
     "id": 217,
     "href": "/match/217",
-    "league": { "name": "Ligue 1", "href": "/league/ligue-1", "logo": "/assets/images/leagues/leg5.webp" },
-    "team1": { "name": "Nice", "href": "/team/nice", "logo": "/assets/images/teams/team-8.webp" },
-    "team2": { "name": "Lille", "href": "/team/lille", "logo": "/assets/images/teams/team-5.webp" },
+    "league": { "name": "Ligue 1", "href": "/league/ligue-1", "logo": "/assets/images/leg5.webp" },
+    "team1": { "name": "Nice", "href": "/team/nice", "logo": "/assets/images/team-8.webp" },
+    "team2": { "name": "Lille", "href": "/team/lille", "logo": "/assets/images/team-5.webp" },
     "published_at": "2025-09-29 22:00",
     "status": "scheduled"
   },
   {
     "id": 218,
     "href": "/match/218",
-    "league": { "name": "Champions League", "href": "/league/champions-league", "logo": "/assets/images/leagues/leg2.webp" },
-    "team1": { "name": "Manchester City", "href": "/team/man-city", "logo": "/assets/images/teams/team-13.webp" },
-    "team2": { "name": "Inter", "href": "/team/inter", "logo": "/assets/images/teams/team-9.webp" },
+    "league": { "name": "Champions League", "href": "/league/champions-league", "logo": "/assets/images/leg2.webp" },
+    "team1": { "name": "Manchester City", "href": "/team/man-city", "logo": "/assets/images/team-13.webp" },
+    "team2": { "name": "Inter", "href": "/team/inter", "logo": "/assets/images/team-9.webp" },
     "published_at": "2025-09-26 21:00",
     "status": "live",
     "score": { "t1": 1, "t2": 0 }
@@ -173,9 +173,9 @@
   {
     "id": 219,
     "href": "/match/219",
-    "league": { "name": "Premier League", "href": "/league/premier-league", "logo": "/assets/images/leagues/leg5.webp" },
-    "team1": { "name": "Everton", "href": "/team/everton", "logo": "/assets/images/teams/team-4.webp" },
-    "team2": { "name": "Aston Villa", "href": "/team/aston-villa", "logo": "/assets/images/teams/team-3.webp" },
+    "league": { "name": "Premier League", "href": "/league/premier-league", "logo": "/assets/images/leg5.webp" },
+    "team1": { "name": "Everton", "href": "/team/everton", "logo": "/assets/images/team-4.webp" },
+    "team2": { "name": "Aston Villa", "href": "/team/aston-villa", "logo": "/assets/images/team-3.webp" },
     "published_at": "2025-08-31 16:00",
     "status": "finished",
     "score": { "t1": 0, "t2": 1 }
@@ -183,18 +183,18 @@
   {
     "id": 220,
     "href": "/match/220",
-    "league": { "name": "La Liga", "href": "/league/la-liga", "logo": "/assets/images/leagues/leg6.webp" },
-    "team1": { "name": "Real Sociedad", "href": "/team/real-sociedad", "logo": "/assets/images/teams/team-9.webp" },
-    "team2": { "name": "Athletic Club", "href": "/team/athletic", "logo": "/assets/images/teams/team-6.webp" },
+    "league": { "name": "La Liga", "href": "/league/la-liga", "logo": "/assets/images/leg6.webp" },
+    "team1": { "name": "Real Sociedad", "href": "/team/real-sociedad", "logo": "/assets/images/team-9.webp" },
+    "team2": { "name": "Athletic Club", "href": "/team/athletic", "logo": "/assets/images/team-6.webp" },
     "published_at": "2025-10-18 22:00",
     "status": "scheduled"
   },
   {
     "id": 221,
     "href": "/match/221",
-    "league": { "name": "Serie A", "href": "/league/serie-a", "logo": "/assets/images/leagues/leg1.webp" },
-    "team1": { "name": "Juventus", "href": "/team/juventus", "logo": "/assets/images/teams/team-9.webp" },
-    "team2": { "name": "Atalanta", "href": "/team/atalanta", "logo": "/assets/images/teams/team-4.webp" },
+    "league": { "name": "Serie A", "href": "/league/serie-a", "logo": "/assets/images/leg1.webp" },
+    "team1": { "name": "Juventus", "href": "/team/juventus", "logo": "/assets/images/team-9.webp" },
+    "team2": { "name": "Atalanta", "href": "/team/atalanta", "logo": "/assets/images/team-4.webp" },
     "published_at": "2025-09-21 21:45",
     "status": "finished",
     "score": { "t1": 1, "t2": 1 }
@@ -202,9 +202,9 @@
   {
     "id": 222,
     "href": "/match/222",
-    "league": { "name": "Bundesliga", "href": "/league/bundesliga", "logo": "/assets/images/leagues/leg2.webp" },
-    "team1": { "name": "Stuttgart", "href": "/team/stuttgart", "logo": "/assets/images/teams/team-1.webp" },
-    "team2": { "name": "Freiburg", "href": "/team/freiburg", "logo": "/assets/images/teams/team-14.webp" },
+    "league": { "name": "Bundesliga", "href": "/league/bundesliga", "logo": "/assets/images/leg2.webp" },
+    "team1": { "name": "Stuttgart", "href": "/team/stuttgart", "logo": "/assets/images/team-1.webp" },
+    "team2": { "name": "Freiburg", "href": "/team/freiburg", "logo": "/assets/images/team-14.webp" },
     "published_at": "2025-09-04 19:30",
     "status": "finished",
     "score": { "t1": 2, "t2": 3 }
@@ -212,27 +212,27 @@
   {
     "id": 223,
     "href": "/match/223",
-    "league": { "name": "Ligue 1", "href": "/league/ligue-1", "logo": "/assets/images/leagues/leg2.webp" },
-    "team1": { "name": "Rennes", "href": "/team/rennes", "logo": "/assets/images/teams/team-9.webp" },
-    "team2": { "name": "Reims", "href": "/team/reims", "logo": "/assets/images/teams/team-4.webp" },
+    "league": { "name": "Ligue 1", "href": "/league/ligue-1", "logo": "/assets/images/leg2.webp" },
+    "team1": { "name": "Rennes", "href": "/team/rennes", "logo": "/assets/images/team-9.webp" },
+    "team2": { "name": "Reims", "href": "/team/reims", "logo": "/assets/images/team-4.webp" },
     "published_at": "2025-11-01 18:00",
     "status": "scheduled"
   },
   {
     "id": 224,
     "href": "/match/224",
-    "league": { "name": "Champions League", "href": "/league/champions-league", "logo": "/assets/images/leagues/leg7.webp" },
-    "team1": { "name": "Barcelona", "href": "/team/barcelona", "logo": "/assets/images/teams/team-8.webp" },
-    "team2": { "name": "Napoli", "href": "/team/napoli", "logo": "/assets/images/teams/team-5.webp" },
+    "league": { "name": "Champions League", "href": "/league/champions-league", "logo": "/assets/images/leg7.webp" },
+    "team1": { "name": "Barcelona", "href": "/team/barcelona", "logo": "/assets/images/team-8.webp" },
+    "team2": { "name": "Napoli", "href": "/team/napoli", "logo": "/assets/images/team-5.webp" },
     "published_at": "2025-10-23 22:00",
     "status": "scheduled"
   },
   {
     "id": 225,
     "href": "/match/225",
-    "league": { "name": "Premier League", "href": "/league/premier-league", "logo": "/assets/images/leagues/leg7.webp" },
-    "team1": { "name": "Brighton", "href": "/team/brighton", "logo": "/assets/images/teams/team-5.webp" },
-    "team2": { "name": "West Ham", "href": "/team/west-ham", "logo": "/assets/images/teams/team-4.webp" },
+    "league": { "name": "Premier League", "href": "/league/premier-league", "logo": "/assets/images/leg7.webp" },
+    "team1": { "name": "Brighton", "href": "/team/brighton", "logo": "/assets/images/team-5.webp" },
+    "team2": { "name": "West Ham", "href": "/team/west-ham", "logo": "/assets/images/team-4.webp" },
     "published_at": "2025-09-07 15:00",
     "status": "finished",
     "score": { "t1": 1, "t2": 0 }
@@ -240,18 +240,18 @@
   {
     "id": 226,
     "href": "/match/226",
-    "league": { "name": "La Liga", "href": "/league/la-liga", "logo": "/assets/images/leagues/leg5.webp" },
-    "team1": { "name": "Celta", "href": "/team/celta", "logo": "/assets/images/teams/team-9.webp" },
-    "team2": { "name": "Betis", "href": "/team/betis", "logo": "/assets/images/teams/team-10.webp" },
+    "league": { "name": "La Liga", "href": "/league/la-liga", "logo": "/assets/images/leg5.webp" },
+    "team1": { "name": "Celta", "href": "/team/celta", "logo": "/assets/images/team-9.webp" },
+    "team2": { "name": "Betis", "href": "/team/betis", "logo": "/assets/images/team-10.webp" },
     "published_at": "2025-09-30 20:30",
     "status": "scheduled"
   },
   {
     "id": 227,
     "href": "/match/227",
-    "league": { "name": "Serie A", "href": "/league/serie-a", "logo": "/assets/images/leagues/leg2.webp" },
-    "team1": { "name": "Torino", "href": "/team/torino", "logo": "/assets/images/teams/team-9.webp" },
-    "team2": { "name": "Sassuolo", "href": "/team/sassuolo", "logo": "/assets/images/teams/team-14.webp" },
+    "league": { "name": "Serie A", "href": "/league/serie-a", "logo": "/assets/images/leg2.webp" },
+    "team1": { "name": "Torino", "href": "/team/torino", "logo": "/assets/images/team-9.webp" },
+    "team2": { "name": "Sassuolo", "href": "/team/sassuolo", "logo": "/assets/images/team-14.webp" },
     "published_at": "2025-08-29 21:45",
     "status": "finished",
     "score": { "t1": 0, "t2": 0 }
@@ -259,18 +259,18 @@
   {
     "id": 228,
     "href": "/match/228",
-    "league": { "name": "Bundesliga", "href": "/league/bundesliga", "logo": "/assets/images/leagues/leg3.webp" },
-    "team1": { "name": "Wolfsburg", "href": "/team/wolfsburg", "logo": "/assets/images/teams/team-13.webp" },
-    "team2": { "name": "Hoffenheim", "href": "/team/hoffenheim", "logo": "/assets/images/teams/team-11.webp" },
+    "league": { "name": "Bundesliga", "href": "/league/bundesliga", "logo": "/assets/images/leg3.webp" },
+    "team1": { "name": "Wolfsburg", "href": "/team/wolfsburg", "logo": "/assets/images/team-13.webp" },
+    "team2": { "name": "Hoffenheim", "href": "/team/hoffenheim", "logo": "/assets/images/team-11.webp" },
     "published_at": "2025-10-08 19:30",
     "status": "scheduled"
   },
   {
     "id": 229,
     "href": "/match/229",
-    "league": { "name": "Ligue 1", "href": "/league/ligue-1", "logo": "/assets/images/leagues/leg6.webp" },
-    "team1": { "name": "Nantes", "href": "/team/nantes", "logo": "/assets/images/teams/team-9.webp" },
-    "team2": { "name": "Brest", "href": "/team/brest", "logo": "/assets/images/teams/team-12.webp" },
+    "league": { "name": "Ligue 1", "href": "/league/ligue-1", "logo": "/assets/images/leg6.webp" },
+    "team1": { "name": "Nantes", "href": "/team/nantes", "logo": "/assets/images/team-9.webp" },
+    "team2": { "name": "Brest", "href": "/team/brest", "logo": "/assets/images/team-12.webp" },
     "published_at": "2025-08-22 18:00",
     "status": "finished",
     "score": { "t1": 2, "t2": 1 }
@@ -278,35 +278,35 @@
   {
     "id": 230,
     "href": "/match/230",
-    "league": { "name": "Champions League", "href": "/league/champions-league", "logo": "/assets/images/leagues/leg5.webp" },
-    "team1": { "name": "PSG", "href": "/team/psg", "logo": "/assets/images/teams/team-13.webp" },
-    "team2": { "name": "Liverpool", "href": "/team/liverpool", "logo": "/assets/images/teams/team-4.webp" },
+    "league": { "name": "Champions League", "href": "/league/champions-league", "logo": "/assets/images/leg5.webp" },
+    "team1": { "name": "PSG", "href": "/team/psg", "logo": "/assets/images/team-13.webp" },
+    "team2": { "name": "Liverpool", "href": "/team/liverpool", "logo": "/assets/images/team-4.webp" },
     "published_at": "2025-11-20 22:00",
     "status": "scheduled"
   },  {
     "id": 231,
     "href": "/match/231",
-    "league": { "name": "Bundesliga", "href": "/league/bundesliga", "logo": "/assets/images/leagues/leg4.webp" },
-    "team1": { "name": "Gladbach", "href": "/team/gladbach", "logo": "/assets/images/teams/team-4.webp" },
-    "team2": { "name": "Frankfurt", "href": "/team/frankfurt", "logo": "/assets/images/teams/team-9.webp" },
+    "league": { "name": "Bundesliga", "href": "/league/bundesliga", "logo": "/assets/images/leg4.webp" },
+    "team1": { "name": "Gladbach", "href": "/team/gladbach", "logo": "/assets/images/team-4.webp" },
+    "team2": { "name": "Frankfurt", "href": "/team/frankfurt", "logo": "/assets/images/team-9.webp" },
     "published_at": "2025-10-01 20:30",
     "status": "scheduled"
   },
   {
     "id": 232,
     "href": "/match/232",
-    "league": { "name": "Ligue 1", "href": "/league/ligue-1", "logo": "/assets/images/leagues/leg5.webp" },
-    "team1": { "name": "Nice", "href": "/team/nice", "logo": "/assets/images/teams/team-8.webp" },
-    "team2": { "name": "Lille", "href": "/team/lille", "logo": "/assets/images/teams/team-5.webp" },
+    "league": { "name": "Ligue 1", "href": "/league/ligue-1", "logo": "/assets/images/leg5.webp" },
+    "team1": { "name": "Nice", "href": "/team/nice", "logo": "/assets/images/team-8.webp" },
+    "team2": { "name": "Lille", "href": "/team/lille", "logo": "/assets/images/team-5.webp" },
     "published_at": "2025-09-29 22:30",
     "status": "scheduled"
   },
   {
     "id": 233,
     "href": "/match/233",
-    "league": { "name": "Champions League", "href": "/league/champions-league", "logo": "/assets/images/leagues/leg2.webp" },
-    "team1": { "name": "Manchester City", "href": "/team/man-city", "logo": "/assets/images/teams/team-13.webp" },
-    "team2": { "name": "Inter", "href": "/team/inter", "logo": "/assets/images/teams/team-9.webp" },
+    "league": { "name": "Champions League", "href": "/league/champions-league", "logo": "/assets/images/leg2.webp" },
+    "team1": { "name": "Manchester City", "href": "/team/man-city", "logo": "/assets/images/team-13.webp" },
+    "team2": { "name": "Inter", "href": "/team/inter", "logo": "/assets/images/team-9.webp" },
     "published_at": "2025-09-26 21:30",
     "status": "live",
     "score": { "t1": 1, "t2": 0 }
@@ -314,9 +314,9 @@
   {
     "id": 234,
     "href": "/match/234",
-    "league": { "name": "Premier League", "href": "/league/premier-league", "logo": "/assets/images/leagues/leg5.webp" },
-    "team1": { "name": "Everton", "href": "/team/everton", "logo": "/assets/images/teams/team-4.webp" },
-    "team2": { "name": "Aston Villa", "href": "/team/aston-villa", "logo": "/assets/images/teams/team-3.webp" },
+    "league": { "name": "Premier League", "href": "/league/premier-league", "logo": "/assets/images/leg5.webp" },
+    "team1": { "name": "Everton", "href": "/team/everton", "logo": "/assets/images/team-4.webp" },
+    "team2": { "name": "Aston Villa", "href": "/team/aston-villa", "logo": "/assets/images/team-3.webp" },
     "published_at": "2025-08-31 19:00",
     "status": "finished",
     "score": { "t1": 0, "t2": 1 }
@@ -324,18 +324,18 @@
   {
     "id": 235,
     "href": "/match/235",
-    "league": { "name": "La Liga", "href": "/league/la-liga", "logo": "/assets/images/leagues/leg6.webp" },
-    "team1": { "name": "Real Sociedad", "href": "/team/real-sociedad", "logo": "/assets/images/teams/team-9.webp" },
-    "team2": { "name": "Athletic Club", "href": "/team/athletic", "logo": "/assets/images/teams/team-6.webp" },
+    "league": { "name": "La Liga", "href": "/league/la-liga", "logo": "/assets/images/leg6.webp" },
+    "team1": { "name": "Real Sociedad", "href": "/team/real-sociedad", "logo": "/assets/images/team-9.webp" },
+    "team2": { "name": "Athletic Club", "href": "/team/athletic", "logo": "/assets/images/team-6.webp" },
     "published_at": "2025-10-18 22:45",
     "status": "scheduled"
   },
   {
     "id": 236,
     "href": "/match/236",
-    "league": { "name": "Serie A", "href": "/league/serie-a", "logo": "/assets/images/leagues/leg1.webp" },
-    "team1": { "name": "Juventus", "href": "/team/juventus", "logo": "/assets/images/teams/team-9.webp" },
-    "team2": { "name": "Atalanta", "href": "/team/atalanta", "logo": "/assets/images/teams/team-4.webp" },
+    "league": { "name": "Serie A", "href": "/league/serie-a", "logo": "/assets/images/leg1.webp" },
+    "team1": { "name": "Juventus", "href": "/team/juventus", "logo": "/assets/images/team-9.webp" },
+    "team2": { "name": "Atalanta", "href": "/team/atalanta", "logo": "/assets/images/team-4.webp" },
     "published_at": "2025-09-21 22:45",
     "status": "finished",
     "score": { "t1": 1, "t2": 1 }
@@ -343,18 +343,18 @@
   {
     "id": 237,
     "href": "/match/237",
-    "league": { "name": "La Liga", "href": "/league/la-liga", "logo": "/assets/images/leagues/leg2.webp" },
-    "team1": { "name": "Barcelona", "href": "/team/barcelona", "logo": "/assets/images/teams/team-3.webp" },
-    "team2": { "name": "Real Madrid", "href": "/team/real-madrid", "logo": "/assets/images/teams/team-4.webp" },
+    "league": { "name": "La Liga", "href": "/league/la-liga", "logo": "/assets/images/leg2.webp" },
+    "team1": { "name": "Barcelona", "href": "/team/barcelona", "logo": "/assets/images/team-3.webp" },
+    "team2": { "name": "Real Madrid", "href": "/team/real-madrid", "logo": "/assets/images/team-4.webp" },
     "published_at": "2025-09-21 12:45",
     "status": "scheduled"
   },
   {
     "id": 238,
     "href": "/match/238",
-    "league": { "name": "Serie A", "href": "/league/serie-a", "logo": "/assets/images/leagues/leg1.webp" },
-    "team1": { "name": "Inter", "href": "/team/inter", "logo": "/assets/images/teams/team-5.webp" },
-    "team2": { "name": "Milan", "href": "/team/milan", "logo": "/assets/images/teams/team-6.webp" },
+    "league": { "name": "Serie A", "href": "/league/serie-a", "logo": "/assets/images/leg1.webp" },
+    "team1": { "name": "Inter", "href": "/team/inter", "logo": "/assets/images/team-5.webp" },
+    "team2": { "name": "Milan", "href": "/team/milan", "logo": "/assets/images/team-6.webp" },
     "published_at": "2025-09-21 12:45",
     "status": "finished",
     "score": { "t1": 2, "t2": 0 }
@@ -362,9 +362,9 @@
   {
     "id": 239,
     "href": "/match/239",
-    "league": { "name": "Bundesliga", "href": "/league/bundesliga", "logo": "/assets/images/leagues/leg1.webp" },
-    "team1": { "name": "Bayern", "href": "/team/bayern", "logo": "/assets/images/teams/team-7.webp" },
-    "team2": { "name": "Dortmund", "href": "/team/dortmund", "logo": "/assets/images/teams/team-8.webp" },
+    "league": { "name": "Bundesliga", "href": "/league/bundesliga", "logo": "/assets/images/leg1.webp" },
+    "team1": { "name": "Bayern", "href": "/team/bayern", "logo": "/assets/images/team-7.webp" },
+    "team2": { "name": "Dortmund", "href": "/team/dortmund", "logo": "/assets/images/team-8.webp" },
     "published_at": "2025-09-21 14:15",
     "status": "scheduled"
   }

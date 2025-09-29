@@ -12,6 +12,7 @@
 
     {% block head_extra %}{% endblock %}
      <link rel="stylesheet" href="/assets/styles/main.css" />
+         <script type="module" src="/assets/scripts/main.js"></script>
   </head>
   <body class="{% block body_class %}page{% endblock %}">
     {% include "../components/header/header.twig" with {
@@ -23,7 +24,7 @@
     { slug: "lives",    label: "Live",     href: "/lives" },
     { slug: "news",     label: "News",     href: "/news" },
     { slug: "calendar", label: "Calendar", href: "/calendar" },
-    { slug: "history-la-liga",  label: "LL History",  href: "/league/la-liga/history" },
+    { slug: "history",  label: "History",  href: "/history" },
     { slug: "contact",  label: "Contact",  href: "/contact" },
     { slug: "team",     label: "Team",     href: "/team" },
     { slug: "teams",    label: "Teams",    href: "/teams" },
@@ -81,6 +82,6 @@
     email: 'elisa.hanaken@gmail.com' }, 
     year: 'now'|date('Y') } %} 
     {% block scripts %}{% endblock %}
-    <script type="module" src="/assets/scripts/main.js"></script>
+
   </body>
 </html>
