@@ -1,11 +1,19 @@
 // Простые стили для страницы истории
 .history-intro {
   margin-bottom: 48px;
-  
+  &__league-name {
+    font-size: 32px;
+    font-weight: bold;
+    color: $color-light;
+    margin-bottom: 8px;
+  }
+  &__league-info {
+    margin-bottom: 16px;
+  }
   &__title {
     font-size: 2rem;
     color: $color-light;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
   }
   
   &__subtitle {

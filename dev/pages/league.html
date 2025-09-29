@@ -1,46 +1,292 @@
-{% extends "../layouts/_base.html" %} {% block title %}Lives{% endblock %} {%
-block active_nav %}lives{% endblock %} {% block body_class %}page page--lives{%
-endblock %} {% block head_extra %}
+{% extends "../layouts/_base.html" %}
+{% set premierLeague = load_json("@/data/leagues/premier-league.json") %}
+{% set videos = load_json('@/data/videos.json') %}
+ {% set lives = load_json("@/data/lives.json") %} 
+  {% set posts = load_json("@/data/posts.json") %} 
+ {% set teams = load_json("@/data/teams.json") %} 
+{# Получаем slug лиги из URL параметров или используем значение по умолчанию #}
+{% set league_slug = get_url_param('league', 'premier-league') %}
+
+{# Загружаем данные для нужной лиги #}
+{% set historyData = load_json('@/data/history/' ~ league_slug ~ '.json') %}
+
+{# Если данные не найдены, используем заглушку #}
+{% if not historyData or not historyData.league %}
+  {% set historyData = {
+    league: { name: "League Not Found", founded: "N/A", country: "Unknown" },
+    introduction: { 
+      title: "League History Not Available", 
+      subtitle: "Coming Soon",
+      description: ["The history for this league is not yet available. Please check back later."]
+    },
+    timeline: [],
+    achievements: []
+  } %}
+{% endif %}
+
+{# Получаем данные из JSON #}
+{% set league = historyData.league %}
+{% set intro = historyData.introduction %}
+{% set timeline = historyData.timeline %}
+{% set achievements = historyData.achievements %}
+
+{% block title %}{{ league.name }} {% endblock %}
+{% block active_nav %}league{% endblock %}
+{% block body_class %}page page--league{% endblock %}
+{% block head_extra %}
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
 />
-{% endblock %} {% block content %}
- {% set lives = load_json("@/data/lives.json")
-%} 
+{% endblock %}
+{% block content %}
 {% include "../components/page-head/page-head.twig" with {
-  title: "Live Matches",
-  subtitle: "Popular live matches",
+  title: intro.title,
+  subtitle: intro.subtitle,
   breadcrumbs: [
-    { label: "Home", href: "/", home: true },
-    { label: "Live Matches" }
+    { label: "Главная", href: "/", home: true },
+    { label: "Leagues", href: "/leagues" },
+    { label: league.name }
   ],
-    meta: {
-    count: lives|length ~ " Lives" 
-  }
 } only %}
 
-<section class="section section--margin">
+<!-- Введение с логотипом лиги -->
+<section class="section section--margin section--decor">
+    <img src="/assets/images/bg/bg3.webp" alt="" class="section__bg" />
   <div class="container">
     <div class="section__inner">
-              {% include "../components/infinite-scroll/infinite-scroll.twig" with {
-        type: 'live',
-        data: lives,
-        initial_count: 9,
-        items_per_page: 6,
-        loading_text: 'Loading more matches...',
-        end_text: 'All matches loaded',
-        no_items_text: 'No live matches available'
-      } only %}
+      <div class="history-intro">
+        <div class="history-intro__content">
+          <div class="history-intro__league">
+            <div class="history-intro__league-info">
+              <h2 class="history-intro__league-name">{{ league.name }}</h2>
+              <p class="history-intro__league-details">
+                {{ league.country }} • Founded {{ league.founded }}
+              </p>
+            </div>
+          </div>
+          
+          {% for paragraph in intro.description %}
+          <p class="history-intro__text">{{ paragraph }}</p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Достижения -->
+{% if achievements and achievements|length > 0 %}
+
+  <div class="container">
+    <div class="section__inner">
+      {% include "../components/section-header/section-header.twig" with {
+        title: "major achievements",
+      } %}
+      
+      <div class="achievements">
+        <div class="achievements__grid">
+          {% for achievement in achievements %}
+          <div class="achievement">
+            <div class="achievement__icon">
+              <span class="material-symbols-outlined">{{ achievement.icon }}</span>
+            </div>
+            <div class="achievement__content">
+              <h3 class="achievement__title">{{ achievement.title }}</h3>
+              <p class="achievement__text">{{ achievement.description }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<section class="section section--margin">
+  <div class="container">
+    <div class="section__inner">
+            {% include "../components/section-header/section-header.twig" with {
+        title: "league Table",
+      } %}
+                {% include "../components/table/table.twig" with { variant: 'default',
+          caption: 'Premier League', columns: [ { key:'pos', label:'#',
+          align:'center', width:'64px' }, { key:'team', label:'Team',
+          type:'team',align:'left', width:'minmax(200px,1fr)' }, { key:'gp',
+          label:'GP', type:'number', align:'right', width:'4.5rem' }, { key:'w',
+          label:'W', type:'number', align:'right', width:'4rem' }, { key:'d',
+          label:'D', type:'number', align:'right', width:'4rem' }, { key:'l',
+          label:'L', type:'number', align:'right', width:'4rem' }, { key:'f',
+          label:'F', type:'number', align:'right', width:'4.5rem' }, { key:'a',
+          label:'A', type:'number', align:'right', width:'4.5rem' }, { key:'gd',
+          label:'GD', type:'number', align:'right', width:'4.5rem' }, { key:'p',
+          label:'P', type:'number', align:'right', width:'4.5rem' }, {
+          key:'form', label:'Form', type:'form', align:'center',
+          width:'minmax(200px,2fr)' } ], rows: premierLeague } only %}
+    </div>
+  </div>
+</section>
+<section class="section section--margin">
+  <div class="container">
+    <div class="section__inner">
+              {% include "../components/section-header/section-header.twig" with {
+      title: "latest videos", subtitle: true, more: "more", more_href: "/videos"
+      } %}
+      <div class="card-video__grid card-video__grid--hidden">
+          {% for v in videos|slice(12, 12) %}
+    {% include "../components/card-video/card-video.twig" with { post: v } only %}
+  {% endfor %}
+      </div>
+            <div
+        class="swiper home-videos-swiper"
+        data-swiper='{
+               "slidesPerView": 1,
+               "spaceBetween": 16,
+               "loop": true,
+               "autoplay": { "delay": 2500, "disableOnInteraction": false },
+               "breakpoints": {
+                 "0":  { "slidesPerView": 1 },
+                 "480":  { "slidesPerView": 2 },
+                 "768":  { "slidesPerView": 3 }
+               }
+             }'
+      >
+        <div class="swiper-wrapper">
+           {% for v in videos|slice(12, 12) %}
+          <div class="swiper-slide">
+            {% include "../components/card-video/card-video.twig" with { post: v } only %}
+          </div>
+          {% else %}
+          <div class="swiper-slide"><p class="muted">No videos.</p></div>
+          {% endfor %}
+        </div>
+        <div class="swiper-button__wrap">
+          <button
+            class="swiper-button-prev"
+            data-swiper-prev
+            aria-label="Prev"
+          ></button>
+          <button
+            class="swiper-button-next"
+            data-swiper-next
+            aria-label="Next"
+          ></button>
+        </div>
+      </div>
+  </div>
+</section>
+<section class="section section--margin">
+  <div class="container">
+    <div class="section__inner">
+      {% include "../components/section-header/section-header.twig" with {
+      title: "News", subtitle: true, more: "more", more_href: "/news" } %}
+      <div class="card-post__grid">
+        {% for p in posts|slice(16, 8) %} {% include
+        "../components/card-post/card-post.twig" with { post: { href: p.href,
+        title: p.title, image: { src: p.thumb, alt: p.title }, date:
+        p.published_at }, tags: p.tags|default([]) } %} {% else %}
+        <p class="muted">No posts yet.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section section--margin section--decor">
+  <img src="/assets/images/bg/bg1.webp" alt="" class="section__bg" />
+  <div class="container">
+    <div class="section__inner">
+      {% include "../components/section-header/section-header.twig" with {
+      title: "popular lives", subtitle: true, more: "more", more_href: "/lives"
+      } %}
+      <div
+        class="swiper home-live-swiper"
+        data-swiper='{
+               "slidesPerView": 1,
+               "spaceBetween": 16,
+               "breakpoints": {
+                 "0":  { "slidesPerView": 1 },
+                 "768": { "slidesPerView": 2 },
+                 "1024": { "slidesPerView": 3 }
+               }
+             }'
+      >
+        <div class="swiper-wrapper">
+          {% for match in lives|slice(0, 8) %}
+          <div class="swiper-slide">
+            {% include "../components/card-live/card-live.twig" with { match:
+            match, button: { text: "live broadcast", href: match.href, variant:
+            "primary", size: "sm" } } only %}
+          </div>
+          {% else %}
+          <div class="swiper-slide"><p class="muted">No lives.</p></div>
+          {% endfor %}
+        </div>
+        <div class="swiper-button__wrap">
+          <button
+            class="swiper-button-prev"
+            data-swiper-prev
+            aria-label="Prev"
+          ></button>
+          <button
+            class="swiper-button-next"
+            data-swiper-next
+            aria-label="Next"
+          ></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<section class="section section--margin section--decor">
+  <img src="/assets/images/bg/bg2.webp" alt="" class="section__bg" />
+  <div class="container">
+    <div class="section__inner">
+      <div
+        class="swiper home-teams-swiper"
+        data-swiper='{
+               "slidesPerView": 1,
+               "spaceBetween": 16,
+               "loop": true,
+               "autoplay": { "delay": 2500, "disableOnInteraction": false },
+               "breakpoints": {
+                 "0":  { "slidesPerView": 1 },
+                 "480":  { "slidesPerView": 2 },
+                 "768": { "slidesPerView": 3 },
+                 "1024": { "slidesPerView": 5 }
+               }
+             }'
+      >
+        <div class="swiper-wrapper">
+          {% for t in teams %}
+          <div class="swiper-slide">
+            {% include "../components/card-team/card-team.twig" with t only %}
+          </div>
+          {% else %}
+          <div class="swiper-slide"><p class="muted">No teams.</p></div>
+          {% endfor %}
+        </div>
+        <div class="swiper-button__wrap">
+          <button
+            class="swiper-button-prev"
+            data-swiper-prev
+            aria-label="Prev"
+          ></button>
+          <button
+            class="swiper-button-next"
+            data-swiper-next
+            aria-label="Next"
+          ></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
 
+{% endblock %}
 
-
-
-{% endblock %} {% block scripts %}
+{% block scripts %}
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+></script>
 {% endblock %}

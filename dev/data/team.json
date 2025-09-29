@@ -1,0 +1,240 @@
+{
+  "name": "Manchester City",
+  "logo": "/assets/images/teams/team-5.webp",
+  "stadium": "Etihad Stadium",
+  "founded": 1880,
+  "manager": "Pep Guardiola",
+  "league": {
+    "name": "Premier League",
+    "logo": "/assets/images/leagues/leg5.webp",
+    "href": "/league/premier-league"
+  },
+  "statistics": [
+    {
+      "label": "Matches Played",
+      "value": 38
+    },
+    {
+      "label": "Wins",
+      "value": 28
+    },
+    {
+      "label": "Draws",
+      "value": 5
+    },
+    {
+      "label": "Losses",
+      "value": 5
+    },
+    {
+      "label": "Goals Scored",
+      "value": 94
+    },
+    {
+      "label": "Goals Conceded",
+      "value": 33
+    },
+    {
+      "label": "Clean Sheets",
+      "value": 18
+    },
+    {
+      "label": "Points",
+      "value": 89
+    }
+  ],
+  "achievements": [
+    {
+      "icon": "emoji_events",
+      "title": "Premier League",
+      "count": 9,
+      "years": "1936-37, 1967-68, 2011-12, 2013-14, 2017-18, 2018-19, 2020-21, 2021-22, 2022-23"
+    },
+    {
+      "icon": "military_tech",
+      "title": "FA Cup",
+      "count": 7,
+      "years": "1904, 1934, 1956, 1969, 2011, 2019, 2023"
+    },
+    {
+      "icon": "workspace_premium",
+      "title": "League Cup",
+      "count": 8,
+      "years": "1970, 1976, 2014, 2016, 2018, 2019, 2020, 2021"
+    },
+    {
+      "icon": "public",
+      "title": "UEFA Champions League",
+      "count": 1,
+      "years": "2022-23"
+    },
+    {
+      "icon": "stars",
+      "title": "UEFA Super Cup",
+      "count": 1,
+      "years": "2023"
+    },
+    {
+      "icon": "language",
+      "title": "FIFA Club World Cup",
+      "count": 1,
+      "years": "2023"
+    }
+  ],
+  "squad": [
+    {
+      "number": 31,
+      "player": {
+        "name": "Ederson",
+        "avatar": "/assets/images/players/ederson.webp",
+        "href": "/player/ederson"
+      },
+      "position": "Goalkeeper",
+      "age": 30,
+      "nationality": "Brazil",
+      "apps": 38,
+      "goals": 0,
+      "assists": 1
+    },
+    {
+      "number": 2,
+      "player": {
+        "name": "Kyle Walker",
+        "avatar": "/assets/images/players/player1.webp",
+        "href": "/player/walker"
+      },
+      "position": "Defender",
+      "age": 33,
+      "nationality": "England",
+      "apps": 35,
+      "goals": 1,
+      "assists": 3
+    },
+    {
+      "number": 3,
+      "player": {
+        "name": "Rúben Dias",
+        "avatar": "/assets/images/players/player2.webp",
+        "href": "/player/dias"
+      },
+      "position": "Defender",
+      "age": 27,
+      "nationality": "Portugal",
+      "apps": 36,
+      "goals": 2,
+      "assists": 1
+    },
+    {
+      "number": 5,
+      "player": {
+        "name": "John Stones",
+        "avatar": "/assets/images/players/player3.webp",
+        "href": "/player/stones"
+      },
+      "position": "Defender",
+      "age": 29,
+      "nationality": "England",
+      "apps": 32,
+      "goals": 3,
+      "assists": 2
+    },
+    {
+      "number": 17,
+      "player": {
+        "name": "Kevin De Bruyne",
+        "avatar": "/assets/images/players/player4.webp",
+        "href": "/player/de-bruyne"
+      },
+      "position": "Midfielder",
+      "age": 32,
+      "nationality": "Belgium",
+      "apps": 34,
+      "goals": 12,
+      "assists": 18
+    },
+    {
+      "number": 16,
+      "player": {
+        "name": "Rodri",
+        "avatar": "/assets/images/players/player5.webp",
+        "href": "/player/rodri"
+      },
+      "position": "Midfielder",
+      "age": 27,
+      "nationality": "Spain",
+      "apps": 37,
+      "goals": 8,
+      "assists": 5
+    },
+    {
+      "number": 20,
+      "player": {
+        "name": "Bernardo Silva",
+        "avatar": "/assets/images/players/player6.webp",
+        "href": "/player/bernardo"
+      },
+      "position": "Midfielder",
+      "age": 29,
+      "nationality": "Portugal",
+      "apps": 36,
+      "goals": 9,
+      "assists": 11
+    },
+    {
+      "number": 47,
+      "player": {
+        "name": "Phil Foden",
+        "avatar": "/assets/images/players/player1.webp",
+        "href": "/player/foden"
+      },
+      "position": "Midfielder",
+      "age": 24,
+      "nationality": "England",
+      "apps": 35,
+      "goals": 15,
+      "assists": 9
+    },
+    {
+      "number": 9,
+      "player": {
+        "name": "Erling Haaland",
+        "avatar": "/assets/images/players/player2.webp",
+        "href": "/player/haaland"
+      },
+      "position": "Forward",
+      "age": 24,
+      "nationality": "Norway",
+      "apps": 37,
+      "goals": 36,
+      "assists": 8
+    },
+    {
+      "number": 19,
+      "player": {
+        "name": "Julián Álvarez",
+        "avatar": "/assets/images/players/player3.webp",
+        "href": "/player/alvarez"
+      },
+      "position": "Forward",
+      "age": 24,
+      "nationality": "Argentina",
+      "apps": 31,
+      "goals": 11,
+      "assists": 6
+    },
+    {
+      "number": 10,
+      "player": {
+        "name": "Jack Grealish",
+        "avatar": "/assets/images/players/player4.webp",
+        "href": "/player/grealish"
+      },
+      "position": "Forward",
+      "age": 28,
+      "nationality": "England",
+      "apps": 33,
+      "goals": 7,
+      "assists": 10
+    }
+  ]
+}

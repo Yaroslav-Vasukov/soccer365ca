@@ -1,0 +1,253 @@
+{
+  "name": "Erling Haaland",
+  "number": "9",
+  "position": "Forward",
+  "nationality": "Norway",
+  "age": 24,
+  "avatar": "/assets/images/players/player-full-6.webp",
+  "hero_image": "/assets/images/bg/bg1.webp",
+  "team": {
+    "name": "Manchester City",
+    "logo": "/assets/images/teams/team-4.webp",
+    "href": "/team/manchester-city"
+  },
+  "info": [
+    {
+      "label": "Full Name",
+      "value": "Erling Braut Haaland"
+    },
+    {
+      "label": "Date of Birth",
+      "value": "21 July 2000"
+    },
+    {
+      "label": "Place of Birth",
+      "value": "Leeds, England"
+    },
+    {
+      "label": "Height",
+      "value": "1.95 m (6 ft 5 in)"
+    },
+    {
+      "label": "Weight",
+      "value": "88 kg (194 lb)"
+    },
+    {
+      "label": "Preferred Foot",
+      "value": "Left"
+    },
+    {
+      "label": "Current Club",
+      "value": "Manchester City"
+    },
+    {
+      "label": "Squad Number",
+      "value": "9"
+    },
+    {
+      "label": "Contract Until",
+      "value": "30 June 2027"
+    },
+    {
+      "label": "Market Value",
+      "value": "€180M"
+    }
+  ],
+  "statistics": [
+    {
+      "icon": "sports_soccer",
+      "label": "Goals",
+      "value": 36
+    },
+    {
+      "icon": "timeline",
+      "label": "Assists",
+      "value": 8
+    },
+    {
+      "icon": "confirmation_number",
+      "label": "Appearances",
+      "value": 37
+    },
+    {
+      "icon": "schedule",
+      "label": "Minutes Played",
+      "value": 3142
+    },
+    {
+      "icon": "bolt",
+      "label": "Shots per Game",
+      "value": 4.8
+    },
+    {
+      "icon": "target",
+      "label": "Shot Accuracy",
+      "value": "62%"
+    },
+    {
+      "icon": "warning",
+      "label": "Yellow Cards",
+      "value": 4
+    },
+    {
+      "icon": "block",
+      "label": "Red Cards",
+      "value": 0
+    }
+  ],
+  "biography": "<p><strong>Erling Braut Haaland</strong> is a Norwegian professional footballer who plays as a striker for Premier League club Manchester City and the Norway national team. Considered one of the best players in the world, he is known for his speed, strength, positioning, and finishing inside the box.</p><p>Born in Leeds, England, while his father Alf-Inge Haaland was playing for Leeds United, Haaland moved to Bryne at the age of three. He joined the youth system at Bryne in 2006, and moved to that of Molde in 2014. In 2017, he signed his first professional contract with Molde, and also spent time on loan with the reserve team of fellow Eliteserien side Strømsgodset. He made his professional debut in 2016.</p><p>After his performances in Austria, Haaland signed with Borussia Dortmund in December 2019. In his debut match, he scored a hat-trick in just 23 minutes. He finished the 2020–21 season with 41 goals in 41 matches across all competitions. In May 2022, Haaland signed for Manchester City on a five-year contract.</p><p>In his debut season with Manchester City, Haaland broke the Premier League single-season scoring record with 36 goals, surpassing the previous records of 32 goals in a 38-game season and 34 goals in a 42-game season. He also helped City win their first UEFA Champions League title, scoring twice in the final against Inter Milan.</p>",
+  "achievements": [
+    {
+      "icon": "emoji_events",
+      "title": "Premier League Champion",
+      "year": "2022-23"
+    },
+    {
+      "icon": "public",
+      "title": "UEFA Champions League Winner",
+      "year": "2022-23"
+    },
+    {
+      "icon": "military_tech",
+      "title": "FA Cup Winner",
+      "year": "2022-23"
+    },
+    {
+      "icon": "sports_soccer",
+      "title": "Premier League Golden Boot",
+      "year": "2022-23"
+    },
+    {
+      "icon": "star",
+      "title": "PFA Players' Player of the Year",
+      "year": "2022-23"
+    },
+    {
+      "icon": "workspace_premium",
+      "title": "UEFA Champions League Top Scorer",
+      "year": "2022-23"
+    }
+  ],
+  "career": [
+    {
+      "season": "2024-25",
+      "team": {
+        "name": "Manchester City",
+        "logo": {
+          "src": "/assets/images/teams/team-4.webp",
+          "alt": "Manchester City"
+        },
+        "href": "/team/manchester-city"
+      },
+      "competition": "Premier League",
+      "apps": 10,
+      "goals": 12,
+      "assists": 2
+    },
+    {
+      "season": "2023-24",
+      "team": {
+        "name": "Manchester City",
+        "logo": {
+          "src": "/assets/images/teams/team-2.webp",
+          "alt": "Manchester City"
+        },
+        "href": "/team/manchester-city"
+      },
+      "competition": "Premier League",
+      "apps": 37,
+      "goals": 36,
+      "assists": 8
+    },
+    {
+      "season": "2022-23",
+      "team": {
+        "name": "Manchester City",
+        "logo": {
+          "src": "/assets/images/teams/team-1.webp",
+          "alt": "Manchester City"
+        },
+        "href": "/team/manchester-city"
+      },
+      "competition": "Premier League",
+      "apps": 35,
+      "goals": 36,
+      "assists": 8
+    },
+    {
+      "season": "2021-22",
+      "team": {
+        "name": "Borussia Dortmund",
+        "logo": {
+          "src": "/assets/images/teams/team-5.webp",
+          "alt": "Borussia Dortmund"
+        },
+        "href": "/team/dortmund"
+      },
+      "competition": "Bundesliga",
+      "apps": 24,
+      "goals": 22,
+      "assists": 7
+    },
+    {
+      "season": "2020-21",
+      "team": {
+        "name": "Borussia Dortmund",
+        "logo": {
+          "src": "/assets/images/teams/team-5.webp",
+          "alt": "Borussia Dortmund"
+        },
+        "href": "/team/dortmund"
+      },
+      "competition": "Bundesliga",
+      "apps": 28,
+      "goals": 27,
+      "assists": 6
+    },
+    {
+      "season": "2019-20",
+      "team": {
+        "name": "Red Bull Salzburg",
+        "logo": {
+          "src": "/assets/images/teams/team-6.webp",
+          "alt": "Red Bull Salzburg"
+        },
+        "href": "/team/salzburg"
+      },
+      "competition": "Austrian Bundesliga",
+      "apps": 16,
+      "goals": 17,
+      "assists": 5
+    },
+    {
+      "season": "2019-20",
+      "team": {
+        "name": "Borussia Dortmund",
+        "logo": {
+          "src": "/assets/images/teams/team-5.webp",
+          "alt": "Borussia Dortmund"
+        },
+        "href": "/team/dortmund"
+      },
+      "competition": "Bundesliga",
+      "apps": 13,
+      "goals": 13,
+      "assists": 2
+    },
+    {
+      "season": "2018-19",
+      "team": {
+        "name": "Red Bull Salzburg",
+        "logo": {
+          "src": "/assets/images/teams/team-6.webp",
+          "alt": "Red Bull Salzburg"
+        },
+        "href": "/team/salzburg"
+      },
+      "competition": "Austrian Bundesliga",
+      "apps": 27,
+      "goals": 16,
+      "assists": 7
+    }
+  ]
+}

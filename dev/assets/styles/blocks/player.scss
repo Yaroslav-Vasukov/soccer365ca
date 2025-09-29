@@ -1,0 +1,475 @@
+
+
+// === Hero секция ===
+.player-hero {
+  position: relative;
+  min-height: 500px;
+  padding-bottom: 48px;
+
+  @media (max-width: 768px) {
+    min-height: 400px;
+    padding-bottom: 32px;
+  }
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba($color-dark, 0.3) 0%,
+      rgba($color-dark, 0.6) 50%,
+      rgba($color-dark, 0.95) 100%
+    );
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    width: 100%;
+    min-height: 500px;
+    align-items: flex-end;
+    padding-top: 48px;
+  }
+
+  &__content {
+    max-width: 800px;
+        @media (max-width: 640px) {
+      flex-direction: column;
+      align-items: stretch;
+      text-align: center;
+      gap: 16px;
+      max-width: 100%;
+    }
+  }
+
+  &__main {
+    display: flex;
+    align-items: flex-end;
+    gap: 24px;
+    margin-top: 32px;
+    margin-bottom: 24px;
+
+    @media (max-width: 640px) {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+    }
+  }
+
+  &__avatar {
+    width: 120px;
+    height: 120px;
+    background-color: $color-gray;
+    overflow: hidden;
+    border: 3px solid $color-primary;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: 640px) {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  &__info {
+    flex: 1;
+  }
+
+  &__title {
+    font-size: 48px;
+    font-weight: 800;
+    color: $color-light;
+    line-height: 1.1;
+    margin-bottom: 8px;
+    text-shadow: 2px 2px 4px rgba($color-dark, 0.8);
+
+    @media (max-width: 768px) {
+      font-size: 36px;
+    }
+
+    @media (max-width: 640px) {
+      font-size: 28px;
+    }
+  }
+
+  &__number {
+    font-size: 64px;
+    font-weight: 900;
+    color: $color-primary;
+    line-height: 1;
+    text-shadow: 2px 2px 4px rgba($color-dark, 0.8);
+
+    @media (max-width: 768px) {
+      font-size: 48px;
+    }
+
+    @media (max-width: 640px) {
+      font-size: 36px;
+    }
+  }
+
+  &__meta {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+
+    @media (max-width: 640px) {
+      justify-content: center;
+      gap: 16px;
+    }
+  }
+
+  &__meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: $color-light;
+    text-shadow: 1px 1px 2px rgba($color-dark, 0.8);
+
+    .material-symbols-outlined {
+      font-size: 20px;
+      color: $color-primary;
+    }
+
+    @media (max-width: 640px) {
+      font-size: 14px;
+
+      .material-symbols-outlined {
+        font-size: 18px;
+      }
+    }
+  }
+
+  &__team {
+    display: inline-block;
+  }
+
+  &__team-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    background: rgba($color-dark-gray, 0.9);
+    border: 2px solid $color-primary;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: rgba($color-dark-gray, 1);
+    }
+
+    img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+
+    span {
+      font-size: 16px;
+      font-weight: 700;
+      color: $color-light;
+    }
+
+    @media (max-width: 640px) {
+      padding: 10px 16px;
+
+      img {
+        width: 32px;
+        height: 32px;
+      }
+
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+// === Основной контент ===
+.player {
+  &__subtitle {
+    font-size: 24px;
+    font-weight: 700;
+    color: $color-light;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    @media (max-width: 768px) {
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+  }
+
+  // === Информация ===
+  &__info {
+    background: $color-dark-gray;
+    padding: 32px;
+    margin-bottom: 32px;
+
+    @media (max-width: 768px) {
+      padding: 24px 16px;
+    }
+  }
+
+  &__info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+
+  &__info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba($color-gray, 0.2);
+  }
+
+  &__info-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: $color-gray;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &__info-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: $color-light;
+
+    @media (max-width: 640px) {
+      font-size: 16px;
+    }
+  }
+
+  // === Статистика ===
+  &__stats {
+    margin-bottom: 32px;
+  }
+
+  &__stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+
+    @media (max-width: 640px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__stat-card {
+    background: $color-dark-gray;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    @media (max-width: 640px) {
+      padding: 16px;
+      gap: 12px;
+    }
+  }
+
+  &__stat-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba($color-primary, 0.2);
+    flex-shrink: 0;
+
+    .material-symbols-outlined {
+      font-size: 32px;
+      color: $color-primary;
+    }
+
+    @media (max-width: 640px) {
+      width: 48px;
+      height: 48px;
+
+      .material-symbols-outlined {
+        font-size: 28px;
+      }
+    }
+  }
+
+  &__stat-content {
+    flex: 1;
+  }
+
+  &__stat-value {
+    font-size: 28px;
+    font-weight: 800;
+    color: $color-light;
+    line-height: 1;
+    margin-bottom: 4px;
+
+    @media (max-width: 640px) {
+      font-size: 24px;
+    }
+  }
+
+  &__stat-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: $color-gray;
+    text-transform: uppercase;
+
+    @media (max-width: 640px) {
+      font-size: 11px;
+    }
+  }
+
+  // === Биография ===
+  &__bio {
+    background: $color-dark-gray;
+    padding: 32px;
+    margin-bottom: 32px;
+
+    @media (max-width: 768px) {
+      padding: 24px 16px;
+    }
+  }
+
+  &__bio-content {
+    font-size: 16px;
+    line-height: 1.8;
+    color: $color-light;
+
+    p {
+      margin-bottom: 16px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    strong {
+      font-weight: 700;
+      color: $color-primary;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 15px;
+      line-height: 1.7;
+    }
+  }
+
+  // === Достижения ===
+  &__achievements {
+    margin-bottom: 32px;
+  }
+
+  &__achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__achievement {
+    display: flex;
+    gap: 16px;
+    background: $color-dark-gray;
+    padding: 20px;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateX(4px);
+    }
+
+    @media (max-width: 640px) {
+      padding: 16px;
+      gap: 12px;
+    }
+  }
+
+  &__achievement-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba($color-accent-orange, 0.2);
+    flex-shrink: 0;
+
+    .material-symbols-outlined {
+      font-size: 28px;
+      color: $color-accent-orange;
+    }
+  }
+
+  &__achievement-content {
+    flex: 1;
+  }
+
+  &__achievement-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: $color-light;
+    margin-bottom: 4px;
+
+    @media (max-width: 640px) {
+      font-size: 15px;
+    }
+  }
+
+  &__achievement-year {
+    font-size: 14px;
+    color: $color-gray;
+
+    @media (max-width: 640px) {
+      font-size: 13px;
+    }
+  }
+
+  // === Карьерная статистика ===
+  &__career {
+    margin-bottom: 32px;
+  }
+}

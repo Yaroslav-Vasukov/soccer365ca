@@ -1,0 +1,167 @@
+{
+  "title": "Manchester City vs Liverpool 2-1: Premier League review",
+  "league": {
+    "name": "Premier League",
+    "href": "/league/premier-league"
+  },
+  "matchday": "Matchday 4",
+  "date": "2025-09-28 15:00",
+  "venue": "Etihad Stadium, Manchester",
+  "referee": "Michael Oliver",
+  "home_team": {
+    "name": "Manchester City",
+    "href": "/team/manchester-city",
+    "logo": "/assets/images/teams/team-2.webp",
+    "score": 2,
+    "scorers": [
+      {
+        "name": "Haaland",
+        "href": "/player/haaland",
+        "time": 24
+      },
+      {
+        "name": "De Bruyne",
+        "href": "/player/de-bruyne",
+        "time": 54
+      }
+    ]
+  },
+  "away_team": {
+    "name": "Liverpool",
+    "href": "/team/liverpool",
+    "logo": "/assets/images/teams/team-1.webp",
+    "score": 1,
+    "scorers": [
+      {
+        "name": "Salah",
+        "href": "/player/salah",
+        "time": 67
+      }
+    ]
+  },
+  "events": [
+    {
+      "minute": 6,
+      "type": "substitution"
+    },
+    {
+      "minute": 22,
+      "type": "yellow"
+    },
+    {
+      "minute": 24,
+      "type": "goal"
+    },
+    {
+      "minute": 30,
+      "type": "yellow"
+    },
+    {
+      "minute": 34,
+      "type": "yellow"
+    },
+    {
+      "minute": 45,
+      "type": "substitution"
+    },
+    {
+      "minute": 50,
+      "type": "yellow"
+    },
+    {
+      "minute": 54,
+      "type": "goal"
+    },
+    {
+      "minute": 61,
+      "type": "substitution"
+    },
+    {
+      "minute": 62,
+      "type": "yellow"
+    },
+    {
+      "minute": 65,
+      "type": "substitution"
+    },
+    {
+      "minute": 67,
+      "type": "goal"
+    },
+    {
+      "minute": 68,
+      "type": "yellow"
+    },
+    {
+      "minute": 77,
+      "type": "yellow"
+    },
+    {
+      "minute": 78,
+      "type": "yellow"
+    },
+    {
+      "minute": 82,
+      "type": "substitution"
+    },
+    {
+      "minute": 88,
+      "type": "yellow"
+    },
+    {
+      "minute": 89,
+      "type": "yellow"
+    },
+    {
+      "minute": 90,
+      "type": "red"
+    },
+    {
+      "minute": 94,
+      "type": "substitution"
+    }
+  ],
+  "statistics": [
+    {
+      "label": "Possession",
+      "home": 58,
+      "away": 42
+    },
+    {
+      "label": "Shots",
+      "home": 18,
+      "away": 12
+    },
+    {
+      "label": "Shots on target",
+      "home": 8,
+      "away": 5
+    },
+    {
+      "label": "Corners",
+      "home": 7,
+      "away": 4
+    },
+    {
+      "label": "Fouls",
+      "home": 11,
+      "away": 14
+    },
+    {
+      "label": "Yellow cards",
+      "home": 2,
+      "away": 3
+    },
+    {
+      "label": "Passes",
+      "home": 524,
+      "away": 398
+    },
+    {
+      "label": "Pass accuracy %",
+      "home": 87,
+      "away": 81
+    }
+  ],
+  "description": "<p><strong>Manchester City</strong> secured a hard-fought 2-1 victory over <strong>Liverpool</strong> in a thrilling encounter at the Etihad Stadium. The match lived up to its billing as both sides showcased attacking intent from the first whistle.</p><p>The home side took control early, with <strong>Erling Haaland</strong> opening the scoring in the 24th minute after a sublime pass from Kevin De Bruyne split the Liverpool defense. City continued to dominate possession, and their pressure paid off just after halftime when <strong>De Bruyne</strong> himself doubled the lead with a stunning strike from outside the box.</p><p>Liverpool fought back through <strong>Mohamed Salah</strong>, who reduced the deficit with a clinical finish in the 67th minute. The visitors pushed hard for an equalizer, creating several chances in the final stages, but City's defense held firm despite a late red card that saw them finish with 10 men.</p><p>The match was marked by intense physical battles in midfield, with the referee showing multiple yellow cards throughout. Despite Liverpool's late pressure and numerical advantage, Manchester City managed to see out the victory, moving them to the top of the Premier League table.</p>"
+}

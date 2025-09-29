@@ -2,7 +2,12 @@
 .table {
   box-sizing: border-box;
   width: 100%;
-  &--default {
+  &--main {
+    & .entity__name {
+      @media (max-width: 480px) {
+        display: none;
+      }
+    }
     & .table__th:first-child,
     & .table__td:first-child {
       position: sticky;

@@ -26,6 +26,9 @@
 @use '../styles/partials/content-wrap.scss';
 
 
+@use './blocks/player.scss';
+@use './blocks/team.scss';
+@use './blocks/review.scss';
 @use './blocks/post.scss';
 @use './blocks/video.scss';
 @use './blocks/contact.scss';

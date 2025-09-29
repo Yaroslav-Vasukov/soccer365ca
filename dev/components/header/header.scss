@@ -76,6 +76,7 @@
     position: fixed;
     inset-block: 0;            /* top/bottom */
     inset-inline-end: 0;       /* right */
+
     width: min(82vw, 360px);
     padding: 88px 20px 20px;
     background: $color-dark;
@@ -97,7 +98,7 @@
   &__link {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     min-height: 40px;
     text-decoration: none;
     text-transform: uppercase;

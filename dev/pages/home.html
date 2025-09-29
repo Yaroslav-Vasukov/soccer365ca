@@ -7,11 +7,12 @@ endblock %} {% block head_extra %}
 />
 {% endblock %} {% block content %}
 {% set videos = load_json('@/data/videos.json') %}
- {% set leagues =
-load_json('@/data/leagues.json') %} {% set posts =
-load_json("@/data/posts.json") %} {% set lives = load_json("@/data/lives.json")
-%} {% set teams = load_json("@/data/teams.json") %} {% set premierLeague =
-load_json("@/data/leagues/premier-league.json") %} {% set laLiga =
+ {% set leagues = load_json('@/data/leagues.json') %} 
+ {% set posts = load_json("@/data/posts.json") %} 
+ {% set lives = load_json("@/data/lives.json") %} 
+ {% set teams = load_json("@/data/teams.json") %} 
+ {% set premierLeague = load_json("@/data/leagues/premier-league.json") %} 
+ {% set laLiga =
 load_json("@/data/leagues/la-liga.json") %} 
 {% set serieA = load_json("@/data/leagues/serie-a.json") %} 
 {% include "../components/hero/hero.twig" with {
@@ -200,7 +201,7 @@ load_json("@/data/leagues/la-liga.json") %}
           aria-labelledby="tab-premier-league"
           tabindex="0"
         >
-          {% include "../components/table/table.twig" with { variant: 'default',
+          {% include "../components/table/table.twig" with { variant: 'main',
           caption: 'Premier League', columns: [ { key:'pos', label:'#',
           align:'center', width:'64px' }, { key:'team', label:'Team',
           type:'team',align:'left', width:'minmax(200px,1fr)' }, { key:'gp',
@@ -223,7 +224,7 @@ load_json("@/data/leagues/la-liga.json") %}
           tabindex="0"
           hidden
         >
-          {% include "../components/table/table.twig" with { variant: 'default',
+          {% include "../components/table/table.twig" with { variant: 'main',
           caption: 'laLiga', columns: [ { key:'pos', label:'#', align:'center',
           width:'64px' }, { key:'team', label:'Team', type:'team',align:'left',
           width:'minmax(200px,1fr)' }, { key:'gp', label:'GP', type:'number',
@@ -246,7 +247,7 @@ load_json("@/data/leagues/la-liga.json") %}
           tabindex="0"
           hidden
         >
-          {% include "../components/table/table.twig" with { variant: 'default',
+          {% include "../components/table/table.twig" with { variant: 'main',
           caption: 'Serie A', columns: [ { key:'pos', label:'#', align:'center',
           width:'64px' }, { key:'team', label:'Team', type:'team',align:'left',
           width:'minmax(200px,1fr)' }, { key:'gp', label:'GP', type:'number',

@@ -1,46 +1,168 @@
-{% extends "../layouts/_base.html" %} {% block title %}Lives{% endblock %} {%
-block active_nav %}lives{% endblock %} {% block body_class %}page page--lives{%
-endblock %} {% block head_extra %}
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-/>
-{% endblock %} {% block content %}
- {% set lives = load_json("@/data/lives.json")
-%} 
-{% include "../components/page-head/page-head.twig" with {
-  title: "Live Matches",
-  subtitle: "Popular live matches",
-  breadcrumbs: [
-    { label: "Home", href: "/", home: true },
-    { label: "Live Matches" }
-  ],
-    meta: {
-    count: lives|length ~ " Lives" 
-  }
-} only %}
+{% extends "../layouts/_base.html" %}
+{% block title %}Match Review{% endblock %}
+{% block active_nav %}calendar{% endblock %}
+{% block body_class %}page page--review{% endblock %}
 
-<section class="section section--margin">
+{% block content %}
+{% set review = load_json('@/data/review.json') %}
+
+<section class="section section--margin review">
   <div class="container">
     <div class="section__inner">
-              {% include "../components/infinite-scroll/infinite-scroll.twig" with {
-        type: 'live',
-        data: lives,
-        initial_count: 9,
-        items_per_page: 6,
-        loading_text: 'Loading more matches...',
-        end_text: 'All matches loaded',
-        no_items_text: 'No live matches available'
-      } only %}
+      <!-- Хлебные крошки -->
+      <div class="review__breadcrumbs">
+        {% include "../components/breadcrumbs/breadcrumbs.twig" with {
+          items: [
+            { label: "Home", href: "/", home: true },
+            { label: "Calendar", href: "/calendar" },
+            { label: review.title, active: true }
+          ]
+        } only %}
       </div>
+
+      <!-- Основной контент обзора -->
+      <article class="review__content">
+        <!-- Тег лиги -->
+        <a href="{{ review.league.href }}" class="review__league-tag">
+          {{ review.league.name }}
+        </a>
+
+        <!-- Заголовок матча -->
+        <h1 class="review__title">{{ review.title }}</h1>
+
+        <!-- Мета-инфо -->
+        <div class="review__meta">
+          <span class="review__matchday">{{ review.matchday }}</span>
+          {% import "../components/date/date.twig" as date %}
+          {{ date.view(review.date, { 
+            variant: 'card-live', 
+            show_icon: true, 
+            icon: 'calendar_today', 
+            format: 'd.m.Y H:i' 
+          }) }}
+        </div>
+
+        <!-- Блок матча: команды, счёт -->
+        <div class="review__match">
+          <!-- Команда 1 (home) -->
+          <div class="review__team review__team--home">
+            <a href="{{ review.home_team.href }}" class="review__team-link">
+              <img 
+                src="{{ review.home_team.logo }}" 
+                alt="{{ review.home_team.name }}" 
+                class="review__team-logo"
+              >
+              <h2 class="review__team-name">{{ review.home_team.name }}</h2>
+            </a>
+            {% if review.home_team.scorers|length > 0 %}
+            <ul class="review__scorers">
+              {% for scorer in review.home_team.scorers %}
+              <li class="review__scorer">
+                <a href="{{ scorer.href }}" class="review__scorer-link">{{ scorer.name }}</a>
+                <span class="review__scorer-time">{{ scorer.time }}'</span>
+              </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+
+          <!-- Центральный блок со счётом -->
+          <div class="review__scorebox">
+            <div class="review__score">{{ review.home_team.score }} – {{ review.away_team.score }}</div>
+            <div class="review__venue">{{ review.venue }}</div>
+            <div class="review__referee">Referee: {{ review.referee }}</div>
+          </div>
+
+          <!-- Команда 2 (away) -->
+          <div class="review__team review__team--away">
+            <a href="{{ review.away_team.href }}" class="review__team-link">
+              <img 
+                src="{{ review.away_team.logo }}" 
+                alt="{{ review.away_team.name }}" 
+                class="review__team-logo"
+              >
+              <h2 class="review__team-name">{{ review.away_team.name }}</h2>
+            </a>
+            {% if review.away_team.scorers|length > 0 %}
+            <ul class="review__scorers">
+              {% for scorer in review.away_team.scorers %}
+              <li class="review__scorer">
+                <a href="{{ scorer.href }}" class="review__scorer-link">{{ scorer.name }}</a>
+                <span class="review__scorer-time">{{ scorer.time }}'</span>
+              </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- Шкала событий матча (timeline) -->
+        <div class="review__timeline">
+          <h3 class="review__subtitle">Match Events</h3>
+          <div class="review__timeline-track">
+            <div class="review__timeline-labels">
+              <span class="review__timeline-label">KO</span>
+              <span class="review__timeline-label">45'</span>
+              <span class="review__timeline-label">FT</span>
+            </div>
+            <div class="review__timeline-bar">
+              {% for event in review.events %}
+              <div 
+                class="review__timeline-event review__timeline-event--{{ event.type }}" 
+                style="left: {{ (event.minute / 96 * 100)|round(2) }}%"
+                title="{{ event.minute }}' - {{ event.type }}"
+              >
+                {% if event.type == 'goal' %}
+                  <span class="material-symbols-outlined">sports_soccer</span>
+                {% elseif event.type == 'yellow' %}
+                  <span class="review__event-card review__event-card--yellow"></span>
+                {% elseif event.type == 'red' %}
+                  <span class="review__event-card review__event-card--red"></span>
+                {% elseif event.type == 'substitution' %}
+                  <span class="material-symbols-outlined">swap_horiz</span>
+                {% endif %}
+                <span class="review__timeline-time">{{ event.minute }}'</span>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <!-- Статистика команд -->
+        <div class="review__stats">
+          <h3 class="review__subtitle">Match Statistics</h3>
+          <div class="review__stats-grid">
+            {% for stat in review.statistics %}
+            <div class="review__stat">
+              <div class="review__stat-label">{{ stat.label }}</div>
+              <div class="review__stat-bar">
+                <div class="review__stat-value review__stat-value--home">{{ stat.home }}</div>
+                <div class="review__stat-track">
+                  <div 
+                    class="review__stat-fill review__stat-fill--home" 
+                    style="width: {{ (stat.home / (stat.home + stat.away) * 100)|round(2) }}%"
+                  ></div>
+                  <div 
+                    class="review__stat-fill review__stat-fill--away" 
+                    style="width: {{ (stat.away / (stat.home + stat.away) * 100)|round(2) }}%"
+                  ></div>
+                </div>
+                <div class="review__stat-value review__stat-value--away">{{ stat.away }}</div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Текстовое описание матча -->
+        <div class="review__description">
+          <h3 class="review__subtitle">Match Report</h3>
+          <div class="review__text">
+            {{ review.description|raw }}
+          </div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
-
-
-
-
-
-
-{% endblock %} {% block scripts %}
 {% endblock %}

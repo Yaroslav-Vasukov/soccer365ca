@@ -38,7 +38,7 @@
     { label: "Главная", href: "/", home: true },
     { label: "Лиги", href: "/leagues" },
     { label: league.name, href: "/league/" ~ league_slug },
-    { label: "История" }
+    { label: "history" }
   ],
 } only %}
 
@@ -52,7 +52,7 @@
             <div class="history-intro__league-info">
               <h2 class="history-intro__league-name">{{ league.name }}</h2>
               <p class="history-intro__league-details">
-                {{ league.country }} • Основана в {{ league.founded }}
+                {{ league.country }} • Founded in {{ league.founded }}
               </p>
             </div>
           </div>
